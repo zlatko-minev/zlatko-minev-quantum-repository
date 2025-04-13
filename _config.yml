@@ -1,0 +1,71 @@
+title: Zlatko Minev Quantum Repository
+description: A comprehensive collection of research presentations, lectures, tutorials, and technical notes by Dr. Zlatko K. Minev on quantum computing and quantum information science.
+url: https://zlatko-minev.github.io/zlatko-minev-quantum-repository
+author: Dr. Zlatko K. Minev
+logo: /_web/_assets/images/logo.png
+
+# Theme settings
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Collections for different types of content
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+  content:
+    output: true
+    permalink: /:collection/:path/
+
+# Includes and excludes
+include:
+  - _web/_pages
+  - index.html
+
+# Source directory for Jekyll
+source: .
+
+# Specify locations
+layouts_dir: _web/_layouts
+includes_dir: _web/_includes
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+  - scope:
+      path: "_web/_pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "content - educational"
+    values:
+      layout: "document"
+  - scope:
+      path: "content - research talks"
+    values:
+      layout: "document"
+  - scope:
+      path: "content - tech notes"
+    values:
+      layout: "document"
+
+# Change assets path
+sass:
+  sass_dir: _web/_assets/css
+
+# Customize paths
+assets_url: /_web/_assets
+
+# Exclude files from processing
+exclude:
+  - _web/_scripts/
+  - README.md
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock

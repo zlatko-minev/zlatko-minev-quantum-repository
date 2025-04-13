@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <link rel="stylesheet" href="{{ site.assets_url }}/css/main.css">
+  {% include head.html %}
+</head>
+<body>
+  <header>
+    {% include header.html %}
+  </header>
+  
+  <main>
+    {{ content }}
+  </main>
+  
+  <footer>
+    {% include footer.html %}
+  </footer>
+  
+  <script src="{{ site.assets_url }}/js/main.js"></script>
+</body>
+</html>
