@@ -1,0 +1,25 @@
+{
+  "_comment": "Hand-curated metadata merged on top of auto-inferred fields by build_catalog.py. Key = item id. 'tags' are UNIONed with auto tags; any other key (description, featured, year, venue...) overrides. Edit freely; safe across regenerations.",
+
+  "2020-mit-tech-review-emerging-technology-emtech-minev-broad-talk": {
+    "tags": ["overview", "outreach"],
+    "venue": "MIT Technology Review EmTech"
+  },
+  "2023-machine-learning-for-practical-quantum-error-mitigation-ml-qem-haoran-liao-qiskit-seminar": {
+    "speaker": "Haoran Liao",
+    "venue": "Qiskit Seminar",
+    "tags": ["featured"]
+  },
+  "t11-7-pictorial-digital-quantum-circuits-minev": {
+    "tags": ["circuits", "reference"]
+  },
+  "t11-9-concentration-inequalities-and-tail-bounds-minev": {
+    "tags": ["math", "reference"]
+  },
+  "t21-estimating-observables-from-sampled-bit-strings-minev": {
+    "tags": ["estimation", "reference"]
+  },
+  "t22-bound-sum-of-operators-ala-watrous-minev": {
+    "tags": ["math", "reference"]
+  }
+}

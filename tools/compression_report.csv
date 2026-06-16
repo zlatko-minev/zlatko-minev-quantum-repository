@@ -1,0 +1,75 @@
+path,before,after,saved_pct,action
+content - research talks/2011 Josephson Junction Arrays - Parasitic Capacitances (Minev).pdf,2137837,1590555,25.6,compress
+"content - research talks/2011 Josephson Parametric Amplifier - Optimizing (Minev, APS March Meeting Poster 2011).pdf",4782344,542199,88.7,compress
+content - research talks/2012 Superconducting Whispering Gallery Modes (Minev).pdf,1577856,1577856,-17.4,keep-orig
+content - research talks/2012 Wafer Assembled Whispering Gallery Mode Resonator (Minev).pdf,3242861,2534894,21.8,compress
+content - research talks/2012 Whispering Gallery Modes (Minev).pdf,2786201,1996535,28.3,compress
+"content - research talks/2013 Superconducting Whispering Gallery Mode Resonators (Minev, APS MM).pdf",1975780,1247909,36.8,compress
+content - research talks/2014 2.5D Circuit Quantum Electrodynamics (cQED) - Whispering Gallery Modes.pdf,4446720,2872567,35.4,compress
+content - research talks/2015 2.5D cQED coherence - Exploring Drawbridge Transmon Coherence (Minev).pdf,3044804,2198503,27.8,compress
+content - research talks/2019 Energy Participation Ratio (EPR) for Superconducting Qubit Design (Minev).pdf,10861581,6008252,44.7,compress
+"content - research talks/2019 Quantum Sensing Keynote (Padua, Italy, Minev).pdf",10139209,6595575,34.9,compress
+"content - research talks/2020 MIT Tech Review Emerging Technology EmTech (Minev, Broad Talk).pdf",1084885,637698,41.2,compress
+content - research talks/2020 pyEPR Meeting - Energy Participation Ratio (EPR) for Superconducting Qubit Design (Minev).pdf,2275782,1502262,34.0,compress
+"content - research talks/2021 Qiskit Metal - Overview of Quantum Hardware Design - Energy, Circuits, Metal (Minev, IEEE Quantum Week).pdf",8706197,4667777,46.4,compress
+"content - research talks/2021 Quantum Hardware Design - Energy, Circuits, Metal (Qiskit Metal, EPR) (Minev, Qiskit Seminar).pdf",19050222,14141527,25.8,compress
+content - research talks/2021 To Catch and Reverse a Quantum Jump Mid-Flight (Minev).pdf,9987683,6353176,36.4,compress
+content - research talks/2021 To Design Quantum Hardware - Qiskit Metal and Energy Participation Ratio (EPR) for Superconducting Qubit Design (Minev).pdf,14339959,10228714,28.7,compress
+"content - research talks/2022 Overview Of Quantum Hardware Design - Qiskit Metal - Energy, Circuits, Metal (Minev, Chicago Quantum Exchange, NanoKorea).pdf",11314002,6620396,41.5,compress
+"content - research talks/2022 Overview of Quantum Hardware Design - Qiskit Metal - From Fab-it to Qubit (Minev, NQI).pdf",15752562,10902378,30.8,compress
+"content - research talks/2022 Probabilistic Error Cancelation (PEC) (Minev, IBM Quantum Qiskit Seminar).pdf",9445936,6735016,28.7,compress
+"content - research talks/2022 Probabilistic Error Cancelation (PEC) (Minev, KITP).pdf",8640180,6477576,25.0,compress
+content - research talks/2022 Qiskit Metal - Quantum Hardware Design - for QEDC (Minev).pdf,3385112,2150662,36.5,compress
+"content - research talks/2023 Machine Learning for Practical Quantum Error Mitigation (ML-QEM) (Haoran Liao, Qiskit Seminar).pdf",1728344,1184825,31.4,compress
+"content - research talks/2024 Fibonacci Anyons - Realizing string-net condensation - Fibonacci anyon braiding for universal gates and sampling chromatic polynomials (Minev, CIFAR).pdf",19590357,12839892,34.5,compress
+"content - research talks/2024 Uncovering Local Integrability in Quantum Many-Body Dynamics (Minev, APS MM Invited).pdf",13032185,10311612,20.9,compress
+"content - research talks/2025 Machine Learning for Practical Quantum Error Mitigation (ML-QEM) (Minev, Aspen AI plus Quantum).pdf",8047149,3389948,57.9,compress
+"content - research talks/2025 Quantum Hardware Design - EPR, LOM, Metal (Minev, Flagship Quantum Device Workshop Advanced).pdf",13763474,8340524,39.4,compress
+content - educational/- Career Talks/Career Talk - 2023 For Sophia Economou Class (Minev).pdf,15442323,9395544,39.2,compress
+content - educational/- Career Talks/Career Talk - 2025 Qubit x Qubit Capstone Short (Minev).pdf,3698651,1840036,50.3,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/A Prelude To Practical Quantum Computing (Minev, Global Hackathon AI For Good, 2025).pdf",7599134,4909665,35.4,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Noise Mitigation - Near-Term Algorithms (Summer School 2024)/Intro to Noise Mitigation - Near-Term Algorithms, Lecture 1 (Minev, Summer School 2024).pdf",9814843,6889590,29.8,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Noise Mitigation - Near-Term Algorithms (Summer School 2024)/Intro to Noise Mitigation - Near-Term Algorithms, Lecture 2 (Minev, Summer School 2024).pdf",14011111,11193480,20.1,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Error Mitigation (Boulder Summer School, BIG EVENT, 2023)/Quantum Error Mitigation, Minev - BSS23 - PEC Derivation 1Q simple (C65B) (Boulder Summer School 2023) (Minev).pdf",1103683,1103683,0.8,keep-orig
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Error Mitigation (Boulder Summer School, BIG EVENT, 2023)/Quantum Error Mitigation, Minev - BSS23 - PEC Derivation full derivation (C65C) (Boulder Summer School 2023) (Minev).pdf",1382192,1382192,0.2,keep-orig
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Error Mitigation (Boulder Summer School, BIG EVENT, 2023)/Quantum Error Mitigation, Minev - BSS23 Lecture 1 (Boulder Summer School 2023) (Minev).pdf",10592015,7418835,30.0,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Error Mitigation (Boulder Summer School, BIG EVENT, 2023)/Quantum Error Mitigation, Minev - BSS23 Lecture 2 (Boulder Summer School 2023) (Minev).pdf",10787986,8609042,20.2,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Error Mitigation (Boulder Summer School, BIG EVENT, 2023)/Quantum Error Mitigation, Minev - BSS23 Lecture 3 (Boulder Summer School 2023) (Minev).pdf",14825562,10744045,27.5,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Error Mitigation (Boulder Summer School, BIG EVENT, 2023)/Quantum Error Mitigation, Minev - Bonus - Cheat Sheet Digital Quantum Circuits - T11_7 (Boulder Summer School 2023) (Minev).pdf",46030,39515,14.2,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Error Mitigation (Boulder Summer School, BIG EVENT, 2023)/Quantum Error Mitigation, Minev - Bonus - Cheat Sheet Tail Bounds T11_9 (Boulder Summer School 2023) (Minev).pdf",94163,75832,19.5,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Measurements - Part I - Ideal Measurements (Minev, 2023).pdf",7080369,5967557,15.7,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Noise (Qiskit Global Summer School 2021)/Intro to Quantum Noise, Coherent ZZ Error (Qiskit Global Summer School 2021) (Minev).pdf",461909,412317,10.7,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Noise (Qiskit Global Summer School 2021)/Intro to Quantum Noise, Incoherent Noise (Qiskit Global Summer School 2021) (Minev).pdf",1549168,1187871,23.3,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Noise (Qiskit Global Summer School 2021)/Intro to Quantum Noise, Intro to Quantum Noise (Qiskit Global Summer School 2021) (Minev).pdf",4854380,3868820,20.3,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Noise (Qiskit Global Summer School 2021)/Intro to Quantum Noise, Measurement Noise (Qiskit Global Summer School 2021) (Minev).pdf",842944,778880,7.6,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Noise (Qiskit Global Summer School 2021)/Intro to Quantum Noise, Projection Noise v2 (Qiskit Global Summer School 2021) (Minev).pdf",1442285,1271356,11.9,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Noise (Qiskit Global Summer School 2021)/Intro to Quantum Noise, State Preparation Noise (Qiskit Global Summer School 2021) (Minev).pdf",727864,588852,19.1,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Noise (Qiskit Global Summer School 2022)/Intro to Quantum Noise - Bonus - Coherent ZZ Error (Qiskit Global Summer School 2022) (Minev).pdf",461909,412316,10.7,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Noise (Qiskit Global Summer School 2022)/Intro to Quantum Noise - Bonus - State Preparation Noise (Qiskit Global Summer School 2022) (Minev).pdf",727864,588852,19.1,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Noise (Qiskit Global Summer School 2022)/Intro to Quantum Noise - Main Lecture - Intro to Quantum Noise (Qiskit Global Summer School 2022) (Minev).pdf",10418512,7855330,24.6,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Noise (Qiskit Global Summer School 2022)/Intro to Quantum Noise - Note - Incoherent Noise (Qiskit Global Summer School 2022) (Minev).pdf",276107,244225,11.5,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Noise (Qiskit Global Summer School 2022)/Intro to Quantum Noise - Note - Measurement (Qiskit Global Summer School 2022) (Minev).pdf",1172267,1096947,6.4,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Noise (Qiskit Global Summer School 2022)/Intro to Quantum Noise - Note - Measurement Noise (Qiskit Global Summer School 2022) (Minev).pdf",501674,465739,7.2,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Noise (Qiskit Global Summer School 2023)/Intro to Quantum Noise - Bonus - Cheat Sheet T11_7 - Pictorial Digital Quanutm Circuits (Qiskit Global Summer School 2023, Minev).pdf",46030,39515,14.2,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Noise (Qiskit Global Summer School 2023)/Intro to Quantum Noise - Bonus - Coherent ZZ Error (Qiskit Global Summer School 2023, Minev).pdf",461909,412317,10.7,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Noise (Qiskit Global Summer School 2023)/Intro to Quantum Noise - Bonus - Estimating Bitstrings T21 (Qiskit Global Summer School 2023, Minev).pdf",138559,122433,11.6,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Quantum Noise (Qiskit Global Summer School 2023)/Intro to Quantum Noise - Main Lecture - Intro to Quantum Noise (Qiskit Global Summer School 2023, Minev).pdf",14652522,12061578,17.7,compress
+"content - educational/- Quantum Computational Experiments - Noise, Mitigation, and Scale/Intro to Real Quantum Computers and Noise (Minev, Summer Lecture Vanderbuilt 2022).pdf",9409813,6196663,34.1,compress
+"content - educational/- Quantum Hardware - Superconducting Qubits/Superconducting Qubits 101 - Part I (Minev, Flagship Quantum Device Workshop, Beginner, 2025).pdf",15656794,4493550,71.3,compress
+"content - educational/- Quantum Hardware - Superconducting Qubits/Superconducting Qubits 101 - Part II (Minev, Flagship Quantum Device Workshop, Beginner, 2025).pdf",11518633,3819020,66.8,compress
+"content - educational/- Quantum Hardware - Superconducting Qubits/Superconducting Qubits 101 - cQED Quantum Hardware (Minev, CEC ICMC, 2021).pdf",18748028,12967390,30.8,compress
+"content - educational/- Quantum Hardware - Superconducting Qubits/Superconducting Qubits 101 - cQED Quantum Hardware (Minev, QIQT Summer School, 2021).pdf",11956988,7689449,35.7,compress
+"content - educational/- Quantum Hardware - Superconducting Qubits/Superconducting Qubits 101 - cQED Quantum Hardware (Qiskit Global Summer School, 2020)/Superconducting Qubits 101 - Quantum Hardware cQED - Day 1 (Qiskit Global Summer School 2020, Minev).pdf",6979052,4621953,33.8,compress
+"content - educational/- Quantum Hardware - Superconducting Qubits/Superconducting Qubits 101 - cQED Quantum Hardware (Qiskit Global Summer School, 2020)/Superconducting Qubits 101 - Quantum Hardware cQED - Day 2 (Qiskit Global Summer School 2020, Minev).pdf",7043681,4838708,31.3,compress
+"content - educational/Intro to Pauli Twirling (Tutorial)/Intro to Pauli Twirling, Minev - Part I (Tutorial).pdf",2745766,2047739,25.4,compress
+"content - educational/Intro to Pauli Twirling (Tutorial)/Intro to Pauli Twirling, Minev - Part II (Tutorial).pdf",2433269,1922187,21.0,compress
+"content - educational/Intro to Pauli Twirling (Tutorial)/Intro to Pauli Twirling, Minev - Part III (Tutorial).pdf",1670857,1456803,12.8,compress
+"content - educational/Intro to Pauli Twirling (Tutorial)/Intro to Pauli Twirling, Minev - Part IV (Tutorial).pdf",2684492,1890089,29.6,compress
+content - tech notes/T11.7 Pictorial - Digital quantum circuits (Minev).pdf,485532,235210,51.6,compress
+content - tech notes/T11.9 Concentration inequalities and tail bounds (Minev).pdf,276797,82020,70.4,compress
+content - tech notes/T21 Estimating observables from sampled bit strings (Minev).pdf,559636,155428,72.2,compress
+content - tech notes/T22 Bound sum of operators ala Watrous (Minev).pdf,731627,122398,83.3,compress
+content - tech notes/T23 PEC (Probaiblity error cancelation) notation and notes (Minev).pdf,315889,76091,75.9,compress
+content - tech notes/T25 Random sampling and twirling of states vs true mixed states (Minev).pdf,377570,138747,63.3,compress
+content - tech notes/T26 Many-Body Physics - Exploring Spin Models for Quantum Computing Scientists (Minev).pdf,843991,248532,70.6,compress
+content - tech notes/T27 Simple noise models and gate fidelity (Minev).pdf,586715,157411,73.2,compress

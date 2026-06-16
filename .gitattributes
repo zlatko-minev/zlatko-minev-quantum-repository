@@ -1,0 +1,7 @@
+# Git LFS removed on 2026-06-14 — compressed PDFs are now stored as normal git
+# blobs (see agent/NOTES.md). Treat slide/binary formats as binary so git does
+# not attempt text diffs/merges.
+*.pdf binary
+*.ppt binary
+*.pptx binary
+*.png binary

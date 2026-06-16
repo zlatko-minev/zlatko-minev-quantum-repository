@@ -1,0 +1,2315 @@
+{
+  "model": "qwen2.5:7b",
+  "items": {
+    "2026-otoc-nmr-experiment-error-mitigation-modeling-and-results-minev-aps-march-meeting": {
+      "short_description": "Dr. Zlatko Minev discusses error mitigation techniques for NMR OTOC experiments.",
+      "summary": "The talk covers experimental results and methods for mitigating errors in NMR OTOC measurements using Pauli Path ZNE, twirling gates, and readout mitigation strategies.",
+      "topics": [
+        "NMR OTOC",
+        "error-mitigation",
+        "Pauli Path ZNE",
+        "twirling-gates",
+        "readout-mitigation"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "nuclear-magnetic-resonance",
+        "qiskit-metal",
+        "noise",
+        "error-mitigation",
+        "pec",
+        "zne",
+        "twirling",
+        "machine-learning",
+        "measurement"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Pauli Path ZNE outperforms other mitigation strategies in NMR OTOC experiments.",
+        "Mitigation methods include twirling gates and readout mitigation.",
+        "Achieved accuracy comparable to independent NMR spectroscopic measurements.",
+        "Broad applicability across different quantum circuits."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "a-prelude-to-practical-quantum-computing-minev-global-hackathon-ai-for-good-2025": {
+      "short_description": "Overview of practical quantum computing focusing on superconducting qubits and error mitigation techniques.",
+      "summary": "The talk provides an overview of the current state of quantum computing, emphasizing superconducting qubits and discussing methods to mitigate errors due to noise in real-world quantum devices.",
+      "topics": [
+        "superconducting-qubits",
+        "error-mitigation",
+        "quantum-error-correction",
+        "noise",
+        "qiskit-metal",
+        "zero-noise-extrapolation",
+        "probabilistic-error-cancelation"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "error-mitigation",
+        "noise",
+        "pec",
+        "zne",
+        "tutorial",
+        "lecture",
+        "quantum-computing-status"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Overview of quantum computing status and challenges.",
+        "Discussion on superconducting qubits as a practical platform.",
+        "Explanation of error mitigation techniques like zero-noise extrapolation and probabilistic error cancellation.",
+        "Highlight on the importance of noise in real-world quantum devices."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "career-talk-2025-qubit-x-qubit-capstone-short-minev": {
+      "short_description": "Dr. Zlatko Minev shares his career journey and insights on scientific discovery in quantum computing.",
+      "summary": "The talk covers Dr. Minev's professional experiences at IBM Quantum and Google Quantum AI, emphasizing lessons learned from research and innovation in the field of quantum computing.",
+      "topics": [
+        "career",
+        "quantum-computing",
+        "research-insights",
+        "professional-experiences",
+        "innovation"
+      ],
+      "suggested_tags": [
+        "career",
+        "quantum-computing",
+        "inspiration",
+        "research",
+        "innovation",
+        "ibm-quantum",
+        "google-quantum-ai",
+        "science"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Believe in your ideas and be open to criticism.",
+        "Embrace challenge and question-driven research.",
+        "Maintain a balance between focused learning and broad exploration."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "superconducting-qubits-101-part-i-minev-flagship-quantum-device-workshop-beginner-2025": {
+      "short_description": "Introduction to superconducting qubits and circuit quantum electrodynamics (cQED) by Dr. Zlatko Minev.",
+      "summary": "The talk covers the basics of superconducting qubits, their design, and practical examples from IBM and Google architectures. It also delves into cQED principles and community-driven designs using Qiskit Metal.",
+      "topics": [
+        "superconducting-qubits",
+        "circuit-quantum-electrodynamics",
+        "qiskit-metal",
+        "design-principles",
+        "google-architecture",
+        "ibm-architecture"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "circuit-quantum-electrodynamics",
+        "tutorial",
+        "lecture",
+        "design-principles",
+        "google-architecture",
+        "ibm-architecture"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduction to superconducting qubits and cQED principles.",
+        "Examples of IBM and Google quantum architectures.",
+        "Discussion on community-driven designs using Qiskit Metal.",
+        "Explanation of the physical and abstract circuits involved in qubit design."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-noise-mitigation-near-term-algorithms-lecture-1-minev-summer-school-2024": {
+      "short_description": "Introduction to quantum noise and error mitigation techniques in near-term quantum computing.",
+      "summary": "The talk covers the current state of quantum computers, introduces probabilistic error cancellation methods, and discusses future hardware outlooks for mitigating errors in quantum systems.",
+      "topics": [
+        "quantum-noise",
+        "error-mitigation",
+        "probabilistic-error-cancelation",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "hardware-outlook"
+      ],
+      "suggested_tags": [
+        "noise",
+        "error-mitigation",
+        "pec",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "hardware",
+        "tutorial",
+        "lecture"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduces probabilistic error cancellation (PEC) as a method for mitigating noise in quantum systems.",
+        "Discusses the current state and challenges of near-term quantum computers.",
+        "Explains how to implement PEC using random circuits and quantum trajectories.",
+        "Highlights the importance of hardware development in addressing errors in quantum computing."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "superconducting-qubits-101-part-ii-minev-flagship-quantum-device-workshop-beginner-2025": {
+      "short_description": "Introduction to superconducting qubits and Circuit Quantum Electrodynamics (cQED) by Dr. Zlatko Minev.",
+      "summary": "The talk covers the basics of superconducting qubits, focusing on the transmon qubit, its Hamiltonian, and quantization methods in cQED. Viewers will learn about the theoretical foundations and practical aspects of building quantum circuits.",
+      "topics": [
+        "superconducting-qubits",
+        "transmon-qubit",
+        "circuit-quantum-electrodynamics",
+        "quantum-harmonic-oscillator",
+        "qiskit-metal",
+        "hamiltonian-analysis"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "circuit-quantum-electrodynamics",
+        "quantum-analysis",
+        "transmon-qubit",
+        "tutorial",
+        "lecture"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduction to superconducting qubits and transmon technology.",
+        "Explanation of the quantum harmonic oscillator and its classical analogy.",
+        "Discussion on quantization methods in Circuit Quantum Electrodynamics (cQED).",
+        "Analysis of the transmon qubit Hamiltonian and energy levels."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-noise-mitigation-near-term-algorithms-lecture-2-minev-summer-school-2024": {
+      "short_description": "Lecture on quantum error mitigation techniques, focusing on probabilistic error cancellation.",
+      "summary": "The talk covers noise in quantum computers and introduces probabilistic error cancellation as a method to mitigate errors, including mathematical derivations and practical implementations.",
+      "topics": [
+        "quantum-error-mitigation",
+        "probabilistic-error-cancellation",
+        "noise-in-quantum-computing",
+        "qiskit-metal",
+        "superconducting-qubits",
+        "error-mitigation",
+        "mathematical-derivations"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "noise",
+        "error-mitigation",
+        "probabilistic-error-cancellation",
+        "math",
+        "tutorial",
+        "lecture",
+        "quantum-computing"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduces probabilistic error cancellation as a method to mitigate quantum noise.",
+        "Explains the mathematical foundations of PEC through empirical mean and quasi-probability distributions.",
+        "Discusses practical implementations and experiments involving single qubit measurements and circuit expectation values."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "career-talk-2023-for-sophia-economou-class-minev": {
+      "short_description": "Dr. Zlatko Minev discusses his career in quantum computing and key topics like superconducting qubits and Qiskit Metal.",
+      "summary": "The talk covers Dr. Minev's journey in quantum research, focusing on practical applications such as superconducting qubits and the development of Qiskit Metal for quantum processor design. Viewers will learn about his insights into quantum computing technology and educational initiatives.",
+      "topics": [
+        "superconducting-qubits",
+        "qiskit-metal",
+        "quantum-computing",
+        "career-overview",
+        "quantum-processor-design",
+        "error-mitigation"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "tutorial",
+        "lecture",
+        "career",
+        "education",
+        "quantum-computing"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Highlights from Dr. Minev's career in quantum computing research and education.",
+        "Insights into superconducting qubits and Qiskit Metal development.",
+        "Lessons learned and advice for aspiring scientists."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-measurements-part-i-ideal-measurements-minev-2023": {
+      "short_description": "The talk covers quantum measurement theory and its practical implications in error mitigation.",
+      "summary": "This tutorial explores quantum measurement theory, including ideal and noisy measurements, statistical methods like bootstrapping, and techniques for mitigating errors to improve experimental data quality.",
+      "topics": [
+        "quantum-measurement",
+        "error-mitigation",
+        "bootstrapping",
+        "statistical-methods",
+        "qiskit-metal",
+        "readout-error",
+        "noise-modeling"
+      ],
+      "suggested_tags": [
+        "measurement",
+        "tutorial",
+        "error-mitigation",
+        "statistics",
+        "bootstrapping",
+        "qiskit-metal",
+        "noise",
+        "quantum-computing"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Explains quantum measurement theory and its importance in quantum computing.",
+        "Discusses methods for mitigating errors in measurements to improve data quality.",
+        "Introduces statistical techniques like bootstrapping for error analysis.",
+        "Covers practical applications of these concepts using real-world examples."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-noise-bonus-cheat-sheet-t11-7-pictorial-digital-quanutm-circuits-qiskit-global-summer-school": {
+      "short_description": "Dr. Minev covers digital quantum circuits and basic elements like qubits, gates, and circuit identities.",
+      "summary": "The talk provides an overview of digital quantum circuits, focusing on qubit operations, gate decompositions, and circuit identities essential for understanding quantum computing hardware.",
+      "topics": [
+        "quantum-wires",
+        "qubit-gates",
+        "circuit-identities",
+        "pauli-decomposition",
+        "measurement-basis"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "qiskit-metal",
+        "gates",
+        "decompositions",
+        "quantum-circuits",
+        "tutorial",
+        "lecture",
+        "circuits"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "- Digital quantum circuits and their basic elements.",
+        "- Pauli decomposition of qubit gates.",
+        "- Circuit identities for operations like cNOT, cZ, and cY.",
+        "- Measurement in different bases."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-noise-bonus-coherent-zz-error-qiskit-global-summer-school-2023-minev": {
+      "short_description": "Introduction to coherent errors in quantum computing.",
+      "summary": "Dr. Zlatko Minev introduces coherent errors and their impact on quantum noise during the Qiskit Global Summer School.",
+      "topics": [
+        "coherent-errors",
+        "quantum-noise",
+        "qiskit-global-summer-school"
+      ],
+      "suggested_tags": [
+        "error-mitigation",
+        "noise",
+        "tutorial",
+        "lecture",
+        "beginner",
+        "quantum-computing",
+        "qiskit-metal",
+        "summer-school"
+      ],
+      "audience_level": "beginner",
+      "key_points": [
+        "Definition of coherent errors.",
+        "Impact on quantum noise.",
+        "Introduction to Qiskit Global Summer School."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-noise-bonus-estimating-bitstrings-t21-qiskit-global-summer-school-2023-minev": {
+      "short_description": "The talk covers estimating observables from quantum computer measurement data.",
+      "summary": "This technical talk focuses on how to estimate observable properties of a quantum state using classical measurement outcomes and discusses statistical methods for error propagation and confidence intervals in quantum computing experiments.",
+      "topics": [
+        "quantum-state-estimation",
+        "measurement-outcomes",
+        "statistical-error-analysis"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "noise",
+        "error-mitigation",
+        "circuits",
+        "math",
+        "tutorial",
+        "lecture"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Methods for estimating observables from quantum measurements.",
+        "Statistical analysis of sampling error in quantum experiments.",
+        "Propagation of measurement errors through computational processes."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-noise-main-lecture-intro-to-quantum-noise-qiskit-global-summer-school-2023-minev": {
+      "short_description": "Introduction to noise in quantum computers and its impact on qubit operations.",
+      "summary": "The talk covers fundamental concepts of noise in quantum computing, focusing on coherent and incoherent noise, their effects on qubits, and practical examples using IBM Quantum devices.",
+      "topics": [
+        "quantum-noise",
+        "coherent-noise",
+        "incoherent-noise",
+        "qubit-operations",
+        "superconducting-qubits",
+        "measurement-problems"
+      ],
+      "suggested_tags": [
+        "noise",
+        "error-mitigation",
+        "superconducting-qubits",
+        "quantum-computing",
+        "ibm-quantum",
+        "qiskit",
+        "tutorial",
+        "lecture"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduction to noise in quantum computing and its impact on qubit operations.",
+        "Explanation of coherent and incoherent noise types.",
+        "Practical examples using IBM Quantum devices.",
+        "Discussion on measurement problems and their solutions."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "quantum-error-mitigation-minev-bss23-pec-derivation-1q-simple-c65b-boulder-summer-school-2023-minev": {
+      "short_description": "Explains probabilistic error cancellation through quantum circuit decomposition.",
+      "summary": "Dr. Minev discusses how to decompose noisy gates into equivalent superoperator channels and trajectories to achieve error mitigation in quantum circuits.",
+      "topics": [
+        "probabilistic-error-cancellation",
+        "quantum-circuit-decomposition",
+        "superoperator-channels",
+        "error-mitigation"
+      ],
+      "suggested_tags": [
+        "error-mitigation",
+        "noise",
+        "pec",
+        "tutorial",
+        "lecture",
+        "advanced",
+        "math",
+        "circuits"
+      ],
+      "audience_level": "advanced",
+      "key_points": [
+        "Decompose noisy gates into equivalent superoperator channels.",
+        "Use trajectory unraveling for error cancellation.",
+        "Interfere trajectories to coherently add no-error outcomes.",
+        "Mitigate errors by canceling out erroneous trajectories."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "quantum-error-mitigation-minev-bss23-pec-derivation-full-derivation-c65c-boulder-summer-school-2023-minev": {
+      "short_description": "Derives error mitigated expectation value decomposition for quantum circuits.",
+      "summary": "The talk explains how to decompose error-mitigated expectation values using Pauli-gate modified circuits and classical post-processing techniques.",
+      "topics": [
+        "error-mitigation",
+        "PEC",
+        "quantum-circuits",
+        "post-processing"
+      ],
+      "suggested_tags": [
+        "error-mitigation",
+        "pec",
+        "tutorial",
+        "lecture",
+        "advanced",
+        "circuits",
+        "math",
+        "hardware"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Decomposes error mitigated expectation values.",
+        "Uses Pauli-gate modified circuits.",
+        "Involves classical post-processing.",
+        "Focuses on PEC decomposition."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "quantum-error-mitigation-minev-bss23-lecture-1-boulder-summer-school-2023-minev": {
+      "short_description": "Dr. Zlatko Minev discusses quantum error mitigation techniques for non-equilibrium quantum dynamics on superconducting qubits.",
+      "summary": "The talk covers the challenges and solutions in quantum computing, focusing on noise reduction methods like probabilistic error cancellation (PEC) and their implementation using quantum trajectories.",
+      "topics": [
+        "quantum error mitigation",
+        "probabilistic error cancellation (PEC)",
+        "superconducting qubits",
+        "noise reduction",
+        "quantum trajectories"
+      ],
+      "suggested_tags": [
+        "error-mitigation",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "pec",
+        "twirling",
+        "measurement",
+        "hardware",
+        "tutorial",
+        "lecture"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduces noise in quantum computers and error mitigation techniques.",
+        "Explains probabilistic error cancellation (PEC) for non-equilibrium dynamics.",
+        "Demonstrates the implementation of PEC using quantum trajectories.",
+        "Discusses the trade-offs between bias-free estimates and variance."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "quantum-error-mitigation-minev-bss23-lecture-2-boulder-summer-school-2023-minev": {
+      "short_description": "Lecture on quantum error mitigation techniques and their application in non-equilibrium quantum dynamics.",
+      "summary": "The talk covers probabilistic error cancellation methods, noise modeling, and their implementation to improve quantum computer performance, focusing on practical examples and state-of-the-art experiments.",
+      "topics": [
+        "probabilistic error cancellation",
+        "noise modeling",
+        "quantum error mitigation",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "error-mitigation",
+        "twirling"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "noise",
+        "error-mitigation",
+        "pec",
+        "zne",
+        "twirling"
+      ],
+      "audience_level": "advanced",
+      "key_points": [
+        "Explains probabilistic error cancellation (PEC) and its application in quantum computing.",
+        "Discusses noise modeling techniques for superconducting qubits.",
+        "Presents state-of-the-art experiments demonstrating PEC effectiveness.",
+        "Reviews the challenges and solutions in learning noise of entangling gates."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "quantum-error-mitigation-minev-bss23-lecture-3-boulder-summer-school-2023-minev": {
+      "short_description": "Dr. Zlatko Minev discusses quantum error mitigation techniques for simulating non-equilibrium dynamics on quantum computers.",
+      "summary": "The talk covers methods to simulate Ising model time evolution using quantum circuits and noise mitigation strategies like probabilistic error cancellation (PEC) to improve accuracy in many-body physics experiments.",
+      "topics": [
+        "quantum-error-mitigation",
+        "pec",
+        "probabilistic-error-cancellation",
+        "trotter-suzuki-decomposition",
+        "many-body-physics",
+        "spin-models",
+        "noise-reduction"
+      ],
+      "suggested_tags": [
+        "error-mitigation",
+        "pec",
+        "quantum-computing",
+        "qiskit-metal",
+        "trotter-suzuki",
+        "many-body",
+        "noise",
+        "tutorial"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Simulate Ising model time evolution using quantum circuits.",
+        "Apply PEC to reduce noise in quantum computations.",
+        "Decompose Hamiltonians into native gates for quantum simulation.",
+        "Measure and mitigate errors through probabilistic error cancellation.",
+        "Explore the impact of noise on many-body physics experiments."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "quantum-error-mitigation-minev-bonus-cheat-sheet-digital-quantum-circuits-t11-7-boulder-summer-school-2023-min": {
+      "short_description": "Dr. Minev covers digital quantum circuits and basic elements like qubits, gates, and circuit identities.",
+      "summary": "The talk provides an overview of digital quantum circuits, focusing on qubit operations, gate decompositions, and circuit identities essential for understanding quantum computing hardware.",
+      "topics": [
+        "quantum-wires",
+        "qubit-gates",
+        "circuit-identities",
+        "pauli-decomposition",
+        "measurement-basis"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "qiskit-metal",
+        "gates",
+        "decompositions",
+        "quantum-circuits",
+        "tutorial",
+        "lecture",
+        "circuits"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "- Digital quantum circuits and their basic elements.",
+        "- Pauli decomposition of qubit gates.",
+        "- Circuit identities for operations like cNOT, cZ, and cY.",
+        "- Measurement in different bases."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "quantum-error-mitigation-minev-bonus-cheat-sheet-tail-bounds-t11-9-boulder-summer-school-2023-minev": {
+      "short_description": "The talk covers concentration inequalities and tail bounds for random variables.",
+      "summary": "This technical talk provides an overview of various probability inequalities such as Markov's, Chebyshev's, Chernoff-Hoeffding, and others, which are essential tools in analyzing the behavior of sums of independent random variables and understanding their distributions.",
+      "topics": [
+        "concentration-inequalities",
+        "tail-bounds",
+        "random-variables",
+        "probability-theory",
+        "independent-random-vars"
+      ],
+      "suggested_tags": [
+        "math",
+        "probability",
+        "statistics",
+        "randomness",
+        "independence",
+        "bounds",
+        "inequalities"
+      ],
+      "audience_level": "beginner",
+      "key_points": [
+        "Introduction to Markov's, Chebyshev's, and Chernoff-Hoeffding inequalities.",
+        "Explanation of their applications in analyzing random variables.",
+        "Overview of various probability tools for understanding distributions."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-noise-bonus-coherent-zz-error-qiskit-global-summer-school-2022-minev": {
+      "short_description": "Introduction to coherent errors in quantum computing.",
+      "summary": "Dr. Zlatko Minev introduces coherent errors and their impact on quantum noise during the Qiskit Global Summer School.",
+      "topics": [
+        "coherent-errors",
+        "quantum-noise",
+        "qiskit-global-summer-school"
+      ],
+      "suggested_tags": [
+        "error-mitigation",
+        "noise",
+        "tutorial",
+        "lecture",
+        "beginner",
+        "quantum-computing",
+        "qiskit-metal",
+        "summer-school"
+      ],
+      "audience_level": "beginner",
+      "key_points": [
+        "Definition of coherent errors.",
+        "Impact on quantum noise.",
+        "Introduction to Qiskit Global Summer School."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-noise-bonus-state-preparation-noise-qiskit-global-summer-school-2022-minev": {
+      "short_description": "Introduction to quantum noise and state preparation in large-scale quantum computing.",
+      "summary": "Dr. Minev discusses challenges in scaling quantum computers, focusing on noise and state preparation techniques using Qiskit.",
+      "topics": [
+        "quantum-noise",
+        "state-preparation",
+        "large-scale-quantum-computing",
+        "qiskit",
+        "error-mitigation"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "noise",
+        "error-mitigation",
+        "qiskit-metal",
+        "tutorial",
+        "lecture",
+        "summer-school",
+        "quantum-machine-learning"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Challenges in scaling quantum computers.",
+        "Techniques for state preparation and noise mitigation.",
+        "Use of Qiskit in practical applications."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-noise-main-lecture-intro-to-quantum-noise-qiskit-global-summer-school-2022-minev": {
+      "short_description": "Introduction to quantum noise and its impact on quantum simulations using Qiskit.",
+      "summary": "The talk covers fundamental concepts of qubits, gates, measurements, and introduces coherent and incoherent noise effects on quantum circuits, emphasizing the importance of understanding noise for running successful quantum simulations.",
+      "topics": [
+        "qubit",
+        "quantum-gates",
+        "measurement",
+        "noise",
+        "coherent-noise",
+        "incoherent-noise",
+        "quantum-simulations"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "noise",
+        "error-mitigation",
+        "measurement",
+        "many-body",
+        "tutorial"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduction to qubits and basic quantum gates.",
+        "Explanation of coherent and incoherent noise effects on quantum circuits.",
+        "Importance of understanding noise for successful quantum simulations.",
+        "Use of Qiskit for running experiments on real devices."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-noise-note-incoherent-noise-qiskit-global-summer-school-2022-minev": {
+      "short_description": "Dr. Minev discusses incoherent noise in quantum computing.",
+      "summary": "The talk covers incoherent noise mechanisms and their impact on superconducting qubits, providing insights into error mitigation techniques.",
+      "topics": [
+        "incoherent-noise",
+        "superconducting-qubits",
+        "error-mitigation",
+        "qubit-coherence"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "noise",
+        "error-mitigation",
+        "superconducting-qubits",
+        "tutorial",
+        "lecture",
+        "summer-school"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Explanation of incoherent noise effects on qubits.",
+        "Discussion on error mitigation strategies.",
+        "Focus on superconducting qubit technology."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-noise-note-measurement-qiskit-global-summer-school-2022-minev": {
+      "short_description": "Introduction to quantum noise and measurement theory in quantum computing.",
+      "summary": "The talk covers fundamental concepts of quantum noise, including projection noise and sampling error, using examples like random coin tosses and Bernoulli distributions.",
+      "topics": [
+        "quantum-noise",
+        "projection-noise",
+        "sampling-error",
+        "bernoulli-distribution",
+        "measurement-theory"
+      ],
+      "suggested_tags": [
+        "noise",
+        "tutorial",
+        "lecture",
+        "beginner",
+        "math",
+        "probability",
+        "quantum-simulations"
+      ],
+      "audience_level": "beginner",
+      "key_points": [
+        "Introduction to quantum noise and its types.",
+        "Explanation of projection noise and sampling error through examples.",
+        "Use of Bernoulli distribution in understanding random classical variables."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-noise-note-measurement-noise-qiskit-global-summer-school-2022-minev": {
+      "short_description": "Dr. Zlatko Minev discusses measurement errors in quantum computing.",
+      "summary": "The talk covers visualization and mitigation of readout errors in quantum systems using Qiskit tools, aimed at improving coherence and reliability.",
+      "topics": [
+        "readout-error",
+        "qiskit",
+        "measurement",
+        "error-mitigation"
+      ],
+      "suggested_tags": [
+        "measurement",
+        "error-mitigation",
+        "qiskit-metal",
+        "tutorial",
+        "lecture",
+        "beginner"
+      ],
+      "audience_level": "beginner",
+      "key_points": [
+        "Visualization of readout errors in quantum systems.",
+        "Introduction to Qiskit tools for error mitigation.",
+        "Techniques to improve measurement accuracy."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-real-quantum-computers-and-noise-minev-summer-lecture-vanderbuilt-2022": {
+      "short_description": "Dr. Zlatko Minev introduces real quantum computers and noise mitigation techniques.",
+      "summary": "The talk covers the current state of quantum computing hardware, noise issues, and error mitigation strategies, focusing on practical applications in many-body physics simulations.",
+      "topics": [
+        "quantum-computing-hardware",
+        "superconducting-qubits",
+        "noise-mitigation",
+        "error-correction",
+        "many-body-physics",
+        "qiskit-metal",
+        "quantum-simulations"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "noise",
+        "error-mitigation",
+        "many-body",
+        "simulation",
+        "tutorial",
+        "lecture"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Current state of quantum computing hardware and noise issues.",
+        "Introduction to error mitigation techniques, including probabilistic error cancellation.",
+        "Practical applications in many-body physics simulations using real quantum devices.",
+        "Discussion on the challenges and future outlook for quantum computing."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-noise-coherent-zz-error-qiskit-global-summer-school-2021-minev": {
+      "short_description": "Introduction to coherent errors in quantum computing.",
+      "summary": "Dr. Zlatko Minev introduces coherent errors and their impact on quantum noise during the Qiskit Global Summer School.",
+      "topics": [
+        "coherent-errors",
+        "quantum-noise",
+        "qiskit-global-summer-school"
+      ],
+      "suggested_tags": [
+        "error-mitigation",
+        "noise",
+        "tutorial",
+        "lecture",
+        "beginner",
+        "quantum-computing",
+        "qiskit-metal",
+        "summer-school"
+      ],
+      "audience_level": "beginner",
+      "key_points": [
+        "Definition of coherent errors.",
+        "Impact on quantum noise.",
+        "Introduction to Qiskit Global Summer School."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-noise-incoherent-noise-qiskit-global-summer-school-2021-minev": {
+      "short_description": "Introduction to quantum noise and its effects on quantum gates.",
+      "summary": "The talk covers incoherent noise models, quantum trajectories, and their impact on quantum computing using Qiskit for simulations.",
+      "topics": [
+        "quantum-noise",
+        "incoherent-noise",
+        "quantum-trajectories",
+        "qiskit-simulations"
+      ],
+      "suggested_tags": [
+        "noise",
+        "qiskit-metal",
+        "tutorial",
+        "summer-school",
+        "circuits",
+        "math"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduction to incoherent noise models.",
+        "Explanation of quantum trajectories and their unraveling.",
+        "Impact of bit-flip errors on noisy gates.",
+        "Use of Qiskit for simulating noisy quantum systems."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-noise-intro-to-quantum-noise-qiskit-global-summer-school-2021-minev": {
+      "short_description": "Introduction to quantum noise and its impact on quantum circuits.",
+      "summary": "The talk covers fundamental concepts of quantum noise, including coherent and incoherent errors, their effects on quantum algorithms, and practical considerations for real-world experiments using Qiskit.",
+      "topics": [
+        "quantum-noise",
+        "coherent-errors",
+        "incoherent-errors",
+        "qiskit",
+        "circuit-depth",
+        "measurement-theory",
+        "state-preparation"
+      ],
+      "suggested_tags": [
+        "noise",
+        "error-mitigation",
+        "qiskit-metal",
+        "hardware",
+        "tutorial",
+        "lecture",
+        "intermediate",
+        "quantum-computing"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Quantum noise significantly impacts the accuracy of quantum algorithms.",
+        "Coherent and incoherent errors are discussed with practical examples.",
+        "The role of Qiskit in simulating and mitigating noise is highlighted.",
+        "Real-world experiments on quantum devices are emphasized."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-noise-measurement-noise-qiskit-global-summer-school-2021-minev": {
+      "short_description": "Dr. Zlatko Minev introduces measurement noise in quantum computing.",
+      "summary": "The talk covers the basics of measurement error and its impact on quantum systems, suitable for beginners or those new to the field.",
+      "topics": [
+        "measurement",
+        "quantum-noise",
+        "error-mitigation"
+      ],
+      "suggested_tags": [
+        "noise",
+        "error-mitigation",
+        "tutorial",
+        "beginner",
+        "summer-school"
+      ],
+      "audience_level": "beginner",
+      "key_points": [
+        "Introduction to measurement error in quantum computing.",
+        "Impact of measurement noise on quantum systems."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-noise-projection-noise-v2-qiskit-global-summer-school-2021-minev": {
+      "short_description": "Introduction to quantum noise and measurement theory for quantum machine learning.",
+      "summary": "The talk covers von Neumann measurements, projection noise, and sampling errors in quantum computing, providing insights into fundamental concepts essential for understanding quantum algorithms and experiments.",
+      "topics": [
+        "von-Neumann-measurement",
+        "projection-noise",
+        "sampling-error",
+        "quantum-algorithms",
+        "measurement-theory"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "noise",
+        "error-mitigation",
+        "tutorial",
+        "lecture",
+        "measurement",
+        "qiskit-metal",
+        "summer-school"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduction to von Neumann measurements and their properties.",
+        "Explanation of projection noise and its impact on quantum experiments.",
+        "Discussion on sampling errors in finite-shot scenarios.",
+        "Insights into the practical implications for quantum machine learning."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-quantum-noise-state-preparation-noise-qiskit-global-summer-school-2021-minev": {
+      "short_description": "Introduction to quantum noise and state preparation in large-scale quantum computing.",
+      "summary": "Dr. Minev discusses challenges in scaling quantum computers, focusing on noise and state preparation techniques using Qiskit.",
+      "topics": [
+        "quantum-noise",
+        "state-preparation",
+        "large-scale-quantum-computing",
+        "qiskit",
+        "error-mitigation"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "noise",
+        "error-mitigation",
+        "qiskit-metal",
+        "tutorial",
+        "lecture",
+        "summer-school",
+        "quantum-machine-learning"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Challenges in scaling quantum computers.",
+        "Techniques for state preparation and noise mitigation.",
+        "Use of Qiskit in practical applications."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "superconducting-qubits-101-cqed-quantum-hardware-minev-cec-icmc-2021": {
+      "short_description": "Introduction to superconducting qubits and circuit quantum electrodynamics (cQED) for quantum computing.",
+      "summary": "The talk covers the design, control, and measurement of superconducting qubits, focusing on transmon qubits and their implementation in cQED systems. It provides an overview suitable for beginners while delving into practical examples and advanced topics.",
+      "topics": [
+        "superconducting-qubits",
+        "transmon-qubit",
+        "circuit-quantum-electrodynamics",
+        "qiskit-metal",
+        "quantum-device-design",
+        "anharmonic-oscillator",
+        "microwave-circuits"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "circuit-quantum-electrodynamics",
+        "transmon-qubit",
+        "noise",
+        "error-mitigation",
+        "measurement",
+        "tutorial"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduction to superconducting qubits and cQED systems.",
+        "Design, control, and measurement of transmon qubits.",
+        "Practical examples using Qiskit Metal for quantum device design.",
+        "Advanced topics in quantum hardware and error mitigation."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "superconducting-qubits-101-cqed-quantum-hardware-minev-qiqt-summer-school-2021": {
+      "short_description": "Introduction to superconducting qubits and circuit quantum electrodynamics (cQED) for quantum computing.",
+      "summary": "The talk covers the basics of superconducting qubits, including their design, control, and measurement in a cQED setup. It provides an overview suitable for beginners while delving into practical examples and advanced concepts.",
+      "topics": [
+        "superconducting-qubits",
+        "circuit-quantum-electrodynamics",
+        "qubit-design",
+        "measurement",
+        "transmon-qubit"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "circuit-quantum-electrodynamics",
+        "qiskit-metal",
+        "tutorial",
+        "lecture",
+        "beginner",
+        "advanced"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduction to superconducting qubits and cQED.",
+        "Design, control, and measurement of transmon qubits.",
+        "Practical examples and real-world applications.",
+        "Advanced concepts in qubit design and operation."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "superconducting-qubits-101-quantum-hardware-cqed-day-1-qiskit-global-summer-school-2020-minev": {
+      "short_description": "Introduction to superconducting qubits and circuit quantum electrodynamics (cQED) for quantum computing.",
+      "summary": "The talk covers the design, control, and measurement of superconducting qubits through Circuit Quantum Electrodynamics (cQED), focusing on practical examples and real-world applications in IBM Quantum systems.",
+      "topics": [
+        "superconducting-qubits",
+        "circuit-quantum-electrodynamics",
+        "transmon-qubit",
+        "qiskit-metal",
+        "oscillator",
+        "quantum-cloud"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "epr",
+        "noise",
+        "error-mitigation",
+        "pec",
+        "zne",
+        "twirling",
+        "machine-learning",
+        "measurement"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduction to superconducting qubits and cQED.",
+        "Practical examples of qubit design and control.",
+        "Real-world applications in IBM Quantum systems.",
+        "Discussion on noise, error mitigation, and measurement techniques."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "superconducting-qubits-101-quantum-hardware-cqed-day-2-qiskit-global-summer-school-2020-minev": {
+      "short_description": "The talk covers transmon qubits and their measurements in quantum computing.",
+      "summary": "This technical talk delves into the physics of superconducting transmon qubits, focusing on their design, control, and measurement techniques. Viewers will learn about the harmonic oscillator approximation, the Kerr Hamiltonian, and practical aspects of experimental setups.",
+      "topics": [
+        "transmon-qubit",
+        "superconducting-qubits",
+        "qubit-control",
+        "harmonic-oscillator",
+        "kerr-hamiltonian"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "measurement",
+        "noise",
+        "error-mitigation",
+        "transmon-qubit",
+        "circuit-design",
+        "quantum-computing"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Transmon qubits are non-linear oscillators with a harmonic oscillator approximation.",
+        "The Kerr Hamiltonian describes the energy levels and transitions in transmon qubits.",
+        "Measurement techniques for transmon qubits, including dispersive readout.",
+        "Control of qubit states through shaped signals and environment interactions."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-pauli-twirling-minev-part-i-tutorial": {
+      "short_description": "The talk covers Pauli twirling in quantum computing, explaining its theory and applications.",
+      "summary": "This technical talk delves into the concept of Pauli twirling, detailing its operational definition, theoretical underpinnings, and practical uses in noise mitigation and algorithm performance prediction. Viewers will learn about the mathematical foundations and benefits of this technique.",
+      "topics": [
+        "Pauli twirling",
+        "quantum-noise-mitigation",
+        "stochastic-Pauli-errors",
+        "randomized-dynamical-decoupling",
+        "twirling-theory"
+      ],
+      "suggested_tags": [
+        "tutorial",
+        "lecture",
+        "noise",
+        "error-mitigation",
+        "pauli-group",
+        "quantum-channel",
+        "stochastic-errors",
+        "randomized-dynamical-decoupling"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Pauli twirling introduces independent, random single-qubit gates to tailor noise into stochastic Pauli errors.",
+        "It accurately predicts algorithm performance using experimentally-measured error rates on universal circuits.",
+        "Twirling helps reduce the total variation distance from dTVbare and improve solution accuracy.",
+        "The technique is agnostic to noise models and can be used for simulations of noisy quantum circuits."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-pauli-twirling-minev-part-ii-tutorial": {
+      "short_description": "Explains Pauli twirling and its application in quantum error mitigation.",
+      "summary": "The talk covers the theory of Pauli twirling, its practical applications in mitigating noise and errors in quantum computing, and provides examples using single-qubit channels.",
+      "topics": [
+        "Pauli twirling",
+        "quantum-error-mitigation",
+        "noise-modeling",
+        "single-qubit-channels",
+        "twirl-gate-design"
+      ],
+      "suggested_tags": [
+        "error-mitigation",
+        "qiskit-metal",
+        "noise",
+        "twirling",
+        "tutorial",
+        "lecture",
+        "quantum-computing",
+        "advanced"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Pauli twirling simplifies noise analysis in quantum computing.",
+        "Demonstrates how to apply Pauli twirling to single-qubit channels.",
+        "Explains the theory behind why Pauli twirling works effectively.",
+        "Provides examples of twirl gates and their application."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-pauli-twirling-minev-part-iii-tutorial": {
+      "short_description": "Overview of Pauli twirling in quantum computing.",
+      "summary": "The talk covers the theory and application of Pauli twirling, a technique used to simplify error mitigation in quantum circuits, focusing on its mathematical foundations and practical designs.",
+      "topics": [
+        "Pauli twirling",
+        "error-mitigation",
+        "superoperator",
+        "mixed-states",
+        "quantum-gates"
+      ],
+      "suggested_tags": [
+        "tutorial",
+        "lecture",
+        "hardware",
+        "noise",
+        "error-mitigation",
+        "math",
+        "qiskit-metal",
+        "superconducting-qubits"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduction to Pauli twirling and its importance in quantum computing.",
+        "Mathematical foundations of Pauli gates and mixed states.",
+        "Application of Pauli twirling in error mitigation designs.",
+        "Explanation of superoperator and Pauli transfer matrix (PTM) representation."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "superconducting-qubits-101-cqed-quantum-hardware-minev-quantum-device-workshop-beginner-2026": {
+      "short_description": "The talk covers the development and implementation of superconducting qubits in quantum computing.",
+      "summary": "Dr. Zlatko Minev discusses the theoretical foundations and practical implementations of superconducting qubits, focusing on Circuit Quantum Electrodynamics (cQED) and various design challenges and solutions.",
+      "topics": [
+        "superconducting-qubits",
+        "circuit-quantum-electrodynamics",
+        "qubit-design",
+        "anharmonic-degree-of-freedom",
+        "microwave-oscillators",
+        "Josephson-junction"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "circuit-quantum-electrodynamics",
+        "qiskit-metal",
+        "noise",
+        "error-mitigation",
+        "many-body",
+        "topological",
+        "measurement",
+        "tutorial"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduction to superconducting qubits and their implementation in quantum computing.",
+        "Discussion of Circuit Quantum Electrodynamics (cQED) principles and applications.",
+        "Explanation of anharmonic degree of freedom and its role in qubit design.",
+        "Overview of various qubit designs from the community.",
+        "Highlight on Qiskit-Metal as a tool for studying superconducting qubits."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "intro-to-pauli-twirling-minev-part-iv-tutorial": {
+      "short_description": "Overview of Pauli twirling and its applications in quantum computing.",
+      "summary": "The talk covers the theory and practical use of Pauli twirling for noise modeling and average channel fidelity metrics, focusing on unitary t-designs and classical designs.",
+      "topics": [
+        "Pauli twirling",
+        "unitary t-designs",
+        "classical designs",
+        "noise modeling",
+        "average channel fidelity"
+      ],
+      "suggested_tags": [
+        "tutorial",
+        "lecture",
+        "quantum-noise",
+        "qiskit-metal",
+        "error-mitigation",
+        "math",
+        "circuits",
+        "many-body"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduction to Pauli twirling and its applications.",
+        "Explanation of unitary t-designs and classical designs.",
+        "Discussion on noise modeling using the Pauli group.",
+        "Application in average channel fidelity metrics."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2025-machine-learning-for-practical-quantum-error-mitigation-ml-qem-minev-aspen-ai-plus-quantum": {
+      "short_description": "Dr. Zlatko Minev discusses machine learning techniques for quantum error mitigation on superconducting qubits.",
+      "summary": "The talk covers the challenges of noise in quantum computing and explores how machine learning can be used to mitigate errors, focusing on practical applications and utility-scale experiments.",
+      "topics": [
+        "quantum error correction",
+        "machine-learning",
+        "superconducting-qubits",
+        "noise",
+        "error-mitigation"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "epr",
+        "noise",
+        "error-mitigation",
+        "pec",
+        "zne",
+        "twirling",
+        "machine-learning",
+        "measurement"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Machine learning techniques for quantum error mitigation.",
+        "Practical applications and utility-scale experiments on superconducting qubits.",
+        "Challenges of noise in quantum computing.",
+        "Error mitigation methods including twirling."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2025-quantum-hardware-design-epr-lom-metal-minev-flagship-quantum-device-workshop-advanced": {
+      "short_description": "Overview of quantum hardware design focusing on energy, circuits, and metal.",
+      "summary": "The talk covers the design process of quantum devices, including classical processor hierarchy, abstraction layers, quantization methods, and open-source tools like Qiskit Metal. It highlights community contributions and practical examples from various institutions.",
+      "topics": [
+        "quantum-device-design",
+        "abstraction-layers",
+        "quantum-hardware",
+        "qiskit-metal",
+        "superconducting-qubits",
+        "quantization-methods"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "quantum-device-design",
+        "quantization-methods",
+        "tutorial",
+        "lecture",
+        "community-participation"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Overview of quantum hardware design including energy, circuits, and metal.",
+        "Discussion on abstraction layers and classical processor hierarchy.",
+        "Presentation of quantization methods and their applications.",
+        "Introduction to Qiskit Metal as an open-source tool for superconducting qubits.",
+        "Highlighting community contributions and example designs from various institutions."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2024-fibonacci-anyons-realizing-string-net-condensation-fibonacci-anyon-braiding-for-universal-gates-and-sampl": {
+      "short_description": "The talk covers graph coloring, Fibonacci anyons, and quantum error correction in the context of achieving quantum advantage through chromatic polynomials.",
+      "summary": "Dr. Zlatko Minev discusses using graph theory, specifically chromatic polynomials, and Fibonacci anyons to explore quantum computational advantages, focusing on entanglement-enhanced learning and quantum error correction techniques.",
+      "topics": [
+        "graph coloring",
+        "Fibonacci anyons",
+        "quantum error correction",
+        "chromatic polynomial",
+        "topological string-net condensates"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "noise",
+        "error-mitigation",
+        "pec",
+        "zne",
+        "many-body",
+        "topological",
+        "sensing",
+        "tutorial",
+        "lecture"
+      ],
+      "audience_level": "advanced",
+      "key_points": [
+        "Graph coloring and chromatic polynomials are used to explore quantum computational advantages.",
+        "Fibonacci anyons and string-net condensates are key components in the experiments.",
+        "Entanglement-enhanced learning is applied to overcome noise issues.",
+        "Quantum error correction techniques are integrated into the experimental design.",
+        "The goal is to achieve quantum advantage through sampling complexity."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2024-uncovering-local-integrability-in-quantum-many-body-dynamics-minev-aps-mm-invited": {
+      "short_description": "Dr. Zlatko Minev discusses quantum many-body dynamics using large-scale superconducting quantum computers.",
+      "summary": "The talk covers quantum many-body systems and their dynamics, focusing on integrals of motion (IOMs) and local integral of motions (LIOMs), with applications to prethermalization and many-body localization in complex systems.",
+      "topics": [
+        "quantum many-body dynamics",
+        "integrals of motion",
+        "local integral of motion",
+        "prethermalization",
+        "many-body localization"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "noise",
+        "error-mitigation",
+        "pec",
+        "zne",
+        "tutorial",
+        "lecture",
+        "quantum-computing",
+        "many-body"
+      ],
+      "audience_level": "advanced",
+      "key_points": [
+        "Exploration of quantum many-body systems using large-scale superconducting qubits.",
+        "Introduction to integrals of motion and local integral of motions in the context of prethermalization.",
+        "Demonstration of LIOMs for understanding complex quantum dynamics."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2023-machine-learning-for-practical-quantum-error-mitigation-ml-qem-haoran-liao-qiskit-seminar": {
+      "short_description": "The talk covers machine learning methods for quantum error mitigation, focusing on probabilistic error cancellation and new approaches using random forests.",
+      "summary": "This technical talk explores machine learning techniques to mitigate errors in noisy quantum circuits, comparing them with existing methods like probabilistic error cancellation. It highlights the use of random forest models and their performance across various circuit types and noise scenarios.",
+      "topics": [
+        "quantum error mitigation",
+        "probabilistic error cancellation (PEC)",
+        "machine learning for QEM",
+        "random forest regression",
+        "noisy quantum circuits"
+      ],
+      "suggested_tags": [
+        "qiskit-metal",
+        "error-mitigation",
+        "ml-qem",
+        "random-forest-regression",
+        "noise",
+        "superconducting-qubits",
+        "machine-learning",
+        "quantum-circuits"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Random forest models outperform other machine learning methods in QEM.",
+        "ML-QEM improves efficiency and scalability of existing error mitigation techniques.",
+        "Performance comparison across random and structured circuits highlights the practical utility of ML-QEM."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2022-overview-of-quantum-hardware-design-qiskit-metal-energy-circuits-metal-minev-chicago-quantum-exchange-nan": {
+      "short_description": "Dr. Zlatko Minev discusses quantum hardware design using Qiskit Metal for superconducting qubits.",
+      "summary": "The talk covers designing and simulating quantum processors, emphasizing the use of Qiskit Metal for hardware development and analysis, including quantization methods and practical applications.",
+      "topics": [
+        "quantum-hardware-design",
+        "qiskit-metal",
+        "superconducting-qubits",
+        "quantum-analysis",
+        "quantum-device-simulation"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "simulation",
+        "quantum-analysis",
+        "tutorial",
+        "lecture",
+        "summer-school"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduction to Qiskit Metal for quantum hardware design and simulation.",
+        "Explanation of quantization methods in quantum device analysis.",
+        "Demonstration of practical applications using Qiskit Metal.",
+        "Highlighting the importance of modular software in quantum processor development."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2022-overview-of-quantum-hardware-design-qiskit-metal-from-fab-it-to-qubit-minev-nqi": {
+      "short_description": "Dr. Zlatko Minev discusses quantum hardware design using Qiskit Metal for superconducting qubits.",
+      "summary": "The talk covers the design process of quantum processors from abstraction layers to electromagnetic simulations and layout fabrication, focusing on tools like Qiskit Metal.",
+      "topics": [
+        "quantum-hardware-design",
+        "qiskit-metal",
+        "superconducting-qubits",
+        "electromagnetic-simulation",
+        "layout-fabrication",
+        "modular-software",
+        "quantum-device-analysis"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "em-simulation",
+        "layout-fabrication",
+        "tutorial",
+        "lecture",
+        "design-tools"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Qiskit Metal provides an end-to-end automation framework for quantum hardware design.",
+        "The talk covers the classical and quantum modeling steps in device design.",
+        "It emphasizes the importance of modularity and reusability in the design process.",
+        "Examples include using Ansys HFSS for electromagnetic simulations.",
+        "The focus is on creating a streamlined workflow from initial design to gate-level simulation."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2022-probabilistic-error-cancelation-pec-minev-ibm-quantum-qiskit-seminar": {
+      "short_description": "Dr. Zlatko Minev discusses probabilistic error cancellation techniques for quantum computing.",
+      "summary": "The talk covers probabilistic error cancellation methods using sparse Pauli-Lindblad models to mitigate noise in quantum processors, focusing on practical implementation and scalability challenges.",
+      "topics": [
+        "probabilistic error cancellation",
+        "Pauli-Lindblad models",
+        "quantum noise mitigation",
+        "sparse models",
+        "quantum circuits"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "noise",
+        "error-mitigation",
+        "pec",
+        "tutorial",
+        "lecture",
+        "advanced",
+        "qiskit-metal"
+      ],
+      "audience_level": "advanced",
+      "key_points": [
+        "Introduces probabilistic error cancellation (PEC) for noise mitigation in quantum circuits.",
+        "Explains the limitations of directly inverting noise maps and proposes a practical approach using quantum trajectories.",
+        "Demonstrates the implementation of PEC on noisy Ising model simulations.",
+        "Discusses challenges and scaling issues for large-scale quantum systems."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2022-probabilistic-error-cancelation-pec-minev-kitp": {
+      "short_description": "Dr. Zlatko Minev discusses probabilistic error cancellation techniques in quantum computing.",
+      "summary": "The talk covers probabilistic error cancellation methods using sparse Pauli-Lindblad models to mitigate noise in quantum processors, focusing on practical implementation and scalability challenges.",
+      "topics": [
+        "probabilistic error cancellation",
+        "sparse Pauli-Lindblad model",
+        "quantum noise mitigation",
+        "noise unraveling",
+        "quasi-probability methods"
+      ],
+      "suggested_tags": [
+        "error-mitigation",
+        "noise",
+        "qiskit-metal",
+        "pec",
+        "zne",
+        "tutorial",
+        "lecture",
+        "hardware",
+        "superconducting-qubits"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduces probabilistic error cancellation (PEC) as a method to mitigate noise in quantum circuits.",
+        "Explains the concept of unraveling noise into quantum trajectories and raveling them back.",
+        "Discusses practical challenges and limitations of implementing PEC at scale.",
+        "Demonstrates how PEC can be applied using random circuits and classical analogies."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2022-qiskit-metal-quantum-hardware-design-for-qedc-minev": {
+      "short_description": "Dr. Zlatko Minev introduces Qiskit Metal, an open-source tool for quantum device design and analysis.",
+      "summary": "The talk covers Qiskit Metal's features, including its modular architecture, key components like QComponents and QGeometry, and various renderers for simulation integration. Viewers will learn about the tool’s capabilities in designing superconducting qubits and analyzing their parameters.",
+      "topics": [
+        "quantum-device-design",
+        "qiskit-metal",
+        "superconducting-qubits",
+        "renderers",
+        "qgeometry",
+        "qcomponents"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "qiskit-metal",
+        "superconducting-qubits",
+        "renderers",
+        "qgeometry",
+        "qcomponents",
+        "tutorial",
+        "lecture"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Qiskit Metal is an open-source tool for quantum device design and analysis.",
+        "It includes QComponents, QGeometry, and various renderers.",
+        "The talk covers the modular architecture of Qiskit Metal.",
+        "Viewers learn about designing superconducting qubits using this tool."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2021-qiskit-metal-overview-of-quantum-hardware-design-energy-circuits-metal-minev-ieee-quantum-week": {
+      "short_description": "Overview of quantum hardware design and analysis using superconducting qubits.",
+      "summary": "The talk covers the design and analysis of superconducting qubits, focusing on quantization methods, Hamiltonian construction, and experimental validation techniques.",
+      "topics": [
+        "superconducting-qubits",
+        "quantum-hardware-design",
+        "hamiltonian-quantization",
+        "epr-methods",
+        "time-evolution-analysis"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "epr",
+        "noise",
+        "error-mitigation",
+        "pec",
+        "zne",
+        "quantum-hamiltonian",
+        "time-evolution-analysis"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Quantization methods for superconducting qubits.",
+        "Hamiltonian construction and analysis.",
+        "Experimental validation of theoretical models.",
+        "EPR (eigenmode) quantization techniques.",
+        "Time evolution and driven dynamics."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2021-quantum-hardware-design-energy-circuits-metal-qiskit-metal-epr-minev-qiskit-seminar": {
+      "short_description": "Dr. Zlatko Minev discusses quantum hardware design and analysis using Qiskit Metal.",
+      "summary": "The talk covers the design of superconducting qubits, including energy-participation ratio (EPR), quasi-lumped oscillator models (LOM), and the use of Qiskit Metal for chip design and analysis.",
+      "topics": [
+        "superconducting-qubits",
+        "qiskit-metal",
+        "energy-participation-ratio",
+        "quasi-lumped-oscillator-models",
+        "quantum-device-design",
+        "electromagnetic-analysis"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "epr",
+        "noise",
+        "error-mitigation",
+        "pec",
+        "zne",
+        "tutorial",
+        "lecture",
+        "quantum-device-design"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Design of superconducting qubits using Qiskit Metal.",
+        "Energy-participation ratio (EPR) and quasi-lumped oscillator models (LOM).",
+        "Automated analysis with Ansys HFSS.",
+        "Modular approach to quantum hardware design."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2021-to-catch-and-reverse-a-quantum-jump-mid-flight-minev": {
+      "short_description": "Dr. Zlatko Minev discusses catching and reversing quantum jumps in superconducting qubits.",
+      "summary": "The talk covers historical observations of quantum jumps, experimental setups for their detection, and methods to catch and reverse these jumps mid-flight using superconducting qubits.",
+      "topics": [
+        "quantum jumps",
+        "superconducting qubits",
+        "circuit quantum electrodynamics (cQED)",
+        "energy participation ratio (EPR) approach",
+        "closed-loop control"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "noise",
+        "error-mitigation",
+        "pec",
+        "zne",
+        "twirling",
+        "measurement",
+        "circuit-quantum-electrodynamics"
+      ],
+      "audience_level": "advanced",
+      "key_points": [
+        "Historical context of observing quantum jumps in various systems.",
+        "Experimental setup and techniques for catching quantum jumps mid-flight.",
+        "Methods to reverse a quantum jump using closed-loop control.",
+        "Application of the energy participation ratio (EPR) approach in qubit design."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2021-to-design-quantum-hardware-qiskit-metal-and-energy-participation-ratio-epr-for-superconducting-qubit-desi": {
+      "short_description": "The talk covers quantum device design focusing on superconducting qubits using energy-participation ratio (EPR) and Qiskit Metal.",
+      "summary": "This technical talk by Dr. Zlatko Minev discusses the design of quantum hardware, particularly superconducting qubits, emphasizing the EPR method for quantization and the use of Qiskit Metal software tools.",
+      "topics": [
+        "superconducting-qubits",
+        "energy-participation-ratio",
+        "qiskit-metal",
+        "quantum-device-design",
+        "circuit-analysis"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "epr",
+        "quantum-device-design",
+        "circuit-analysis",
+        "tutorial",
+        "lecture"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "EPR method for quantizing superconducting qubits",
+        "Qiskit Metal software tool for quantum device design",
+        "Analysis of transmon qubit layout and electromagnetics",
+        "Conceptual Hamiltonian and complexity in quantum chip design",
+        "Risk, cost, time, and resource considerations in quantum hardware development"
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2020-mit-tech-review-emerging-technology-emtech-minev-broad-talk": {
+      "short_description": "Dr. Zlatko Minev discusses quantum jumps and their control in quantum computing.",
+      "summary": "The talk explores the nature of quantum jumps, challenging traditional views and introducing methods to predict and mitigate errors for more reliable quantum technologies.",
+      "topics": [
+        "quantum-jumps",
+        "error-correction",
+        "coherent-superposition",
+        "predictability",
+        "quantum-computing"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "noise",
+        "error-mitigation",
+        "tutorial",
+        "lecture",
+        "quantum-computing",
+        "superconducting-qubits",
+        "circuits"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Challenges traditional views of quantum jumps as discrete and random.",
+        "Introduces methods to predict and control quantum jumps for error correction.",
+        "Explores the implications for more reliable quantum technologies."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2020-pyepr-meeting-energy-participation-ratio-epr-for-superconducting-qubit-design-minev": {
+      "short_description": "The talk covers the energy participation ratio (EPR) approach for analyzing superconducting qubits and its implementation in the pyEPR framework.",
+      "summary": "Dr. Zlatko Minev discusses the EPR method to analyze non-linear elements in superconducting circuits, presenting it as a unified framework for quantum device design and validation.",
+      "topics": [
+        "energy-participation-ratio",
+        "superconducting-qubits",
+        "quantum-device-design",
+        "non-linear-analysis",
+        "python-implementation"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "pyEPR",
+        "analysis",
+        "qiskit-metal",
+        "epr",
+        "noise",
+        "error-mitigation",
+        "tutorial"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduces the EPR method for analyzing superconducting qubits.",
+        "Describes its application in quantum device design and validation.",
+        "Presents the pyEPR framework as a tool for practical implementation."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2019-energy-participation-ratio-epr-for-superconducting-qubit-design-minev": {
+      "short_description": "Dr. Zlatko Minev discusses the energy-participation approach to designing superconducting quantum circuits.",
+      "summary": "The talk covers a unified framework for analyzing and designing superconducting qubits using the energy-participation ratio (EPR) method, which is applicable to various non-linear devices and architectures.",
+      "topics": [
+        "energy-participation-ratio",
+        "superconducting-qubits",
+        "circuit-design",
+        "non-linear-devices",
+        "first-principle-derivation"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "epr",
+        "quantum-circuits",
+        "design",
+        "analysis",
+        "non-linear-elements",
+        "python-implementation"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduces the energy-participation approach for designing superconducting quantum circuits.",
+        "Explains how to calculate the energy stored in non-linear elements using EPR.",
+        "Demonstrates practical applications and limitations of the EPR method.",
+        "Highlights the unified framework's applicability across different architectures."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2019-quantum-sensing-keynote-padua-italy-minev": {
+      "short_description": "Dr. Zlatko Minev discusses quantum sensing techniques and superconducting qubits for high-precision measurements.",
+      "summary": "The talk covers quantum sensing principles, superconducting qubit hardware, and advanced measurement techniques like EPR circuit quantization and real-time control for improving detection efficiency and error correction in quantum computing.",
+      "topics": [
+        "quantum sensing",
+        "superconducting qubits",
+        "EPR circuit quantization",
+        "real-time control",
+        "measurement techniques",
+        "error correction"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "epr",
+        "noise",
+        "error-mitigation",
+        "pec",
+        "zne",
+        "twirling",
+        "machine-learning",
+        "measurement"
+      ],
+      "audience_level": "advanced",
+      "key_points": [
+        "Improves quantum detection efficiency and error correction in superconducting qubits.",
+        "Uses EPR circuit quantization for more accurate measurements.",
+        "Focuses on real-time control techniques to enhance measurement precision.",
+        "Discusses the application of these techniques in practical quantum sensing scenarios."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2015-2-5d-cqed-coherence-exploring-drawbridge-transmon-coherence-minev": {
+      "short_description": "The talk covers the 2.5D multilayer architecture of drawbridge transmon qubits and explores coherence, noise, and quasiparticle dynamics.",
+      "summary": "This technical talk delves into the design and performance of 2.5D multilayer superconducting qubits, focusing on their architecture, system parameters, coherence enhancement through dynamical decoupling, and quasiparticle behavior.",
+      "topics": [
+        "2.5D multilayer architecture",
+        "drawbridge transmon qubits",
+        "coherence",
+        "dynamical decoupling",
+        "quasiparticle dynamics"
+      ],
+      "suggested_tags": [
+        "superconducting-qubits",
+        "hardware",
+        "noise",
+        "error-mitigation",
+        "qiskit-metal",
+        "pec",
+        "zne",
+        "twirling",
+        "measurement",
+        "many-body",
+        "topological"
+      ],
+      "audience_level": "advanced",
+      "key_points": [
+        "Exploration of the 2.5D multilayer architecture for drawbridge transmon qubits.",
+        "Discussion on coherence enhancement through dynamical decoupling techniques.",
+        "Analysis of quasiparticle dynamics and their impact on qubit performance."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2014-2-5d-circuit-quantum-electrodynamics-cqed-whispering-gallery-modes": {
+      "short_description": "Dr. Zlatko Minev discusses superconducting qubits and whispering gallery mode resonators for quantum computing.",
+      "summary": "The talk covers design strategies for superconducting qubits using whispering gallery mode resonators, focusing on coherence, coupling, and practical implementation details.",
+      "topics": [
+        "superconducting-qubits",
+        "whispering-gallery-mode-resonators",
+        "coherence",
+        "coupling",
+        "fabrication"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "noise",
+        "error-mitigation",
+        "pec",
+        "zne",
+        "tutorial",
+        "lecture"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Designs for superconducting qubits using whispering gallery mode resonators.",
+        "Achieving high coherence and strong coupling in 2.5D architectures.",
+        "Fabrication techniques like e-beam lithography and bridge-free junction fabrication.",
+        "Exploring the 'Energy BBQ' framework to understand Hamiltonian interactions."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2013-superconducting-whispering-gallery-mode-resonators-minev-aps-mm": {
+      "short_description": "Dr. Zlatko Minev discusses superconducting whispering gallery mode resonators for scalable quantum computing.",
+      "summary": "The talk covers design and properties of superconducting resonators, their integration into qubit architectures, and future research directions in cQED.",
+      "topics": [
+        "superconducting-resonators",
+        "cavity-qubit-coupling",
+        "wafer-scalability",
+        "qubit-architecture",
+        "material-properties"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "cqed",
+        "resonator-design",
+        "material-science",
+        "quantum-bus",
+        "qiskit-metal",
+        "noise"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Design and properties of superconducting whispering gallery mode resonators.",
+        "Integration of resonators into wafer-scalable qubit architectures.",
+        "Future research directions in cQED with multi-qubit systems."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2012-superconducting-whispering-gallery-modes-minev": {
+      "short_description": "Dr. Minev discusses a wafer-scalable Circuit QED architecture using whispering gallery modes in parallel plate ring resonators.",
+      "summary": "The talk covers the design and optimization of superconducting thin film rings for high-Q whispering gallery modes, focusing on frequency separation, mode degeneracy, and alignment tolerances to achieve scalable quantum computing architectures.",
+      "topics": [
+        "whispering-gallery-modes",
+        "circuit-qed",
+        "superconducting-thin-films",
+        "high-q-resonators",
+        "mode-degeneracy",
+        "alignment-tolerances"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "noise",
+        "error-mitigation",
+        "pec",
+        "zne",
+        "machine-learning",
+        "measurement",
+        "many-body",
+        "topological",
+        "sensing"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "- Optimized whispering gallery modes for high-Q in parallel plate ring resonators.",
+        "- Achieved frequency separation and mode degeneracy lifting.",
+        "- Demonstrated alignment tolerances and their impact on Q.",
+        "- Discussed challenges in scaling the architecture."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2012-wafer-assembled-whispering-gallery-mode-resonator-minev": {
+      "short_description": "Dr. Minev discusses whispering gallery mode resonators for superconducting qubit architectures.",
+      "summary": "The talk covers the design and simulation of high-Q whispering gallery mode resonators to improve superconducting qubits' performance, focusing on fabrication techniques and quality factor optimization.",
+      "topics": [
+        "whispering-gallery-mode-resonator",
+        "superconducting-qubit-architecture",
+        "quality-factor-optimization",
+        "fabrication-techniques",
+        "simulation"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "simulation",
+        "qiskit-metal",
+        "noise",
+        "error-mitigation",
+        "pec",
+        "zne"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "High-Q whispering gallery mode resonators for superconducting qubits.",
+        "Fabrication techniques and quality factor optimization.",
+        "Simulation results indicating achievable internal Q factors.",
+        "Comparison of simulation with experimental data."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2012-whispering-gallery-modes-minev": {
+      "short_description": "Dr. Zlatko Minev discusses a wafer-scalable Circuit-QED architecture for superconducting qubits and characterizes their properties.",
+      "summary": "The talk covers the design and experimental setup of a wafer-scalable Circuit-QED architecture, focusing on the characterization of superconducting devices at the single photon level, including quality factors, coherence times, and dissipation budgets.",
+      "topics": [
+        "wafer-scalable Circuit-QED",
+        "superconducting-qubits",
+        "quality-factors",
+        "coherence-times",
+        "dissipation-budget"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "circuit-qed",
+        "characterization",
+        "losses",
+        "coherence",
+        "dissipation-budget"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Introduces a wafer-scalable Circuit-QED architecture for superconducting qubits.",
+        "Discusses the design and experimental setup of the architecture.",
+        "Characterizes quality factors, coherence times, and dissipation budgets of superconducting devices.",
+        "Highlights the importance of single photon level characterization in cryogenic materials."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2011-josephson-junction-arrays-parasitic-capacitances-minev": {
+      "short_description": "Dr. Zlatko Minev discusses fluxonium junction arrays and techniques to minimize parasitic capacitance.",
+      "summary": "The talk covers the design and optimization of fluxonium junction arrays for superconducting qubits, focusing on reducing parasitic capacitance through theoretical studies and simulations.",
+      "topics": [
+        "fluxonium-junction-arrays",
+        "parasitic-capacitance",
+        "superconducting-qubits",
+        "Josephson-junctions",
+        "simulation-studies"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "noise",
+        "error-mitigation",
+        "qiskit-metal",
+        "math",
+        "tutorial",
+        "lecture"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "- Minimizing parasitic capacitance in fluxonium junction arrays.",
+        "- Using Dolan bridge geometry to reduce ground capacitance.",
+        "- Simulating and optimizing junction array designs for superconducting qubits."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "2011-josephson-parametric-amplifier-optimizing-minev-aps-march-meeting-poster-2011": {
+      "short_description": "The talk covers high-fidelity microwave readout using Josephson parametric amplifiers and their simulation for superconducting qubits.",
+      "summary": "This technical talk focuses on developing high-fidelity microwave readout techniques for superconducting quantum bits through the use of Josephson parametric amplifiers, detailing simulations to optimize performance parameters like bandwidth and dynamic range.",
+      "topics": [
+        "Josephson parametric amplifier",
+        "high-fidelity qubit readout",
+        "microwave frequency amplifiers",
+        "superconducting qubits",
+        "parametric amplification",
+        "noise suppression"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "superconducting-qubits",
+        "qiskit-metal",
+        "noise",
+        "error-mitigation",
+        "parametric-amplifier",
+        "simulation",
+        "microwave-readout",
+        "quantum-bits"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Developed a numerical solver for parametric amplifier performance simulation.",
+        "Achieved noise-free simulations matching theoretical predictions.",
+        "Observed gain suppression and SNR asymmetry in noisy conditions.",
+        "Optimized bandwidth by varying quality factor (Q)."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "t11-7-pictorial-digital-quantum-circuits-minev": {
+      "short_description": "The talk covers digital quantum circuits and their pictorial representations, focusing on symbols, gates, and measurement.",
+      "summary": "This technical talk delves into the symbolic representation of digital quantum circuits, including Pauli gates, controlled-NOT (cNOT) gates, SWAP operations, and measurement principles. Viewers will learn about gate decompositions, circuit identities, and how to manipulate qubits using these techniques.",
+      "topics": [
+        "digital quantum circuits",
+        "pictorial representations",
+        "Pauli gates",
+        "controlled-NOT (cNOT) gates",
+        "SWAP operations",
+        "measurement principles"
+      ],
+      "suggested_tags": [
+        "quantum-circuits",
+        "gate-decompositions",
+        "qiskit-metal",
+        "pauli-gates",
+        "controlled-not-gates",
+        "swap-operations",
+        "measurement-principles",
+        "tutorial"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Pictorial identities for digital quantum circuits are essential for standardized communication.",
+        "Pauli gates and their decompositions play a crucial role in quantum circuit design.",
+        "Controlled-NOT (cNOT) and SWAP operations are fundamental building blocks of quantum circuits.",
+        "Measurement principles allow for deferred measurement, simplifying circuit design."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "t11-9-concentration-inequalities-and-tail-bounds-minev": {
+      "short_description": "The talk covers concentration inequalities and tail bounds for random variables.",
+      "summary": "This technical talk provides an overview of various probability inequalities such as Markov's, Chebyshev's, Chernoff-Hoeffding, and others, which are essential tools in analyzing the behavior of sums of independent random variables and understanding their distributions.",
+      "topics": [
+        "concentration-inequalities",
+        "tail-bounds",
+        "random-variables",
+        "probability-theory",
+        "independent-random-vars"
+      ],
+      "suggested_tags": [
+        "math",
+        "probability",
+        "statistics",
+        "randomness",
+        "independence",
+        "bounds",
+        "inequalities"
+      ],
+      "audience_level": "beginner",
+      "key_points": [
+        "Introduction to Markov's, Chebyshev's, and Chernoff-Hoeffding inequalities.",
+        "Explanation of their applications in analyzing random variables.",
+        "Overview of various probability tools for understanding distributions."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "t21-estimating-observables-from-sampled-bit-strings-minev": {
+      "short_description": "The talk covers estimating observables from sampled bit strings in quantum computing experiments.",
+      "summary": "This technical talk discusses how to estimate observable properties from classical data obtained through quantum computer experiments, focusing on sampling errors and their propagation.",
+      "topics": [
+        "quantum-experiment-sampling",
+        "observable-estimation",
+        "sampling-error-analysis",
+        "probability-distributions"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "measurement",
+        "error-mitigation",
+        "noise",
+        "qiskit-metal",
+        "many-body",
+        "circuits",
+        "math"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Estimation of observables from sampled bit strings.",
+        "Analysis of sampling error and its propagation.",
+        "Use of the Walsh-Hadamard transform in observable estimation."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "t22-bound-sum-of-operators-ala-watrous-minev": {
+      "short_description": "The talk covers bounding sums of operators in quantum computing using positive semidefinite operators and Schatten norms.",
+      "summary": "This technical talk delves into proving Lemma 3.3 from Watrous (2018) on bounding the sum of operators with complex weights, utilizing Schatten norms and operator factorization techniques.",
+      "topics": [
+        "bounding sums of operators",
+        "positive semidefinite operators",
+        "Schatten norms",
+        "operator factorization",
+        "quantum states"
+      ],
+      "suggested_tags": [
+        "math",
+        "quantum-theory",
+        "lemma-proving",
+        "schatten-norms",
+        "operator-algebra",
+        "positive-semidefinite-operators"
+      ],
+      "audience_level": "advanced",
+      "key_points": [
+        "Proves Lemma 3.3 from Watrous (2018) on bounding operator sums.",
+        "Uses Schatten norms and operator factorization techniques.",
+        "Illustrates the application of complex vector weights in quantum operators."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "t23-pec-probaiblity-error-cancelation-notation-and-notes-minev": {
+      "short_description": "Dr. Zlatko Minev discusses probabilistic error cancellation techniques for noisy quantum processors.",
+      "summary": "The talk covers probabilistic error cancellation methods using sparse Pauli-Lindblad models to mitigate errors in quantum circuits, providing insights into the number of random circuit instances needed for effective mitigation.",
+      "topics": [
+        "probabilistic error cancellation",
+        "Pauli-Lindblad model",
+        "noise mitigation",
+        "quantum circuits",
+        "error-mitigation"
+      ],
+      "suggested_tags": [
+        "error-mitigation",
+        "noise",
+        "qiskit-metal",
+        "tutorial",
+        "lecture",
+        "advanced",
+        "hardware",
+        "superconducting-qubits"
+      ],
+      "audience_level": "advanced",
+      "key_points": [
+        "Techniques for probabilistic error cancellation in noisy quantum processors.",
+        "Use of sparse Pauli-Lindblad models to mitigate errors.",
+        "Calculation of the number of random circuit instances required for effective mitigation.",
+        "Analysis of sampling overhead and its impact on error bounds."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "t25-random-sampling-and-twirling-of-states-vs-true-mixed-states-minev": {
+      "short_description": "Investigates if mixed states and random sampling of states are equivalent in quantum state measurements.",
+      "summary": "The talk explores how noise channels affect qubit states and compares mixed-state ensembles to trajectory sampling, showing that while expectation values match, variances differ due to shot noise.",
+      "topics": [
+        "mixed states",
+        "random sampling",
+        "noise channels",
+        "twirling procedure",
+        "measurement outcomes"
+      ],
+      "suggested_tags": [
+        "noise",
+        "error-mitigation",
+        "measurement",
+        "qiskit-metal",
+        "math",
+        "tutorial",
+        "quantum-state",
+        "probability"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Mixed states and trajectory sampling yield identical expectation values.",
+        "Variances differ due to shot noise in random sampling.",
+        "Twirling procedure is used for analysis.",
+        "Results are relevant for understanding quantum state measurements."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "t26-many-body-physics-exploring-spin-models-for-quantum-computing-scientists-minev": {
+      "short_description": "Introduces spin models in many-body physics and their application in quantum computing.",
+      "summary": "The talk covers the Anderson model and its extension to spin models, focusing on one-particle density matrices (OPDMs) and integrals of motion in toy models. It provides a beginner-friendly approach for understanding complex systems through simplified frameworks.",
+      "topics": [
+        "many-body physics",
+        "spin models",
+        "Anderson model",
+        "one-particle density matrices",
+        "integrals of motion"
+      ],
+      "suggested_tags": [
+        "hardware",
+        "quantum-computing",
+        "many-body",
+        "tutorial",
+        "lecture",
+        "beginner",
+        "spin-models",
+        "opdm"
+      ],
+      "audience_level": "beginner",
+      "key_points": [
+        "Explains the Anderson model and its extension to spin models.",
+        "Introduces one-particle density matrices (OPDMs) for understanding complex systems.",
+        "Discusses integrals of motion in toy models.",
+        "Provides a beginner-friendly approach to many-body physics concepts."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    },
+    "t27-simple-noise-models-and-gate-fidelity-minev": {
+      "short_description": "The talk covers simple noise models in quantum computing, focusing on depolarizing and bit-flip processes.",
+      "summary": "This technical talk by Dr. Zlatko Minev reviews basic noise models such as depolarizing and bit-flip channels, connecting them to key concepts like gate fidelity and error mitigation techniques.",
+      "topics": [
+        "depolarizing noise",
+        "bit-flip noise",
+        "gate fidelity",
+        "error-mitigation",
+        "probabilistic error cancellation (PEC)",
+        "twirled readout error mitigation (T-REX)"
+      ],
+      "suggested_tags": [
+        "noise",
+        "error-mitigation",
+        "depolarizing",
+        "bit-flip",
+        "fidelity",
+        "quantum-computing",
+        "tutorial",
+        "lecture"
+      ],
+      "audience_level": "intermediate",
+      "key_points": [
+        "Explains depolarizing and bit-flip noise channels in detail.",
+        "Connects noise models to gate fidelity concepts.",
+        "Discusses probabilistic error cancellation (PEC) and twirled readout error mitigation (T-REX)."
+      ],
+      "_mode": "text",
+      "_source_pages": 0
+    }
+  }
+}
