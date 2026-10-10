@@ -1210,7 +1210,13 @@
         "Recovered H-H distances and dihedral angles compared with NMR benchmarks"
       ],
       "level": "advanced",
-      "summary_confidence": "high"
+      "summary_confidence": "high",
+      "links": [
+        {
+          "label": "Paper (arXiv)",
+          "url": "https://arxiv.org/abs/2510.19550"
+        }
+      ]
     },
     {
       "id": "2025-machine-learning-for-practical-quantum-error-mitigation-ml-qem-minev-aspen-ai-plus-quantum",
@@ -1238,7 +1244,13 @@
         "Fine-tuning to time-varying noise, and why learning classical output relationships can succeed"
       ],
       "level": "advanced",
-      "summary_confidence": "high"
+      "summary_confidence": "high",
+      "links": [
+        {
+          "label": "Paper (arXiv)",
+          "url": "https://arxiv.org/abs/2309.17368"
+        }
+      ]
     },
     {
       "id": "2025-quantum-hardware-design-epr-lom-metal-minev-flagship-quantum-device-workshop-advanced",
@@ -1321,7 +1333,13 @@
         "Operator-weight decomposition of LIOMs, experiment vs. theory, and possible applications"
       ],
       "level": "advanced",
-      "summary_confidence": "high"
+      "summary_confidence": "high",
+      "links": [
+        {
+          "label": "Paper (arXiv)",
+          "url": "https://arxiv.org/abs/2307.07552"
+        }
+      ]
     },
     {
       "id": "2023-machine-learning-for-practical-quantum-error-mitigation-ml-qem-haoran-liao-qiskit-seminar",
@@ -1350,7 +1368,13 @@
         "Benchmarks on random 4-qubit circuits and Trotterized 1D transverse-field Ising circuits versus digital ZNE"
       ],
       "level": "advanced",
-      "summary_confidence": "medium"
+      "summary_confidence": "medium",
+      "links": [
+        {
+          "label": "Paper (arXiv)",
+          "url": "https://arxiv.org/abs/2309.17368"
+        }
+      ]
     },
     {
       "id": "2022-overview-of-quantum-hardware-design-qiskit-metal-energy-circuits-metal-minev-chicago-quantum-exchange-nan",
@@ -1408,7 +1432,13 @@
         "Measured vs. predicted cross-Kerr, EPR validation, and devices and users from the community"
       ],
       "level": "intermediate",
-      "summary_confidence": "high"
+      "summary_confidence": "high",
+      "links": [
+        {
+          "label": "Paper (arXiv)",
+          "url": "https://arxiv.org/abs/2109.06848"
+        }
+      ]
     },
     {
       "id": "2022-probabilistic-error-cancelation-pec-minev-ibm-quantum-qiskit-seminar",
@@ -1436,7 +1466,13 @@
         "Mitigated Ising-model simulations, high-weight observables, error budget and runtime scaling"
       ],
       "level": "advanced",
-      "summary_confidence": "high"
+      "summary_confidence": "high",
+      "links": [
+        {
+          "label": "Paper (arXiv)",
+          "url": "https://arxiv.org/abs/2201.09866"
+        }
+      ]
     },
     {
       "id": "2022-probabilistic-error-cancelation-pec-minev-kitp",
@@ -1464,7 +1500,13 @@
         "Sparse Pauli-Lindblad model, twirled readout-error mitigation, and a runtime scaling estimate"
       ],
       "level": "advanced",
-      "summary_confidence": "high"
+      "summary_confidence": "high",
+      "links": [
+        {
+          "label": "Paper (arXiv)",
+          "url": "https://arxiv.org/abs/2201.09866"
+        }
+      ]
     },
     {
       "id": "2022-qiskit-metal-quantum-hardware-design-for-qedc-minev",
@@ -1576,7 +1618,13 @@
         "Backup: stochastic master equation picture, dispersive readout trade-offs, energy-participation ratio (EPR) design"
       ],
       "level": "advanced",
-      "summary_confidence": "high"
+      "summary_confidence": "high",
+      "links": [
+        {
+          "label": "Thesis (arXiv)",
+          "url": "https://arxiv.org/abs/1902.10355"
+        }
+      ]
     },
     {
       "id": "2021-to-design-quantum-hardware-qiskit-metal-and-energy-participation-ratio-epr-for-superconducting-qubit-desi",
@@ -1719,7 +1767,13 @@
         "Cross-resonance gate analysis: ZX rate and spurious terms in the EPR basis"
       ],
       "level": "advanced",
-      "summary_confidence": "high"
+      "summary_confidence": "high",
+      "links": [
+        {
+          "label": "Thesis (arXiv)",
+          "url": "https://arxiv.org/abs/1902.10355"
+        }
+      ]
     },
     {
       "id": "2015-2-5d-cqed-coherence-exploring-drawbridge-transmon-coherence-minev",

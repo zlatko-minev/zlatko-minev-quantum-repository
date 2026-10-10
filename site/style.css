@@ -10,6 +10,7 @@
   --accent-ink: #ffffff;
   --accent-soft: #f6e7dc;
   --chip: #e8edf2;
+  --metal: #aeb9c6;
   --bar: #c9d2dc;
   --edu: #1d6b74;
   --talk: #a2541f;
@@ -25,7 +26,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0c131c; --surface: #141e2a; --ink: #e4eaf1; --muted: #93a1b2; --line: #263343;
-    --accent: #e08a52; --accent-ink: #1a0f07; --accent-soft: #3a2517; --chip: #1d2937; --bar: #3a4a5e;
+    --accent: #e08a52; --accent-ink: #1a0f07; --accent-soft: #3a2517; --chip: #1d2937; --bar: #3a4a5e; --metal: #6f8196;
     --edu: #5cc0c8; --talk: #e08a52; --note: #a99af0; --out: #86c77e;
     --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 8px 24px rgb(0 0 0 / .3);
     color-scheme: dark;
@@ -33,7 +34,7 @@
 }
 :root[data-theme="dark"] {
   --bg: #0c131c; --surface: #141e2a; --ink: #e4eaf1; --muted: #93a1b2; --line: #263343;
-  --accent: #e08a52; --accent-ink: #1a0f07; --accent-soft: #3a2517; --chip: #1d2937; --bar: #3a4a5e;
+  --accent: #e08a52; --accent-ink: #1a0f07; --accent-soft: #3a2517; --chip: #1d2937; --bar: #3a4a5e; --metal: #6f8196;
   --edu: #5cc0c8; --talk: #e08a52; --note: #a99af0; --out: #86c77e;
   --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 8px 24px rgb(0 0 0 / .3);
   color-scheme: dark;
@@ -60,6 +61,26 @@ button, input, select { font: inherit; color: inherit; }
 .toplinks a { color: var(--muted); text-decoration: none; }
 .toplinks a:hover { color: var(--ink); }
 .hero { padding-block: 28px 8px; }
+.hero-grid { display: grid; gap: 8px 40px; align-items: center; }
+@media (min-width: 900px) { .hero-grid { grid-template-columns: minmax(0, 1fr) 360px; } }
+.hero-text { min-width: 0; }
+.transmon { margin: 0; justify-self: center; width: 100%; max-width: 360px; }
+.transmon svg { display: block; width: 100%; height: auto; overflow: visible; }
+.transmon figcaption { margin-top: 2px; font-size: 12.5px; color: var(--muted); text-align: center; }
+@media (max-width: 899px) { .transmon { max-width: 300px; } }
+@media (max-width: 599px) { .transmon { max-width: 250px; } }
+.transmon .sub.f-t { fill: var(--chip); }
+.transmon .sub.f-l { fill: color-mix(in srgb, var(--chip) 80%, var(--ink)); }
+.transmon .sub.f-r { fill: color-mix(in srgb, var(--chip) 65%, var(--ink)); }
+.transmon .pad.f-t, .transmon .lead.f-t { fill: var(--metal); }
+.transmon .pad.f-l, .transmon .lead.f-l { fill: color-mix(in srgb, var(--metal) 75%, var(--ink)); }
+.transmon .pad.f-r, .transmon .lead.f-r { fill: color-mix(in srgb, var(--metal) 60%, var(--ink)); }
+.transmon .jj { fill: var(--accent); }
+.transmon .tint { mix-blend-mode: normal; }
+.transmon .meander { fill: none; stroke: var(--metal); stroke-width: 2.4; stroke-linejoin: round; }
+.transmon .field { fill: none; stroke: var(--accent); stroke-width: 1.4; stroke-dasharray: 3 5; stroke-linecap: round; }
+.transmon .cp { fill: var(--edu); stroke: var(--surface); stroke-width: 1; }
+.transmon .chg { font: 500 18px var(--f-mono); fill: var(--ink); text-anchor: middle; }
 .eyebrow { margin: 0 0 10px; font: 500 12px/1.4 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
 h1 { margin: 0; font: 650 clamp(44px, 8vw, 88px)/.98 var(--f-display); letter-spacing: -.03em; }
 h1 em { font-style: italic; font-weight: 500; color: var(--accent); }
@@ -210,3 +231,15 @@ dialog::backdrop { background: rgb(8 12 18 / .55); }
 .draft { display: inline-block; margin-left: 6px; font: 500 10px/1.6 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; vertical-align: 1px; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* series pages */
+.ip-list { margin: 0; padding-left: 22px; display: grid; gap: 14px; }
+.ip-list li { padding-left: 4px; }
+.ip-list li > * { display: block; }
+.ip-list a { font: 650 17px/1.3 var(--f-display); color: var(--ink); text-decoration: none; }
+.ip-list a:hover { color: var(--accent); }
+.ip-row-meta { font: 400 12px/1.6 var(--f-mono); color: var(--muted); }
+.ip-list li > span:last-child:not(.ip-row-meta) { color: var(--muted); font-size: 14px; }
+.ip-note { margin: 0; color: var(--muted); font-size: 14px; }
+.d-cite-note { margin: 0; font-size: 13px; color: var(--muted); }
+.d-cite-note:empty { display: none; }

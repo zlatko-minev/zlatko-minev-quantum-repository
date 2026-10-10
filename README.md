@@ -25,7 +25,7 @@ For more, visit [zlatko-minev.com](https://zlatko-minev.com).
 
 ### Browse the Archive
 
-The easiest way in is the website, **Quantum Jumps** (published from this
+The easiest way in is the website, **The Quantum Notebook** (published from this
 repository with GitHub Pages): search, filter by type, topic, year and level, group lecture series, and
 open any deck in the browser. Run it locally with
 `python3 tools/build_site.py --serve`.

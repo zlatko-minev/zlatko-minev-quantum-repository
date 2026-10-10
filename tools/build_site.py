@@ -15,8 +15,8 @@ Usage
     python3 tools/build_site.py --serve         # build, then serve on :8000
     python3 tools/build_site.py --site-url https://talks.example.com/   # canonical URL
 
-Besides the browser page it writes one citation page per item
-(``items/<id>/``, with Google Scholar meta tags and BibTeX),
+Besides the browser page it writes a citation page per item (``items/<id>/``)
+and per series (``series/<slug>/``), with Google Scholar meta tags and BibTeX,
 ``citations.bib`` with every entry, ``sitemap.xml`` and ``robots.txt``.
 
 With ``--with-pdfs`` the PDFs sit next to the page and open in the browser's
@@ -32,7 +32,7 @@ import re
 import shutil
 from pathlib import Path
 
-from site_pages import bibtex, item_page, robots, sitemap, unique_keys
+from site_pages import assign_citations, item_page, robots, series_page, sitemap
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SRC = REPO_ROOT / "site"
@@ -87,6 +87,7 @@ def build_library(pdf_base: str) -> dict:
             "pages": it.get("pages"),
             "size": it.get("size_bytes"),
             "file": it["file"],
+            "links": it.get("links") or [],   # [{label, url}]: paper, video, ...
             "thumb": f"thumbs/{it['id']}.jpg" if thumb.exists() else None,
             "description": it.get("description") or tidy(a.get("short_description")),
             "summary": it.get("summary") or tidy(a.get("summary")),
@@ -122,17 +123,18 @@ def main() -> int:
     lib = build_library(pdf_base)
     lib["site_url"] = site_url
     pdf_abs = site_url if args.with_pdfs else (pdf_base or GITHUB_PDF_BASE)
-    bib_all = []
-    keys = unique_keys(lib["items"])
+    series, bib_all = assign_citations(lib["items"], site_url)
     for it in lib["items"]:
-        it["bibtex"] = bibtex(it, site_url, keys[it["id"]])
         it["page"] = f"items/{it['id']}/"
-        bib_all.append(it["bibtex"])
         page = OUT / "items" / it["id"] / "index.html"
         page.parent.mkdir(parents=True, exist_ok=True)
-        page.write_text(item_page(it, site_url, pdf_abs, keys[it["id"]]))
+        page.write_text(item_page(it, site_url, pdf_abs))
+    for srs in series:
+        page = OUT / "series" / srs["slug"] / "index.html"
+        page.parent.mkdir(parents=True, exist_ok=True)
+        page.write_text(series_page(srs, site_url))
     (OUT / "citations.bib").write_text("\n\n".join(bib_all) + "\n")
-    (OUT / "sitemap.xml").write_text(sitemap(lib["items"], site_url))
+    (OUT / "sitemap.xml").write_text(sitemap(lib["items"], series, site_url))
     (OUT / "robots.txt").write_text(robots(site_url))
     (OUT / "library.json").write_text(
         json.dumps(lib, ensure_ascii=False, separators=(",", ":")))

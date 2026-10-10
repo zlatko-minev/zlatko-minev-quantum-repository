@@ -62,10 +62,14 @@ Static site in `site/` (plain HTML/CSS/JS, no framework or npm), built by
   (~40 KB each, committed; CI fails if one is missing).
 - ✅ Curated display titles / series / venues / tech-note dates in
   `tools/catalog_overrides.json` (from the PDFs' own title pages).
-- ✅ Named **Quantum Jumps**; three shelves (Lectures & Tutorials, Research
+- ✅ Named **The Quantum Notebook**; three shelves (Lectures & Tutorials, Research
   Talks, Tech Notes) with series grouping; low-key links to zlatko-minev.com.
-- ✅ Citations: per-item pages with Google Scholar meta tags and BibTeX,
-  `citations.bib`, sitemap, `CITATION.cff`; "Cite & reuse" notice.
+- ✅ Citations: one BibTeX entry per series or standalone deck; item and series
+  pages with Google Scholar meta tags; `citations.bib`, sitemap, `CITATION.cff`;
+  "Cite & reuse" notice.
+- ✅ Paper links (arXiv IDs from title slides) via `links` in the overrides.
+- ⏳ **Video links**: match QGSS and other recorded lectures to their YouTube
+  videos (`links` with label "Video"); needs web access or the author's list.
 - 💡 Zenodo DOIs for the tech notes (needs the owner's Zenodo account); add
   `doi` to BibTeX once they exist.
 - ✅ Summaries rewritten from each deck's text (2026-10), shown as "draft" until

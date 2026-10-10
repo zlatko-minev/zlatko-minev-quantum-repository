@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Quantum Jumps · Zlatko Minev's talks, lectures and notes</title>
-<meta name="description" content="Fifteen years of slides by Zlatko K. Minev on superconducting qubits, quantum noise, error mitigation and many-body physics: research talks, summer-school lectures, tutorials and technical notes. Search, filter and download.">
-<meta property="og:title" content="Quantum Jumps · Zlatko Minev's talks, lectures and notes">
+<title>The Quantum Notebook · Zlatko Minev's talks, lectures and notes</title>
+<meta name="description" content="A living record of fifteen years of slides by Zlatko K. Minev on superconducting qubits, quantum noise, error mitigation and many-body physics: research talks, summer-school lectures, tutorials and technical notes. Search, filter and download.">
+<meta property="og:title" content="The Quantum Notebook · Zlatko Minev's talks, lectures and notes">
 <meta property="og:description" content="Research talks, summer-school lectures, tutorials and technical notes on quantum hardware, noise and error mitigation.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
 </head>
 <body>
 <nav class="topbar wrap" aria-label="Site">
-  <a class="me" href="./"><span class="mono-mark" aria-hidden="true">|ψ⟩</span>Quantum Jumps</a>
+  <a class="me" href="./"><span class="mono-mark" aria-hidden="true">|ψ⟩</span>The Quantum Notebook</a>
   <div class="toplinks">
     <a href="#reuse">Cite &amp; reuse</a>
     <a href="https://zlatko-minev.com">Zlatko Minev</a>
@@ -23,10 +23,18 @@
 </nav>
 
 <header class="hero wrap">
-  <p class="eyebrow">Talks · lectures · notes · <span id="span-years">2011 → today</span></p>
-  <h1>Quantum <em>Jumps</em></h1>
-  <p class="lede">Fifteen years of Zlatko Minev's slides on superconducting qubits, quantum noise, error mitigation and many-body physics, plus the occasional late-night derivation. Free to read, borrow ideas from and share.</p>
-  <p class="fun-stats" id="fun-stats"></p>
+  <div class="hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow">Zlatko Minev · talks, lectures &amp; notes · <span id="span-years">2011 → today</span></p>
+      <h1>The Quantum <em>Notebook</em></h1>
+      <p class="lede">A living record of what I've taught, presented and worked out on superconducting qubits, quantum noise, error mitigation and many-body physics. New pages get added as they happen. Read, share and cite freely.</p>
+      <p class="fun-stats" id="fun-stats"></p>
+    </div>
+    <figure class="transmon" aria-label="Animated drawing of a transmon qubit: two metal pads joined by a Josephson junction, with electric field lines between them">
+      <svg id="transmon" viewBox="0 0 360 250" role="img" aria-hidden="true"></svg>
+      <figcaption>A transmon: two pads, one junction, charge sloshing back and forth. Scroll to drive it.</figcaption>
+    </figure>
+  </div>
   <figure class="trace" id="trace" title="Click to measure again">
     <svg viewBox="0 0 1200 96" preserveAspectRatio="none" role="img" aria-label="A qubit's measured state jumping between ground and excited levels over time">
       <line class="lvl" x1="0" x2="1200" y1="78" y2="78"/><line class="lvl" x1="0" x2="1200" y1="18" y2="18"/>
@@ -122,6 +130,7 @@
       <p class="d-summary" id="d-summary"></p>
       <ul class="d-points" id="d-points"></ul>
       <div class="d-cite" id="d-cite" hidden>
+        <p class="d-cite-note" id="d-cite-note"></p>
         <pre class="bib" id="d-bib"></pre>
         <div class="d-actions"><button class="btn" type="button" id="copy-bib">Copy BibTeX</button><a class="btn" id="d-citepage" href="#">Citation page</a></div>
       </div>

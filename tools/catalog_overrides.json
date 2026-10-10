@@ -33,7 +33,13 @@
       "Benchmarks on random 4-qubit circuits and Trotterized 1D transverse-field Ising circuits versus digital ZNE"
     ],
     "level": "advanced",
-    "summary_confidence": "medium"
+    "summary_confidence": "medium",
+    "links": [
+      {
+        "label": "Paper (arXiv)",
+        "url": "https://arxiv.org/abs/2309.17368"
+      }
+    ]
   },
   "t11-7-pictorial-digital-quantum-circuits-minev": {
     "tags": [
@@ -739,7 +745,13 @@
       "Operator-weight decomposition of LIOMs, experiment vs. theory, and possible applications"
     ],
     "level": "advanced",
-    "summary_confidence": "high"
+    "summary_confidence": "high",
+    "links": [
+      {
+        "label": "Paper (arXiv)",
+        "url": "https://arxiv.org/abs/2307.07552"
+      }
+    ]
   },
   "2013-superconducting-whispering-gallery-mode-resonators-minev-aps-mm": {
     "venue": "APS March Meeting",
@@ -792,7 +804,13 @@
       "Measured vs. predicted cross-Kerr, EPR validation, and devices and users from the community"
     ],
     "level": "intermediate",
-    "summary_confidence": "high"
+    "summary_confidence": "high",
+    "links": [
+      {
+        "label": "Paper (arXiv)",
+        "url": "https://arxiv.org/abs/2109.06848"
+      }
+    ]
   },
   "2021-qiskit-metal-overview-of-quantum-hardware-design-energy-circuits-metal-minev-ieee-quantum-week": {
     "title": "Qiskit Metal: Overview of Quantum Hardware Design (Energy, Circuits, Metal)",
@@ -846,7 +864,13 @@
       "Mitigated Ising-model simulations, high-weight observables, error budget and runtime scaling"
     ],
     "level": "advanced",
-    "summary_confidence": "high"
+    "summary_confidence": "high",
+    "links": [
+      {
+        "label": "Paper (arXiv)",
+        "url": "https://arxiv.org/abs/2201.09866"
+      }
+    ]
   },
   "2022-probabilistic-error-cancelation-pec-minev-kitp": {
     "title": "Probabilistic Error Cancellation (PEC)",
@@ -859,7 +883,13 @@
       "Sparse Pauli-Lindblad model, twirled readout-error mitigation, and a runtime scaling estimate"
     ],
     "level": "advanced",
-    "summary_confidence": "high"
+    "summary_confidence": "high",
+    "links": [
+      {
+        "label": "Paper (arXiv)",
+        "url": "https://arxiv.org/abs/2201.09866"
+      }
+    ]
   },
   "2025-quantum-hardware-design-epr-lom-metal-minev-flagship-quantum-device-workshop-advanced": {
     "title": "Quantum Hardware Design: EPR, LOM, Metal",
@@ -886,7 +916,13 @@
       "Recovered H-H distances and dihedral angles compared with NMR benchmarks"
     ],
     "level": "advanced",
-    "summary_confidence": "high"
+    "summary_confidence": "high",
+    "links": [
+      {
+        "label": "Paper (arXiv)",
+        "url": "https://arxiv.org/abs/2510.19550"
+      }
+    ]
   },
   "2020-pyepr-meeting-energy-participation-ratio-epr-for-superconducting-qubit-design-minev": {
     "title": "pyEPR Community Meeting: EPR Overview and Roadmap",
@@ -1052,7 +1088,13 @@
       "Fine-tuning to time-varying noise, and why learning classical output relationships can succeed"
     ],
     "level": "advanced",
-    "summary_confidence": "high"
+    "summary_confidence": "high",
+    "links": [
+      {
+        "label": "Paper (arXiv)",
+        "url": "https://arxiv.org/abs/2309.17368"
+      }
+    ]
   },
   "2021-to-catch-and-reverse-a-quantum-jump-mid-flight-minev": {
     "description": "How a superconducting circuit experiment caught a quantum jump in progress, gave advance warning of it, and reversed it.",
@@ -1064,7 +1106,13 @@
       "Backup: stochastic master equation picture, dispersive readout trade-offs, energy-participation ratio (EPR) design"
     ],
     "level": "advanced",
-    "summary_confidence": "high"
+    "summary_confidence": "high",
+    "links": [
+      {
+        "label": "Thesis (arXiv)",
+        "url": "https://arxiv.org/abs/1902.10355"
+      }
+    ]
   },
   "2021-to-design-quantum-hardware-qiskit-metal-and-energy-participation-ratio-epr-for-superconducting-qubit-desi": {
     "description": "Energy-participation ratio (EPR) quantization and Qiskit Metal for designing superconducting qubit chips.",
@@ -1088,7 +1136,13 @@
       "Cross-resonance gate analysis: ZX rate and spurious terms in the EPR basis"
     ],
     "level": "advanced",
-    "summary_confidence": "high"
+    "summary_confidence": "high",
+    "links": [
+      {
+        "label": "Thesis (arXiv)",
+        "url": "https://arxiv.org/abs/1902.10355"
+      }
+    ]
   },
   "2012-superconducting-whispering-gallery-modes-minev": {
     "description": "Simulations of a whispering-gallery mode in a parallel-plate ring resonator, aimed at a wafer-scale cQED architecture.",

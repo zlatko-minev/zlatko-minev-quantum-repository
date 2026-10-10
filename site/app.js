@@ -1,4 +1,4 @@
-// Quantum Jumps: client-side search, filter and sort over library.json.
+// The Quantum Notebook: client-side search, filter and sort over library.json.
 // No framework: one state object, one render(). Filters live in the query
 // string (?shelf=&q=&tag=&year=&level=&sort=&group=) and an open item in the
 // hash (#<id>), so every view is a shareable link.
@@ -34,9 +34,9 @@ const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 let LIB = null;
-// group: null = automatic (on for lectures, where series matter)
+// group: null = default (on: decks are shown in their series)
 const state = { q: "", shelf: "", tags: new Set(), years: new Set(), levels: new Set(), sort: "new", group: null };
-const grouped = () => (state.group ?? state.shelf === "lectures");
+const grouped = () => (state.group ?? true);
 
 // ---------- URL state ----------
 function readURL() {
@@ -172,7 +172,7 @@ function groupsOf(list) {
   for (const [g, its] of groups) (g && its.length > 1 ? multi.push([g, its]) : singles.push(...its));
   const newest = (its) => Math.max(0, ...its.map((i) => i.year || 0));
   multi.sort((a, b) => newest(b[1]) - newest(a[1]) || a[0].localeCompare(b[0]));
-  if (singles.length) multi.push([multi.length ? "More" : "", singles]);
+  if (singles.length) multi.push([multi.length ? "Standalone decks" : "", singles]);
   return multi;
 }
 
@@ -234,12 +234,15 @@ function openItem(id, push = true) {
   const gh = `${LIB.repo_url}/blob/main/${pathURL(it.file)}`;
   $("#d-actions").innerHTML = `<a class="btn primary" href="${esc(url)}" target="_blank" rel="noopener">Open PDF</a>` +
     (LIB.pdf_base === "" ? `<a class="btn" href="${esc(url)}" download>Download</a>` : "") +
+    (it.links || []).map((l) => `<a class="btn" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("") +
     (url !== gh ? `<a class="btn" href="${esc(gh)}" target="_blank" rel="noopener">View on GitHub</a>` : "") +
     `<button class="btn" type="button" id="cite" aria-expanded="false">Cite</button>` +
     `<button class="btn" type="button" id="copy">Copy link</button>`;
   $("#d-cite").hidden = true;
   $("#d-bib").textContent = it.bibtex || "";
-  $("#d-citepage").href = it.page || "#";
+  $("#d-citepage").href = it.series_page || it.page || "#";
+  $("#d-citepage").textContent = it.series_page ? "Series page" : "Citation page";
+  $("#d-cite-note").textContent = it.series_page ? `Part of “${it.series}”, cited as one series:` : "";
   const text = it.summary || it.description;
   $("#d-summary").innerHTML = text ? esc(text) + (it.draft ? `<span class="draft" title="Machine-written from the slides; not yet reviewed by the author">draft</span>` : "") : "";
   $("#d-points").innerHTML = (it.key_points || []).map((p) => `<li>${esc(p)}</li>`).join("");
@@ -299,6 +302,79 @@ function drawTrace(seed) {
   label.style.left = (jx / W * 100).toFixed(2) + "%";
 }
 
+// ---------- the hero transmon: isometric chip with live fields ----------
+// Two capacitor pads joined by a Josephson junction on a substrate. Charge q
+// sloshes between the pads (q = cos φ); field lines and pad tint follow q,
+// and a Cooper pair hops across the junction. φ advances slowly with time and
+// faster with scrolling.
+function initTransmon() {
+  const svg = $("#transmon");
+  if (!svg) return;
+  const NS = "http://www.w3.org/2000/svg", k = 19, C = Math.cos(Math.PI / 6);
+  const ox = 142, oy = 58;
+  const P = (x, y, z = 0) => [ox + (x - y) * C * k, oy + (x + y) * 0.5 * k - z * k];
+  const pts = (arr) => arr.map((p) => P(...p).map((v) => v.toFixed(1)).join(",")).join(" ");
+  const el = (tag, attrs, parent = svg) => {
+    const e = document.createElementNS(NS, tag);
+    for (const [a, v] of Object.entries(attrs)) e.setAttribute(a, v);
+    parent.appendChild(e);
+    return e;
+  };
+  // a box's visible faces: top, front-left (y = y1) and front-right (x = x1)
+  const box = (x0, x1, y0, y1, z0, z1, cls) => {
+    el("polygon", { class: cls + " f-l", points: pts([[x0, y1, z0], [x1, y1, z0], [x1, y1, z1], [x0, y1, z1]]) });
+    el("polygon", { class: cls + " f-r", points: pts([[x1, y0, z0], [x1, y1, z0], [x1, y1, z1], [x1, y0, z1]]) });
+    return el("polygon", { class: cls + " f-t", points: pts([[x0, y0, z1], [x1, y0, z1], [x1, y1, z1], [x0, y1, z1]]) });
+  };
+  svg.innerHTML = "";
+  box(0, 10, 0, 6, -0.7, 0, "sub");
+  // readout resonator meander leaving the right pad
+  el("polyline", { class: "meander", points: pts([[8.5, 3.0, 0.02], [9.3, 3.0, 0.02], [9.3, 3.7, 0.02], [8.9, 3.7, 0.02], [8.9, 4.3, 0.02], [9.3, 4.3, 0.02], [9.3, 4.9, 0.02], [8.9, 4.9, 0.02], [8.9, 5.5, 0.02], [9.3, 5.5, 0.02], [9.3, 6, 0.02]]) });
+  const padA = box(1.4, 4.3, 1.6, 4.4, 0, 0.3, "pad");
+  const padB = box(5.7, 8.6, 1.6, 4.4, 0, 0.3, "pad");
+  const tintA = el("polygon", { class: "tint", points: padA.getAttribute("points") });
+  const tintB = el("polygon", { class: "tint", points: padB.getAttribute("points") });
+  box(4.3, 5.7, 2.92, 3.08, 0, 0.12, "lead");
+  box(4.88, 5.12, 2.86, 3.14, 0, 0.2, "jj");
+  // field lines: arcs from pad A to pad B, nested by height
+  const lines = [];
+  for (const [d, y, h] of [[0.2, 2.1, 0.9], [0.2, 3.9, 0.9], [0.9, 2.5, 1.7], [0.9, 3.5, 1.7], [1.7, 3.0, 2.6], [2.5, 2.2, 3.2], [2.5, 3.8, 3.2]]) {
+    const a = P(4.3 - d, y, 0.3), b = P(5.7 + d, y, 0.3);
+    const c1 = P(4.3 - d * 0.6, y, 0.3 + h), c2 = P(5.7 + d * 0.6, y, 0.3 + h);
+    lines.push(el("path", { class: "field", d: `M${a} C${c1} ${c2} ${b}` }));
+  }
+  const pair = [el("circle", { class: "cp", r: 2.6 }), el("circle", { class: "cp", r: 2.6 })];
+  const labA = el("text", { class: "chg", x: P(2.85, 3, 1.2)[0], y: P(2.85, 3, 1.2)[1] });
+  const labB = el("text", { class: "chg", x: P(7.15, 3, 1.2)[0], y: P(7.15, 3, 1.2)[1] });
+
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let visible = true, t0 = performance.now();
+  const frame = (now) => {
+    const phi = (still ? 0.6 : (now - t0) / 1400) + window.scrollY / 90;
+    const q = Math.cos(phi);
+    tintA.style.fill = q >= 0 ? "var(--accent)" : "var(--edu)";
+    tintB.style.fill = q >= 0 ? "var(--edu)" : "var(--accent)";
+    tintA.style.opacity = tintB.style.opacity = (0.15 + 0.5 * Math.abs(q)).toFixed(2);
+    labA.textContent = q >= 0 ? "+" : "−";
+    labB.textContent = q >= 0 ? "−" : "+";
+    for (const [i, l] of lines.entries()) {
+      l.style.opacity = (0.15 + 0.75 * Math.abs(q) * (1 - i * 0.06)).toFixed(2);
+      l.style.strokeDashoffset = (phi * 18 * Math.sign(q || 1)).toFixed(1);
+    }
+    const s = Math.sin(phi);  // current ∝ dq/dt: the pair crosses as q changes sign
+    for (const [i, c] of pair.entries()) {
+      const [x, y] = P(5 + 0.9 * s + (i ? 0.25 : -0.25) * 0.4, 3 + (i ? 0.12 : -0.12), 0.45);
+      c.setAttribute("cx", x.toFixed(1)); c.setAttribute("cy", y.toFixed(1));
+    }
+    if (visible && !still) requestAnimationFrame(frame);
+  };
+  if (!still && "IntersectionObserver" in window) {
+    new IntersectionObserver(([e]) => { const was = visible; visible = e.isIntersecting; if (visible && !was) requestAnimationFrame(frame); }).observe(svg);
+  }
+  if (still) window.addEventListener("scroll", () => frame(0), { passive: true });
+  requestAnimationFrame(frame);
+}
+
 // ---------- wiring ----------
 function toggle(set, k) { set.has(k) ? set.delete(k) : set.add(k); }
 function resetAll() {
@@ -347,6 +423,7 @@ function syncFilterBox() {
 
 async function boot() {
   drawTrace(20190603);   // Nature, 3 June 2019
+  try { initTransmon(); } catch (e) { console.error(e); }
   const res = await fetch("library.json");
   LIB = await res.json();
   for (const it of LIB.items) it._h = haystack(it);
