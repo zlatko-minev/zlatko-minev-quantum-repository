@@ -1,4 +1,4 @@
-// The Quantum Notebook: client-side search, filter and sort over library.json.
+// Zlatko's Quantum Notebook: client-side search, filter and sort over library.json.
 // No framework: one state object, one render(). Filters live in the query
 // string (?shelf=&q=&tag=&year=&level=&sort=&group=) and an open item in the
 // hash (#<id>), so every view is a shareable link.
@@ -189,7 +189,7 @@ function renderShelves() {
   for (const it of LIB.items) if (matches(it, "shelf")) counts[it.shelf] = (counts[it.shelf] || 0) + 1;
   for (const b of document.querySelectorAll("#shelves .shelf")) {
     b.setAttribute("aria-pressed", String(state.shelf === b.dataset.k));
-    b.querySelector(".s-count").textContent = counts[b.dataset.k] || 0;
+    b.querySelector(".s-count b").textContent = counts[b.dataset.k] || 0;
   }
 }
 
@@ -272,12 +272,31 @@ function cell({ it, stack, member }) {
   </div>`;
 }
 
+// A small fanned stack of first-page thumbnails (paths and shelf tiles).
+const fan = (its) => its.filter((it) => it.thumb).slice(0, 3).reverse().map((it) =>
+  `<img src="${esc(it.thumb_sm || it.thumb)}" alt="" loading="lazy" decoding="async">`).join("");
+
 function renderPaths() {
   $("#paths").innerHTML = PATHS.map((p) => {
     const its = p.ids.map((id) => BY_ID.get(id)).filter(Boolean);
-    return `<li class="path"><p class="path-ket">${esc(p.ket)}</p><h3>${esc(p.name)}</h3><ol>${its.map((it) =>
-      `<li><a href="${esc(it.page)}" data-id="${esc(it.id)}">${esc(it.title)}</a><span>${esc([kindLabel(it), it.year].filter(Boolean).join(" · "))}</span></li>`).join("")}</ol></li>`;
+    if (!its.length) return "";
+    return `<li class="path">
+      <a class="path-fan" href="${esc(its[0].page)}" data-id="${esc(its[0].id)}" aria-label="Start with ${esc(its[0].title)}">${fan(its)}</a>
+      <p class="path-ket">${esc(p.ket)}</p><h3>${esc(p.name)}</h3>
+      <ol>${its.map((it) => `<li><a href="${esc(it.page)}" data-id="${esc(it.id)}">${esc(it.title)}</a> <span>${esc(it.note_id || it.year || "")}</span></li>`).join("")}</ol>
+    </li>`;
   }).join("");
+}
+
+// Shelf tiles show three covers: featured decks first, then the newest.
+function renderShelfFans() {
+  for (const b of document.querySelectorAll("#shelves .shelf")) {
+    const its = LIB.items.filter((it) => it.shelf === b.dataset.k && it.thumb && !it.version_of)
+      .sort((a, c) => (c.featured - a.featured) || (c.year || 0) - (a.year || 0));
+    const seen = new Set(), pick = [];
+    for (const it of its) if (!it.series || !seen.has(it.series)) { seen.add(it.series); pick.push(it); }
+    b.querySelector(".s-fan").innerHTML = fan(pick);
+  }
 }
 
 // Re-render replaces the controls, so put keyboard focus back where it was.
@@ -316,15 +335,18 @@ function render() {
 
   const filtered = state.q || state.shelf || state.tags.size || state.years.size || state.levels.size;
   $("#reset").hidden = !filtered;
-  $("#paths-box").hidden = Boolean(filtered);
+  const cells = grouped() ? collapse(list) : list.map((it) => ({ it }));
+  // Grouping folds a series into one card, so say how many cards that makes.
+  const stacks = cells.filter((c) => c.stack && !c.stack.open).length;
+  const shown = cells.length;
   const where = state.shelf ? ` in <b>${esc(SHELF[state.shelf].name)}</b>` : "";
   $("#count").innerHTML = `<b>${list.length}</b> of ${plural(LIB.items.length, "deck")}${where}` +
+    (stacks ? ` · shown as ${plural(shown, "card")} (${stacks} series stacked)` : "") +
     (state.q && sort === "best" ? " · best matches first" : "") +
     (state.shelf ? ` · <button class="linkish" type="button" id="all-shelves">show everything</button>` : "");
   $("#empty").hidden = list.length > 0;
   if (!list.length) $("#empty-q").textContent = state.q ? `“${state.q}”` : "these filters";
 
-  const cells = grouped() ? collapse(list) : list.map((it) => ({ it }));
   $("#grid").innerHTML = `<div class="grid">${cells.map(cell).join("")}</div>`;
   writeURL();
   restoreFocus(f);
@@ -417,34 +439,80 @@ async function copyBib(e) {
   }
 }
 
-// ---------- the hero trace: a quantum-jump record ----------
+// ---------- the quantum-jump trace: a live record ----------
 // Bright |G⟩ and dark |D⟩ levels of a three-level atom, as inferred from its
-// bright-state clicks. Waiting times are exponential, with long dark-free
-// stretches in G and shorter stays in D (roughly the 2019 experiment's 7:1).
-// Seeded so the page looks the same on every load until someone clicks.
+// bright-state clicks. Waiting times are exponential, with long stretches in G
+// and shorter stays in D. The record streams right to left; each G→D jump is
+// drawn as a smooth arc (the jump caught mid-flight) and the newest is labelled.
+// Seeded, so the first screen is the same on every load.
 function mulberry32(a) {
   return () => { a |= 0; a = (a + 0x6d2b79f5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 }
-function drawTrace(seed) {
-  const rnd = mulberry32(seed), W = 1200, N = 600, lo = 78, hi = 18;
+let tracePaused = false;
+function initTrace() {
+  const W = 1200, N = 400, dx = W / N, lo = 92, hi = 28, RATE = 32;   // samples per second
+  const rnd = mulberry32(20190603);   // Nature 570, 200, published 3 June 2019
   const expo = (m) => -m * Math.log(1 - rnd());
-  let level = 0, x = 0;
-  const pts = [], jumps = [];
-  while (x < W) {
-    const end = Math.min(W, x + 8 + expo(level ? 28 : 150));
-    for (; x < end; x += W / N) pts.push([x, (level ? hi : lo) + (rnd() - .5) * 7]);
-    if (x < W) { jumps.push([x, level]); level = 1 - level; }
+  const ys = [], ups = [];            // ups: absolute sample index of each G→D jump
+  let level = 0, left = 0, n = 0, frac = 0;
+  const step = () => {
+    if (left <= 0) {
+      if (n) { if (level === 0) ups.push(n); level = 1 - level; }
+      left = Math.max(3, Math.round(expo(level ? 14 : 75) + 4));
+    }
+    left--;
+    ys.push((level ? hi : lo) + (rnd() - 0.5) * 8);
+    n++;
+    if (ys.length > N + 2) ys.shift();
+  };
+  for (let i = 0; i < N + 2; i++) step();
+  // Start on a screen with a jump about two thirds of the way across.
+  while (!ups.some((u) => u - (n - ys.length) > N * 0.55 && u - (n - ys.length) < N * 0.8)) step();
+
+  const path = $("#trace-path"), mark = $("#trace-mark"), label = $("#trace-label"), plot = $("#trace-plot");
+  const draw = () => {
+    const start = n - ys.length;
+    const X = (i) => ((i - frac) * dx).toFixed(1);
+    path.setAttribute("d", ys.map((y, i) => (i ? "L" : "M") + X(i) + " " + y.toFixed(1)).join(""));
+    while (ups.length && ups[0] - start < -4) ups.shift();
+    mark.innerHTML = ups.map((u) => {
+      const x = (u - start - frac) * dx;
+      return `<path class="mark-path" d="M${(x - 9).toFixed(1)} ${lo} C ${(x + 3).toFixed(1)} ${lo}, ${(x - 3).toFixed(1)} ${hi}, ${(x + 9).toFixed(1)} ${hi}"/>`;
+    }).join("");
+    const last = ups.filter((u) => (u - start) * dx < W - 40).pop();
+    label.hidden = last === undefined;
+    if (last !== undefined) {   // keep the label inside the plot on narrow screens
+    const pw = plot.clientWidth, half = label.offsetWidth / 2;
+    label.style.left = Math.min(pw - half, Math.max(half, ((last - start - frac) * dx) / W * pw)).toFixed(1) + "px";
   }
-  $("#trace-path").setAttribute("d", pts.map(([px, py], i) => (i ? "L" : "M") + px.toFixed(1) + " " + py.toFixed(1)).join(""));
-  // Mark the G→D jump nearest the middle as the one caught mid-flight.
-  const ups = jumps.filter(([, from]) => from === 0);
-  const up = ups.sort((a, b) => Math.abs(a[0] - 600) - Math.abs(b[0] - 600))[0];
-  const g = $("#trace-mark"), label = $("#trace-label");
-  label.hidden = !up;
-  if (!up) { g.innerHTML = ""; return; }
-  const jx = up[0];
-  g.innerHTML = `<path class="mark-path" d="M${jx - 6} ${lo} C ${jx + 4} ${lo}, ${jx - 4} ${hi}, ${jx + 6} ${hi}"/>`;
-  label.style.left = (jx / W * 100).toFixed(2) + "%";
+  };
+
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const btn = $("#trace-pause");
+  let visible = true, running = false, prev = 0;
+  const shouldRun = () => visible && !still && !tracePaused && !document.hidden && !$("#detail").open;
+  const frame = (now) => {
+    if (!shouldRun()) { running = false; return; }
+    frac += Math.min(100, now - prev) / 1000 * RATE; prev = now;
+    while (frac >= 1) { frac -= 1; step(); }
+    draw();
+    requestAnimationFrame(frame);
+  };
+  const kick = () => { if (!running && shouldRun()) { running = true; prev = performance.now(); requestAnimationFrame(frame); } };
+  if ("IntersectionObserver" in window) new IntersectionObserver(([e]) => { visible = e.isIntersecting; kick(); }).observe(plot);
+  document.addEventListener("visibilitychange", kick);
+  $("#detail").addEventListener("close", kick);
+  const toggle = () => {
+    tracePaused = !tracePaused;
+    btn.setAttribute("aria-pressed", String(tracePaused));
+    btn.textContent = tracePaused ? "Play" : "Pause";
+    kick();
+  };
+  if (still) btn.hidden = true;
+  btn.addEventListener("click", toggle);
+  plot.addEventListener("click", () => { if (!still) toggle(); });
+  draw();
+  kick();
 }
 
 // ---------- the hero transmon: isometric chip with live fields ----------
@@ -565,9 +633,11 @@ function wire() {
     const pool = LIB.items.filter((it) => matches(it));
     if (pool.length) openItem(pool[Math.floor(Math.random() * pool.length)].id);
   });
-  const remeasure = () => drawTrace((Math.random() * 1e9) | 0);
-  $("#trace").addEventListener("click", remeasure);
-  $("#trace").addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); remeasure(); } });
+  $("#start-link").addEventListener("click", () => { $("#start").open = true; });
+  // Choosing a shelf takes you down to the results.
+  $("#shelves").addEventListener("click", (e) => {
+    if (e.target.closest(".shelf") && state.shelf) $("#browse").scrollIntoView({ behavior: smooth(), block: "start" });
+  });
   // Cards are links to their citation pages (for crawlers, new tabs and
   // no-JS); a plain click opens the in-page dialog instead.
   const plain = (e) => !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button === 1);
@@ -598,14 +668,27 @@ function wire() {
   });
 }
 
+const smooth = () => (matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth");
+
+// Sections fade up once as they scroll into view (not with reduced motion).
+function initReveal() {
+  const els = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const io = new IntersectionObserver((es) => {
+    for (const e of es) if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }, { rootMargin: "0px 0px -8% 0px" });
+  for (const el of els) { el.classList.add("pre"); io.observe(el); }
+}
+
 // Filters start open on wide screens, collapsed on phones.
 function syncFilterBox() {
   try { $("#filters-box").open = matchMedia("(min-width: 960px)").matches; } catch { $("#filters-box").open = true; }
 }
 
 async function boot() {
-  drawTrace(20190603);   // Nature 570, 200, published 3 June 2019
+  try { initTrace(); } catch (e) { console.error(e); }
   try { initTransmon(); } catch (e) { console.error(e); }
+  initReveal();
   const res = await fetch("library.json");
   if (!res.ok) throw new Error(`library.json: HTTP ${res.status}`);
   LIB = await res.json();
@@ -614,6 +697,7 @@ async function boot() {
   $("#q").value = state.q;
   syncFilterBox();
   renderPaths();
+  renderShelfFans();
   wire();
   render();
   const id = location.hash.slice(1);

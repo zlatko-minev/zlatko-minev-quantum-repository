@@ -6,7 +6,7 @@
 ## What this repo is
 
 A public archive of Zlatko Minev's talks, lectures, tutorials and technical
-notes (2011 → today), plus the static website **The Quantum Notebook** that browses it.
+notes (2011 → today), plus the static website **Zlatko's Quantum Notebook** that browses it.
 Content license: CC BY-NC-ND 4.0 (see `LICENSE.md`).
 
 - `content - research talks/` — flat, `YYYY Title (Minev, Venue).pdf`
@@ -114,7 +114,7 @@ items; career talks are a series inside Lectures, findable with the Career tag.
   owners get new keys (collisions get a/b/c). Don't hand-edit keys that may
   already be cited.
 - Tech notes are `@techreport` (type "Technical Note", number `Txx`,
-  institution "The Quantum Notebook"); decks are `@misc` with
+  institution "Zlatko's Quantum Notebook"); decks are `@misc` with
   `howpublished = {Talk|Lecture|Tutorial, <venue>}` and `note = {Slides}`.
 - Pages: `items/<id>/` per item and `series/<slug>/` per series, with Google
   Scholar `citation_*` tags (PDF tag only when the PDF is on the site), JSON-LD
@@ -220,8 +220,21 @@ Summaries are public, under the author's name. Accuracy first.
 
 ## Website
 
+- Layout (2026-10 redesign, Apple-product-page style): one idea per band,
+  centred headings, lots of space, little text. Order: hero (title, one-line
+  lede, two buttons, transmon) → stats → quantum-jump band → three shelf tiles
+  (with fanned cover thumbnails) → "New here? Three ways in" (a collapsed
+  `<details>`) → browse (sticky toolbar, filters, grid) → footer (reuse,
+  others' work, about). Add new text to the footer or a deck page, not the
+  hero; if a band needs more than two sentences, it's probably two bands.
 - "Start here" reading paths: `PATHS` at the top of `site/app.js` (item ids).
-  Keep them short (4–5 decks) and beginner-first.
+  Keep them short (4–5 decks) and beginner-first. They render as cards with
+  the first three decks' covers fanned out.
+- Light/dark: follows the system; the top-bar button (`site/theme.js`, on
+  every page) overrides it per browser. `THEME_BOOT` in `tools/site_pages.py`
+  is inlined in each `<head>` to apply the choice before first paint.
+- The results count says how many cards the decks fold into when series are
+  stacked ("41 decks … shown as 10 cards (8 series stacked)").
 - Machine-written summaries show a one-line disclosure until
   `summary_reviewed: true`; review notes from the 2026-10 red team are in
   ROADMAP.md.
@@ -234,18 +247,23 @@ Summaries are public, under the author's name. Accuracy first.
   non-bonus deck in the current sort) with "+N more in this series"; series
   and standalone decks stay interleaved in sort order.
 - Hero: the isometric transmon (`initTransmon()` in `site/app.js`, scroll- and
-  time-driven, paused off-screen, static under reduced motion) and the
-  quantum-jump trace.
+  time-driven, paused off-screen, static under reduced motion). The
+  quantum-jump band (`initTrace()`) streams a seeded simulated record right to
+  left, arcs each G→D jump in copper and labels the newest; it has a Pause
+  button (and click-to-pause) and is static under reduced motion.
+- Sections marked `.reveal` fade up once on scroll, only when JS runs
+  (`html.js`) and motion is allowed; content is never hidden otherwise.
 - Deploy: GitHub Pages via Actions on push to `main`.
 - Fonts are self-hosted (`site/fonts/`, latin + greek subsets from Fontsource);
   no third-party requests. Cards load `thumbs/sm/` (360 px) with `srcset`.
 - `index.html` has build-time placeholders (`%SITE_URL%`, `%YEARS%`,
-  `%FUN_STATS%`, `%COUNT_<shelf>%`, `%STATIC_LIST%`) filled by
+  `%N_DECKS%`, `%N_SLIDES%`, `%N_HOURS%`, `%THEME_BOOT%`, `%COUNT_<shelf>%`,
+  `%STATIC_LIST%`) filled by
   `fill_index()` in `tools/build_site.py`.
 - Social image: `site/og.png` (1200×630, a screenshot of the hero); regenerate
   if the hero changes.
 - Tone: lighthearted, not self-serious, still professional: ket-notation shelf
-  labels, the transmon and quantum-jump trace in the hero, the random-deck button, the
+  labels, the transmon and quantum-jump trace in the hero, the "Surprise me" button, the
   slide-count joke, the empty state and footer. Keep jokes short, and never in
   summaries or citations. The homepage link stays low-key (top bar + footer).
 

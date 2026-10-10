@@ -1,6 +1,10 @@
-# The Quantum Notebook
+# Zlatko's Quantum Notebook
 
-*Zlatko Minev's talks, lectures and notes: the source for the website of the same name.*
+*Zlatko Minev's talks, lectures and notes, 2011 to the present.*
+
+**Website: [zlatko-minev.github.io/zlatko-minev-quantum-repository](https://zlatko-minev.github.io/zlatko-minev-quantum-repository/)**
+: search, filter and open every deck, with a summary, a citation page and
+BibTeX for each one.
 
 
 > "Creating knowledge is only half the story — sharing it is the other half." 
@@ -27,10 +31,16 @@ For more, visit [zlatko-minev.com](https://zlatko-minev.com).
 
 ### Browse the Archive
 
-The easiest way in is the website, **The Quantum Notebook** (published from this
-repository with GitHub Pages): search, filter by type, topic, year and level, group lecture series, and
-open any deck in the browser. Run it locally with
+The easiest way in is the [website](https://zlatko-minev.github.io/zlatko-minev-quantum-repository/),
+published from this repository with GitHub Pages on every push to `main`:
+search, filter by shelf, topic, year and level, browse lecture series as
+stacks, and open any deck in the browser. "New here? Three ways in" on the
+home page lists three short reading paths. Run it locally with
 `python3 tools/build_site.py --serve`.
+
+Every deck has its own page (`items/<id>/`) and every lecture series one too
+(`series/<slug>/`), with Google Scholar metadata and BibTeX. New decks are
+announced in the site's Atom feed (`feed.xml`).
 
 Content is organized into three folders — **research talks**, **educational**, and
 **tech notes** — and indexed in [`catalog.json`](catalog.json), a machine-readable
@@ -59,25 +69,26 @@ python3 tools/add_deck.py NEW.pdf --shelf research --title "…" --year 2027 --v
 python3 tools/process_pdfs.py     # compress new/updated PDFs (~150 dpi)
 python3 tools/build_catalog.py    # regenerate catalog.json (+ tags)
 python3 tools/make_thumbnails.py  # page-1 thumbnails for the website
-python3 tools/check_sizes.py      # size guard (also runs in CI and publish.sh)
-bash    tools/publish.sh          # publish as a single clean commit
+python3 tools/check_sizes.py      # size guard (also runs in CI)
 ```
+
+Commit the result and open a pull request; CI checks sizes, the catalog,
+thumbnails and frozen citation keys, and merging to `main` redeploys the site.
 
 Display titles, series, venues and dates are curated in
 `tools/catalog_overrides.json`, so file names never have to change to fix how an
 item appears on the site.
 
-> The published repository intentionally keeps **no history** — every update is a
-> single force-pushed commit. Pristine, full-resolution originals are archived
-> locally outside the repo.
+> Pristine, full-resolution originals are archived locally outside the repo.
+> `tools/publish.sh` (squash everything into one force-pushed commit) re-uploads
+> the whole ~300 MB library, so it's only worth it after replacing or deleting
+> large files.
 
 ---
 
 ## 🤝 Contributing
 
-Spotted a typo, a wrong date or a missing credit? Please open an issue. The
-repository is republished as a single commit, so pull requests can't be merged
-directly.
+Spotted a typo, a wrong date or a missing credit? Please open an issue.
 
 ---
 

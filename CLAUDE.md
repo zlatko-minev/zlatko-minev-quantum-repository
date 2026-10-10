@@ -1,7 +1,7 @@
 # CLAUDE.md
 
 Archive of Zlatko Minev's talks, lectures and notes, plus the static website
-"The Quantum Notebook" (`site/`) that browses it.
+"Zlatko's Quantum Notebook" (`site/`) that browses it.
 
 Read `agent/NOTES.md` before changing anything. It has the add-a-talk
 checklist, the summary-writing rules, the shelf (collection) definitions, the

@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "To cite a specific talk, lecture or note, use the BibTeX on its page on the website. To cite the archive as a whole, use this entry."
-title: "The Quantum Notebook: talks, lectures and technical notes"
+title: "Zlatko's Quantum Notebook: talks, lectures and technical notes"
 type: dataset
 authors:
   - family-names: Minev

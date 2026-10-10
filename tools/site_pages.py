@@ -16,7 +16,7 @@ import re
 from pathlib import Path
 from urllib.parse import quote
 
-SITE_NAME = "The Quantum Notebook"
+SITE_NAME = "Zlatko's Quantum Notebook"
 # Per-series metadata that has no single deck to live on, e.g. the Zenodo DOI
 # of a whole lecture series: {"<series name>": {"doi": "10.5281/zenodo.N"}}.
 SERIES_META_PATH = Path(__file__).resolve().parent / "series.json"
@@ -253,7 +253,11 @@ PERMISSIONS_HTML = (
 DRAFT_NOTE = ("Summary and key points drafted by a language model from the slides, not yet "
               "reviewed by me. The slides are the source.")
 
-_FONTS = '<link rel="preload" href="../../fonts/literata-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>'
+# Applies a stored light/dark choice before first paint (site/theme.js does the toggling).
+THEME_BOOT = ('document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");'
+              'if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}')
+
+_FONTS = f'<script>{THEME_BOOT}</script>\n<link rel="preload" href="../../fonts/literata-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>'
 
 _COPY_JS = """<script>
 document.getElementById("copy-bib").onclick = async (e) => {
@@ -302,14 +306,15 @@ def _page(title: str, desc: str, url: str, thumb: str, meta: list, back: str, bo
 <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="item-page">
-<nav class="topbar wrap" aria-label="Site">
+<nav class="topbar wrap topbar-inner" aria-label="Site">
   <a class="me" href="../../"><span class="mono-mark" aria-hidden="true">|ψ⟩</span>{SITE_NAME}</a>
-  <div class="toplinks"><a href="{_e(back)}">Browse everything</a></div>
+  <div class="toplinks"><a href="{_e(back)}">Browse everything</a><button class="theme-btn" type="button" data-theme-toggle aria-label="Switch colour theme"></button></div>
 </nav>
 <main class="wrap ip">
 {body}
 </main>
 {_COPY_JS}
+<script src="../../theme.js"></script>
 </body>
 </html>
 """

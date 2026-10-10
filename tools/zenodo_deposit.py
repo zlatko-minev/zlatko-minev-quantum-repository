@@ -103,7 +103,7 @@ def description(items: list[dict], page: str, series: str | None = None) -> str:
         parts.append(f"<p>{it.get('summary') or it.get('description') or it['title']}</p>")
         if it.get("key_points"):
             parts.append("<ul>" + "".join(f"<li>{p}</li>" for p in it["key_points"]) + "</ul>")
-    parts.append(f'<p>Part of <a href="{page}">The Quantum Notebook</a>, Zlatko K. Minev\'s '
+    parts.append(f'<p>Part of <a href="{page}">Zlatko\'s Quantum Notebook</a>, Zlatko K. Minev\'s '
                  "archive of talks, lectures and notes. Reuse beyond the license (e.g. a reworked "
                  "slide in your own talk) is welcome on request.</p>")
     return "".join(parts)
