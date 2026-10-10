@@ -33,6 +33,7 @@ jobs:
             echo "::error::catalog.json is stale — run python3 tools/build_catalog.py and commit"; exit 1; }
       - name: Every item has a thumbnail
         run: |
+          python3 -m pip install -q pillow
           python3 tools/make_thumbnails.py --prune
           test -z "$(git status --porcelain site/thumbs)" || {
             git status --porcelain site/thumbs
@@ -42,7 +43,10 @@ jobs:
         # when a custom domain is configured; citations and the sitemap use it.
         env:
           SITE_URL: ${{ vars.SITE_URL }}
-        run: python3 tools/build_site.py --with-pdfs ${SITE_URL:+--site-url "$SITE_URL"}
+        run: |
+          python3 tools/build_site.py --with-pdfs ${SITE_URL:+--site-url "$SITE_URL"}
+          git diff --exit-code tools/bibkeys.json || {
+            echo "::error::new citation keys — run python3 tools/build_site.py and commit tools/bibkeys.json"; exit 1; }
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3

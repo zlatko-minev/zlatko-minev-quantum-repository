@@ -1,132 +1,152 @@
-# Roadmap — Zlatko Minev Quantum Repository
+# Roadmap — The Quantum Notebook
 
-> Living plan for turning the archive into a polished, browsable, self-hostable
-> site. Status legend: ✅ done · 🔄 in progress · ⏳ planned · 💡 idea.
-> See `agent/NOTES.md` for the maintenance pipeline and decisions log.
+> Living plan for the archive and its website. Status: ✅ done · ⏳ next · 💡 idea.
+> How-to and conventions: `agent/NOTES.md`. Last updated 2026-10-10.
 
-## Now / foundations
-- ✅ Compress PDFs (~150 dpi), drop Git LFS, single-commit publish workflow
-- ✅ `catalog.json` metadata DB + self-validating generator (`tools/build_catalog.py`)
-- ✅ Import tracking outside the repo (`../imported_talks.json`)
-- ✅ pptx→pdf import path (LibreOffice headless) + `tools/process_pdfs.py`
-- 🔄 **Local AI enrichment** (`tools/ai_enrich.py`, ollama `qwen2.5vl`) → `catalog_ai.json`
-  (additive, never overwrites; short description, summary, topics, tags, level)
-- ⏳ **Folder reorg** of `content - educational/` to be shallower / topic-first (see below)
+## Continue here
 
-## Content quality
-- ⏳ **Metadata questions found while summarizing (author to confirm):**
-  QGSS 2022 bonus "State Preparation Noise" / "Coherent ZZ Error" and the QGSS
-  2023 "Coherent ZZ Error" pages are dated July 2021 (the 2023 one matches the
-  2021 file); "Intro to Real Quantum Computers and Noise" is filed as 2022 but
-  cites 2024 work and is titled "IBM Quantum Summer Learning Session"; the 2024
-  APS deck's title slide reads "A detailed portrait of quantum many-body
-  dynamics"; T23 cites the sparse Pauli-Lindblad paper as Nature Physics 16
-  (2020).
-- ⏳ **DB + text proofing pass (manual).** Build a simple proofing view (an HTML
-  table or `tools/proof.py` that dumps `catalog.json` + `catalog_ai.json` side by
-  side) to review every title, venue, year, speaker, description, and tags. Fix
-  via `tools/catalog_overrides.json` (curation) — never hand-edit `catalog.json`.
-- ⏳ **Tag taxonomy.** Promote the AI `suggested_tags` into a controlled vocabulary;
-  reconcile with `TAG_RULES` in `build_catalog.py`. One canonical tag list.
-- ✅ **Naming: decided not to rename files** (2026-10). Display titles come from
-  `catalog_overrides.json`; renames would break existing GitHub links and site
-  permalinks. See `agent/NOTES.md`.
+### Owner actions (in this order)
+1. ⏳ **Enable GitHub Pages**: Settings → Pages → Source: **GitHub Actions**.
+   Do this before merging, so the first deploy on `main` succeeds.
+2. ⏳ **Pick the address before people cite it.** Citation URLs embed it.
+   - Default: `https://zlatko-minev.github.io/zlatko-minev-quantum-repository/`.
+   - Recommended: `talks.zlatko-minev.com`. Steps:
+     1. Add a DNS record: `CNAME talks → zlatko-minev.github.io`.
+     2. Settings → Pages → Custom domain, and enforce HTTPS.
+     3. Settings → Secrets and variables → Actions → Variables: `SITE_URL=https://talks.zlatko-minev.com/`.
+     4. Change `SITE_URL` in `tools/build_site.py` to the same address.
+3. ⏳ **Merge the website PR** (squash), then check the deployed site and the
+   Actions run.
+4. ⏳ **Review the 76 machine-drafted summaries.** For each one that is right,
+   set `"summary_reviewed": true` on that item in `tools/catalog_overrides.json`;
+   this removes its "draft" note.
+5. ⏳ **Decide the metadata questions** below.
+6. ⏳ **Open web access for agents** (cloud environment → Network access →
+   Allowed domains): `zlatko-minev.com`, `youtube.com`, `www.youtube.com`,
+   `arxiv.org`, `doi.org`. This unblocks video links, DOI checks and matching
+   the site's style to the homepage.
+7. 💡 **Zenodo DOI.** Log in to zenodo.org with GitHub, switch on this
+   repository, then publish a GitHub Release. Zenodo mints a DOI using
+   `.zenodo.json`. Add the DOI to `CITATION.cff` (`identifiers`) and the README.
+   Optionally deposit individual tech notes for per-note DOIs, and add their
+   `doi` links to the overrides.
+8. 💡 Add your ORCID to `CITATION.cff` and `.zenodo.json`.
 
-## Technical notes (`content - tech notes/`)
-The `T*` notes (derivations, cheat-sheets, working notes) are a distinct content
-type and deserve first-class treatment, not just being lumped in with talks.
-- ⏳ **Import the full set.** Pull the complete technical-notes collection from the
-  internal `TALKS/TALKS technical notes/` folder into the repo (8 of N are in so
-  far). Convert any non-PDF sources; compress; log in `../imported_talks.json`.
-- ⏳ **Structured JSON metadata.** Extend `catalog.json` records for notes with
-  note-specific fields (e.g. `note_id` like `T27`, prerequisite notes, related
-  talks, equations/result summary). Run `ai_enrich.py` over them too.
-- ⏳ **Dedicated tagging.** A tech-note tag vocabulary (`derivation`, `cheat-sheet`,
-  `reference`, `bound`, `estimator`, `noise-model`, …) layered on the main tags.
-- 💡 **Repo decision.** Decide whether notes stay a section here or graduate into
-  their own lightweight repo (e.g. `zlatko-minev-tech-notes`) that the site can
-  pull in alongside the talks — keep the catalog the shared interface either way.
-- ⏳ Surface notes as their own browsable category + cross-links from related talks.
+### Agent tasks (next session; prompts you can paste)
+- **Video links** (needs web): "Find the YouTube recordings for the QGSS 2020–2023
+  and Boulder 2023 lectures in this repo, verify each matches its deck, and add
+  them as `links` with label `Video`. Follow agent/NOTES.md › Links."
+- **Paper and DOI check** (needs web): "Verify every `links` entry in
+  tools/catalog_overrides.json against arXiv/DOI records, and add journal DOIs
+  for the quantum-jump (Nature 570, 200) and ML-QEM (Nat. Mach. Intell. 6, 1478)
+  talks."
+- **Style match** (needs web): "Look at zlatko-minev.com and align the site's
+  palette, type and tone with it, keeping the token system in site/style.css."
+- **Add new talks**: "Add these PDFs to the archive following the checklist in
+  agent/NOTES.md, including slug, summary, thumbnail, `added` date and frozen
+  BibTeX key."
+- **Red-team again** after big changes: "Run a multi-persona review (design,
+  physics, student, citations, a11y/SEO, skeptic, QA) of the built site and fix
+  what's real."
 
-## Website (lightweight, self-hostable)
-Static site in `site/` (plain HTML/CSS/JS, no framework or npm), built by
-`tools/build_site.py` into `_site/` and deployed to GitHub Pages by
-`.github/workflows/site.yml`. It reads one merged file, `library.json`
-(`catalog.json` + `catalog_ai.json`).
+### Metadata questions for the author
+- The QGSS 2022 "State Preparation Noise" and "Coherent ZZ Error" bonus pages
+  are dated July 2021, and the QGSS 2023 "Coherent ZZ Error" page has the same
+  text as the 2021 file. Keep them as re-distributed copies, or link them with
+  `version_of`?
+- "Intro to Real Quantum Computers and Noise" is filed as 2022, but it cites
+  2024 work and its title slide says "IBM Quantum Summer Learning Session".
+  What are the correct year and venue?
+- The 2024 APS invited talk's title slide reads "A detailed portrait of quantum
+  many-body dynamics". The site uses the paper title. Which should it be?
+- What years should T11.7, T11.9 and T25 have? They are undated, so their
+  BibTeX keys contain `nd`. Keys stay frozen even after a year is added.
+- In the PDFs themselves:
+  - T23 cites arXiv:2012.09738 as the PEC paper; it should be arXiv:2201.09866.
+  - T21–T23 contain a stray "Nature Physics 16, 233 (2020)" line.
 
-- ✅ Browse UI: search (titles, venues, topics, summaries), type tabs, topic /
-  format / level chips with live counts, year histogram, sort, group by series,
-  detail view with summary, key points, related items, PDF link. Filters live in
-  the URL; `#<id>` opens an item, so every view is a shareable link.
-- ✅ Thumbnails: page 1 of each PDF via `pdftoppm` → `site/thumbs/<id>.jpg`
-  (~40 KB each, committed; CI fails if one is missing).
-- ✅ Curated display titles / series / venues / tech-note dates in
-  `tools/catalog_overrides.json` (from the PDFs' own title pages).
-- ✅ Named **The Quantum Notebook**; three shelves (Lectures & Tutorials, Research
-  Talks, Tech Notes) with series grouping; low-key links to zlatko-minev.com.
-- ✅ Citations: one BibTeX entry per series or standalone deck; item and series
-  pages with Google Scholar meta tags; `citations.bib`, sitemap, `CITATION.cff`;
-  "Cite & reuse" notice.
-- ✅ Paper links (arXiv IDs from title slides) via `links` in the overrides.
-- ⏳ **Video links**: match QGSS and other recorded lectures to their YouTube
-  videos (`links` with label "Video"); needs web access or the author's list.
-- 💡 Zenodo DOIs for the tech notes (needs the owner's Zenodo account); add
-  `doi` to BibTeX once they exist.
-- ✅ Summaries rewritten from each deck's text (2026-10), shown as "draft" until
-  the author sets `summary_reviewed: true`.
-- ⏳ **Enable Pages**: Settings → Pages → Source: GitHub Actions (one-time, owner).
-- ⏳ **Address**: recommended `talks.zlatko-minev.com` (DNS CNAME `talks` →
-  `zlatko-minev.github.io`, then Settings → Pages → Custom domain, enforce HTTPS).
-- ⏳ **Author review** of summaries and of the metadata questions below.
-- ⏳ Add 3–5 `featured` picks.
+## Done (2026-10)
 
-## Repository size
-Facts (2026-10): 76 PDFs, 297 MB; git pack 211 MB; history is already a single
-commit. ~75% of PDF bytes are JPEG images at ~150 dpi; a lossless re-optimization
-pass (pikepdf, object streams + recompressed Flate) saves 0.8 MB total. So
-further shrinking is either lossy or moves files out of git.
+**Repository and pipeline**
+- ✅ Compressed PDFs (~150 dpi), no Git LFS, single-commit publishing
+  (`tools/publish.sh`).
+- ✅ `catalog.json` generator with validation, plus curated
+  `tools/catalog_overrides.json` (titles from title slides, series, venues,
+  dates, co-presenters, `authors`, `tags_remove`, `links`, `version_of`).
+- ✅ Permanent public ids: short frozen slugs, e.g.
+  `t27-simple-noise-models-and-gate-fidelity`. Files are never renamed.
+- ✅ Size guard `tools/check_sizes.py`, run in CI and `publish.sh`. Lossless PDF
+  optimization was measured at 0.8 MB of 297 MB, so further savings would have
+  to be lossy or come from moving PDFs out of git.
+- ✅ CI (`.github/workflows/site.yml`) checks size, catalog freshness,
+  thumbnails and frozen BibTeX keys, then builds and deploys to Pages from
+  `main`.
 
-- ✅ `tools/check_sizes.py` size guard, run by CI and `publish.sh`: per-PDF
-  15 MB warn / 40 MB fail; content total 600 MB warn / 900 MB fail (Pages cap is
-  1 GB); stray non-content binaries > 2 MB fail; catalog ↔ disk consistency.
-- Note: every `publish.sh` squash re-uploads the whole library (the new root
-  commit shares no history with the remote). Squashing only frees space when
-  files were replaced or removed; plain commits are cheaper for additions.
-- 💡 **Decision rule:** when content passes the 600 MB warning, move PDFs to a
-  GitHub Release ("library" tag, 2 GB per file, no repo quota) and have CI pull
-  them into the Pages build. The site already takes a `--pdf-base`, so links
-  change in one place.
-- 💡 Lossy pass on the 10 decks over 10 MB (e.g. 120 dpi) if clone size matters
-  before then. Check text legibility on equation slides first.
+**Website ("The Quantum Notebook")**
+- ✅ Three shelves: Lectures & Tutorials, Research Talks, Tech Notes.
+- ✅ Each series collapses to a cover card with "+N more"; the chosen sort order
+  is kept.
+- ✅ "Start here" reading paths.
+- ✅ Search ranks best matches first and expands synonyms; filters by topic,
+  format, level and year; all state lives in the URL.
+- ✅ Detail view: summary, key points, in-series navigation, related decks,
+  paper links, Cite panel.
+- ✅ Hero: animated isometric transmon and a quantum-jump trace, both checked
+  for physics.
+- ✅ Accessibility: focus is kept across re-renders, status-only live region,
+  skip link, pause control, reduced motion respected.
+- ✅ SEO: crawlable card links, static deck list without JS, JSON-LD,
+  OG/Twitter cards, social image, sitemap, robots, Atom feed (`feed.xml`) with
+  "New" badges.
+- ✅ Performance: self-hosted fonts (SIL OFL), 360 px thumbnails with `srcset`,
+  no layout shift from late-loading content.
+- ✅ All 76 summaries drafted from the slide text and checked by a physics
+  reviewer. They are labelled as drafts until the author reviews them.
 
-## Discoverability
-- ⏳ **SEO.** Per-page `<title>`/meta description (seed from AI `short_description`),
-  Open Graph + Twitter cards (thumbnail), JSON-LD structured data
-  (`ScholarlyArticle` / `PresentationDigitalDocument`), `sitemap.xml`, `robots.txt`,
-  canonical URLs, descriptive slugs (already have stable `id`s).
-- 💡 Optional: RSS/Atom feed of new talks; "cite this talk" snippets.
+**Citations**
+- ✅ Per-item pages (`items/<id>/`) and per-series pages (`series/<slug>/`).
+- ✅ BibTeX: tech notes are `@techreport`. A series held at one event (single
+  year and venue) shares one entry; a series spanning several events is cited
+  deck by deck.
+- ✅ Summer-school copies of tech notes cite the note (`version_of`).
+- ✅ Keys are frozen in `tools/bibkeys.json`.
+- ✅ Google Scholar tags follow its rules: the PDF tag appears only when the
+  PDF is hosted on the site, and copies carry no tags.
+- ✅ `citations.bib`, `CITATION.cff`, `.zenodo.json`.
 
-## Critical review (multi-agent)
-Before launch, run the site + copy through a panel of role-played reviewers and
-collect findings:
-- ⏳ **Student** — is it understandable? can I find learning material by topic/level?
-- ⏳ **Colleague / researcher** — is it accurate, credible, properly attributed?
-- ⏳ **Dev-rel / community** — is it shareable, embeddable, well-tagged, useful?
-- ⏳ **Journalist / science writer** — is the story clear, quotable, citable?
-- ⏳ **Skeptic / critic** — what's confusing, missing, over-claimed, or broken?
-- ⏳ **Web/dev reviewer** — performance, accessibility (a11y), mobile, SEO, links.
-  (Implement as a workflow/agents pass over the built site + `catalog.json`.)
+**License and reuse**
+- ✅ License is CC BY-NC-ND 4.0, with a copyright line.
+- ✅ Commercial use and adapted versions need permission.
+- ✅ A non-binding request to tell the author when the material is used in
+  teaching or publications.
+- ✅ Third-party material stays with its owners.
+- ✅ The same wording appears on the site, the citation pages, the README and
+  LICENSE.md.
 
-## Backlog / ideas
-- 💡 Per-series landing pages (e.g. the QGSS noise course as one unit)
-- 💡 "Collections" / playlists curated across categories
-- 💡 Analytics (privacy-respecting) to see what's downloaded
-- 💡 Versioning note per talk (which event/year variants exist)
+**Reviews**
+- ✅ Seven-persona red team (2026-10): design, physics, student, citations,
+  a11y/performance/SEO, skeptic/journalist, QA. All findings were fixed except
+  the items listed under "Next".
 
-## Maintenance loop (adding talks) — see `agent/NOTES.md`
-1. Drop/convert source into the right `content - …` folder
-2. `python3 tools/process_pdfs.py` → compress
-3. `python3 tools/build_catalog.py` → catalog + validation
-4. `python3 tools/ai_enrich.py` → AI enrichment (additive)
-5. Log the source in `../imported_talks.json`
-6. `bash tools/publish.sh --push` → single clean commit
+## Next
+- ⏳ **Video links**: needs web access, or a list from the author.
+- ⏳ **Import the remaining tech notes** from the internal `TALKS technical notes/`
+  folder. 8 of N are in the repo so far.
+- ⏳ **Featured picks**: 3–5 decks, using `tags: ["featured"]`. Show them in the
+  hero or under "Start here".
+- ⏳ **Tag taxonomy**: one controlled vocabulary, reconciling `TAG_RULES` with the
+  curated tags.
+- ⏳ **Reading paths**: revisit `PATHS` in `site/app.js` as new decks arrive.
+- 💡 Per-deck "versions" note, e.g. Superconducting Qubits 101 given at five
+  venues.
+- 💡 Privacy-respecting analytics (e.g. GoatCounter) to see which decks are read.
+- 💡 A lossy pass on the decks over 10 MB if clone size starts to matter. Check
+  equation legibility first.
+- 💡 **Storage decision rule**: when content passes 600 MB, move PDFs to a GitHub
+  Release and pull them into the Pages build. `--pdf-base` already supports this.
+
+## Repository size facts
+76 PDFs, 297 MB; git pack 211 MB; a single commit. About 75% of PDF bytes are
+JPEG images. Each `publish.sh` squash re-uploads the whole library: plain commits
+are cheaper for additions, and squashing only pays after replacing or deleting
+files.

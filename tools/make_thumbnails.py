@@ -14,7 +14,7 @@ Usage
     python3 tools/make_thumbnails.py --force    # re-render all
     python3 tools/make_thumbnails.py --prune    # also delete orphans
 
-Requires poppler (``pdftoppm``).
+Requires poppler (``pdftoppm``); Pillow for the 360 px copies in ``sm/``.
 """
 from __future__ import annotations
 
@@ -29,6 +29,7 @@ CATALOG = REPO_ROOT / "catalog.json"
 OUT_DIR = REPO_ROOT / "site" / "thumbs"
 WIDTH = 640      # px; cards display at ~320 px, so this is crisp on 2x screens
 QUALITY = 72     # JPEG quality
+SMALL = 360      # px; site/thumbs/sm/<id>.jpg for 1x screens (srcset)
 
 
 def render(pdf: Path, out: Path) -> None:
@@ -60,14 +61,30 @@ def main() -> int:
         made += 1
         print(f"  {out.stat().st_size / 1e3:5.0f} KB  {out.name}")
 
+    # 1x-screen copies, downscaled from the full thumbnail (needs Pillow).
+    try:
+        from PIL import Image
+    except ImportError:
+        Image = None
+        print("  (Pillow not installed: skipping small thumbnails)")
+    if Image:
+        (OUT_DIR / "sm").mkdir(exist_ok=True)
+        for it in items:
+            src, dst = OUT_DIR / f"{it['id']}.jpg", OUT_DIR / "sm" / f"{it['id']}.jpg"
+            if src.exists() and (args.force or not dst.exists()):
+                im = Image.open(src)
+                im.resize((SMALL, round(im.height * SMALL / im.width)), Image.LANCZOS).save(
+                    dst, quality=QUALITY, optimize=True, progressive=True)
+                made += 1
+
     ids = {it["id"] for it in items}
-    orphans = [p for p in OUT_DIR.glob("*.jpg") if p.stem not in ids]
+    orphans = [p for p in [*OUT_DIR.glob("*.jpg"), *OUT_DIR.glob("sm/*.jpg")] if p.stem not in ids]
     for p in orphans:
         if args.prune:
             p.unlink()
         print(f"  {'deleted' if args.prune else 'orphan '}  {p.name}")
 
-    total = sum(p.stat().st_size for p in OUT_DIR.glob("*.jpg"))
+    total = sum(p.stat().st_size for p in OUT_DIR.rglob("*.jpg"))
     print(f"{made} rendered, {len(orphans)} orphan(s); "
           f"{total / 1e6:.1f} MB in {OUT_DIR.relative_to(REPO_ROOT)}/")
     return 0

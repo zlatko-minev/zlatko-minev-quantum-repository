@@ -83,10 +83,12 @@ directly.
 
 Unless a deck says otherwise, the slides and notes are © Zlatko K. Minev and
 shared under [CC BY-NC-ND 4.0](LICENSE.md): you're welcome to read, download and
-share them, unchanged and non-commercially, with credit and a link back. To reuse
-a slide or figure in your own talk, course or paper, please ask; the answer is
-usually yes. Some slides include figures, photos, logos or excerpts from other
-people and institutions, credited where they appear; those stay with their
+share them, unchanged and non-commercially, with credit and a link back.
+Commercial use or a reworked slide or figure in your own talk, course or paper
+needs permission; please ask, the answer is usually yes. If you use something
+in teaching or a publication, a short note telling me where is appreciated.
+Some slides include figures, photos, logos or excerpts from other people and
+institutions, credited where they appear; those stay with their
 owners and aren't covered by the CC license.
 
 To cite a talk, lecture or note, use the BibTeX on its page on the website, or

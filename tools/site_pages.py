@@ -76,7 +76,7 @@ def series_groups(items: list[dict]) -> dict[str, list[dict]]:
     for it in items:
         if it.get("series"):
             groups.setdefault(it["series"], []).append(it)
-    return {s: its for s, its in groups.items() if len(its) > 1 and s not in NOT_CITED_AS_SERIES}
+    return {s: its for s, its in groups.items() if len(its) > 1}
 
 
 def _common(its: list[dict], field: str) -> str | None:
@@ -97,6 +97,11 @@ def series_info(name: str, its: list[dict], site_url: str) -> dict:
         "authors": names,
         "venue": _common(its, "venue"),
         "url": f"{site_url}series/{slug(name)}/",
+        # One BibTeX entry for the whole series only when it is one event: a
+        # single year and venue (e.g. a summer school's lectures). Series that
+        # recur across years or venues are cited deck by deck.
+        "citable": (len(years) <= 1 and _common(its, "venue") is not None
+                    and name not in NOT_CITED_AS_SERIES),
     }
 
 
@@ -148,41 +153,67 @@ def item_bibtex(item: dict, site_url: str, key: str) -> str:
     ])
 
 
-def assign_citations(items: list[dict], site_url: str) -> tuple[list[dict], list[str]]:
-    """Attach ``bibtex`` (and ``series_page`` for series members) to every item.
+def assign_citations(items: list[dict], site_url: str,
+                     locked: dict[str, str] | None = None) -> tuple[list[dict], list[str], dict[str, str]]:
+    """Attach ``bibtex`` (plus ``series_page`` / ``canonical_page``) to every item.
 
-    Returns (series infos, all BibTeX entries). Keys are unique: collisions get
-    a/b/c suffixes in a stable order.
+    * Citable series (one event) get one entry that their decks share; other
+      decks get their own entry.
+    * An item with ``version_of`` (e.g. a cheat sheet handed out at a summer
+      school that is also a tech note) shares the original's entry and page.
+    * Keys are frozen: ``locked`` (tools/bibkeys.json) maps owner → key, and
+      only new owners get new keys (collisions get a/b/c suffixes). Returns
+      (series infos, entries, updated key map).
     """
+    locked = dict(locked or {})
+    by_id = {it["id"]: it for it in items}
     groups = series_groups(items)
     series = [series_info(n, its, site_url) for n, its in groups.items()]
-    in_series = {i["id"] for s in series for i in s["items"]}
-
-    bases: dict[str, list[tuple[str, str]]] = {}   # base key → [(sort id, owner)]
     for s in series:
-        last = re.sub(r"[^a-z]", "", s["authors"][0].split()[-1].lower())
-        base = f"{last}{s['years'][-1] if s['years'] else 'nd'}{_words(s['name'], 3)}"
-        bases.setdefault(base, []).append(("s:" + s["slug"], "s:" + s["slug"]))
+        for it in s["items"]:
+            it["series_page"] = f"series/{s['slug']}/"
+    cited_by_series = {i["id"] for s in series if s["citable"] for i in s["items"]}
+
+    owners: list[tuple[str, str]] = []   # (owner, base key)
+    for s in series:
+        if s["citable"]:
+            last = re.sub(r"[^a-z]", "", s["authors"][0].split()[-1].lower())
+            owners.append(("s:" + s["slug"], f"{last}{s['years'][-1] if s['years'] else 'nd'}{_words(s['name'], 3)}"))
     for it in items:
-        if it["id"] not in in_series:
-            bases.setdefault(item_key_base(it), []).append((it["id"], it["id"]))
-    keys = {}
-    for base, owners in bases.items():
-        for n, (_, owner) in enumerate(sorted(owners)):
-            keys[owner] = base if len(owners) == 1 else base + "abcdefghijklmnopqrstuvwxyz"[n]
+        if it["id"] not in cited_by_series and not it.get("version_of"):
+            owners.append((it["id"], item_key_base(it)))
+    keys = {o: locked[o] for o, _ in owners if o in locked}
+    used = set(keys.values())
+    for o, base in sorted(owners):
+        if o in keys:
+            continue
+        key, n = base, 0
+        while key in used:
+            key = base + "abcdefghijklmnopqrstuvwxyz"[n]
+            n += 1
+        keys[o] = key
+        used.add(key)
 
     entries = []
     for s in series:
-        s["bibtex"] = series_bibtex(s, keys["s:" + s["slug"]])
-        entries.append(s["bibtex"])
-        for it in s["items"]:
-            it["bibtex"] = s["bibtex"]
-            it["series_page"] = f"series/{s['slug']}/"
+        if s["citable"]:
+            s["bibtex"] = series_bibtex(s, keys["s:" + s["slug"]])
+            entries.append(s["bibtex"])
+            for it in s["items"]:
+                it["bibtex"] = s["bibtex"]
+                it["cited_as_series"] = True
     for it in items:
-        if it["id"] not in in_series:
+        if it["id"] in keys:
             it["bibtex"] = item_bibtex(it, site_url, keys[it["id"]])
             entries.append(it["bibtex"])
-    return series, entries
+    for it in items:
+        orig = by_id.get(it.get("version_of") or "")
+        if orig:
+            it["bibtex"] = orig["bibtex"]
+            it["canonical_page"] = f"items/{orig['id']}/"
+            it["cited_as_series"] = False
+    locked.update(keys)
+    return series, entries, locked
 
 
 # ---------- pages ----------
@@ -197,17 +228,16 @@ PERMISSIONS_HTML = (
     "<p>Unless a deck says otherwise, the slides and notes here are © Zlatko K. Minev and "
     f"shared under <a href=\"{LICENSE_URL}\">CC BY-NC-ND 4.0</a>: you're welcome to read, "
     "download and share them, unchanged and non-commercially, with credit and a link back. "
-    "Want a slide or figure for your own talk, course or paper? Please ask; the answer is "
-    "usually yes.</p><p>Some slides include figures, photos, logos or excerpts from other "
-    "people and institutions, credited where they appear. Those aren't mine to license, so "
-    "please ask the original source. Spotted a missing credit? "
+    "Commercial use or a reworked slide or figure in your own talk, course or paper needs "
+    "permission; please ask, the answer is usually yes. If you use something in teaching or a "
+    "publication, I'd love a short note telling me where.</p><p>Some slides include figures, "
+    "photos, logos or excerpts from other people and institutions, credited where they appear. "
+    "Those aren't mine to license, so please ask the original source. Spotted a missing credit? "
     "<a href=\"https://zlatko-minev.com\">Tell me</a> and I'll fix it.</p>")
 DRAFT_NOTE = ("Summary and key points drafted by a language model from the slides, not yet "
               "reviewed by me. The slides are the source.")
 
-_FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
-          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
-          '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,650;1,7..72,500&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">')
+_FONTS = '<link rel="preload" href="../../fonts/literata-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>'
 
 _COPY_JS = """<script>
 document.getElementById("copy-bib").onclick = async (e) => {
@@ -275,11 +305,13 @@ def _cite_block(bib: str, note: str = "") -> str:
 
 
 def item_page(item: dict, site_url: str, pdf_base_abs: str) -> str:
-    url = f"{site_url}items/{item['id']}/"
+    url = f"{site_url}{item.get('canonical_page') or 'items/' + item['id'] + '/'}"
     pdf = pdf_href(item, pdf_base_abs)
     thumb = f"{site_url}{item['thumb']}" if item.get("thumb") else ""
     desc = item.get("description") or item["title"]
-    meta = [
+    # A copy of another item (version_of) carries no Scholar tags: the
+    # original's page is the one to index and cite.
+    meta = [] if item.get("canonical_page") else [
         ("citation_title", item["title"]),
         *[("citation_author", a) for a in authors(item)],
         ("citation_publication_date", item.get("year")),
@@ -307,10 +339,15 @@ def item_page(item: dict, site_url: str, pdf_base_abs: str) -> str:
     draft = f'<p class="draft-note">{DRAFT_NOTE}</p>' if item.get("draft") else ""
     series_note = ""
     if item.get("series_page"):
+        how = ("; cited as one entry below" if item.get("cited_as_series")
+               else "" if item.get("canonical_page") else "; each deck is cited on its own")
         series_note = (f'<p class="ip-note">Part of the series <a href="../../{_e(item["series_page"])}">'
-                       f'{_e(item["series"])}</a>, cited as one entry below.</p>')
+                       f'{_e(item["series"])}</a>{how}.</p>')
     elif item.get("series"):
         series_note = f'<p class="ip-note">Series: {_e(item["series"])}</p>'
+    if item.get("canonical_page"):
+        series_note += (f'<p class="ip-note">Also published as <a href="../../{_e(item["canonical_page"])}">'
+                        "a tech note</a>; please cite that.</p>")
     thumb_html = (f'<a class="ip-thumb" href="{_e(pdf)}"><img src="../../{_e(item["thumb"])}" '
                   f'alt="First page of {_e(item["title"])}"{_wh(item)}></a>' if item.get("thumb") else "")
     body = f"""  <p class="eyebrow">{_e(SHELF_NAME.get(item.get('shelf'), ''))}</p>
@@ -356,7 +393,7 @@ def series_page(s: dict, site_url: str) -> str:
   <div class="ip-grid ip-grid-single">
     <div class="ip-body">
       <ol class="ip-list">{rows}</ol>
-      {_cite_block(s['bibtex'])}
+      {_cite_block(s['bibtex']) if s.get('bibtex') else '<h2 class="ip-h">Cite</h2><p class="ip-note">These decks were given at different events, so each is cited on its own: open a deck for its BibTeX.</p><h2 class="ip-h">Reuse</h2><div class="ip-perm">' + PERMISSIONS_HTML + '</div>'}
     </div>
   </div>"""
     return _page(f"{s['name']} · {SITE_NAME}", desc, s["url"], thumb, meta, "../../", body)
@@ -369,6 +406,29 @@ def sitemap(items: list[dict], series: list[dict], site_url: str) -> str:
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
             f"{body}\n</urlset>\n")
+
+
+def atom_feed(items: list[dict], site_url: str, limit: int = 40) -> str:
+    """Atom feed, newest first by ``added`` date (else year). Dates come from
+    the data, never the clock, so builds stay deterministic."""
+    def when(i: dict) -> str:
+        return i.get("added") or (f"{i['year']}-01-01" if i.get("year") else "2011-01-01")
+    its = sorted((i for i in items if not i.get("version_of")), key=lambda i: (when(i), i["id"]), reverse=True)[:limit]
+    updated = when(its[0]) if its else "2011-01-01"
+    entries = "".join(
+        f"""  <entry>
+    <title>{_e(i['title'])}</title>
+    <id>{_e(site_url)}items/{_e(i['id'])}/</id>
+    <link href="{_e(site_url)}items/{_e(i['id'])}/"/>
+    <updated>{when(i)}T00:00:00Z</updated>
+    {''.join(f'<author><name>{_e(a)}</name></author>' for a in authors(i))}
+    <summary>{_e(i.get('description') or i['title'])}</summary>
+  </entry>
+""" for i in its)
+    return ('<?xml version="1.0" encoding="utf-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom">\n'
+            f"  <title>{SITE_NAME}</title>\n  <subtitle>New talks, lectures and notes by Zlatko K. Minev</subtitle>\n"
+            f'  <link href="{_e(site_url)}"/>\n  <link rel="self" href="{_e(site_url)}feed.xml"/>\n'
+            f"  <id>{_e(site_url)}</id>\n  <updated>{updated}T00:00:00Z</updated>\n{entries}</feed>\n")
 
 
 def robots(site_url: str) -> str:

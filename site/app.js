@@ -166,11 +166,15 @@ const pathURL = (file) => file.split("/").map(encodeURIComponent).join("/");
 const pdfURL = (it) => LIB.pdf_base + pathURL(it.file);
 const plural = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
 
+// "New" for 120 days after the date a deck was added to the notebook.
+const isNew = (it) => it.added && Date.now() - Date.parse(it.added) < 120 * 864e5;
+
 function card(it, badge = "") {
+  if (isNew(it)) badge = `<span class="new-pill">New</span>` + badge;
   const meta = [it.year || "undated", it.pages ? it.pages + " pp" : null, LEVELS[it.level]].filter(Boolean).join(" · ");
   const wh = it.thumb_wh ? ` width="${it.thumb_wh[0]}" height="${it.thumb_wh[1]}"` : "";
   return `<article class="card" data-id="${esc(it.id)}">
-    <div class="thumb">${it.thumb ? `<img src="${esc(it.thumb)}" alt=""${wh} loading="lazy" decoding="async">` : ""}</div>
+    <div class="thumb">${it.thumb ? `<img src="${esc(it.thumb_sm || it.thumb)}"${it.thumb_sm ? ` srcset="${esc(it.thumb_sm)} 360w, ${esc(it.thumb)} 640w" sizes="(min-width: 1240px) 300px, (min-width: 960px) 25vw, (min-width: 600px) 45vw, 92vw"` : ""} alt=""${wh} loading="lazy" decoding="async">` : ""}</div>
     <div class="card-body">
       <div class="kind">${badge}<span class="type k-${esc(it.shelf)}"><span class="dot"></span>${esc(kindLabel(it))}</span><span>${esc(meta)}</span></div>
       <h3><a class="card-link" href="${esc(it.page)}">${highlight(it.title)}</a></h3>
@@ -372,9 +376,10 @@ function openItem(id, push = true) {
     (url !== gh ? `<a class="btn quiet" href="${esc(gh)}" target="_blank" rel="noopener">View on GitHub</a>` : "");
   $("#d-cite").hidden = true;
   $("#d-bib").textContent = it.bibtex || "";
-  $("#d-citepage").href = it.series_page || it.page || "#";
-  $("#d-citepage").textContent = it.series_page ? "Series page" : "Citation page";
-  $("#d-cite-note").textContent = it.series_page ? `Part of “${it.series}”, cited as one series:` : "";
+  $("#d-citepage").href = it.canonical_page || (it.cited_as_series ? it.series_page : it.page) || "#";
+  $("#d-citepage").textContent = it.cited_as_series && !it.canonical_page ? "Series page" : "Citation page";
+  $("#d-cite-note").textContent = it.version_of ? "Also published as a tech note; cite that:"
+    : it.cited_as_series ? `Part of “${it.series}”, cited as one series:` : "";
   $("#d-summary").textContent = it.summary || it.description || "";
   $("#d-points").innerHTML = (it.key_points || []).map((p) => `<li>${esc(p)}</li>`).join("");
   $("#d-draft").hidden = !it.draft;

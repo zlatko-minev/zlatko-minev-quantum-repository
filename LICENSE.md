@@ -12,16 +12,19 @@ This work is licensed under a [Creative Commons Attribution-NonCommercial-NoDeri
 - NonCommercial — You may not use the material for commercial purposes.
 - NoDerivatives — If you remix, transform, or build upon the material, you may not distribute the modified material.
 
-## Additional restrictions:
-- The graphics, images, and visual elements in this repository may not be used in publications without explicit permission from the author.
-
 A full copy of this license is available at: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
 
-## Permissions
+## Commercial use and adaptations
 
-Requests to reuse material beyond these terms (for example a slide or figure in
-your own talk, course or publication) are welcome; please get in touch through
+Commercial use, and adapted versions (for example a slide or figure reworked
+into your own talk, course or publication), need permission. Requests are
+welcome and usually granted; please get in touch through
 https://zlatko-minev.com.
+
+## A request (not a license condition)
+
+If you use this material in teaching, a talk or a publication, I'd appreciate a
+short note telling me where. It helps me see what is useful.
 
 ## Third-party material
 

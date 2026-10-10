@@ -13,7 +13,7 @@ Quick reference:
 python3 tools/build_catalog.py       # regenerate catalog.json (never hand-edit it)
 python3 tools/make_thumbnails.py     # thumbnails for new items
 python3 tools/check_sizes.py         # size guard (CI runs it too)
-python3 tools/build_site.py --serve  # preview the site on :8000
+python3 tools/build_site.py --serve  # preview on :8000 (commit tools/bibkeys.json if it changes)
 ```
 
 Curated metadata (titles, series, summaries) goes in

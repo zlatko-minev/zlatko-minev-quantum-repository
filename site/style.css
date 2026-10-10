@@ -1,4 +1,14 @@
 [hidden] { display: none !important; }
+/* Self-hosted fonts (SIL OFL 1.1, licenses in fonts/), latin + greek subsets. */
+@font-face { font-family: "Literata"; src: url(fonts/literata-latin-opsz-normal.woff2) format("woff2"); font-weight: 200 900; font-style: normal; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Literata"; src: url(fonts/literata-latin-opsz-italic.woff2) format("woff2"); font-weight: 200 900; font-style: italic; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Public Sans"; src: url(fonts/public-sans-latin-400-normal.woff2) format("woff2"); font-weight: 400; font-style: normal; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Public Sans"; src: url(fonts/public-sans-latin-500-normal.woff2) format("woff2"); font-weight: 500; font-style: normal; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Public Sans"; src: url(fonts/public-sans-latin-600-normal.woff2) format("woff2"); font-weight: 600; font-style: normal; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "JetBrains Mono"; src: url(fonts/jetbrains-mono-latin-400-normal.woff2) format("woff2"); font-weight: 400; font-style: normal; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "JetBrains Mono"; src: url(fonts/jetbrains-mono-latin-500-normal.woff2) format("woff2"); font-weight: 500; font-style: normal; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "JetBrains Mono"; src: url(fonts/jetbrains-mono-greek-400-normal.woff2) format("woff2"); font-weight: 400; font-style: normal; font-display: swap; unicode-range: U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF; }
+@font-face { font-family: "JetBrains Mono"; src: url(fonts/jetbrains-mono-greek-500-normal.woff2) format("woff2"); font-weight: 500; font-style: normal; font-display: swap; unicode-range: U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF; }
 /* Layout: masthead, sticky toolbar, filter rail + card grid; detail in a dialog.
    Palette: cold lab-bench neutrals with a copper accent (coax, cavities, cryo plates). */
 :root {
@@ -316,3 +326,4 @@ dialog::backdrop { background: rgb(8 12 18 / .55); }
 /* static (no-JS / crawler) list, replaced by the grid */
 .static-list { columns: 2 320px; margin: 0; padding-left: 18px; font-size: 14px; }
 .static-list li { margin-bottom: 4px; break-inside: avoid; }
+.new-pill { font: 600 10.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink); background: var(--accent); border-radius: 4px; padding: 3px 5px; }

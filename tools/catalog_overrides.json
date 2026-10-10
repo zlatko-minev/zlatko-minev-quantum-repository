@@ -133,7 +133,7 @@
     "title": "Superconducting Qubits 101: cQED Quantum Hardware",
     "series": "Superconducting Qubits 101",
     "venue": "Quantum Device Workshop (Beginner)",
-    "description": "From atoms to artificial atoms: how a transmon qubit arises from an LC oscillator plus a Josephson junction, and how cQED devices are modeled.",
+    "description": "From atoms to artificial atoms: how a transmon qubit arises from an LC oscillator plus a Josephson junction, and how circuit-QED (cQED) devices are modeled.",
     "summary": "A beginner lecture that builds the superconducting qubit from the ground up, starting with atomic energy levels and the classical LC circuit and moving to the quantum harmonic oscillator and the transmon as a nonlinear oscillator. It closes with a survey of quantization methods (lumped, impedance, energy-participation) and chip designs made by the community with Qiskit Metal.",
     "key_points": [
       "Qubits as anharmonic oscillators: atoms vs. superconducting circuits, and why cQED needs low loss, low temperature and the Josephson junction",
@@ -165,7 +165,7 @@
     "title": "Your First Superconducting Qubit: Intro to cQED, Part II",
     "series": "Superconducting Qubits 101",
     "venue": "Flagship Quantum Device Workshop (Beginner)",
-    "description": "Part II of an intro to cQED: quantizing the LC oscillator, the transmon's Kerr Hamiltonian, and EPR-based modeling of qubit-resonator devices.",
+    "description": "Part II of an intro to circuit QED: quantizing the LC oscillator, the transmon's Kerr Hamiltonian, and energy-participation (EPR) modeling of qubit-resonator devices.",
     "summary": "Second half of a beginner cQED lecture titled \"Your First Superconducting Qubit\". It goes from Dirac's canonical quantization and ladder operators to the transmon treated as a weakly nonlinear (Kerr) oscillator, then shows how real devices are modeled: classical EM simulation, quantization (with energy-participation ratios as the worked example), and the effective Hamiltonian with dispersive shifts. Backup slides hold hand-written notes on energy, flux fluctuations and the compactness of the junction phase.",
     "key_points": [
       "Canonical quantization: Poisson brackets to commutators, ladder operators, Husimi Q phase-space pictures",
@@ -210,7 +210,7 @@
   "superconducting-qubits-101-quantum-hardware-cqed-day-1-qiskit-global-summer-school-2020-minev": {
     "title": "Superconducting Qubits 101: Quantum Hardware & cQED, Day 1",
     "series": "Superconducting Qubits 101",
-    "description": "Making a first qubit from an oscillator: classical LC circuits, canonical quantization, and the quantum harmonic oscillator as the basis of cQED.",
+    "description": "Making a first qubit from an oscillator: classical LC circuits, canonical quantization, and the quantum harmonic oscillator as the basis of circuit QED.",
     "summary": "The first cQED lecture of the QGSS 2020 series moves from the big picture of qubits in the cloud and at 15 mK to atoms, artificial atoms, and the transmon. It works through circuit electromagnetism and the classical LC oscillator, then quantizes it with Dirac's procedure, covering ladder operators, flux and charge fluctuations, wavefunctions, and phase-space pictures, with pointers to hands-on lab work.",
     "key_points": [
       "Qubit from atom or anharmonic oscillator; cQED ingredients",
@@ -225,7 +225,7 @@
   "superconducting-qubits-101-quantum-hardware-cqed-day-2-qiskit-global-summer-school-2020-minev": {
     "title": "Superconducting Qubits 101: Quantum Hardware & cQED, Day 2",
     "series": "Superconducting Qubits 101",
-    "description": "Second cQED lecture: transmon as a qubit, energy-participation ratios, qubit control and noise, and dispersive readout.",
+    "description": "Second circuit-QED lecture: the transmon as a qubit, energy-participation ratios, qubit control and noise, and dispersive readout.",
     "summary": "The second of two summer-school lectures on superconducting qubits. It restricts the transmon to its two lowest levels to get the qubit Pauli operators, introduces the energy-participation ratio, and discusses control lines, T1/T2 and the fluctuation-dissipation link. A primer on quantum measurement then leads to qubit-resonator coupling, the cross-Kerr Hamiltonian from EPR, and dispersive readout of Z.",
     "key_points": [
       "Transmon Kerr Hamiltonian and truncation to the qubit subspace",
@@ -319,7 +319,7 @@
   "intro-to-quantum-measurements-part-i-ideal-measurements-minev-2023": {
     "title": "Intro to Quantum Measurements, Part I: Ideal Measurements",
     "series": "Quantum Measurements",
-    "description": "Tutorial on ideal quantum measurement: POVMs, the Born rule, shot statistics, error bars, and measuring in rotated bases.",
+    "description": "Tutorial on ideal quantum measurement: generalized measurements (POVMs), the Born rule, shot statistics, error bars, and measuring in rotated bases.",
     "summary": "The first part of a measurement tutorial series (ideal, noisy, mitigated), motivated by readout error in a 50-qubit experiment. It formalizes the quantum-to-classical 'meter' with measurement operators and the Born rule, works the single-qubit case, and then treats the statistics of finite shots: unbiased estimators, Chernoff-Hoeffding bounds, Bayesian and likelihood estimates, and bootstrapping. It closes with how basis rotations map other measurements onto the computational basis.",
     "key_points": [
       "Measurement operators, POVMs vs. projective measurements, and the quantum-to-classical rule",
@@ -352,7 +352,7 @@
   "intro-to-quantum-noise-bonus-coherent-zz-error-qiskit-global-summer-school-2023-minev": {
     "title": "Coherent ZZ Error (bonus)",
     "series": "Intro to Quantum Noise (QGSS 2023)",
-    "description": "A one-page bonus note on coherent ZZ errors from an introduction to quantum noise.",
+    "description": "A one-page bonus note on coherent ZZ errors (an always-on qubit-qubit coupling) from an introduction to quantum noise.",
     "summary": "A single handwritten page on coherent ZZ error, a bonus item in an introduction to quantum noise lecture; the page is the 2021 bonus note, reused.",
     "key_points": [
       "Coherent (unitary) errors as a class of quantum noise",
@@ -383,7 +383,8 @@
     "slug": "2023-estimating-observables-from-bitstrings-t21",
     "tags_remove": [
       "noise"
-    ]
+    ],
+    "version_of": "t21-estimating-observables-from-sampled-bit-strings"
   },
   "intro-to-quantum-noise-bonus-cheat-sheet-t11-7-pictorial-digital-quanutm-circuits-qiskit-global-summer-school": {
     "tags": [
@@ -406,7 +407,8 @@
     "slug": "2023-cheat-sheet-pictorial-digital-quantum-circuits-t11-7",
     "tags_remove": [
       "noise"
-    ]
+    ],
+    "version_of": "t11-7-pictorial-digital-quantum-circuits"
   },
   "intro-to-quantum-noise-main-lecture-intro-to-quantum-noise-qiskit-global-summer-school-2022-minev": {
     "tags": [
@@ -429,7 +431,7 @@
   "intro-to-quantum-noise-bonus-coherent-zz-error-qiskit-global-summer-school-2022-minev": {
     "title": "Coherent ZZ Error (bonus)",
     "series": "Intro to Quantum Noise (QGSS 2022)",
-    "description": "A single bonus page on coherent ZZ errors between qubits, from an introductory lecture on quantum noise.",
+    "description": "A single bonus page on coherent ZZ errors (an always-on coupling between qubits), from an introductory lecture on quantum noise.",
     "summary": "A one-page hand-written bonus note on coherent ZZ error, part of the Introduction to Quantum Noise lectures; the page is the 2021 bonus note, reused.",
     "key_points": [
       "Coherent (unitary) errors as distinct from incoherent noise",
@@ -457,7 +459,7 @@
   "intro-to-quantum-noise-note-incoherent-noise-qiskit-global-summer-school-2022-minev": {
     "title": "Incoherent Noise (note)",
     "series": "Intro to Quantum Noise (QGSS 2022)",
-    "description": "Handwritten lecture note on incoherent noise from the introduction-to-quantum-noise lectures at QGSS 2022.",
+    "description": "Handwritten lecture note on incoherent noise from the introduction-to-quantum-noise lectures at the Qiskit Global Summer School 2022.",
     "summary": "A one-page note from the Qiskit Global Summer School 2022 noise lectures on incoherent noise.",
     "key_points": [
       "Incoherent (stochastic) noise on qubits",
@@ -486,7 +488,7 @@
   "intro-to-quantum-noise-note-measurement-noise-qiskit-global-summer-school-2022-minev": {
     "title": "Measurement Noise (note)",
     "series": "Intro to Quantum Noise (QGSS 2022)",
-    "description": "Handwritten lecture note on measurement (readout) error, with a visualization of readout error, from QGSS 2022.",
+    "description": "Handwritten lecture note on measurement (readout) error, with a visualization of readout error, from the Qiskit Global Summer School 2022.",
     "summary": "A two-page note from the introduction to quantum noise lectures at the Qiskit Global Summer School 2022 on quantum simulation.",
     "key_points": [
       "Measurement (readout) error in qubit experiments",
@@ -503,7 +505,7 @@
     ],
     "title": "Intro to Quantum Noise",
     "series": "Intro to Quantum Noise (QGSS 2021)",
-    "description": "Introductory lecture on quantum noise: coherent gate errors, projection noise, SPAM errors, and incoherent noise channels.",
+    "description": "Introductory lecture on quantum noise: coherent gate errors, projection noise, state-preparation and measurement (SPAM) errors, and incoherent noise channels.",
     "summary": "Built around a 'hello world' experiment that flips a qubit d times, this lecture takes apart each source of disagreement between ideal and measured data. It shows how a miscalibrated rotation produces coherent error that grows quadratically, how finite shots give projection noise, how state-preparation and readout errors enter, and how bit-flip, phase-damping, depolarizing and stochastic Pauli channels describe incoherent noise. Exercises on error-amplification sequences and sample variance are included.",
     "key_points": [
       "Gates from time evolution and a miscalibrated RX(π+ε) gate on the Bloch sphere",
@@ -518,7 +520,7 @@
   "intro-to-quantum-noise-coherent-zz-error-qiskit-global-summer-school-2021-minev": {
     "title": "Coherent ZZ Error",
     "series": "Intro to Quantum Noise (QGSS 2021)",
-    "description": "A one-page bonus note on coherent ZZ errors from the QGSS 2021 introduction to quantum noise.",
+    "description": "A one-page bonus note on coherent ZZ errors (an always-on qubit-qubit coupling) from the 2021 Qiskit Global Summer School noise lectures.",
     "summary": "A single page of notes on coherent ZZ error, a bonus part of the introduction to quantum noise lecture series.",
     "key_points": [
       "Coherent (unitary) errors as a class of quantum noise",
@@ -703,7 +705,8 @@
     "slug": "2023-cheat-sheet-digital-quantum-circuits-t11-7",
     "tags_remove": [
       "error-mitigation"
-    ]
+    ],
+    "version_of": "t11-7-pictorial-digital-quantum-circuits"
   },
   "quantum-error-mitigation-minev-bonus-cheat-sheet-tail-bounds-t11-9-boulder-summer-school-2023-minev": {
     "tags": [
@@ -726,7 +729,8 @@
     "slug": "2023-cheat-sheet-tail-bounds-t11-9",
     "tags_remove": [
       "error-mitigation"
-    ]
+    ],
+    "version_of": "t11-9-concentration-inequalities-and-tail-bounds"
   },
   "intro-to-pauli-twirling-minev-part-i-tutorial": {
     "title": "Primer on Pauli Twirling, Part I",
@@ -783,7 +787,7 @@
     "title": "Primer on Pauli Twirling, Part IV",
     "series": "Primer on Pauli Twirling (tutorial)",
     "venue": null,
-    "description": "Later sections of a Pauli twirling primer: unitary t-designs, Pauli and chi-matrix noise models, the PTM, and twirling amplitude damping.",
+    "description": "Later sections of a Pauli twirling primer: unitary t-designs, Pauli and chi-matrix noise models, the Pauli transfer matrix (PTM), and twirling amplitude damping.",
     "summary": "Part of a primer on Pauli twirling covering its optional advanced material and a noise-modeling refresher. Classical spherical designs motivate unitary t-designs and where they appear (average fidelity, RB, random twirling); noise is then written as a Pauli channel, a process (chi) matrix and a Pauli transfer matrix, with amplitude damping shown raw and twirled.",
     "key_points": [
       "Overview of the twirling primer: operational twirling, why it works, why the Pauli group",

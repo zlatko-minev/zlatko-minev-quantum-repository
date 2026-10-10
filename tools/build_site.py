@@ -33,7 +33,7 @@ import re
 import shutil
 from pathlib import Path
 
-from site_pages import assign_citations, item_page, robots, series_page, sitemap
+from site_pages import assign_citations, atom_feed, item_page, robots, series_page, sitemap
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SRC = REPO_ROOT / "site"
@@ -105,8 +105,11 @@ def build_library(pdf_base: str) -> dict:
             "size": it.get("size_bytes"),
             "file": it["file"],
             "links": it.get("links") or [],   # [{label, url}]: paper, video, ...
+            "version_of": it.get("version_of"),
+            "added": it.get("added"),
             "thumb": f"thumbs/{it['id']}.jpg" if thumb.exists() else None,
             "thumb_wh": jpeg_size(thumb) if thumb.exists() else None,
+            "thumb_sm": f"thumbs/sm/{it['id']}.jpg" if (SRC / "thumbs" / "sm" / f"{it['id']}.jpg").exists() else None,
             "description": it.get("description") or tidy(a.get("short_description")),
             "summary": it.get("summary") or tidy(a.get("summary")),
             "key_points": it.get("key_points") or a.get("key_points") or [],
@@ -164,7 +167,12 @@ def main() -> int:
     lib = build_library(pdf_base)
     lib["site_url"] = site_url
     pdf_abs = site_url if args.with_pdfs else (pdf_base or GITHUB_PDF_BASE)
-    series, bib_all = assign_citations(lib["items"], site_url)
+    keys_path = REPO_ROOT / "tools" / "bibkeys.json"
+    locked = json.loads(keys_path.read_text()) if keys_path.exists() else {}
+    series, bib_all, keys = assign_citations(lib["items"], site_url, locked)
+    if keys != locked:   # new items get frozen keys; commit tools/bibkeys.json
+        keys_path.write_text(json.dumps(dict(sorted(keys.items())), indent=1) + "\n")
+        print(f"Updated {keys_path.relative_to(REPO_ROOT)} ({len(keys) - len(locked)} new key(s)); commit it.")
     for it in lib["items"]:
         it["page"] = f"items/{it['id']}/"
         page = OUT / "items" / it["id"] / "index.html"
@@ -178,6 +186,7 @@ def main() -> int:
     (OUT / "citations.bib").write_text("\n\n".join(bib_all) + "\n")
     (OUT / "sitemap.xml").write_text(sitemap(lib["items"], series, site_url))
     (OUT / "robots.txt").write_text(robots(site_url))
+    (OUT / "feed.xml").write_text(atom_feed(lib["items"], site_url))
     (OUT / "library.json").write_text(
         json.dumps(lib, ensure_ascii=False, separators=(",", ":")))
     (OUT / ".nojekyll").write_text("")
