@@ -34,8 +34,8 @@ const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 let LIB = null;
-// group: null = default (on: decks are shown in their series)
-const state = { q: "", shelf: "", tags: new Set(), years: new Set(), levels: new Set(), sort: "new", group: null };
+// group: null = default (on: each series collapses to one cover card)
+const state = { q: "", shelf: "", tags: new Set(), years: new Set(), levels: new Set(), sort: "new", group: null, expanded: new Set() };
 const grouped = () => (state.group ?? true);
 
 // ---------- URL state ----------
@@ -160,20 +160,44 @@ function renderYears() {
   axis.innerHTML = `<span>${lo}</span><button class="chip" type="button" data-k="undated" aria-pressed="${state.years.has("undated")}">Undated<small>${counts.undated || 0}</small></button><span>${hi}</span>`;
 }
 
-function groupsOf(list) {
-  const groups = new Map();
-  for (const it of list) {
-    const g = it.series || (it.category === "tech-note" ? "Tech notes" : "");
-    if (!groups.has(g)) groups.set(g, []);
-    groups.get(g).push(it);
+// Bonus material (cheat sheets, derivations, short notes) is never a series' cover deck.
+const isExtra = (it) => it.tags.some((t) => t === "reference" || t === "cheat-sheet" || t === "derivation")
+  || /\((bonus|note)\)/.test(it.title);
+
+// Collapse each series (2+ matching decks) to one cover card, placed where the
+// series' best-ranked deck falls in the current sort, so series and standalone
+// decks stay interleaved in sort order. Expanded series list all their decks.
+function collapse(list) {
+  const members = new Map();
+  for (const it of list) if (it.series) {
+    if (!members.has(it.series)) members.set(it.series, []);
+    members.get(it.series).push(it);   // already in sort order
   }
-  // Series with 2+ items first, newest series first; singles pooled at the end.
-  const multi = [], singles = [];
-  for (const [g, its] of groups) (g && its.length > 1 ? multi.push([g, its]) : singles.push(...its));
-  const newest = (its) => Math.max(0, ...its.map((i) => i.year || 0));
-  multi.sort((a, b) => newest(b[1]) - newest(a[1]) || a[0].localeCompare(b[0]));
-  if (singles.length) multi.push([multi.length ? "Standalone decks" : "", singles]);
-  return multi;
+  const out = [], done = new Set();
+  for (const it of list) {
+    const ms = it.series && members.get(it.series);
+    if (!ms || ms.length < 2) { out.push({ it }); continue; }
+    if (done.has(it.series)) continue;
+    done.add(it.series);
+    const cover = ms.find((m) => !isExtra(m)) || ms[0];
+    const open = state.expanded.has(it.series);
+    out.push({ it: cover, stack: { series: it.series, n: ms.length, open, years: yearSpan(ms) } });
+    if (open) for (const m of ms) if (m !== cover) out.push({ it: m, member: true });
+  }
+  return out;
+}
+
+function cell({ it, stack, member }) {
+  if (member) return `<div class="cell member">${card(it)}</div>`;
+  if (!stack) return `<div class="cell">${card(it)}</div>`;
+  const label = stack.open ? "Show fewer" : `+${stack.n - 1} more in this series`;
+  return `<div class="cell stack${stack.open ? " open" : ""}">
+    <div class="stack-cards">${card(it)}</div>
+    <button class="stack-more" type="button" data-series="${esc(stack.series)}" aria-expanded="${stack.open}">
+      <span class="stack-name">${esc(stack.series)}</span>
+      <span class="stack-count">${stack.years ? esc(stack.years) + " · " : ""}${label}</span>
+    </button>
+  </div>`;
 }
 
 function yearSpan(its) {
@@ -200,16 +224,8 @@ function render() {
     (state.shelf ? ` · <button class="linkish" type="button" id="all-shelves">show everything</button>` : "");
   $("#empty").hidden = list.length > 0;
 
-  let html = "";
-  if (grouped()) {
-    for (const [g, its] of groupsOf(list)) {
-      const head = g ? `<h2 class="group-h">${esc(g)} <span class="yrs">${yearSpan(its)}</span> <small>${its.length} ${its.length === 1 ? "deck" : "decks"}</small></h2>` : "";
-      html += `${head}<div class="grid">${its.map(card).join("")}</div>`;
-    }
-  } else {
-    html = `<div class="grid">${list.map(card).join("")}</div>`;
-  }
-  $("#grid").innerHTML = html;
+  const cells = grouped() ? collapse(list) : list.map((it) => ({ it }));
+  $("#grid").innerHTML = `<div class="grid">${cells.map(cell).join("")}</div>`;
   writeURL();
 }
 
@@ -403,7 +419,12 @@ function wire() {
     openItem(pick.id);
   });
   $("#trace").addEventListener("click", () => drawTrace((Math.random() * 1e9) | 0));
-  $("#grid").addEventListener("click", (e) => { const c = e.target.closest(".card"); if (c) openItem(c.dataset.id); });
+  $("#grid").addEventListener("click", (e) => {
+    const more = e.target.closest(".stack-more");
+    if (more) { toggle(state.expanded, more.dataset.series); render(); return; }
+    const c = e.target.closest(".card");
+    if (c) openItem(c.dataset.id);
+  });
   $("#d-related").addEventListener("click", (e) => { const b = e.target.closest("button[data-id]"); if (b) openItem(b.dataset.id); });
   const dlg = $("#detail");
   $("#close").addEventListener("click", () => dlg.close());

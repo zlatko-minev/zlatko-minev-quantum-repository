@@ -243,3 +243,19 @@ dialog::backdrop { background: rgb(8 12 18 / .55); }
 .ip-note { margin: 0; color: var(--muted); font-size: 14px; }
 .d-cite-note { margin: 0; font-size: 13px; color: var(--muted); }
 .d-cite-note:empty { display: none; }
+
+/* series stacks: one cover card per series, with paper-stack layers behind */
+.cell { display: flex; flex-direction: column; min-width: 0; }
+.cell > .card { flex: 1; }
+.stack-cards { position: relative; isolation: isolate; flex: 1; display: flex; margin-right: 8px; }
+.stack-cards > .card { flex: 1; position: relative; z-index: 0; }
+.stack:not(.open) .stack-cards::before, .stack:not(.open) .stack-cards::after { content: ""; position: absolute; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.stack:not(.open) .stack-cards::before { inset: 4px -4px -4px 4px; z-index: -1; }
+.stack:not(.open) .stack-cards::after { inset: 8px -8px -8px 8px; z-index: -2; opacity: .7; }
+.stack-more { margin-top: 14px; }
+.stack-more { display: grid; gap: 2px; text-align: left; margin-top: 8px; padding: 8px 12px; border: 1px dashed var(--line); border-radius: 8px; background: transparent; cursor: pointer; color: var(--ink); min-width: 0; }
+.stack-more:hover { border-style: solid; border-color: var(--accent); }
+.stack-name { font: 650 14px/1.3 var(--f-display); overflow-wrap: anywhere; }
+.stack-count { font: 500 12px/1.4 var(--f-mono); color: var(--accent); }
+.stack.open .stack-more { border-style: solid; border-color: var(--accent); background: var(--accent-soft); }
+.member > .card { border-left: 3px solid var(--accent); }

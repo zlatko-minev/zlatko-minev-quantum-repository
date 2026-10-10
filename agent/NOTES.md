@@ -164,7 +164,9 @@ unavoidable, move the item's override entry to the new id in the same commit.
   beyond `tools/build_site.py`, which writes `_site/library.json` (catalog +
   fallback AI fields) and copies the site.
 - State lives in the URL (`?shelf=&q=&tag=&year=&level=&sort=&group=`, item as
-  `#<id>`). Decks are grouped by series by default.
+  `#<id>`). By default each series collapses to one cover card (its first
+  non-bonus deck in the current sort) with "+N more in this series"; series
+  and standalone decks stay interleaved in sort order.
 - Hero: the isometric transmon (`initTransmon()` in `site/app.js`, scroll- and
   time-driven, paused off-screen, static under reduced motion) and the
   quantum-jump trace.
