@@ -1,25 +1,340 @@
 {
   "_comment": "Hand-curated metadata merged on top of auto-inferred fields by build_catalog.py. Key = item id. 'tags' are UNIONed with auto tags; any other key (description, featured, year, venue...) overrides. Edit freely; safe across regenerations.",
-
   "2020-mit-tech-review-emerging-technology-emtech-minev-broad-talk": {
-    "tags": ["overview", "outreach"],
-    "venue": "MIT Technology Review EmTech"
+    "tags": [
+      "overview",
+      "outreach"
+    ],
+    "venue": "MIT Technology Review EmTech",
+    "title": "To Catch and Reverse a Quantum Jump Mid-Flight (broad talk)"
   },
   "2023-machine-learning-for-practical-quantum-error-mitigation-ml-qem-haoran-liao-qiskit-seminar": {
     "speaker": "Haoran Liao",
     "venue": "Qiskit Seminar",
-    "tags": ["featured"]
+    "tags": [
+      "featured"
+    ]
   },
   "t11-7-pictorial-digital-quantum-circuits-minev": {
-    "tags": ["circuits", "reference"]
+    "tags": [
+      "cheat-sheet",
+      "circuits",
+      "reference"
+    ],
+    "title": "Pictorial Digital Quantum Circuits",
+    "note_id": "T11.7"
   },
   "t11-9-concentration-inequalities-and-tail-bounds-minev": {
-    "tags": ["math", "reference"]
+    "tags": [
+      "cheat-sheet",
+      "math",
+      "reference"
+    ],
+    "title": "Concentration Inequalities and Tail Bounds",
+    "note_id": "T11.9"
   },
   "t21-estimating-observables-from-sampled-bit-strings-minev": {
-    "tags": ["estimation", "reference"]
+    "tags": [
+      "estimation",
+      "reference"
+    ],
+    "title": "Estimating Observables from Sampled Bit Strings",
+    "note_id": "T21",
+    "year": 2022
   },
   "t22-bound-sum-of-operators-ala-watrous-minev": {
-    "tags": ["math", "reference"]
+    "tags": [
+      "math",
+      "reference"
+    ],
+    "title": "Bounding a Sum of Operators (à la Watrous)",
+    "note_id": "T22",
+    "year": 2022
+  },
+  "superconducting-qubits-101-cqed-quantum-hardware-minev-quantum-device-workshop-beginner-2026": {
+    "title": "Superconducting Qubits 101: cQED Quantum Hardware",
+    "series": "Superconducting Qubits 101",
+    "venue": "Quantum Device Workshop (Beginner)"
+  },
+  "superconducting-qubits-101-part-i-minev-flagship-quantum-device-workshop-beginner-2025": {
+    "title": "Superconducting Qubits 101, Part I",
+    "series": "Superconducting Qubits 101",
+    "venue": "Flagship Quantum Device Workshop (Beginner)"
+  },
+  "superconducting-qubits-101-part-ii-minev-flagship-quantum-device-workshop-beginner-2025": {
+    "title": "Superconducting Qubits 101, Part II",
+    "series": "Superconducting Qubits 101",
+    "venue": "Flagship Quantum Device Workshop (Beginner)"
+  },
+  "superconducting-qubits-101-cqed-quantum-hardware-minev-cec-icmc-2021": {
+    "title": "Superconducting Qubits 101: cQED Quantum Hardware",
+    "series": "Superconducting Qubits 101"
+  },
+  "superconducting-qubits-101-cqed-quantum-hardware-minev-qiqt-summer-school-2021": {
+    "title": "Superconducting Qubits 101: cQED Quantum Hardware",
+    "series": "Superconducting Qubits 101"
+  },
+  "superconducting-qubits-101-quantum-hardware-cqed-day-1-qiskit-global-summer-school-2020-minev": {
+    "title": "Superconducting Qubits 101: Quantum Hardware & cQED, Day 1",
+    "series": "Superconducting Qubits 101"
+  },
+  "superconducting-qubits-101-quantum-hardware-cqed-day-2-qiskit-global-summer-school-2020-minev": {
+    "title": "Superconducting Qubits 101: Quantum Hardware & cQED, Day 2",
+    "series": "Superconducting Qubits 101"
+  },
+  "a-prelude-to-practical-quantum-computing-minev-global-hackathon-ai-for-good-2025": {
+    "title": "A Prelude to Practical Quantum Computing",
+    "series": "Career & Outreach"
+  },
+  "career-talk-2025-qubit-x-qubit-capstone-short-minev": {
+    "title": "Career Talk (short)",
+    "venue": "Qubit x Qubit Capstone",
+    "series": "Career & Outreach"
+  },
+  "career-talk-2023-for-sophia-economou-class-minev": {
+    "title": "Career Talk",
+    "venue": "Guest lecture, Sophia Economou's class",
+    "series": "Career & Outreach"
+  },
+  "intro-to-noise-mitigation-near-term-algorithms-lecture-1-minev-summer-school-2024": {
+    "title": "Intro to Noise Mitigation for Near-Term Algorithms, Lecture 1",
+    "series": "Intro to Noise Mitigation (Summer School 2024)"
+  },
+  "intro-to-noise-mitigation-near-term-algorithms-lecture-2-minev-summer-school-2024": {
+    "title": "Intro to Noise Mitigation for Near-Term Algorithms, Lecture 2",
+    "series": "Intro to Noise Mitigation (Summer School 2024)"
+  },
+  "intro-to-quantum-measurements-part-i-ideal-measurements-minev-2023": {
+    "title": "Intro to Quantum Measurements, Part I: Ideal Measurements",
+    "series": "Quantum Measurements"
+  },
+  "intro-to-quantum-noise-main-lecture-intro-to-quantum-noise-qiskit-global-summer-school-2023-minev": {
+    "tags": [
+      "lecture"
+    ],
+    "title": "Intro to Quantum Noise (main lecture)",
+    "series": "Intro to Quantum Noise (QGSS 2023)"
+  },
+  "intro-to-quantum-noise-bonus-coherent-zz-error-qiskit-global-summer-school-2023-minev": {
+    "title": "Coherent ZZ Error (bonus)",
+    "series": "Intro to Quantum Noise (QGSS 2023)"
+  },
+  "intro-to-quantum-noise-bonus-estimating-bitstrings-t21-qiskit-global-summer-school-2023-minev": {
+    "tags": [
+      "reference"
+    ],
+    "title": "Estimating Observables from Bitstrings, T21 (bonus)",
+    "series": "Intro to Quantum Noise (QGSS 2023)"
+  },
+  "intro-to-quantum-noise-bonus-cheat-sheet-t11-7-pictorial-digital-quanutm-circuits-qiskit-global-summer-school": {
+    "tags": [
+      "cheat-sheet",
+      "reference"
+    ],
+    "title": "Cheat Sheet: Pictorial Digital Quantum Circuits, T11.7 (bonus)",
+    "series": "Intro to Quantum Noise (QGSS 2023)"
+  },
+  "intro-to-quantum-noise-main-lecture-intro-to-quantum-noise-qiskit-global-summer-school-2022-minev": {
+    "tags": [
+      "lecture"
+    ],
+    "title": "Intro to Quantum Noise (main lecture)",
+    "series": "Intro to Quantum Noise (QGSS 2022)"
+  },
+  "intro-to-quantum-noise-bonus-coherent-zz-error-qiskit-global-summer-school-2022-minev": {
+    "title": "Coherent ZZ Error (bonus)",
+    "series": "Intro to Quantum Noise (QGSS 2022)"
+  },
+  "intro-to-quantum-noise-bonus-state-preparation-noise-qiskit-global-summer-school-2022-minev": {
+    "title": "State Preparation Noise (bonus)",
+    "series": "Intro to Quantum Noise (QGSS 2022)"
+  },
+  "intro-to-quantum-noise-note-incoherent-noise-qiskit-global-summer-school-2022-minev": {
+    "title": "Incoherent Noise (note)",
+    "series": "Intro to Quantum Noise (QGSS 2022)"
+  },
+  "intro-to-quantum-noise-note-measurement-qiskit-global-summer-school-2022-minev": {
+    "title": "Measurement (note)",
+    "series": "Intro to Quantum Noise (QGSS 2022)"
+  },
+  "intro-to-quantum-noise-note-measurement-noise-qiskit-global-summer-school-2022-minev": {
+    "title": "Measurement Noise (note)",
+    "series": "Intro to Quantum Noise (QGSS 2022)"
+  },
+  "intro-to-quantum-noise-intro-to-quantum-noise-qiskit-global-summer-school-2021-minev": {
+    "tags": [
+      "lecture"
+    ],
+    "title": "Intro to Quantum Noise",
+    "series": "Intro to Quantum Noise (QGSS 2021)"
+  },
+  "intro-to-quantum-noise-coherent-zz-error-qiskit-global-summer-school-2021-minev": {
+    "title": "Coherent ZZ Error",
+    "series": "Intro to Quantum Noise (QGSS 2021)"
+  },
+  "intro-to-quantum-noise-incoherent-noise-qiskit-global-summer-school-2021-minev": {
+    "title": "Incoherent Noise",
+    "series": "Intro to Quantum Noise (QGSS 2021)"
+  },
+  "intro-to-quantum-noise-measurement-noise-qiskit-global-summer-school-2021-minev": {
+    "title": "Measurement Noise",
+    "series": "Intro to Quantum Noise (QGSS 2021)"
+  },
+  "intro-to-quantum-noise-projection-noise-v2-qiskit-global-summer-school-2021-minev": {
+    "title": "Projection Noise",
+    "series": "Intro to Quantum Noise (QGSS 2021)"
+  },
+  "intro-to-quantum-noise-state-preparation-noise-qiskit-global-summer-school-2021-minev": {
+    "title": "State Preparation Noise",
+    "series": "Intro to Quantum Noise (QGSS 2021)"
+  },
+  "intro-to-real-quantum-computers-and-noise-minev-summer-lecture-vanderbuilt-2022": {
+    "title": "Intro to Real Quantum Computers and Noise",
+    "venue": "Vanderbilt Summer Lecture",
+    "series": "Quantum Noise"
+  },
+  "quantum-error-mitigation-minev-bss23-lecture-1-boulder-summer-school-2023-minev": {
+    "title": "Quantum Error Mitigation, Lecture 1",
+    "series": "Quantum Error Mitigation (Boulder Summer School 2023)"
+  },
+  "quantum-error-mitigation-minev-bss23-lecture-2-boulder-summer-school-2023-minev": {
+    "title": "Quantum Error Mitigation, Lecture 2",
+    "series": "Quantum Error Mitigation (Boulder Summer School 2023)"
+  },
+  "quantum-error-mitigation-minev-bss23-lecture-3-boulder-summer-school-2023-minev": {
+    "title": "Quantum Error Mitigation, Lecture 3",
+    "series": "Quantum Error Mitigation (Boulder Summer School 2023)"
+  },
+  "quantum-error-mitigation-minev-bss23-pec-derivation-1q-simple-c65b-boulder-summer-school-2023-minev": {
+    "tags": [
+      "derivation"
+    ],
+    "title": "PEC Derivation: Single Qubit, Simple (C65B)",
+    "series": "Quantum Error Mitigation (Boulder Summer School 2023)"
+  },
+  "quantum-error-mitigation-minev-bss23-pec-derivation-full-derivation-c65c-boulder-summer-school-2023-minev": {
+    "tags": [
+      "derivation"
+    ],
+    "title": "PEC Derivation: Full Derivation (C65C)",
+    "series": "Quantum Error Mitigation (Boulder Summer School 2023)"
+  },
+  "quantum-error-mitigation-minev-bonus-cheat-sheet-digital-quantum-circuits-t11-7-boulder-summer-school-2023-min": {
+    "tags": [
+      "cheat-sheet",
+      "reference"
+    ],
+    "title": "Cheat Sheet: Digital Quantum Circuits, T11.7 (bonus)",
+    "series": "Quantum Error Mitigation (Boulder Summer School 2023)"
+  },
+  "quantum-error-mitigation-minev-bonus-cheat-sheet-tail-bounds-t11-9-boulder-summer-school-2023-minev": {
+    "tags": [
+      "cheat-sheet",
+      "reference"
+    ],
+    "title": "Cheat Sheet: Tail Bounds, T11.9 (bonus)",
+    "series": "Quantum Error Mitigation (Boulder Summer School 2023)"
+  },
+  "intro-to-pauli-twirling-minev-part-i-tutorial": {
+    "title": "Intro to Pauli Twirling, Part I",
+    "series": "Intro to Pauli Twirling (tutorial)",
+    "venue": null
+  },
+  "intro-to-pauli-twirling-minev-part-ii-tutorial": {
+    "title": "Intro to Pauli Twirling, Part II",
+    "series": "Intro to Pauli Twirling (tutorial)",
+    "venue": null
+  },
+  "intro-to-pauli-twirling-minev-part-iii-tutorial": {
+    "title": "Intro to Pauli Twirling, Part III",
+    "series": "Intro to Pauli Twirling (tutorial)",
+    "venue": null
+  },
+  "intro-to-pauli-twirling-minev-part-iv-tutorial": {
+    "title": "Intro to Pauli Twirling, Part IV",
+    "series": "Intro to Pauli Twirling (tutorial)",
+    "venue": null
+  },
+  "2024-fibonacci-anyons-realizing-string-net-condensation-fibonacci-anyon-braiding-for-universal-gates-and-sampl": {
+    "title": "Fibonacci Anyons and String-Net Condensation; Entanglement-Enhanced Learning of Quantum Processes at Scale"
+  },
+  "2024-uncovering-local-integrability-in-quantum-many-body-dynamics-minev-aps-mm-invited": {
+    "venue": "APS March Meeting (invited)"
+  },
+  "2013-superconducting-whispering-gallery-mode-resonators-minev-aps-mm": {
+    "venue": "APS March Meeting"
+  },
+  "2011-josephson-parametric-amplifier-optimizing-minev-aps-march-meeting-poster-2011": {
+    "title": "Optimizing Josephson Parametric Amplifiers for Fast, High-Fidelity Qubit Readout",
+    "venue": "APS March Meeting (poster)"
+  },
+  "2022-overview-of-quantum-hardware-design-qiskit-metal-energy-circuits-metal-minev-chicago-quantum-exchange-nan": {
+    "title": "Overview of Quantum Hardware Design: Qiskit Metal, Energy, Circuits, Metal"
+  },
+  "2022-overview-of-quantum-hardware-design-qiskit-metal-from-fab-it-to-qubit-minev-nqi": {
+    "title": "Overview of Quantum Hardware Design: Qiskit Metal, from Fab-It to Qubit"
+  },
+  "2021-qiskit-metal-overview-of-quantum-hardware-design-energy-circuits-metal-minev-ieee-quantum-week": {
+    "title": "Qiskit Metal: Overview of Quantum Hardware Design (Energy, Circuits, Metal)"
+  },
+  "2021-quantum-hardware-design-energy-circuits-metal-qiskit-metal-epr-minev-qiskit-seminar": {
+    "title": "Quantum Hardware Design: Energy, Circuits, Metal (Qiskit Metal, EPR)"
+  },
+  "2022-qiskit-metal-quantum-hardware-design-for-qedc-minev": {
+    "title": "Qiskit Metal: Quantum Hardware Design",
+    "venue": "QED-C"
+  },
+  "2022-probabilistic-error-cancelation-pec-minev-ibm-quantum-qiskit-seminar": {
+    "title": "Probabilistic Error Cancellation (PEC)"
+  },
+  "2022-probabilistic-error-cancelation-pec-minev-kitp": {
+    "title": "Probabilistic Error Cancellation (PEC)"
+  },
+  "2025-quantum-hardware-design-epr-lom-metal-minev-flagship-quantum-device-workshop-advanced": {
+    "title": "Quantum Hardware Design: EPR, LOM, Metal",
+    "venue": "Flagship Quantum Device Workshop (Advanced)"
+  },
+  "2026-otoc-nmr-experiment-error-mitigation-modeling-and-results-minev-aps-march-meeting": {
+    "title": "OTOC-NMR Experiment: Error Mitigation, Modeling and Results"
+  },
+  "2020-pyepr-meeting-energy-participation-ratio-epr-for-superconducting-qubit-design-minev": {
+    "title": "Energy-Participation Ratio (EPR) for Superconducting Qubit Design",
+    "venue": "pyEPR Meeting"
+  },
+  "2019-quantum-sensing-keynote-padua-italy-minev": {
+    "title": "Advancing Quantum Sensing via Quantum Control (keynote)",
+    "venue": "Padua, Italy"
+  },
+  "2014-2-5d-circuit-quantum-electrodynamics-cqed-whispering-gallery-modes": {
+    "title": "2.5D Circuit Quantum Electrodynamics (cQED): Whispering Gallery Modes"
+  },
+  "2015-2-5d-cqed-coherence-exploring-drawbridge-transmon-coherence-minev": {
+    "title": "2.5D cQED Coherence: Exploring Drawbridge Transmon Coherence"
+  },
+  "2011-josephson-junction-arrays-parasitic-capacitances-minev": {
+    "title": "Josephson Junction Arrays: Parasitic Capacitances"
+  },
+  "t23-pec-probaiblity-error-cancelation-notation-and-notes-minev": {
+    "tags": [
+      "error-mitigation",
+      "pec",
+      "reference"
+    ],
+    "title": "Probabilistic Error Cancellation: Paper Notes",
+    "note_id": "T23"
+  },
+  "t25-random-sampling-and-twirling-of-states-vs-true-mixed-states-minev": {
+    "title": "Are Mixed States and Random Sampling of States Equivalent?",
+    "note_id": "T25"
+  },
+  "t26-many-body-physics-exploring-spin-models-for-quantum-computing-scientists-minev": {
+    "title": "Introduction to Many-Body Physics: Exploring Spin Models for Quantum Computing Scientists",
+    "note_id": "T26",
+    "year": 2023
+  },
+  "t27-simple-noise-models-and-gate-fidelity-minev": {
+    "title": "Simple Noise Models and Gate Fidelity",
+    "note_id": "T27",
+    "year": 2023
   }
 }

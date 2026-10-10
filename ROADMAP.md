@@ -14,6 +14,10 @@
 - ⏳ **Folder reorg** of `content - educational/` to be shallower / topic-first (see below)
 
 ## Content quality
+- ⏳ **AI text proofing (needed before promoting the site).** The local 7B model's
+  output has factual slips (e.g. the Fibonacci-anyons talk tagged `qiskit-metal`,
+  `pec`, `sensing`); the site labels it "auto-summary" and does not use
+  `suggested_tags` for filtering. Rewrite or proof the 76 descriptions.
 - ⏳ **DB + text proofing pass (manual).** Build a simple proofing view (an HTML
   table or `tools/proof.py` that dumps `catalog.json` + `catalog_ai.json` side by
   side) to review every title, venue, year, speaker, description, and tags. Fix
@@ -41,25 +45,42 @@ type and deserve first-class treatment, not just being lumped in with talks.
 - ⏳ Surface notes as their own browsable category + cross-links from related talks.
 
 ## Website (lightweight, self-hostable)
-Goal: a **static** site (no server/DB) that reads `catalog.json` + `catalog_ai.json`
-and renders a fast, searchable, filterable archive. Host on GitHub Pages or any
-static host; later embed/链 into **zlatko-minev.com**.
+Static site in `site/` (plain HTML/CSS/JS, no framework or npm), built by
+`tools/build_site.py` into `_site/` and deployed to GitHub Pages by
+`.github/workflows/site.yml`. It reads one merged file, `library.json`
+(`catalog.json` + `catalog_ai.json`).
 
-- ⏳ **Stack decision.** Recommended: a static generator that consumes the JSON
-  directly — e.g. **Astro** or a single-page vanilla JS app (the old Jekyll
-  prototype was removed; start fresh). Must run fully client-side so it can be
-  dropped under `zlatko-minev.com/talks` or hosted standalone.
-- ⏳ **Landing / home page rewrite (priority, do early).** Strong hero, clear value
-  prop, "what is this / who is it for", featured talks, and entry points by
-  category + topic. Replace the old "UNDER CONSTRUCTION" copy. Draft copy first,
-  then design.
-- ⏳ **Browse & filter UI.** Facets: category, topic/tag, year, venue, level.
-  Full-text search over titles + AI summaries. Per-talk page with embedded PDF
-  viewer + download + metadata + AI summary.
-- ⏳ **Thumbnails.** Auto-render page-1 of each PDF to a thumbnail (`pdftoppm`)
-  at build time → `assets/images/thumbnails/<id>.jpg`.
-- 💡 **Integration with zlatko-minev.com.** Decide subpath vs subdomain
-  (`talks.zlatko-minev.com`), shared header/footer, consistent branding.
+- ✅ Browse UI: search (titles, venues, topics, summaries), type tabs, topic /
+  format / level chips with live counts, year histogram, sort, group by series,
+  detail view with summary, key points, related items, PDF link. Filters live in
+  the URL; `#<id>` opens an item, so every view is a shareable link.
+- ✅ Thumbnails: page 1 of each PDF via `pdftoppm` → `site/thumbs/<id>.jpg`
+  (~40 KB each, committed; CI fails if one is missing).
+- ✅ Curated display titles / series / venues / tech-note dates in
+  `tools/catalog_overrides.json` (from the PDFs' own title pages).
+- ⏳ **Enable Pages**: Settings → Pages → Source: GitHub Actions (one-time, owner).
+- ⏳ **Landing copy**: review the masthead text; add 3–5 `featured` picks.
+- 💡 Integration with zlatko-minev.com: subpath vs subdomain
+  (`talks.zlatko-minev.com` via a Pages CNAME).
+
+## Repository size
+Facts (2026-10): 76 PDFs, 297 MB; git pack 211 MB; history is already a single
+commit. ~75% of PDF bytes are JPEG images at ~150 dpi; a lossless re-optimization
+pass (pikepdf, object streams + recompressed Flate) saves 0.8 MB total. So
+further shrinking is either lossy or moves files out of git.
+
+- ✅ `tools/check_sizes.py` size guard, run by CI and `publish.sh`: per-PDF
+  15 MB warn / 40 MB fail; content total 600 MB warn / 900 MB fail (Pages cap is
+  1 GB); stray non-content binaries > 2 MB fail; catalog ↔ disk consistency.
+- Note: every `publish.sh` squash re-uploads the whole library (the new root
+  commit shares no history with the remote). Squashing only frees space when
+  files were replaced or removed; plain commits are cheaper for additions.
+- 💡 **Decision rule:** when content passes the 600 MB warning, move PDFs to a
+  GitHub Release ("library" tag, 2 GB per file, no repo quota) and have CI pull
+  them into the Pages build. The site already takes a `--pdf-base`, so links
+  change in one place.
+- 💡 Lossy pass on the 10 decks over 10 MB (e.g. 120 dpi) if clone size matters
+  before then. Check text legibility on equation slides first.
 
 ## Discoverability
 - ⏳ **SEO.** Per-page `<title>`/meta description (seed from AI `short_description`),

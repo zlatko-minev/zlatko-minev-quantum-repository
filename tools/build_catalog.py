@@ -33,6 +33,7 @@ import argparse
 import json
 import re
 import subprocess
+from datetime import date
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -173,12 +174,20 @@ def infer_tags(haystack: str) -> list[str]:
 
 
 def page_count(path: Path) -> int | None:
+    """Page count via Ghostscript, falling back to poppler's ``pdfinfo``."""
     try:
         out = subprocess.run(
             ["gs", "-q", "-dNODISPLAY", "-dNOSAFER", "-c",
              f"({path}) (r) file runpdfbegin pdfpagecount = quit"],
             capture_output=True, text=True, timeout=60)
         return int(out.stdout.strip())
+    except Exception:
+        pass
+    try:
+        out = subprocess.run(["pdfinfo", str(path)],
+                             capture_output=True, text=True, timeout=60)
+        m = re.search(r"^Pages:\s+(\d+)", out.stdout, re.MULTILINE)
+        return int(m.group(1)) if m else None
     except Exception:
         return None
 
@@ -270,7 +279,7 @@ def main() -> int:
             errors.append(f"file missing on disk: {i['file']}")
         if not i["title"]:
             errors.append(f"empty title: {i['id']}")
-        if i["year"] is not None and not (2008 <= i["year"] <= 2026):
+        if i["year"] is not None and not (2008 <= i["year"] <= date.today().year + 1):
             errors.append(f"year out of range ({i['year']}): {i['id']}")
         if not args.no_pages and not i.get("pages"):
             warnings.append(f"no page count: {i['id']}")

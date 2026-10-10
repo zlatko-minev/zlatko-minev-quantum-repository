@@ -3,13 +3,13 @@
   "items": [
     {
       "id": "superconducting-qubits-101-cqed-quantum-hardware-minev-quantum-device-workshop-beginner-2026",
-      "title": "Superconducting Qubits 101 - cQED Quantum Hardware",
+      "title": "Superconducting Qubits 101: cQED Quantum Hardware",
       "file": "content - educational/Superconducting Qubits & Hardware/Superconducting Qubits 101 - cQED Quantum Hardware (Minev, Quantum Device Workshop, Beginner, 2026).pdf",
       "category": "educational",
       "subcategory": "Superconducting Qubits & Hardware",
-      "series": "Superconducting Qubits & Hardware",
+      "series": "Superconducting Qubits 101",
       "year": 2026,
-      "venue": "Quantum Device Workshop, Beginner",
+      "venue": "Quantum Device Workshop (Beginner)",
       "speaker": "Minev",
       "tags": [
         "hardware",
@@ -20,7 +20,7 @@
     },
     {
       "id": "a-prelude-to-practical-quantum-computing-minev-global-hackathon-ai-for-good-2025",
-      "title": "A Prelude To Practical Quantum Computing",
+      "title": "A Prelude to Practical Quantum Computing",
       "file": "content - educational/Career & Outreach/A Prelude To Practical Quantum Computing (Minev, Global Hackathon AI For Good, 2025).pdf",
       "category": "educational",
       "subcategory": "Career & Outreach",
@@ -37,13 +37,13 @@
     },
     {
       "id": "career-talk-2025-qubit-x-qubit-capstone-short-minev",
-      "title": "Career Talk - 2025 Qubit x Qubit Capstone Short",
+      "title": "Career Talk (short)",
       "file": "content - educational/Career & Outreach/Career Talk - 2025 Qubit x Qubit Capstone Short (Minev).pdf",
       "category": "educational",
       "subcategory": "Career & Outreach",
       "series": "Career & Outreach",
       "year": 2025,
-      "venue": null,
+      "venue": "Qubit x Qubit Capstone",
       "speaker": "Minev",
       "tags": [
         "career"
@@ -53,13 +53,13 @@
     },
     {
       "id": "superconducting-qubits-101-part-i-minev-flagship-quantum-device-workshop-beginner-2025",
-      "title": "Superconducting Qubits 101 - Part I",
+      "title": "Superconducting Qubits 101, Part I",
       "file": "content - educational/Superconducting Qubits & Hardware/Superconducting Qubits 101 - Part I (Minev, Flagship Quantum Device Workshop, Beginner, 2025).pdf",
       "category": "educational",
       "subcategory": "Superconducting Qubits & Hardware",
-      "series": "Superconducting Qubits & Hardware",
+      "series": "Superconducting Qubits 101",
       "year": 2025,
-      "venue": "Flagship Quantum Device Workshop, Beginner",
+      "venue": "Flagship Quantum Device Workshop (Beginner)",
       "speaker": "Minev",
       "tags": [
         "hardware",
@@ -70,13 +70,13 @@
     },
     {
       "id": "superconducting-qubits-101-part-ii-minev-flagship-quantum-device-workshop-beginner-2025",
-      "title": "Superconducting Qubits 101 - Part II",
+      "title": "Superconducting Qubits 101, Part II",
       "file": "content - educational/Superconducting Qubits & Hardware/Superconducting Qubits 101 - Part II (Minev, Flagship Quantum Device Workshop, Beginner, 2025).pdf",
       "category": "educational",
       "subcategory": "Superconducting Qubits & Hardware",
-      "series": "Superconducting Qubits & Hardware",
+      "series": "Superconducting Qubits 101",
       "year": 2025,
-      "venue": "Flagship Quantum Device Workshop, Beginner",
+      "venue": "Flagship Quantum Device Workshop (Beginner)",
       "speaker": "Minev",
       "tags": [
         "hardware",
@@ -87,11 +87,11 @@
     },
     {
       "id": "intro-to-noise-mitigation-near-term-algorithms-lecture-1-minev-summer-school-2024",
-      "title": "Intro to Noise Mitigation - Near-Term Algorithms, Lecture 1",
+      "title": "Intro to Noise Mitigation for Near-Term Algorithms, Lecture 1",
       "file": "content - educational/Error Mitigation/Intro to Noise Mitigation - Near-Term Algorithms, Lecture 1 (Minev, Summer School 2024).pdf",
       "category": "educational",
       "subcategory": "Error Mitigation",
-      "series": "Error Mitigation",
+      "series": "Intro to Noise Mitigation (Summer School 2024)",
       "year": 2024,
       "venue": "Summer School",
       "speaker": "Minev",
@@ -106,11 +106,11 @@
     },
     {
       "id": "intro-to-noise-mitigation-near-term-algorithms-lecture-2-minev-summer-school-2024",
-      "title": "Intro to Noise Mitigation - Near-Term Algorithms, Lecture 2",
+      "title": "Intro to Noise Mitigation for Near-Term Algorithms, Lecture 2",
       "file": "content - educational/Error Mitigation/Intro to Noise Mitigation - Near-Term Algorithms, Lecture 2 (Minev, Summer School 2024).pdf",
       "category": "educational",
       "subcategory": "Error Mitigation",
-      "series": "Error Mitigation",
+      "series": "Intro to Noise Mitigation (Summer School 2024)",
       "year": 2024,
       "venue": "Summer School",
       "speaker": "Minev",
@@ -125,13 +125,13 @@
     },
     {
       "id": "career-talk-2023-for-sophia-economou-class-minev",
-      "title": "Career Talk - 2023 For Sophia Economou Class",
+      "title": "Career Talk",
       "file": "content - educational/Career & Outreach/Career Talk - 2023 For Sophia Economou Class (Minev).pdf",
       "category": "educational",
       "subcategory": "Career & Outreach",
       "series": "Career & Outreach",
       "year": 2023,
-      "venue": null,
+      "venue": "Guest lecture, Sophia Economou's class",
       "speaker": "Minev",
       "tags": [
         "career"
@@ -140,8 +140,103 @@
       "pages": 88
     },
     {
+      "id": "quantum-error-mitigation-minev-bonus-cheat-sheet-digital-quantum-circuits-t11-7-boulder-summer-school-2023-min",
+      "title": "Cheat Sheet: Digital Quantum Circuits, T11.7 (bonus)",
+      "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - Bonus - Cheat Sheet Digital Quantum Circuits - T11_7 (Boulder Summer School 2023) (Minev).pdf",
+      "category": "educational",
+      "subcategory": "Error Mitigation",
+      "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
+      "year": 2023,
+      "venue": "Boulder Summer School",
+      "speaker": "Minev",
+      "tags": [
+        "cheat-sheet",
+        "error-mitigation",
+        "reference",
+        "summer-school"
+      ],
+      "size_bytes": 39515,
+      "pages": 2
+    },
+    {
+      "id": "intro-to-quantum-noise-bonus-cheat-sheet-t11-7-pictorial-digital-quanutm-circuits-qiskit-global-summer-school",
+      "title": "Cheat Sheet: Pictorial Digital Quantum Circuits, T11.7 (bonus)",
+      "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - Cheat Sheet T11_7 - Pictorial Digital Quanutm Circuits (Qiskit Global Summer School 2023, Minev).pdf",
+      "category": "educational",
+      "subcategory": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2023)",
+      "year": 2023,
+      "venue": "Qiskit Global Summer School",
+      "speaker": "Minev",
+      "tags": [
+        "cheat-sheet",
+        "noise",
+        "qiskit",
+        "reference",
+        "summer-school"
+      ],
+      "size_bytes": 39515,
+      "pages": 2
+    },
+    {
+      "id": "quantum-error-mitigation-minev-bonus-cheat-sheet-tail-bounds-t11-9-boulder-summer-school-2023-minev",
+      "title": "Cheat Sheet: Tail Bounds, T11.9 (bonus)",
+      "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - Bonus - Cheat Sheet Tail Bounds T11_9 (Boulder Summer School 2023) (Minev).pdf",
+      "category": "educational",
+      "subcategory": "Error Mitigation",
+      "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
+      "year": 2023,
+      "venue": "Boulder Summer School",
+      "speaker": "Minev",
+      "tags": [
+        "cheat-sheet",
+        "error-mitigation",
+        "reference",
+        "summer-school"
+      ],
+      "size_bytes": 75832,
+      "pages": 2
+    },
+    {
+      "id": "intro-to-quantum-noise-bonus-coherent-zz-error-qiskit-global-summer-school-2023-minev",
+      "title": "Coherent ZZ Error (bonus)",
+      "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - Coherent ZZ Error (Qiskit Global Summer School 2023, Minev).pdf",
+      "category": "educational",
+      "subcategory": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2023)",
+      "year": 2023,
+      "venue": "Qiskit Global Summer School",
+      "speaker": "Minev",
+      "tags": [
+        "noise",
+        "qiskit",
+        "summer-school"
+      ],
+      "size_bytes": 412317,
+      "pages": 1
+    },
+    {
+      "id": "intro-to-quantum-noise-bonus-estimating-bitstrings-t21-qiskit-global-summer-school-2023-minev",
+      "title": "Estimating Observables from Bitstrings, T21 (bonus)",
+      "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - Estimating Bitstrings T21 (Qiskit Global Summer School 2023, Minev).pdf",
+      "category": "educational",
+      "subcategory": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2023)",
+      "year": 2023,
+      "venue": "Qiskit Global Summer School",
+      "speaker": "Minev",
+      "tags": [
+        "noise",
+        "qiskit",
+        "reference",
+        "summer-school"
+      ],
+      "size_bytes": 122433,
+      "pages": 2
+    },
+    {
       "id": "intro-to-quantum-measurements-part-i-ideal-measurements-minev-2023",
-      "title": "Intro to Quantum Measurements - Part I - Ideal Measurements",
+      "title": "Intro to Quantum Measurements, Part I: Ideal Measurements",
       "file": "content - educational/Quantum Measurements/Intro to Quantum Measurements - Part I - Ideal Measurements (Minev, 2023).pdf",
       "category": "educational",
       "subcategory": "Quantum Measurements",
@@ -156,66 +251,12 @@
       "pages": 52
     },
     {
-      "id": "intro-to-quantum-noise-bonus-cheat-sheet-t11-7-pictorial-digital-quanutm-circuits-qiskit-global-summer-school",
-      "title": "Intro to Quantum Noise - Bonus - Cheat Sheet T11_7 - Pictorial Digital Quanutm Circuits",
-      "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - Cheat Sheet T11_7 - Pictorial Digital Quanutm Circuits (Qiskit Global Summer School 2023, Minev).pdf",
-      "category": "educational",
-      "subcategory": "Quantum Noise",
-      "series": "Quantum Noise",
-      "year": 2023,
-      "venue": "Qiskit Global Summer School",
-      "speaker": "Minev",
-      "tags": [
-        "noise",
-        "qiskit",
-        "summer-school"
-      ],
-      "size_bytes": 39515,
-      "pages": 2
-    },
-    {
-      "id": "intro-to-quantum-noise-bonus-coherent-zz-error-qiskit-global-summer-school-2023-minev",
-      "title": "Intro to Quantum Noise - Bonus - Coherent ZZ Error",
-      "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - Coherent ZZ Error (Qiskit Global Summer School 2023, Minev).pdf",
-      "category": "educational",
-      "subcategory": "Quantum Noise",
-      "series": "Quantum Noise",
-      "year": 2023,
-      "venue": "Qiskit Global Summer School",
-      "speaker": "Minev",
-      "tags": [
-        "noise",
-        "qiskit",
-        "summer-school"
-      ],
-      "size_bytes": 412317,
-      "pages": 1
-    },
-    {
-      "id": "intro-to-quantum-noise-bonus-estimating-bitstrings-t21-qiskit-global-summer-school-2023-minev",
-      "title": "Intro to Quantum Noise - Bonus - Estimating Bitstrings T21",
-      "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - Estimating Bitstrings T21 (Qiskit Global Summer School 2023, Minev).pdf",
-      "category": "educational",
-      "subcategory": "Quantum Noise",
-      "series": "Quantum Noise",
-      "year": 2023,
-      "venue": "Qiskit Global Summer School",
-      "speaker": "Minev",
-      "tags": [
-        "noise",
-        "qiskit",
-        "summer-school"
-      ],
-      "size_bytes": 122433,
-      "pages": 2
-    },
-    {
       "id": "intro-to-quantum-noise-main-lecture-intro-to-quantum-noise-qiskit-global-summer-school-2023-minev",
-      "title": "Intro to Quantum Noise - Main Lecture - Intro to Quantum Noise",
+      "title": "Intro to Quantum Noise (main lecture)",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Main Lecture - Intro to Quantum Noise (Qiskit Global Summer School 2023, Minev).pdf",
       "category": "educational",
       "subcategory": "Quantum Noise",
-      "series": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2023)",
       "year": 2023,
       "venue": "Qiskit Global Summer School",
       "speaker": "Minev",
@@ -229,34 +270,17 @@
       "pages": 128
     },
     {
-      "id": "quantum-error-mitigation-minev-bss23-pec-derivation-1q-simple-c65b-boulder-summer-school-2023-minev",
-      "title": "Quantum Error Mitigation, Minev - BSS23 - PEC Derivation 1Q simple (C65B)",
-      "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - BSS23 - PEC Derivation 1Q simple (C65B) (Boulder Summer School 2023) (Minev).pdf",
-      "category": "educational",
-      "subcategory": "Error Mitigation",
-      "series": "Error Mitigation",
-      "year": 2023,
-      "venue": "Boulder Summer School",
-      "speaker": "Minev",
-      "tags": [
-        "error-mitigation",
-        "pec",
-        "summer-school"
-      ],
-      "size_bytes": 1103683,
-      "pages": 4
-    },
-    {
       "id": "quantum-error-mitigation-minev-bss23-pec-derivation-full-derivation-c65c-boulder-summer-school-2023-minev",
-      "title": "Quantum Error Mitigation, Minev - BSS23 - PEC Derivation full derivation (C65C)",
+      "title": "PEC Derivation: Full Derivation (C65C)",
       "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - BSS23 - PEC Derivation full derivation (C65C) (Boulder Summer School 2023) (Minev).pdf",
       "category": "educational",
       "subcategory": "Error Mitigation",
-      "series": "Error Mitigation",
+      "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
       "year": 2023,
       "venue": "Boulder Summer School",
       "speaker": "Minev",
       "tags": [
+        "derivation",
         "error-mitigation",
         "pec",
         "summer-school"
@@ -265,12 +289,31 @@
       "pages": 4
     },
     {
+      "id": "quantum-error-mitigation-minev-bss23-pec-derivation-1q-simple-c65b-boulder-summer-school-2023-minev",
+      "title": "PEC Derivation: Single Qubit, Simple (C65B)",
+      "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - BSS23 - PEC Derivation 1Q simple (C65B) (Boulder Summer School 2023) (Minev).pdf",
+      "category": "educational",
+      "subcategory": "Error Mitigation",
+      "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
+      "year": 2023,
+      "venue": "Boulder Summer School",
+      "speaker": "Minev",
+      "tags": [
+        "derivation",
+        "error-mitigation",
+        "pec",
+        "summer-school"
+      ],
+      "size_bytes": 1103683,
+      "pages": 4
+    },
+    {
       "id": "quantum-error-mitigation-minev-bss23-lecture-1-boulder-summer-school-2023-minev",
-      "title": "Quantum Error Mitigation, Minev - BSS23 Lecture 1",
+      "title": "Quantum Error Mitigation, Lecture 1",
       "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - BSS23 Lecture 1 (Boulder Summer School 2023) (Minev).pdf",
       "category": "educational",
       "subcategory": "Error Mitigation",
-      "series": "Error Mitigation",
+      "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
       "year": 2023,
       "venue": "Boulder Summer School",
       "speaker": "Minev",
@@ -284,11 +327,11 @@
     },
     {
       "id": "quantum-error-mitigation-minev-bss23-lecture-2-boulder-summer-school-2023-minev",
-      "title": "Quantum Error Mitigation, Minev - BSS23 Lecture 2",
+      "title": "Quantum Error Mitigation, Lecture 2",
       "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - BSS23 Lecture 2 (Boulder Summer School 2023) (Minev).pdf",
       "category": "educational",
       "subcategory": "Error Mitigation",
-      "series": "Error Mitigation",
+      "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
       "year": 2023,
       "venue": "Boulder Summer School",
       "speaker": "Minev",
@@ -302,11 +345,11 @@
     },
     {
       "id": "quantum-error-mitigation-minev-bss23-lecture-3-boulder-summer-school-2023-minev",
-      "title": "Quantum Error Mitigation, Minev - BSS23 Lecture 3",
+      "title": "Quantum Error Mitigation, Lecture 3",
       "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - BSS23 Lecture 3 (Boulder Summer School 2023) (Minev).pdf",
       "category": "educational",
       "subcategory": "Error Mitigation",
-      "series": "Error Mitigation",
+      "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
       "year": 2023,
       "venue": "Boulder Summer School",
       "speaker": "Minev",
@@ -319,46 +362,12 @@
       "pages": 82
     },
     {
-      "id": "quantum-error-mitigation-minev-bonus-cheat-sheet-digital-quantum-circuits-t11-7-boulder-summer-school-2023-min",
-      "title": "Quantum Error Mitigation, Minev - Bonus - Cheat Sheet Digital Quantum Circuits - T11_7",
-      "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - Bonus - Cheat Sheet Digital Quantum Circuits - T11_7 (Boulder Summer School 2023) (Minev).pdf",
-      "category": "educational",
-      "subcategory": "Error Mitigation",
-      "series": "Error Mitigation",
-      "year": 2023,
-      "venue": "Boulder Summer School",
-      "speaker": "Minev",
-      "tags": [
-        "error-mitigation",
-        "summer-school"
-      ],
-      "size_bytes": 39515,
-      "pages": 2
-    },
-    {
-      "id": "quantum-error-mitigation-minev-bonus-cheat-sheet-tail-bounds-t11-9-boulder-summer-school-2023-minev",
-      "title": "Quantum Error Mitigation, Minev - Bonus - Cheat Sheet Tail Bounds T11_9",
-      "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - Bonus - Cheat Sheet Tail Bounds T11_9 (Boulder Summer School 2023) (Minev).pdf",
-      "category": "educational",
-      "subcategory": "Error Mitigation",
-      "series": "Error Mitigation",
-      "year": 2023,
-      "venue": "Boulder Summer School",
-      "speaker": "Minev",
-      "tags": [
-        "error-mitigation",
-        "summer-school"
-      ],
-      "size_bytes": 75832,
-      "pages": 2
-    },
-    {
       "id": "intro-to-quantum-noise-bonus-coherent-zz-error-qiskit-global-summer-school-2022-minev",
-      "title": "Intro to Quantum Noise - Bonus - Coherent ZZ Error",
+      "title": "Coherent ZZ Error (bonus)",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - Coherent ZZ Error (Qiskit Global Summer School 2022) (Minev).pdf",
       "category": "educational",
       "subcategory": "Quantum Noise",
-      "series": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2022)",
       "year": 2022,
       "venue": "Qiskit Global Summer School",
       "speaker": "Minev",
@@ -371,12 +380,12 @@
       "pages": 1
     },
     {
-      "id": "intro-to-quantum-noise-bonus-state-preparation-noise-qiskit-global-summer-school-2022-minev",
-      "title": "Intro to Quantum Noise - Bonus - State Preparation Noise",
-      "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - State Preparation Noise (Qiskit Global Summer School 2022) (Minev).pdf",
+      "id": "intro-to-quantum-noise-note-incoherent-noise-qiskit-global-summer-school-2022-minev",
+      "title": "Incoherent Noise (note)",
+      "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Note - Incoherent Noise (Qiskit Global Summer School 2022) (Minev).pdf",
       "category": "educational",
       "subcategory": "Quantum Noise",
-      "series": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2022)",
       "year": 2022,
       "venue": "Qiskit Global Summer School",
       "speaker": "Minev",
@@ -385,16 +394,16 @@
         "qiskit",
         "summer-school"
       ],
-      "size_bytes": 588852,
+      "size_bytes": 244225,
       "pages": 1
     },
     {
       "id": "intro-to-quantum-noise-main-lecture-intro-to-quantum-noise-qiskit-global-summer-school-2022-minev",
-      "title": "Intro to Quantum Noise - Main Lecture - Intro to Quantum Noise",
+      "title": "Intro to Quantum Noise (main lecture)",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Main Lecture - Intro to Quantum Noise (Qiskit Global Summer School 2022) (Minev).pdf",
       "category": "educational",
       "subcategory": "Quantum Noise",
-      "series": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2022)",
       "year": 2022,
       "venue": "Qiskit Global Summer School",
       "speaker": "Minev",
@@ -408,30 +417,29 @@
       "pages": 99
     },
     {
-      "id": "intro-to-quantum-noise-note-incoherent-noise-qiskit-global-summer-school-2022-minev",
-      "title": "Intro to Quantum Noise - Note - Incoherent Noise",
-      "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Note - Incoherent Noise (Qiskit Global Summer School 2022) (Minev).pdf",
+      "id": "intro-to-real-quantum-computers-and-noise-minev-summer-lecture-vanderbuilt-2022",
+      "title": "Intro to Real Quantum Computers and Noise",
+      "file": "content - educational/Quantum Noise/Intro to Real Quantum Computers and Noise (Minev, Summer Lecture Vanderbuilt 2022).pdf",
       "category": "educational",
       "subcategory": "Quantum Noise",
       "series": "Quantum Noise",
       "year": 2022,
-      "venue": "Qiskit Global Summer School",
+      "venue": "Vanderbilt Summer Lecture",
       "speaker": "Minev",
       "tags": [
-        "noise",
-        "qiskit",
-        "summer-school"
+        "lecture",
+        "noise"
       ],
-      "size_bytes": 244225,
-      "pages": 1
+      "size_bytes": 6196663,
+      "pages": 93
     },
     {
       "id": "intro-to-quantum-noise-note-measurement-qiskit-global-summer-school-2022-minev",
-      "title": "Intro to Quantum Noise - Note - Measurement",
+      "title": "Measurement (note)",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Note - Measurement (Qiskit Global Summer School 2022) (Minev).pdf",
       "category": "educational",
       "subcategory": "Quantum Noise",
-      "series": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2022)",
       "year": 2022,
       "venue": "Qiskit Global Summer School",
       "speaker": "Minev",
@@ -446,11 +454,11 @@
     },
     {
       "id": "intro-to-quantum-noise-note-measurement-noise-qiskit-global-summer-school-2022-minev",
-      "title": "Intro to Quantum Noise - Note - Measurement Noise",
+      "title": "Measurement Noise (note)",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Note - Measurement Noise (Qiskit Global Summer School 2022) (Minev).pdf",
       "category": "educational",
       "subcategory": "Quantum Noise",
-      "series": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2022)",
       "year": 2022,
       "venue": "Qiskit Global Summer School",
       "speaker": "Minev",
@@ -464,29 +472,30 @@
       "pages": 2
     },
     {
-      "id": "intro-to-real-quantum-computers-and-noise-minev-summer-lecture-vanderbuilt-2022",
-      "title": "Intro to Real Quantum Computers and Noise",
-      "file": "content - educational/Quantum Noise/Intro to Real Quantum Computers and Noise (Minev, Summer Lecture Vanderbuilt 2022).pdf",
+      "id": "intro-to-quantum-noise-bonus-state-preparation-noise-qiskit-global-summer-school-2022-minev",
+      "title": "State Preparation Noise (bonus)",
+      "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - State Preparation Noise (Qiskit Global Summer School 2022) (Minev).pdf",
       "category": "educational",
       "subcategory": "Quantum Noise",
-      "series": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2022)",
       "year": 2022,
-      "venue": "Summer Lecture Vanderbuilt",
+      "venue": "Qiskit Global Summer School",
       "speaker": "Minev",
       "tags": [
-        "lecture",
-        "noise"
+        "noise",
+        "qiskit",
+        "summer-school"
       ],
-      "size_bytes": 6196663,
-      "pages": 93
+      "size_bytes": 588852,
+      "pages": 1
     },
     {
       "id": "intro-to-quantum-noise-coherent-zz-error-qiskit-global-summer-school-2021-minev",
-      "title": "Intro to Quantum Noise, Coherent ZZ Error",
+      "title": "Coherent ZZ Error",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise, Coherent ZZ Error (Qiskit Global Summer School 2021) (Minev).pdf",
       "category": "educational",
       "subcategory": "Quantum Noise",
-      "series": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2021)",
       "year": 2021,
       "venue": "Qiskit Global Summer School",
       "speaker": "Minev",
@@ -500,11 +509,11 @@
     },
     {
       "id": "intro-to-quantum-noise-incoherent-noise-qiskit-global-summer-school-2021-minev",
-      "title": "Intro to Quantum Noise, Incoherent Noise",
+      "title": "Incoherent Noise",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise, Incoherent Noise (Qiskit Global Summer School 2021) (Minev).pdf",
       "category": "educational",
       "subcategory": "Quantum Noise",
-      "series": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2021)",
       "year": 2021,
       "venue": "Qiskit Global Summer School",
       "speaker": "Minev",
@@ -518,15 +527,16 @@
     },
     {
       "id": "intro-to-quantum-noise-intro-to-quantum-noise-qiskit-global-summer-school-2021-minev",
-      "title": "Intro to Quantum Noise, Intro to Quantum Noise",
+      "title": "Intro to Quantum Noise",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise, Intro to Quantum Noise (Qiskit Global Summer School 2021) (Minev).pdf",
       "category": "educational",
       "subcategory": "Quantum Noise",
-      "series": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2021)",
       "year": 2021,
       "venue": "Qiskit Global Summer School",
       "speaker": "Minev",
       "tags": [
+        "lecture",
         "noise",
         "qiskit",
         "summer-school"
@@ -536,11 +546,11 @@
     },
     {
       "id": "intro-to-quantum-noise-measurement-noise-qiskit-global-summer-school-2021-minev",
-      "title": "Intro to Quantum Noise, Measurement Noise",
+      "title": "Measurement Noise",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise, Measurement Noise (Qiskit Global Summer School 2021) (Minev).pdf",
       "category": "educational",
       "subcategory": "Quantum Noise",
-      "series": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2021)",
       "year": 2021,
       "venue": "Qiskit Global Summer School",
       "speaker": "Minev",
@@ -555,11 +565,11 @@
     },
     {
       "id": "intro-to-quantum-noise-projection-noise-v2-qiskit-global-summer-school-2021-minev",
-      "title": "Intro to Quantum Noise, Projection Noise v2",
+      "title": "Projection Noise",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise, Projection Noise v2 (Qiskit Global Summer School 2021) (Minev).pdf",
       "category": "educational",
       "subcategory": "Quantum Noise",
-      "series": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2021)",
       "year": 2021,
       "venue": "Qiskit Global Summer School",
       "speaker": "Minev",
@@ -573,11 +583,11 @@
     },
     {
       "id": "intro-to-quantum-noise-state-preparation-noise-qiskit-global-summer-school-2021-minev",
-      "title": "Intro to Quantum Noise, State Preparation Noise",
+      "title": "State Preparation Noise",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise, State Preparation Noise (Qiskit Global Summer School 2021) (Minev).pdf",
       "category": "educational",
       "subcategory": "Quantum Noise",
-      "series": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2021)",
       "year": 2021,
       "venue": "Qiskit Global Summer School",
       "speaker": "Minev",
@@ -591,11 +601,11 @@
     },
     {
       "id": "superconducting-qubits-101-cqed-quantum-hardware-minev-cec-icmc-2021",
-      "title": "Superconducting Qubits 101 - cQED Quantum Hardware",
+      "title": "Superconducting Qubits 101: cQED Quantum Hardware",
       "file": "content - educational/Superconducting Qubits & Hardware/Superconducting Qubits 101 - cQED Quantum Hardware (Minev, CEC ICMC, 2021).pdf",
       "category": "educational",
       "subcategory": "Superconducting Qubits & Hardware",
-      "series": "Superconducting Qubits & Hardware",
+      "series": "Superconducting Qubits 101",
       "year": 2021,
       "venue": "CEC ICMC",
       "speaker": "Minev",
@@ -608,11 +618,11 @@
     },
     {
       "id": "superconducting-qubits-101-cqed-quantum-hardware-minev-qiqt-summer-school-2021",
-      "title": "Superconducting Qubits 101 - cQED Quantum Hardware",
+      "title": "Superconducting Qubits 101: cQED Quantum Hardware",
       "file": "content - educational/Superconducting Qubits & Hardware/Superconducting Qubits 101 - cQED Quantum Hardware (Minev, QIQT Summer School, 2021).pdf",
       "category": "educational",
       "subcategory": "Superconducting Qubits & Hardware",
-      "series": "Superconducting Qubits & Hardware",
+      "series": "Superconducting Qubits 101",
       "year": 2021,
       "venue": "QIQT Summer School",
       "speaker": "Minev",
@@ -626,11 +636,11 @@
     },
     {
       "id": "superconducting-qubits-101-quantum-hardware-cqed-day-1-qiskit-global-summer-school-2020-minev",
-      "title": "Superconducting Qubits 101 - Quantum Hardware cQED - Day 1",
+      "title": "Superconducting Qubits 101: Quantum Hardware & cQED, Day 1",
       "file": "content - educational/Superconducting Qubits & Hardware/Superconducting Qubits 101 - Quantum Hardware cQED - Day 1 (Qiskit Global Summer School 2020, Minev).pdf",
       "category": "educational",
       "subcategory": "Superconducting Qubits & Hardware",
-      "series": "Superconducting Qubits & Hardware",
+      "series": "Superconducting Qubits 101",
       "year": 2020,
       "venue": "Qiskit Global Summer School",
       "speaker": "Minev",
@@ -645,11 +655,11 @@
     },
     {
       "id": "superconducting-qubits-101-quantum-hardware-cqed-day-2-qiskit-global-summer-school-2020-minev",
-      "title": "Superconducting Qubits 101 - Quantum Hardware cQED - Day 2",
+      "title": "Superconducting Qubits 101: Quantum Hardware & cQED, Day 2",
       "file": "content - educational/Superconducting Qubits & Hardware/Superconducting Qubits 101 - Quantum Hardware cQED - Day 2 (Qiskit Global Summer School 2020, Minev).pdf",
       "category": "educational",
       "subcategory": "Superconducting Qubits & Hardware",
-      "series": "Superconducting Qubits & Hardware",
+      "series": "Superconducting Qubits 101",
       "year": 2020,
       "venue": "Qiskit Global Summer School",
       "speaker": "Minev",
@@ -664,13 +674,13 @@
     },
     {
       "id": "intro-to-pauli-twirling-minev-part-i-tutorial",
-      "title": "Intro to Pauli Twirling, Minev - Part I (Tutorial)",
+      "title": "Intro to Pauli Twirling, Part I",
       "file": "content - educational/Tutorials (Pauli Twirling)/Intro to Pauli Twirling, Minev - Part I (Tutorial).pdf",
       "category": "educational",
       "subcategory": "Tutorials (Pauli Twirling)",
-      "series": "Tutorials (Pauli Twirling)",
+      "series": "Intro to Pauli Twirling (tutorial)",
       "year": null,
-      "venue": "Pauli Twirling",
+      "venue": null,
       "speaker": "Minev",
       "tags": [
         "error-mitigation",
@@ -682,13 +692,13 @@
     },
     {
       "id": "intro-to-pauli-twirling-minev-part-ii-tutorial",
-      "title": "Intro to Pauli Twirling, Minev - Part II (Tutorial)",
+      "title": "Intro to Pauli Twirling, Part II",
       "file": "content - educational/Tutorials (Pauli Twirling)/Intro to Pauli Twirling, Minev - Part II (Tutorial).pdf",
       "category": "educational",
       "subcategory": "Tutorials (Pauli Twirling)",
-      "series": "Tutorials (Pauli Twirling)",
+      "series": "Intro to Pauli Twirling (tutorial)",
       "year": null,
-      "venue": "Pauli Twirling",
+      "venue": null,
       "speaker": "Minev",
       "tags": [
         "error-mitigation",
@@ -700,13 +710,13 @@
     },
     {
       "id": "intro-to-pauli-twirling-minev-part-iii-tutorial",
-      "title": "Intro to Pauli Twirling, Minev - Part III (Tutorial)",
+      "title": "Intro to Pauli Twirling, Part III",
       "file": "content - educational/Tutorials (Pauli Twirling)/Intro to Pauli Twirling, Minev - Part III (Tutorial).pdf",
       "category": "educational",
       "subcategory": "Tutorials (Pauli Twirling)",
-      "series": "Tutorials (Pauli Twirling)",
+      "series": "Intro to Pauli Twirling (tutorial)",
       "year": null,
-      "venue": "Pauli Twirling",
+      "venue": null,
       "speaker": "Minev",
       "tags": [
         "error-mitigation",
@@ -718,13 +728,13 @@
     },
     {
       "id": "intro-to-pauli-twirling-minev-part-iv-tutorial",
-      "title": "Intro to Pauli Twirling, Minev - Part IV (Tutorial)",
+      "title": "Intro to Pauli Twirling, Part IV",
       "file": "content - educational/Tutorials (Pauli Twirling)/Intro to Pauli Twirling, Minev - Part IV (Tutorial).pdf",
       "category": "educational",
       "subcategory": "Tutorials (Pauli Twirling)",
-      "series": "Tutorials (Pauli Twirling)",
+      "series": "Intro to Pauli Twirling (tutorial)",
       "year": null,
-      "venue": "Pauli Twirling",
+      "venue": null,
       "speaker": "Minev",
       "tags": [
         "error-mitigation",
@@ -736,7 +746,7 @@
     },
     {
       "id": "2026-otoc-nmr-experiment-error-mitigation-modeling-and-results-minev-aps-march-meeting",
-      "title": "OTOC-NMR Experiment - Error Mitigation, Modeling and Results",
+      "title": "OTOC-NMR Experiment: Error Mitigation, Modeling and Results",
       "file": "content - research talks/2026 OTOC-NMR Experiment - Error Mitigation, Modeling and Results (Minev, APS March Meeting).pdf",
       "category": "research-talk",
       "subcategory": null,
@@ -769,13 +779,13 @@
     },
     {
       "id": "2025-quantum-hardware-design-epr-lom-metal-minev-flagship-quantum-device-workshop-advanced",
-      "title": "Quantum Hardware Design - EPR, LOM, Metal",
+      "title": "Quantum Hardware Design: EPR, LOM, Metal",
       "file": "content - research talks/2025 Quantum Hardware Design - EPR, LOM, Metal (Minev, Flagship Quantum Device Workshop Advanced).pdf",
       "category": "research-talk",
       "subcategory": null,
       "series": null,
       "year": 2025,
-      "venue": "Flagship Quantum Device Workshop Advanced",
+      "venue": "Flagship Quantum Device Workshop (Advanced)",
       "speaker": "Minev",
       "tags": [
         "hardware",
@@ -786,7 +796,7 @@
     },
     {
       "id": "2024-fibonacci-anyons-realizing-string-net-condensation-fibonacci-anyon-braiding-for-universal-gates-and-sampl",
-      "title": "Fibonacci Anyons - Realizing string-net condensation - Fibonacci anyon braiding for universal gates and sampling chromatic polynomials",
+      "title": "Fibonacci Anyons and String-Net Condensation; Entanglement-Enhanced Learning of Quantum Processes at Scale",
       "file": "content - research talks/2024 Fibonacci Anyons - Realizing string-net condensation - Fibonacci anyon braiding for universal gates and sampling chromatic polynomials (Minev, CIFAR).pdf",
       "category": "research-talk",
       "subcategory": null,
@@ -809,7 +819,7 @@
       "subcategory": null,
       "series": null,
       "year": 2024,
-      "venue": "APS MM Invited",
+      "venue": "APS March Meeting (invited)",
       "speaker": "Minev",
       "tags": [
         "many-body"
@@ -837,7 +847,7 @@
     },
     {
       "id": "2022-overview-of-quantum-hardware-design-qiskit-metal-energy-circuits-metal-minev-chicago-quantum-exchange-nan",
-      "title": "Overview Of Quantum Hardware Design - Qiskit Metal - Energy, Circuits, Metal",
+      "title": "Overview of Quantum Hardware Design: Qiskit Metal, Energy, Circuits, Metal",
       "file": "content - research talks/2022 Overview Of Quantum Hardware Design - Qiskit Metal - Energy, Circuits, Metal (Minev, Chicago Quantum Exchange, NanoKorea).pdf",
       "category": "research-talk",
       "subcategory": null,
@@ -855,7 +865,7 @@
     },
     {
       "id": "2022-overview-of-quantum-hardware-design-qiskit-metal-from-fab-it-to-qubit-minev-nqi",
-      "title": "Overview of Quantum Hardware Design - Qiskit Metal - From Fab-it to Qubit",
+      "title": "Overview of Quantum Hardware Design: Qiskit Metal, from Fab-It to Qubit",
       "file": "content - research talks/2022 Overview of Quantum Hardware Design - Qiskit Metal - From Fab-it to Qubit (Minev, NQI).pdf",
       "category": "research-talk",
       "subcategory": null,
@@ -873,7 +883,7 @@
     },
     {
       "id": "2022-probabilistic-error-cancelation-pec-minev-ibm-quantum-qiskit-seminar",
-      "title": "Probabilistic Error Cancelation (PEC)",
+      "title": "Probabilistic Error Cancellation (PEC)",
       "file": "content - research talks/2022 Probabilistic Error Cancelation (PEC) (Minev, IBM Quantum Qiskit Seminar).pdf",
       "category": "research-talk",
       "subcategory": null,
@@ -890,7 +900,7 @@
     },
     {
       "id": "2022-probabilistic-error-cancelation-pec-minev-kitp",
-      "title": "Probabilistic Error Cancelation (PEC)",
+      "title": "Probabilistic Error Cancellation (PEC)",
       "file": "content - research talks/2022 Probabilistic Error Cancelation (PEC) (Minev, KITP).pdf",
       "category": "research-talk",
       "subcategory": null,
@@ -907,13 +917,13 @@
     },
     {
       "id": "2022-qiskit-metal-quantum-hardware-design-for-qedc-minev",
-      "title": "Qiskit Metal - Quantum Hardware Design - for QEDC",
+      "title": "Qiskit Metal: Quantum Hardware Design",
       "file": "content - research talks/2022 Qiskit Metal - Quantum Hardware Design - for QEDC (Minev).pdf",
       "category": "research-talk",
       "subcategory": null,
       "series": null,
       "year": 2022,
-      "venue": null,
+      "venue": "QED-C",
       "speaker": "Minev",
       "tags": [
         "hardware",
@@ -924,7 +934,7 @@
     },
     {
       "id": "2021-qiskit-metal-overview-of-quantum-hardware-design-energy-circuits-metal-minev-ieee-quantum-week",
-      "title": "Qiskit Metal - Overview of Quantum Hardware Design - Energy, Circuits, Metal",
+      "title": "Qiskit Metal: Overview of Quantum Hardware Design (Energy, Circuits, Metal)",
       "file": "content - research talks/2021 Qiskit Metal - Overview of Quantum Hardware Design - Energy, Circuits, Metal (Minev, IEEE Quantum Week).pdf",
       "category": "research-talk",
       "subcategory": null,
@@ -942,7 +952,7 @@
     },
     {
       "id": "2021-quantum-hardware-design-energy-circuits-metal-qiskit-metal-epr-minev-qiskit-seminar",
-      "title": "Quantum Hardware Design - Energy, Circuits, Metal",
+      "title": "Quantum Hardware Design: Energy, Circuits, Metal (Qiskit Metal, EPR)",
       "file": "content - research talks/2021 Quantum Hardware Design - Energy, Circuits, Metal (Qiskit Metal, EPR) (Minev, Qiskit Seminar).pdf",
       "category": "research-talk",
       "subcategory": null,
@@ -992,8 +1002,26 @@
       "pages": 110
     },
     {
+      "id": "2020-pyepr-meeting-energy-participation-ratio-epr-for-superconducting-qubit-design-minev",
+      "title": "Energy-Participation Ratio (EPR) for Superconducting Qubit Design",
+      "file": "content - research talks/2020 pyEPR Meeting - Energy Participation Ratio (EPR) for Superconducting Qubit Design (Minev).pdf",
+      "category": "research-talk",
+      "subcategory": null,
+      "series": null,
+      "year": 2020,
+      "venue": "pyEPR Meeting",
+      "speaker": "Minev",
+      "tags": [
+        "hardware",
+        "qiskit-metal",
+        "superconducting-qubits"
+      ],
+      "size_bytes": 1502262,
+      "pages": 19
+    },
+    {
       "id": "2020-mit-tech-review-emerging-technology-emtech-minev-broad-talk",
-      "title": "MIT Tech Review Emerging Technology EmTech",
+      "title": "To Catch and Reverse a Quantum Jump Mid-Flight (broad talk)",
       "file": "content - research talks/2020 MIT Tech Review Emerging Technology EmTech (Minev, Broad Talk).pdf",
       "category": "research-talk",
       "subcategory": null,
@@ -1009,22 +1037,21 @@
       "pages": 11
     },
     {
-      "id": "2020-pyepr-meeting-energy-participation-ratio-epr-for-superconducting-qubit-design-minev",
-      "title": "pyEPR Meeting - Energy Participation Ratio (EPR) for Superconducting Qubit Design",
-      "file": "content - research talks/2020 pyEPR Meeting - Energy Participation Ratio (EPR) for Superconducting Qubit Design (Minev).pdf",
+      "id": "2019-quantum-sensing-keynote-padua-italy-minev",
+      "title": "Advancing Quantum Sensing via Quantum Control (keynote)",
+      "file": "content - research talks/2019 Quantum Sensing Keynote (Padua, Italy, Minev).pdf",
       "category": "research-talk",
       "subcategory": null,
       "series": null,
-      "year": 2020,
-      "venue": null,
+      "year": 2019,
+      "venue": "Padua, Italy",
       "speaker": "Minev",
       "tags": [
-        "hardware",
-        "qiskit-metal",
-        "superconducting-qubits"
+        "keynote",
+        "sensing"
       ],
-      "size_bytes": 1502262,
-      "pages": 19
+      "size_bytes": 6595575,
+      "pages": 95
     },
     {
       "id": "2019-energy-participation-ratio-epr-for-superconducting-qubit-design-minev",
@@ -1045,25 +1072,8 @@
       "pages": 79
     },
     {
-      "id": "2019-quantum-sensing-keynote-padua-italy-minev",
-      "title": "Quantum Sensing Keynote",
-      "file": "content - research talks/2019 Quantum Sensing Keynote (Padua, Italy, Minev).pdf",
-      "category": "research-talk",
-      "subcategory": null,
-      "series": null,
-      "year": 2019,
-      "venue": "Padua, Italy",
-      "speaker": "Minev",
-      "tags": [
-        "keynote",
-        "sensing"
-      ],
-      "size_bytes": 6595575,
-      "pages": 95
-    },
-    {
       "id": "2015-2-5d-cqed-coherence-exploring-drawbridge-transmon-coherence-minev",
-      "title": "2.5D cQED coherence - Exploring Drawbridge Transmon Coherence",
+      "title": "2.5D cQED Coherence: Exploring Drawbridge Transmon Coherence",
       "file": "content - research talks/2015 2.5D cQED coherence - Exploring Drawbridge Transmon Coherence (Minev).pdf",
       "category": "research-talk",
       "subcategory": null,
@@ -1080,7 +1090,7 @@
     },
     {
       "id": "2014-2-5d-circuit-quantum-electrodynamics-cqed-whispering-gallery-modes",
-      "title": "2.5D Circuit Quantum Electrodynamics (cQED) - Whispering Gallery Modes",
+      "title": "2.5D Circuit Quantum Electrodynamics (cQED): Whispering Gallery Modes",
       "file": "content - research talks/2014 2.5D Circuit Quantum Electrodynamics (cQED) - Whispering Gallery Modes.pdf",
       "category": "research-talk",
       "subcategory": null,
@@ -1103,7 +1113,7 @@
       "subcategory": null,
       "series": null,
       "year": 2013,
-      "venue": "APS MM",
+      "venue": "APS March Meeting",
       "speaker": "Minev",
       "tags": [
         "hardware"
@@ -1161,7 +1171,7 @@
     },
     {
       "id": "2011-josephson-junction-arrays-parasitic-capacitances-minev",
-      "title": "Josephson Junction Arrays - Parasitic Capacitances",
+      "title": "Josephson Junction Arrays: Parasitic Capacitances",
       "file": "content - research talks/2011 Josephson Junction Arrays - Parasitic Capacitances (Minev).pdf",
       "category": "research-talk",
       "subcategory": null,
@@ -1177,13 +1187,13 @@
     },
     {
       "id": "2011-josephson-parametric-amplifier-optimizing-minev-aps-march-meeting-poster-2011",
-      "title": "Josephson Parametric Amplifier - Optimizing",
+      "title": "Optimizing Josephson Parametric Amplifiers for Fast, High-Fidelity Qubit Readout",
       "file": "content - research talks/2011 Josephson Parametric Amplifier - Optimizing (Minev, APS March Meeting Poster 2011).pdf",
       "category": "research-talk",
       "subcategory": null,
       "series": null,
       "year": 2011,
-      "venue": "APS March Meeting Poster",
+      "venue": "APS March Meeting (poster)",
       "speaker": "Minev",
       "tags": [
         "hardware"
@@ -1192,64 +1202,47 @@
       "pages": 1
     },
     {
-      "id": "t11-7-pictorial-digital-quantum-circuits-minev",
-      "title": "T11.7 Pictorial - Digital quantum circuits",
-      "file": "content - tech notes/T11.7 Pictorial - Digital quantum circuits (Minev).pdf",
+      "id": "t26-many-body-physics-exploring-spin-models-for-quantum-computing-scientists-minev",
+      "title": "Introduction to Many-Body Physics: Exploring Spin Models for Quantum Computing Scientists",
+      "file": "content - tech notes/T26 Many-Body Physics - Exploring Spin Models for Quantum Computing Scientists (Minev).pdf",
       "category": "tech-note",
       "subcategory": null,
       "series": null,
-      "year": null,
+      "year": 2023,
       "venue": null,
       "speaker": "Minev",
       "tags": [
-        "circuits",
-        "reference"
+        "many-body"
       ],
-      "size_bytes": 173223,
-      "pages": 5
+      "size_bytes": 248532,
+      "pages": 10,
+      "note_id": "T26"
     },
     {
-      "id": "t11-9-concentration-inequalities-and-tail-bounds-minev",
-      "title": "T11.9 Concentration inequalities and tail bounds",
-      "file": "content - tech notes/T11.9 Concentration inequalities and tail bounds (Minev).pdf",
+      "id": "t27-simple-noise-models-and-gate-fidelity-minev",
+      "title": "Simple Noise Models and Gate Fidelity",
+      "file": "content - tech notes/T27 Simple noise models and gate fidelity (Minev).pdf",
       "category": "tech-note",
       "subcategory": null,
       "series": null,
-      "year": null,
+      "year": 2023,
       "venue": null,
       "speaker": "Minev",
       "tags": [
-        "math",
-        "reference"
+        "noise"
       ],
-      "size_bytes": 75751,
-      "pages": 2
-    },
-    {
-      "id": "t21-estimating-observables-from-sampled-bit-strings-minev",
-      "title": "T21 Estimating observables from sampled bit strings",
-      "file": "content - tech notes/T21 Estimating observables from sampled bit strings (Minev).pdf",
-      "category": "tech-note",
-      "subcategory": null,
-      "series": null,
-      "year": null,
-      "venue": null,
-      "speaker": "Minev",
-      "tags": [
-        "estimation",
-        "reference"
-      ],
-      "size_bytes": 147641,
-      "pages": 2
+      "size_bytes": 157411,
+      "pages": 10,
+      "note_id": "T27"
     },
     {
       "id": "t22-bound-sum-of-operators-ala-watrous-minev",
-      "title": "T22 Bound sum of operators ala Watrous",
+      "title": "Bounding a Sum of Operators (à la Watrous)",
       "file": "content - tech notes/T22 Bound sum of operators ala Watrous (Minev).pdf",
       "category": "tech-note",
       "subcategory": null,
       "series": null,
-      "year": null,
+      "year": 2022,
       "venue": null,
       "speaker": "Minev",
       "tags": [
@@ -1257,28 +1250,30 @@
         "reference"
       ],
       "size_bytes": 111739,
-      "pages": 2
+      "pages": 2,
+      "note_id": "T22"
     },
     {
-      "id": "t23-pec-probaiblity-error-cancelation-notation-and-notes-minev",
-      "title": "T23 PEC (Probaiblity error cancelation) notation and notes",
-      "file": "content - tech notes/T23 PEC (Probaiblity error cancelation) notation and notes (Minev).pdf",
+      "id": "t21-estimating-observables-from-sampled-bit-strings-minev",
+      "title": "Estimating Observables from Sampled Bit Strings",
+      "file": "content - tech notes/T21 Estimating observables from sampled bit strings (Minev).pdf",
       "category": "tech-note",
       "subcategory": null,
       "series": null,
-      "year": null,
+      "year": 2022,
       "venue": null,
       "speaker": "Minev",
       "tags": [
-        "error-mitigation",
-        "pec"
+        "estimation",
+        "reference"
       ],
-      "size_bytes": 70141,
-      "pages": 2
+      "size_bytes": 147641,
+      "pages": 2,
+      "note_id": "T21"
     },
     {
       "id": "t25-random-sampling-and-twirling-of-states-vs-true-mixed-states-minev",
-      "title": "T25 Random sampling and twirling of states vs true mixed states",
+      "title": "Are Mixed States and Random Sampling of States Equivalent?",
       "file": "content - tech notes/T25 Random sampling and twirling of states vs true mixed states (Minev).pdf",
       "category": "tech-note",
       "subcategory": null,
@@ -1291,12 +1286,13 @@
         "twirling"
       ],
       "size_bytes": 138747,
-      "pages": 11
+      "pages": 11,
+      "note_id": "T25"
     },
     {
-      "id": "t26-many-body-physics-exploring-spin-models-for-quantum-computing-scientists-minev",
-      "title": "T26 Many-Body Physics - Exploring Spin Models for Quantum Computing Scientists",
-      "file": "content - tech notes/T26 Many-Body Physics - Exploring Spin Models for Quantum Computing Scientists (Minev).pdf",
+      "id": "t11-9-concentration-inequalities-and-tail-bounds-minev",
+      "title": "Concentration Inequalities and Tail Bounds",
+      "file": "content - tech notes/T11.9 Concentration inequalities and tail bounds (Minev).pdf",
       "category": "tech-note",
       "subcategory": null,
       "series": null,
@@ -1304,15 +1300,18 @@
       "venue": null,
       "speaker": "Minev",
       "tags": [
-        "many-body"
+        "cheat-sheet",
+        "math",
+        "reference"
       ],
-      "size_bytes": 248532,
-      "pages": 10
+      "size_bytes": 75751,
+      "pages": 2,
+      "note_id": "T11.9"
     },
     {
-      "id": "t27-simple-noise-models-and-gate-fidelity-minev",
-      "title": "T27 Simple noise models and gate fidelity",
-      "file": "content - tech notes/T27 Simple noise models and gate fidelity (Minev).pdf",
+      "id": "t11-7-pictorial-digital-quantum-circuits-minev",
+      "title": "Pictorial Digital Quantum Circuits",
+      "file": "content - tech notes/T11.7 Pictorial - Digital quantum circuits (Minev).pdf",
       "category": "tech-note",
       "subcategory": null,
       "series": null,
@@ -1320,10 +1319,32 @@
       "venue": null,
       "speaker": "Minev",
       "tags": [
-        "noise"
+        "cheat-sheet",
+        "circuits",
+        "reference"
       ],
-      "size_bytes": 157411,
-      "pages": 10
+      "size_bytes": 173223,
+      "pages": 5,
+      "note_id": "T11.7"
+    },
+    {
+      "id": "t23-pec-probaiblity-error-cancelation-notation-and-notes-minev",
+      "title": "Probabilistic Error Cancellation: Paper Notes",
+      "file": "content - tech notes/T23 PEC (Probaiblity error cancelation) notation and notes (Minev).pdf",
+      "category": "tech-note",
+      "subcategory": null,
+      "series": null,
+      "year": null,
+      "venue": null,
+      "speaker": "Minev",
+      "tags": [
+        "error-mitigation",
+        "pec",
+        "reference"
+      ],
+      "size_bytes": 70141,
+      "pages": 2,
+      "note_id": "T23"
     }
   ]
 }

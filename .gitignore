@@ -143,8 +143,6 @@ venv.bak/
 # Rope project settings
 .ropeproject
 
-# mkdocs documentation
-/site
 
 # mypy
 .mypy_cache/
@@ -193,3 +191,6 @@ _site/
 
 # derived extraction cache (rendered pages, per-page text) — regenerable
 _cache/
+
+# website build output (tools/build_site.py)
+_site/

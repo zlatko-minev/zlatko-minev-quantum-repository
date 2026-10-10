@@ -25,6 +25,11 @@ For more, visit [zlatko-minev.com](https://zlatko-minev.com).
 
 ### Browse the Archive
 
+The easiest way in is the website (published from this repository with GitHub
+Pages): search, filter by type, topic, year and level, group lecture series, and
+open any deck in the browser. Run it locally with
+`python3 tools/build_site.py --serve`.
+
 Content is organized into three folders — **research talks**, **educational**, and
 **tech notes** — and indexed in [`catalog.json`](catalog.json), a machine-readable
 database of every item with titles, years, venues, categories, and tags.
@@ -49,8 +54,14 @@ talks and republish, see [`agent/NOTES.md`](agent/NOTES.md). In short:
 ```bash
 python3 tools/process_pdfs.py     # compress new/updated PDFs (~150 dpi)
 python3 tools/build_catalog.py    # regenerate catalog.json (+ tags)
+python3 tools/make_thumbnails.py  # page-1 thumbnails for the website
+python3 tools/check_sizes.py      # size guard (also runs in CI and publish.sh)
 bash    tools/publish.sh          # publish as a single clean commit
 ```
+
+Display titles, series, venues and dates are curated in
+`tools/catalog_overrides.json`, so file names never have to change to fix how an
+item appears on the site.
 
 > The published repository intentionally keeps **no history** — every update is a
 > single force-pushed commit. Pristine, full-resolution originals are archived
