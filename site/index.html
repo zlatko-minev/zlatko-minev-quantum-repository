@@ -3,27 +3,43 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Minev Quantum Archive</title>
-<meta name="description" content="Talks, lectures, tutorials and technical notes on superconducting qubits, quantum noise, error mitigation and many-body physics by Zlatko K. Minev, 2011 to today. Search, filter and download every deck.">
-<meta property="og:title" content="Minev Quantum Archive">
-<meta property="og:description" content="Talks, lectures, tutorials and technical notes on quantum hardware, noise and error mitigation by Zlatko K. Minev.">
+<title>Quantum Jumps · Zlatko Minev's talks, lectures and notes</title>
+<meta name="description" content="Fifteen years of slides by Zlatko K. Minev on superconducting qubits, quantum noise, error mitigation and many-body physics: research talks, summer-school lectures, tutorials and technical notes. Search, filter and download.">
+<meta property="og:title" content="Quantum Jumps · Zlatko Minev's talks, lectures and notes">
+<meta property="og:description" content="Research talks, summer-school lectures, tutorials and technical notes on quantum hardware, noise and error mitigation.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,650;1,7..72,500&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="masthead">
-  <div class="wrap masthead-inner">
-    <div class="ident">
-      <p class="eyebrow">Zlatko K. Minev · 2011 to today</p>
-      <h1>Quantum Archive</h1>
-      <p class="lede">Slides and notes from research talks, summer-school lectures, tutorials and technical notes on superconducting qubits, quantum noise, error mitigation and many-body physics. Free to read and download.</p>
-    </div>
-    <dl class="stats" id="stats" aria-label="Archive contents"></dl>
+<nav class="topbar wrap" aria-label="Site">
+  <a class="me" href="https://zlatko-minev.com"><span class="mono-mark" aria-hidden="true">ZM</span>Zlatko Minev</a>
+  <div class="toplinks">
+    <a href="https://zlatko-minev.com">Homepage ↗</a>
+    <a href="https://github.com/zlatko-minev/zlatko-minev-quantum-repository">GitHub</a>
   </div>
+</nav>
+
+<header class="hero wrap">
+  <p class="eyebrow">Talks · lectures · notes · <span id="span-years">2011 → today</span></p>
+  <h1>Quantum <em>Jumps</em></h1>
+  <p class="lede">Fifteen years of slides on superconducting qubits, quantum noise, error mitigation and many-body physics. Research talks, summer-school lectures, tutorials and the occasional late-night derivation, all free to read, teach from and share.</p>
+  <figure class="trace" id="trace" title="Click to measure again">
+    <svg viewBox="0 0 1200 96" preserveAspectRatio="none" role="img" aria-label="A qubit's measured state jumping between ground and excited levels over time">
+      <line class="lvl" x1="0" x2="1200" y1="78" y2="78"/><line class="lvl" x1="0" x2="1200" y1="18" y2="18"/>
+      <path id="trace-path" d=""/>
+      <g id="trace-mark"></g>
+    </svg>
+    <span class="trace-label" id="trace-label" hidden>caught mid-flight</span>
+    <figcaption><span class="mono">|G⟩ ↔ |D⟩</span> Every jump gets caught mid-flight eventually. Click the trace to measure again.</figcaption>
+  </figure>
 </header>
+
+<section class="wrap shelves" aria-label="Collections">
+  <div class="shelf-grid" id="shelves"></div>
+</section>
 
 <div class="toolbar" role="search">
   <div class="wrap toolbar-inner">
@@ -32,7 +48,6 @@
       <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4.5 4.5"/></svg>
       <input id="q" type="search" placeholder="Search titles, venues, topics…  ( / )" autocomplete="off">
     </label>
-    <div class="seg" id="types" role="group" aria-label="Type"></div>
     <label class="sort">
       <span>Sort</span>
       <select id="sort">
@@ -43,43 +58,52 @@
       </select>
     </label>
     <label class="toggle"><input id="group" type="checkbox"> <span>Group by series</span></label>
+    <button class="btn ghost" type="button" id="random" title="Open a random deck">Collapse to a random deck</button>
   </div>
 </div>
 
 <main class="wrap layout">
   <details class="filters-box" id="filters-box">
-  <summary>Filters</summary>
-  <aside class="filters" aria-label="Filters">
-    <section>
-      <h2>Year</h2>
-      <div class="years" id="years"></div>
-    </section>
-    <section>
-      <h2>Topic</h2>
-      <div class="chips" id="tags"></div>
-    </section>
-    <section>
-      <h2>Format</h2>
-      <div class="chips" id="formats"></div>
-    </section>
-    <section>
-      <h2>Level</h2>
-      <div class="chips" id="levels"></div>
-    </section>
-    <button class="reset" id="reset" type="button" hidden>Clear all filters</button>
-  </aside>
+    <summary>Filters</summary>
+    <aside class="filters" aria-label="Filters">
+      <section>
+        <h2>Year</h2>
+        <div class="years" id="years"></div>
+      </section>
+      <section>
+        <h2>Topic</h2>
+        <div class="chips" id="tags"></div>
+      </section>
+      <section>
+        <h2>Format</h2>
+        <div class="chips" id="formats"></div>
+      </section>
+      <section>
+        <h2>Level</h2>
+        <div class="chips" id="levels"></div>
+      </section>
+      <button class="reset" id="reset" type="button" hidden>Clear all filters</button>
+    </aside>
   </details>
 
   <section class="results" aria-live="polite">
-    <p class="count" id="count"></p>
+    <p class="count" id="count">Loading the archive…</p>
     <div id="grid"></div>
-    <p class="empty" id="empty" hidden>Nothing matches these filters. <button type="button" id="reset2">Clear filters</button></p>
+    <p class="empty" id="empty" hidden>No states in this subspace. Loosen a filter, or <button type="button" id="reset2">clear them all</button>.</p>
   </section>
 </main>
 
-<footer class="wrap foot">
-  <p>Slides © Zlatko K. Minev, shared under the <a href="https://github.com/zlatko-minev/zlatko-minev-quantum-repository/blob/main/LICENSE.md">MIT License</a>. Short descriptions marked “auto-summary” were generated by a language model from the slides and may contain errors.</p>
-  <p><a href="https://zlatko-minev.com">zlatko-minev.com</a> · <a href="https://github.com/zlatko-minev/zlatko-minev-quantum-repository">Source and catalog on GitHub</a></p>
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <div>
+      <p class="foot-name"><a href="https://zlatko-minev.com">zlatko-minev.com</a></p>
+      <p>More about the work, papers, blog and contact.</p>
+    </div>
+    <div class="foot-small">
+      <p>Slides © Zlatko K. Minev, shared under the <a href="https://github.com/zlatko-minev/zlatko-minev-quantum-repository/blob/main/LICENSE.md">MIT License</a>. Summaries marked “draft” were machine-written from the slides and are awaiting the author's review.</p>
+      <p>Catalog and source on <a href="https://github.com/zlatko-minev/zlatko-minev-quantum-repository">GitHub</a>. No qubits were harmed in the making of this archive (some decohered).</p>
+    </div>
+  </div>
 </footer>
 
 <dialog id="detail" aria-labelledby="d-title">

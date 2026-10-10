@@ -25,8 +25,8 @@ For more, visit [zlatko-minev.com](https://zlatko-minev.com).
 
 ### Browse the Archive
 
-The easiest way in is the website (published from this repository with GitHub
-Pages): search, filter by type, topic, year and level, group lecture series, and
+The easiest way in is the website, **Quantum Jumps** (published from this
+repository with GitHub Pages): search, filter by type, topic, year and level, group lecture series, and
 open any deck in the browser. Run it locally with
 `python3 tools/build_site.py --serve`.
 
@@ -49,7 +49,7 @@ database of every item with titles, years, venues, categories, and tags.
 ## 🛠️ Maintaining the Archive
 
 PDFs are compressed to a balanced, web-friendly quality (no Git LFS). To add new
-talks and republish, see [`agent/NOTES.md`](agent/NOTES.md). In short:
+talks and republish, follow the checklist in [`agent/NOTES.md`](agent/NOTES.md). In short:
 
 ```bash
 python3 tools/process_pdfs.py     # compress new/updated PDFs (~150 dpi)

@@ -14,19 +14,23 @@
 - ⏳ **Folder reorg** of `content - educational/` to be shallower / topic-first (see below)
 
 ## Content quality
-- ⏳ **AI text proofing (needed before promoting the site).** The local 7B model's
-  output has factual slips (e.g. the Fibonacci-anyons talk tagged `qiskit-metal`,
-  `pec`, `sensing`); the site labels it "auto-summary" and does not use
-  `suggested_tags` for filtering. Rewrite or proof the 76 descriptions.
+- ⏳ **Metadata questions found while summarizing (author to confirm):**
+  QGSS 2022 bonus "State Preparation Noise" / "Coherent ZZ Error" and the QGSS
+  2023 "Coherent ZZ Error" pages are dated July 2021 (the 2023 one matches the
+  2021 file); "Intro to Real Quantum Computers and Noise" is filed as 2022 but
+  cites 2024 work and is titled "IBM Quantum Summer Learning Session"; the 2024
+  APS deck's title slide reads "A detailed portrait of quantum many-body
+  dynamics"; T23 cites the sparse Pauli-Lindblad paper as Nature Physics 16
+  (2020).
 - ⏳ **DB + text proofing pass (manual).** Build a simple proofing view (an HTML
   table or `tools/proof.py` that dumps `catalog.json` + `catalog_ai.json` side by
   side) to review every title, venue, year, speaker, description, and tags. Fix
   via `tools/catalog_overrides.json` (curation) — never hand-edit `catalog.json`.
 - ⏳ **Tag taxonomy.** Promote the AI `suggested_tags` into a controlled vocabulary;
   reconcile with `TAG_RULES` in `build_catalog.py`. One canonical tag list.
-- ⏳ **Naming normalization.** Optional pass to standardize filenames to
-  `YYYY — Title — (Venue).pdf`; only after the catalog is the source of truth so
-  nothing breaks (catalog keys off `id`, derived from filename).
+- ✅ **Naming: decided not to rename files** (2026-10). Display titles come from
+  `catalog_overrides.json`; renames would break existing GitHub links and site
+  permalinks. See `agent/NOTES.md`.
 
 ## Technical notes (`content - tech notes/`)
 The `T*` notes (derivations, cheat-sheets, working notes) are a distinct content
@@ -58,10 +62,16 @@ Static site in `site/` (plain HTML/CSS/JS, no framework or npm), built by
   (~40 KB each, committed; CI fails if one is missing).
 - ✅ Curated display titles / series / venues / tech-note dates in
   `tools/catalog_overrides.json` (from the PDFs' own title pages).
+- ✅ Named **Quantum Jumps**; four shelves (Lectures & Summer Schools,
+  Research Talks, Tutorials & Tech Notes, Career & Outreach) with series
+  grouping; links to zlatko-minev.com in the top bar and footer.
+- ✅ Summaries rewritten from each deck's text (2026-10), shown as "draft" until
+  the author sets `summary_reviewed: true`.
 - ⏳ **Enable Pages**: Settings → Pages → Source: GitHub Actions (one-time, owner).
-- ⏳ **Landing copy**: review the masthead text; add 3–5 `featured` picks.
-- 💡 Integration with zlatko-minev.com: subpath vs subdomain
-  (`talks.zlatko-minev.com` via a Pages CNAME).
+- ⏳ **Address**: recommended `talks.zlatko-minev.com` (DNS CNAME `talks` →
+  `zlatko-minev.github.io`, then Settings → Pages → Custom domain, enforce HTTPS).
+- ⏳ **Author review** of summaries and of the metadata questions below.
+- ⏳ Add 3–5 `featured` picks.
 
 ## Repository size
 Facts (2026-10): 76 PDFs, 297 MB; git pack 211 MB; history is already a single

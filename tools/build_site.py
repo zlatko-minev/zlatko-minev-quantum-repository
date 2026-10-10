@@ -59,9 +59,13 @@ def build_library(pdf_base: str) -> dict:
     for it in catalog:
         a = ai.get(it["id"], {})
         thumb = SRC / "thumbs" / f"{it['id']}.jpg"
+        # Curated text (catalog_overrides.json → catalog.json) wins over the
+        # older local-model enrichment in catalog_ai.json.
+        curated = bool(it.get("summary") or it.get("description"))
         items.append({
             "id": it["id"],
             "title": it["title"],
+            "shelf": it.get("shelf"),
             "category": it["category"],
             "series": it.get("series"),
             "year": it.get("year"),
@@ -74,13 +78,12 @@ def build_library(pdf_base: str) -> dict:
             "size": it.get("size_bytes"),
             "file": it["file"],
             "thumb": f"thumbs/{it['id']}.jpg" if thumb.exists() else None,
-            # curated description wins over the AI one
             "description": it.get("description") or tidy(a.get("short_description")),
-            "summary": tidy(a.get("summary")),
-            "key_points": a.get("key_points") or [],
-            "topics": a.get("topics") or [],
-            "level": a.get("audience_level"),
-            "ai": bool(a) and not it.get("description"),
+            "summary": it.get("summary") or tidy(a.get("summary")),
+            "key_points": it.get("key_points") or a.get("key_points") or [],
+            "level": it.get("level") or a.get("audience_level"),
+            # "draft" = machine-written and not yet reviewed by the author
+            "draft": not it.get("summary_reviewed", False) and (curated or bool(a)),
         })
     return {"pdf_base": pdf_base, "repo_url": REPO_URL, "items": items}
 

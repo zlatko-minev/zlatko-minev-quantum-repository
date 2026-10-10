@@ -86,6 +86,23 @@ TAG_RULES = {
     "overview": ["overview"],
 }
 
+# Website "shelves": the four top-level collections people browse by.
+# Default by category / educational subfolder; override per item with "shelf".
+SHELVES = ("lectures", "research", "notes", "outreach")
+SHELF_BY_SUBCATEGORY = {
+    "Career & Outreach": "outreach",
+    "Tutorials (Pauli Twirling)": "notes",
+}
+
+
+def default_shelf(category: str, subcategory: str | None) -> str:
+    if category == "research-talk":
+        return "research"
+    if category == "tech-note":
+        return "notes"
+    return SHELF_BY_SUBCATEGORY.get(subcategory or "", "lectures")
+
+
 YEAR_RE = re.compile(r"(19|20)\d{2}")
 PAREN_RE = re.compile(r"\(([^)]*)\)")
 # the consecutive run of parentheticals immediately before .pdf (venue/speaker)
@@ -234,6 +251,7 @@ def main() -> int:
                 "title": clean_title(name),
                 "file": str(rel),
                 "category": category,
+                "shelf": default_shelf(category, subcat),
                 "subcategory": subcat,
                 "series": series,
                 "year": parse_year(name, parts),
@@ -277,6 +295,8 @@ def main() -> int:
     for i in items:
         if not (REPO_ROOT / i["file"]).exists():
             errors.append(f"file missing on disk: {i['file']}")
+        if i["shelf"] not in SHELVES:
+            errors.append(f"unknown shelf {i['shelf']!r}: {i['id']}")
         if not i["title"]:
             errors.append(f"empty title: {i['id']}")
         if i["year"] is not None and not (2008 <= i["year"] <= date.today().year + 1):

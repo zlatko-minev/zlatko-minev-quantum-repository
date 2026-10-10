@@ -5,15 +5,35 @@
       "overview",
       "outreach"
     ],
-    "venue": "MIT Technology Review EmTech",
-    "title": "To Catch and Reverse a Quantum Jump Mid-Flight (broad talk)"
+    "venue": "MIT Technology Review EmTech (TR35)",
+    "title": "To Catch and Reverse a Quantum Jump Mid-Flight (broad talk)",
+    "description": "Brief general-audience talk on catching and reversing a quantum jump mid-flight, and what it means for quantum technology.",
+    "summary": "A short talk for a broad audience on the textbook picture of quantum jumps as discrete, instantaneous and unpredictable. It contrasts this with the experimental finding that a jump in progress is continuous and coherent and can be predicted and reversed mid-flight, and connects the result to error correction and quantum sensing.",
+    "key_points": [
+      "The traditional view of quantum jumps and the Bohr-Einstein-Schrödinger debate",
+      "A jump in progress as a continuous, coherent evolution with some predictability",
+      "Catching and reversing a jump mid-flight",
+      "Relevance to quantum error correction and sensing"
+    ],
+    "level": "beginner",
+    "summary_confidence": "medium"
   },
   "2023-machine-learning-for-practical-quantum-error-mitigation-ml-qem-haoran-liao-qiskit-seminar": {
     "speaker": "Haoran Liao",
     "venue": "Qiskit Seminar",
     "tags": [
       "featured"
-    ]
+    ],
+    "description": "A seminar on ML-QEM: training regression models and neural networks to mitigate noisy expectation values at low runtime cost.",
+    "summary": "Introduces the trade-offs among error mitigation methods (PEC is unbiased but costly, ZNE is cheaper but biased) and proposes front-loading the cost into training a model that mitigates expectation values at runtime without extra circuits. Compares linear regression, random forest, multi-layer perceptron and graph neural network models on random and Trotterized Ising circuits in noisy simulation.",
+    "key_points": [
+      "Three-step ML-QEM workflow: generate training data, train, mitigate at runtime",
+      "Comparison with Clifford data regression and why linear models are not enough in general",
+      "Four model families compared; random forest consistently performs best",
+      "Benchmarks on random 4-qubit circuits and Trotterized 1D transverse-field Ising circuits versus digital ZNE"
+    ],
+    "level": "advanced",
+    "summary_confidence": "medium"
   },
   "t11-7-pictorial-digital-quantum-circuits-minev": {
     "tags": [
@@ -22,7 +42,17 @@
       "reference"
     ],
     "title": "Pictorial Digital Quantum Circuits",
-    "note_id": "T11.7"
+    "note_id": "T11.7",
+    "description": "A pictorial reference of quantum circuit notation and identities: Pauli conjugations, cNOT tricks, SWAPs and measurement rules.",
+    "summary": "A working reference of circuit diagram notation and the identities used to manipulate circuits. It covers the symbolic alphabet of wires, gates and measurements, how Paulis move through Clifford gates and cNOTs, Pauli-rotation conjugation, and measurement principles such as deferred and implicit measurement.",
+    "key_points": [
+      "Symbol alphabet for wires, gates, noisy channels, controls and measurements",
+      "Pauli basis changes under H and S, and pushing Paulis through cNOT and controlled-Pauli gates",
+      "cNOT, cZ and SWAP identities and Pauli-rotation gates such as R_ZZ",
+      "Measurement identities: basis changes, deferred and implicit measurement, readout bit flips"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "t11-9-concentration-inequalities-and-tail-bounds-minev": {
     "tags": [
@@ -31,7 +61,17 @@
       "reference"
     ],
     "title": "Concentration Inequalities and Tail Bounds",
-    "note_id": "T11.9"
+    "note_id": "T11.9",
+    "description": "Two-page reference table of concentration inequalities and tail bounds, from Markov and Chebyshev to Hoeffding and McDiarmid.",
+    "summary": "A compact cheat sheet collecting probability bounds with their conditions, standard forms and references. It covers single-variable bounds, bounds on sums of independent variables and the laws of large numbers, and more advanced inequalities, with short notes on when each applies, such as how many samples a Hoeffding confidence interval needs.",
+    "key_points": [
+      "Single-variable bounds: Markov, reverse Markov, Chebyshev, Cantelli, Chernoff, Jensen",
+      "Sums of independent variables: Hoeffding's lemma, Chernoff-Hoeffding, Azuma, laws of large numbers",
+      "Advanced bounds: Bennett, Bernstein, Efron-Stein, McDiarmid",
+      "Usage notes and core references"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "t21-estimating-observables-from-sampled-bit-strings-minev": {
     "tags": [
@@ -40,7 +80,17 @@
     ],
     "title": "Estimating Observables from Sampled Bit Strings",
     "note_id": "T21",
-    "year": 2022
+    "year": 2022,
+    "description": "A technical note on how sampling error in measured bitstrings carries over to estimated observables like Pauli-Z expectation values.",
+    "summary": "Sets up computational-basis measurement of an n-qubit state and diagonal observables, and shows that bitstring probabilities and Pauli-Z expectations are related by the Walsh-Hadamard transform. It then models the counts from M shots as multinomial, giving their mean and covariance, as a starting point for how many shots a given confidence needs; the note is marked work in progress.",
+    "key_points": [
+      "Measurement operators and outcome probabilities for an n-qubit register",
+      "Diagonal observables and Pauli-Z strings indexed by bitstrings",
+      "Walsh-Hadamard transform between projector and Pauli-Z expectations",
+      "Multinomial statistics of shot counts: mean and covariance"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "t22-bound-sum-of-operators-ala-watrous-minev": {
     "tags": [
@@ -49,82 +99,251 @@
     ],
     "title": "Bounding a Sum of Operators (à la Watrous)",
     "note_id": "T22",
-    "year": 2022
+    "year": 2022,
+    "description": "A worked proof of Watrous's Lemma 3.3: bounding the norm of a weighted sum of positive semidefinite operators.",
+    "summary": "A short technical note that proves, step by step, that the spectral norm of a complex-weighted sum of positive semidefinite operators is at most the largest weight magnitude times the norm of the unweighted sum. It highlights the trick of rewriting the sum as an operator product A†UA in an enlarged space, then applies Schatten-norm properties.",
+    "key_points": [
+      "Statement of Lemma 3.3 from Watrous's The Theory of Quantum Information",
+      "Recasting a weighted operator sum as A†UA with an auxiliary space and a diagonal weight matrix",
+      "Schatten-norm facts used: submultiplicativity, adjoint invariance, and the C*-identity",
+      "Open questions: Hermitian operators and other p-norms"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "superconducting-qubits-101-cqed-quantum-hardware-minev-quantum-device-workshop-beginner-2026": {
     "title": "Superconducting Qubits 101: cQED Quantum Hardware",
     "series": "Superconducting Qubits 101",
-    "venue": "Quantum Device Workshop (Beginner)"
+    "venue": "Quantum Device Workshop (Beginner)",
+    "description": "From atoms to artificial atoms: how a transmon qubit arises from an LC oscillator plus a Josephson junction, and how cQED devices are modeled.",
+    "summary": "A beginner lecture that builds the superconducting qubit from the ground up, starting with atomic energy levels and the classical LC circuit and moving to the quantum harmonic oscillator and the transmon as a nonlinear oscillator. It closes with a survey of quantization methods (lumped, impedance, energy-participation) and chip designs made by the community with Qiskit Metal.",
+    "key_points": [
+      "Qubits as anharmonic oscillators: atoms vs. superconducting circuits, and why cQED needs low loss, low temperature and the Josephson junction",
+      "Classical LC circuit (charge, flux, capacitance, inductance) as the starting point for quantization",
+      "Quantum harmonic oscillator wavefunctions, then the transmon's anharmonicity, Lamb shift and zero-point fluctuations",
+      "Landscape of quantization methods and measured vs. predicted qubit-readout cross-Kerr, plus community designs built with Qiskit Metal"
+    ],
+    "level": "beginner",
+    "summary_confidence": "high"
   },
   "superconducting-qubits-101-part-i-minev-flagship-quantum-device-workshop-beginner-2025": {
     "title": "Superconducting Qubits 101, Part I",
     "series": "Superconducting Qubits 101",
-    "venue": "Flagship Quantum Device Workshop (Beginner)"
+    "venue": "Flagship Quantum Device Workshop (Beginner)",
+    "description": "A first lecture on superconducting qubits: from atoms and oscillators to the transmon, building up the classical LC circuit along the way.",
+    "summary": "Starts with the big picture of how a qubit goes from idea to cryogenic hardware, using IBM and Google architectures as examples, then motivates the transmon as an anharmonic artificial atom. The second half lays classical groundwork: charge, flux, Kirchhoff's laws, and the Lagrangian and Hamiltonian of the LC oscillator. Community chip designs made with Qiskit Metal and a list of introductory cQED reviews round it out.",
+    "key_points": [
+      "Qubit as an anharmonic, isolated degree of freedom: atoms vs. artificial atoms",
+      "cQED ingredients: superconductivity, low temperature, Josephson nonlinearity, microwave scales",
+      "Circuit basics for the transmon: capacitance, inductance, kinetic inductance, Kirchhoff's laws",
+      "LC oscillator via Lagrangian/Hamiltonian, phase space, and complex action-angle variables"
+    ],
+    "level": "beginner",
+    "summary_confidence": "high"
   },
   "superconducting-qubits-101-part-ii-minev-flagship-quantum-device-workshop-beginner-2025": {
     "title": "Superconducting Qubits 101, Part II",
     "series": "Superconducting Qubits 101",
-    "venue": "Flagship Quantum Device Workshop (Beginner)"
+    "venue": "Flagship Quantum Device Workshop (Beginner)",
+    "description": "Part II of an intro to cQED: quantizing the LC oscillator, the transmon's Kerr Hamiltonian, and EPR-based modeling of qubit-resonator devices.",
+    "summary": "Second half of a beginner cQED lecture titled \"Your First Superconducting Qubit\". It goes from Dirac's canonical quantization and ladder operators to the transmon treated as a weakly nonlinear (Kerr) oscillator, then shows how real devices are modeled: classical EM simulation, quantization (with energy-participation ratios as the worked example), and the effective Hamiltonian with dispersive shifts. Backup slides hold hand-written notes on energy, flux fluctuations and the compactness of the junction phase.",
+    "key_points": [
+      "Canonical quantization: Poisson brackets to commutators, ladder operators, Husimi Q phase-space pictures",
+      "Transmon as a Kerr oscillator: first-order perturbation theory gives anharmonicity and a Lamb shift while eigenstates are unchanged",
+      "Three-step device modeling: EM eigenmodes, quantization via EPR, and the effective qubit-cavity Hamiltonian with cross-Kerr chi",
+      "Backup notes on flux fluctuations, harmonic approximation and a tight-binding picture of the junction phase"
+    ],
+    "level": "beginner",
+    "summary_confidence": "high"
   },
   "superconducting-qubits-101-cqed-quantum-hardware-minev-cec-icmc-2021": {
     "title": "Superconducting Qubits 101: cQED Quantum Hardware",
-    "series": "Superconducting Qubits 101"
+    "series": "Superconducting Qubits 101",
+    "description": "Introduction to circuit QED, from the LC oscillator to the transmon, followed by chip design and analysis with Qiskit Metal.",
+    "summary": "The first half builds a superconducting qubit from scratch: what a cloud-accessible qubit physically is, the ingredients of cQED, the classical and quantum LC oscillator, and how a Josephson junction's nonlinearity turns it into a transmon. The second half turns to design practice, walking through the chip design flow and Qiskit Metal: component libraries, parameter tuning, electromagnetic and quantum analysis with tools such as Ansys HFSS and EPR, and devices built with it.",
+    "key_points": [
+      "cQED ingredients: superconductivity, low temperature, Josephson nonlinearity, low dissipation",
+      "Charge, flux, capacitance and inductance leading to the classical and quantum LC oscillator",
+      "Transmon as an anharmonic oscillator, with ladder operators and wavefunctions",
+      "Qiskit Metal workflow: layout, eigenmode/EPR and capacitive analysis, and example devices"
+    ],
+    "level": "beginner",
+    "summary_confidence": "high"
   },
   "superconducting-qubits-101-cqed-quantum-hardware-minev-qiqt-summer-school-2021": {
     "title": "Superconducting Qubits 101: cQED Quantum Hardware",
-    "series": "Superconducting Qubits 101"
+    "series": "Superconducting Qubits 101",
+    "description": "How to build a qubit from an oscillator: an introduction to circuit QED, from the classical LC circuit to the transmon.",
+    "summary": "An introductory lecture on superconducting qubits that starts with the big picture of devices in the cloud and the lab, then builds the physics step by step: classical circuit laws, the LC oscillator, its quantization, and the transmon as a nonlinear oscillator made with a Josephson junction. It ends with restricting to the qubit subspace and pointers to design tools and further reading.",
+    "key_points": [
+      "Qubits from atoms and anharmonic oscillators; the ingredients of cQED",
+      "Classical LC oscillator from charge, flux, Kirchhoff's laws and Hamiltonian dynamics",
+      "Quantum harmonic oscillator: ladder operators, wavefunctions, zero-point fluctuations",
+      "Transmon: Josephson junction, Kerr Hamiltonian, anharmonicity, and the two-level qubit subspace"
+    ],
+    "level": "beginner",
+    "summary_confidence": "high"
   },
   "superconducting-qubits-101-quantum-hardware-cqed-day-1-qiskit-global-summer-school-2020-minev": {
     "title": "Superconducting Qubits 101: Quantum Hardware & cQED, Day 1",
-    "series": "Superconducting Qubits 101"
+    "series": "Superconducting Qubits 101",
+    "description": "Making a first qubit from an oscillator: classical LC circuits, canonical quantization, and the quantum harmonic oscillator as the basis of cQED.",
+    "summary": "The first cQED lecture of the QGSS 2020 series moves from the big picture of qubits in the cloud and at 15 mK to atoms, artificial atoms, and the transmon. It works through circuit electromagnetism and the classical LC oscillator, then quantizes it with Dirac's procedure, covering ladder operators, flux and charge fluctuations, wavefunctions, and phase-space pictures, with pointers to hands-on lab work.",
+    "key_points": [
+      "Qubit from atom or anharmonic oscillator; cQED ingredients",
+      "Classical LC circuit: Kirchhoff's laws, Lagrangian and Hamiltonian",
+      "Dirac canonical quantization and its pitfalls (operator ordering, compact variables)",
+      "Quantum harmonic oscillator: ladder operators, zero-point fluctuations, wavefunctions, Husimi Q"
+    ],
+    "level": "beginner",
+    "summary_confidence": "high"
   },
   "superconducting-qubits-101-quantum-hardware-cqed-day-2-qiskit-global-summer-school-2020-minev": {
     "title": "Superconducting Qubits 101: Quantum Hardware & cQED, Day 2",
-    "series": "Superconducting Qubits 101"
+    "series": "Superconducting Qubits 101",
+    "description": "Second cQED lecture: transmon as a qubit, energy-participation ratios, qubit control and noise, and dispersive readout.",
+    "summary": "The second of two summer-school lectures on superconducting qubits. It restricts the transmon to its two lowest levels to get the qubit Pauli operators, introduces the energy-participation ratio, and discusses control lines, T1/T2 and the fluctuation-dissipation link. A primer on quantum measurement then leads to qubit-resonator coupling, the cross-Kerr Hamiltonian from EPR, and dispersive readout of Z.",
+    "key_points": [
+      "Transmon Kerr Hamiltonian and truncation to the qubit subspace",
+      "Energy-participation ratio: the fraction of a mode's energy stored in each junction",
+      "Control, noise and dissipation; T1, T2 and coherence trends in superconducting circuits",
+      "Quantum measurement basics (back-action, QND vs. demolition) and cQED dispersive readout"
+    ],
+    "level": "beginner",
+    "summary_confidence": "high"
   },
   "a-prelude-to-practical-quantum-computing-minev-global-hackathon-ai-for-good-2025": {
     "title": "A Prelude to Practical Quantum Computing",
-    "series": "Career & Outreach"
+    "series": "Career & Outreach",
+    "description": "A short tour of where superconducting quantum computers stand, what a qubit is, and why noise and error mitigation matter.",
+    "summary": "Starts from Feynman's motivation and the progress from one or two working qubits around 2010 to 100+ qubit cloud machines, then surveys utility-scale experiments and the goal of quantum advantage. It explains the qubit from energy levels to a cQED chip in a dilution fridge, runs a simple 'hello world' qubit-flip circuit, and uses the gap between ideal and measured data to introduce noise, error correction and error mitigation (ZNE, PEC).",
+    "key_points": [
+      "History and status of superconducting quantum computing, with a map of utility-scale experiments by qubit count and depth",
+      "Many-body dynamics example: local integrals of motion extracted on a 124-qubit processor",
+      "What a qubit is physically: energy levels, cQED hardware, 15 mK operation",
+      "A qubit-flipper circuit on real hardware, and how error mitigation differs from error correction"
+    ],
+    "level": "beginner",
+    "summary_confidence": "high"
   },
   "career-talk-2025-qubit-x-qubit-capstone-short-minev": {
     "title": "Career Talk (short)",
     "venue": "Qubit x Qubit Capstone",
-    "series": "Career & Outreach"
+    "series": "Career & Outreach",
+    "description": "A short career talk on life and lessons as a scientist, from a physics degree through a Yale Ph.D. to industry quantum research.",
+    "summary": "A personal, informal talk for students about building a career in science. It traces a path from undergraduate physics to a Ph.D. and industry research, then draws out lessons from the quantum-jumps story: ask good questions, take criticism and leap, learn widely, and have some fun along the way.",
+    "key_points": [
+      "Career timeline from B.A. in physics to Ph.D. in applied physics and quantum computing research",
+      "Founding and leading teams such as Qiskit Metal and Qiskit Leap Research, plus outreach roles like Open Labs",
+      "Lessons from the quantum-jumps research: question-driven work, believing in your ideas, hearing criticism",
+      "Learning across disciplinary boundaries, teaching to learn, and giving back"
+    ],
+    "level": "beginner",
+    "summary_confidence": "high"
   },
   "career-talk-2023-for-sophia-economou-class-minev": {
     "title": "Career Talk",
     "venue": "Guest lecture, Sophia Economou's class",
-    "series": "Career & Outreach"
+    "series": "Career & Outreach",
+    "description": "A guest lecture mixing a physicist's career path and lessons learned with an introduction to quantum computing, noise, and quantum hardware design.",
+    "summary": "Traces a path from Sofia to UC Berkeley and Yale and into IBM Quantum, using the quantum-jumps experiment (catching and reversing a jump mid-flight) as a case study in question-driven research. Personal lessons and outreach work (seminar series, summer schools, Open Labs) are followed by a short technical tour: a one-qubit 'Hello World' showing how noise degrades results, error mitigation and utility-scale experiments, and Qiskit Metal for chip design.",
+    "key_points": [
+      "Quantum jumps: continuous, coherent, and partly predictable rather than instantaneous",
+      "Career lessons: believe in your ideas, learn widely, teach to learn",
+      "Noise as the central challenge, shown with a depth-d qubit-flip experiment on real hardware",
+      "Qiskit Metal and the landscape of circuit-quantization methods"
+    ],
+    "level": "beginner",
+    "summary_confidence": "high"
   },
   "intro-to-noise-mitigation-near-term-algorithms-lecture-1-minev-summer-school-2024": {
     "title": "Intro to Noise Mitigation for Near-Term Algorithms, Lecture 1",
-    "series": "Intro to Noise Mitigation (Summer School 2024)"
+    "series": "Intro to Noise Mitigation (Summer School 2024)",
+    "description": "First lecture on noise and quantum error mitigation, building up to probabilistic error cancellation from a one-qubit example.",
+    "summary": "Opens with the status of quantum computers and a real-device 'qubit flipper' experiment that shows how noise distorts results, then contrasts error correction with error mitigation and places ZNE and PEC on a speed-versus-accuracy landscape. The second half is a worked introduction to PEC: why a noise channel cannot be inverted physically, how a quasi-probability decomposition implements the inverse on average, and what it costs in sampling overhead.",
+    "key_points": [
+      "Coherent, incoherent and projection noise seen in a simple depth-d X-gate circuit",
+      "Error mitigation vs. error correction: benefits, quantum and classical costs, limitations",
+      "Bit-flip toy model: unraveling noise into quantum trajectories and why the inverse map is unphysical",
+      "PEC sampling overhead γ, sign-weighted estimators, and a random-walk analogy for 'cancelling noise with noise'"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "intro-to-noise-mitigation-near-term-algorithms-lecture-2-minev-summer-school-2024": {
     "title": "Intro to Noise Mitigation for Near-Term Algorithms, Lecture 2",
-    "series": "Intro to Noise Mitigation (Summer School 2024)"
+    "series": "Intro to Noise Mitigation (Summer School 2024)",
+    "description": "Second lecture on quantum error mitigation: probabilistic error cancellation, shot-noise statistics, and learning sparse noise models.",
+    "summary": "Picks up from an introductory lecture and works through probabilistic error cancellation (PEC) in detail: canceling noise with quasi-probability sampling, the sampling overhead γ, and the statistics of estimating expectation values from finite shots. It then turns to learning the noise of real devices with sparse Pauli-Lindblad models, Ising-model experiments, and hardware outlook, with bonus derivations in superoperator notation and comprehension questions.",
+    "key_points": [
+      "PEC on one qubit: quasi-probabilities, signs, and the sampling overhead γ",
+      "Empirical mean as an unbiased estimator, its variance, and error bars and confidence",
+      "Quasi-probability decompositions that put PEC, circuit cutting and classical simulation on the same footing",
+      "Optional appendix: stochastic Pauli channels and a full PEC derivation with super bra-ket notation"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "intro-to-quantum-measurements-part-i-ideal-measurements-minev-2023": {
     "title": "Intro to Quantum Measurements, Part I: Ideal Measurements",
-    "series": "Quantum Measurements"
+    "series": "Quantum Measurements",
+    "description": "Tutorial on ideal quantum measurement: POVMs, the Born rule, shot statistics, error bars, and measuring in rotated bases.",
+    "summary": "The first part of a measurement tutorial series (ideal, noisy, mitigated), motivated by readout error in a 50-qubit experiment. It formalizes the quantum-to-classical 'meter' with measurement operators and the Born rule, works the single-qubit case, and then treats the statistics of finite shots: unbiased estimators, Chernoff-Hoeffding bounds, Bayesian and likelihood estimates, and bootstrapping. It closes with how basis rotations map other measurements onto the computational basis.",
+    "key_points": [
+      "Measurement operators, POVMs vs. projective measurements, and the quantum-to-classical rule",
+      "Single-qubit measurement as a Bernoulli trial, with outcome probabilities from <Z>",
+      "Error bars from data: concentration bounds, Bayesian updates with a Beta distribution, and bootstrapping",
+      "Changing measurement basis by conjugating measurement operators with a unitary"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "intro-to-quantum-noise-main-lecture-intro-to-quantum-noise-qiskit-global-summer-school-2023-minev": {
     "tags": [
       "lecture"
     ],
     "title": "Intro to Quantum Noise (main lecture)",
-    "series": "Intro to Quantum Noise (QGSS 2023)"
+    "series": "Intro to Quantum Noise (QGSS 2023)",
+    "description": "Why a simple qubit-flipping circuit fails on real hardware, and what coherent, incoherent and measurement noise do to it.",
+    "summary": "Starts from a 'Hello World' circuit of repeated X gates whose ideal output alternates with depth, then compares it with real device data to motivate the study of noise. Works through miscalibrated gates as coherent errors, incoherent noise, projection noise and SPAM, and closes with how error mitigation and error correction address noise, with bonus material on ZZ crosstalk and the readout A matrix.",
+    "key_points": [
+      "Coherent over-rotation errors and why their worst-case impact grows quadratically with depth",
+      "Incoherent noise and quantum projection (shot) noise",
+      "State-preparation and measurement (SPAM) errors and the readout assignment matrix",
+      "Overview of error mitigation versus error correction; bonus two-qubit ZZ error notebook"
+    ],
+    "level": "beginner",
+    "summary_confidence": "high"
   },
   "intro-to-quantum-noise-bonus-coherent-zz-error-qiskit-global-summer-school-2023-minev": {
     "title": "Coherent ZZ Error (bonus)",
-    "series": "Intro to Quantum Noise (QGSS 2023)"
+    "series": "Intro to Quantum Noise (QGSS 2023)",
+    "description": "A one-page bonus note on coherent ZZ errors from an introduction to quantum noise.",
+    "summary": "A single handwritten-style page on coherent ZZ error, a bonus item in an introduction to quantum noise lecture.",
+    "key_points": [
+      "Coherent (unitary) errors as a class of quantum noise",
+      "The two-qubit ZZ interaction as an error source",
+      "Bonus material to an introductory quantum-noise lecture"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "low"
   },
   "intro-to-quantum-noise-bonus-estimating-bitstrings-t21-qiskit-global-summer-school-2023-minev": {
     "tags": [
       "reference"
     ],
     "title": "Estimating Observables from Bitstrings, T21 (bonus)",
-    "series": "Intro to Quantum Noise (QGSS 2023)"
+    "series": "Intro to Quantum Noise (QGSS 2023)",
+    "description": "Tech note on how shot noise in sampled bitstrings propagates into estimates of Pauli-Z observables, via the Walsh-Hadamard transform.",
+    "summary": "A short technical note asking how close an observable estimated from M measured bitstrings is to its true value, and how many shots an experiment needs. It sets up computational-basis measurement formally, shows that Pauli-Z expectation values and bitstring probabilities are related by the Walsh-Hadamard transform, and begins the statistics of multinomial counts.",
+    "key_points": [
+      "Measurement setup: probabilities as diagonal entries of the state, observables diagonal in the computational basis",
+      "Pauli-Z strings and computational-basis projectors as informationally equivalent sets of 2^n operators",
+      "Walsh-Hadamard transform linking ideal Pauli-Z expectations to bitstring probabilities",
+      "Counts as a multinomial random vector, with its mean and covariance"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "intro-to-quantum-noise-bonus-cheat-sheet-t11-7-pictorial-digital-quanutm-circuits-qiskit-global-summer-school": {
     "tags": [
@@ -132,92 +351,273 @@
       "reference"
     ],
     "title": "Cheat Sheet: Pictorial Digital Quantum Circuits, T11.7 (bonus)",
-    "series": "Intro to Quantum Noise (QGSS 2023)"
+    "series": "Intro to Quantum Noise (QGSS 2023)",
+    "description": "Two-page cheat sheet of quantum circuit symbols and the circuit identities used most often when manipulating Paulis and controlled gates.",
+    "summary": "A pictorial reference for digital quantum circuits: the standard notation for wires, gates, controls, swaps and measurements, followed by a set of identities with short explanations. Useful as a quick lookup when pushing Paulis through Hadamard, S and CNOT gates, as is done in twirling and noise analysis.",
+    "key_points": [
+      "Notation for quantum and classical wires, Bell pairs, controlled gates, swaps and measurements",
+      "Pauli basis changes under H and S, and the Pauli decomposition with its phase",
+      "CNOT propagation rules: X travels forward from control to target, Z travels backward",
+      "Relations between cX, cY and cZ and products of multiple CNOTs"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "intro-to-quantum-noise-main-lecture-intro-to-quantum-noise-qiskit-global-summer-school-2022-minev": {
     "tags": [
       "lecture"
     ],
     "title": "Intro to Quantum Noise (main lecture)",
-    "series": "Intro to Quantum Noise (QGSS 2022)"
+    "series": "Intro to Quantum Noise (QGSS 2022)",
+    "description": "An introduction to noise on real quantum processors, from coherent gate errors to incoherent noise, projection noise and noisy meters.",
+    "summary": "Uses a qubit-flipper circuit, ideal versus measured on hardware, to motivate what one needs to know before running a quantum simulation on a noisy device. Covers coherent noise from miscalibrated rotations on the Bloch sphere, incoherent noise as quantum trajectories, measurement and projection noise, and SPAM, with practice questions and an outlook on error mitigation and correction.",
+    "key_points": [
+      "Gate time evolution and miscalibrated R_X rotations as coherent errors",
+      "Incoherent noise unraveled into quantum trajectories, e.g. a bit-flip channel contracting the Bloch sphere",
+      "Measurement in a nutshell, projection noise, and noisy meters (SPAM)",
+      "Bonus content: two-qubit ZZ error, the readout A matrix, entropy, and state-preparation noise"
+    ],
+    "level": "beginner",
+    "summary_confidence": "high"
   },
   "intro-to-quantum-noise-bonus-coherent-zz-error-qiskit-global-summer-school-2022-minev": {
     "title": "Coherent ZZ Error (bonus)",
-    "series": "Intro to Quantum Noise (QGSS 2022)"
+    "series": "Intro to Quantum Noise (QGSS 2022)",
+    "description": "A single bonus page on coherent ZZ errors between qubits, from an introductory lecture on quantum noise.",
+    "summary": "A one-page hand-written bonus note on coherent ZZ error, part of the Introduction to Quantum Noise lectures.",
+    "key_points": [
+      "Coherent (unitary) errors as distinct from incoherent noise",
+      "ZZ coupling between qubits as a coherent error source",
+      "Bonus material accompanying the intro-to-noise lectures"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "low"
   },
   "intro-to-quantum-noise-bonus-state-preparation-noise-qiskit-global-summer-school-2022-minev": {
     "title": "State Preparation Noise (bonus)",
-    "series": "Intro to Quantum Noise (QGSS 2022)"
+    "series": "Intro to Quantum Noise (QGSS 2022)",
+    "description": "Bonus handwritten note on state-preparation noise, from an introduction to quantum noise lecture.",
+    "summary": "A single page of bonus notes on noise in qubit state preparation, part of an introductory quantum-noise lecture series.",
+    "key_points": [
+      "State-preparation errors as a source of noise",
+      "Context within SPAM (state preparation and measurement) errors",
+      "Brief note on scaling to larger numbers of qubits"
+    ],
+    "level": "beginner",
+    "summary_confidence": "low"
   },
   "intro-to-quantum-noise-note-incoherent-noise-qiskit-global-summer-school-2022-minev": {
     "title": "Incoherent Noise (note)",
-    "series": "Intro to Quantum Noise (QGSS 2022)"
+    "series": "Intro to Quantum Noise (QGSS 2022)",
+    "description": "Handwritten lecture note on incoherent noise from the introduction-to-quantum-noise lectures at QGSS 2022.",
+    "summary": "A one-page note from the Qiskit Global Summer School 2022 noise lectures on incoherent noise.",
+    "key_points": [
+      "Incoherent (stochastic) noise on qubits",
+      "Companion material to the QGSS 2022 introduction to quantum noise",
+      "Handwritten notes format"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "low"
   },
   "intro-to-quantum-noise-note-measurement-qiskit-global-summer-school-2022-minev": {
     "title": "Measurement (note)",
-    "series": "Intro to Quantum Noise (QGSS 2022)"
+    "series": "Intro to Quantum Noise (QGSS 2022)",
+    "description": "Lecture notes on measurement and projection noise: why a finite number of shots gives Bernoulli-distributed sampling error.",
+    "summary": "Hand-written notes on measurement theory for the Introduction to Quantum Noise lectures at the Qiskit Global Summer School on Quantum Simulations. Each shot is treated as a coin toss whose bias is set by the quantum algorithm, which leads to the variance of the outcome and to sampling error over N repeated shots.",
+    "key_points": [
+      "Measuring different observables of a qubit",
+      "Single-shot outcomes as Bernoulli random variables",
+      "Variance vs. the probability of obtaining 1, and projection noise",
+      "Counting outcome sequences over a few shots (2^3 sequences for 3 samples)"
+    ],
+    "level": "beginner",
+    "summary_confidence": "medium"
   },
   "intro-to-quantum-noise-note-measurement-noise-qiskit-global-summer-school-2022-minev": {
     "title": "Measurement Noise (note)",
-    "series": "Intro to Quantum Noise (QGSS 2022)"
+    "series": "Intro to Quantum Noise (QGSS 2022)",
+    "description": "Handwritten lecture note on measurement (readout) error, with a visualization of readout error, from QGSS 2022.",
+    "summary": "A two-page note from the introduction to quantum noise lectures at the Qiskit Global Summer School 2022 on quantum simulation.",
+    "key_points": [
+      "Measurement (readout) error in qubit experiments",
+      "Visualizing readout error",
+      "Companion material to the QGSS 2022 noise lectures"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "low"
   },
   "intro-to-quantum-noise-intro-to-quantum-noise-qiskit-global-summer-school-2021-minev": {
     "tags": [
       "lecture"
     ],
     "title": "Intro to Quantum Noise",
-    "series": "Intro to Quantum Noise (QGSS 2021)"
+    "series": "Intro to Quantum Noise (QGSS 2021)",
+    "description": "Introductory lecture on quantum noise: coherent gate errors, projection noise, SPAM errors, and incoherent noise channels.",
+    "summary": "Built around a 'hello world' experiment that flips a qubit d times, this lecture takes apart each source of disagreement between ideal and measured data. It shows how a miscalibrated rotation produces coherent error that grows quadratically, how finite shots give projection noise, how state-preparation and readout errors enter, and how bit-flip, phase-damping, depolarizing and stochastic Pauli channels describe incoherent noise. Exercises on error-amplification sequences and sample variance are included.",
+    "key_points": [
+      "Gates from time evolution and a miscalibrated RX(π+ε) gate on the Bloch sphere",
+      "Why coherent errors have a quadratic impact, plus a two-qubit ZZ error example",
+      "Projection and sampling noise, readout error and thermal state preparation",
+      "Incoherent channels: bit-flip, phase damping, depolarizing and stochastic Pauli noise"
+    ],
+    "level": "beginner",
+    "summary_confidence": "high"
   },
   "intro-to-quantum-noise-coherent-zz-error-qiskit-global-summer-school-2021-minev": {
     "title": "Coherent ZZ Error",
-    "series": "Intro to Quantum Noise (QGSS 2021)"
+    "series": "Intro to Quantum Noise (QGSS 2021)",
+    "description": "A one-page bonus note on coherent ZZ errors from the QGSS 2021 introduction to quantum noise.",
+    "summary": "A single page of notes on coherent ZZ error, a bonus part of the introduction to quantum noise lecture series.",
+    "key_points": [
+      "Coherent (unitary) errors as a class of quantum noise",
+      "The ZZ interaction between qubits as an error source",
+      "Bonus material to an introductory quantum-noise lecture"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "low"
   },
   "intro-to-quantum-noise-incoherent-noise-qiskit-global-summer-school-2021-minev": {
     "title": "Incoherent Noise",
-    "series": "Intro to Quantum Noise (QGSS 2021)"
+    "series": "Intro to Quantum Noise (QGSS 2021)",
+    "description": "Notes on incoherent noise via quantum trajectories: a noisy gate modeled as a random bit-flip, unraveled into quantum jumps.",
+    "summary": "Two pages of hand-written lecture notes on incoherent noise from the Introduction to Quantum Noise lectures. A noisy gate is modeled with a bit-flip error and the resulting mixed state is unraveled into individual quantum trajectories.",
+    "key_points": [
+      "Incoherent noise as random errors that leave a mixed state",
+      "Model of a noisy gate with a bit-flip error",
+      "Quantum jumps and unraveling of a quantum trajectory"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "medium"
   },
   "intro-to-quantum-noise-measurement-noise-qiskit-global-summer-school-2021-minev": {
     "title": "Measurement Noise",
-    "series": "Intro to Quantum Noise (QGSS 2021)"
+    "series": "Intro to Quantum Noise (QGSS 2021)",
+    "description": "Bonus handwritten note on measurement (readout) error, from an introduction to quantum noise lecture.",
+    "summary": "A single page of bonus notes on measurement error, part of an introductory quantum-noise lecture series.",
+    "key_points": [
+      "Measurement (readout) error as a source of noise",
+      "Bonus material accompanying an introduction to quantum noise",
+      "Part of the SPAM picture of state preparation and measurement errors"
+    ],
+    "level": "beginner",
+    "summary_confidence": "low"
   },
   "intro-to-quantum-noise-projection-noise-v2-qiskit-global-summer-school-2021-minev": {
     "title": "Projection Noise",
-    "series": "Intro to Quantum Noise (QGSS 2021)"
+    "series": "Intro to Quantum Noise (QGSS 2021)",
+    "description": "Notes on von Neumann measurement and the projection noise that comes from estimating results with a finite number of shots.",
+    "summary": "Introduces the standard projective measurement and treats each single-shot outcome as a Bernoulli coin toss whose parameter is set by the quantum algorithm. From there it builds up sampling error over N repeated shots, enumerating the possible outcome sequences, with a fuller calculation left to a bonus section.",
+    "key_points": [
+      "von Neumann measurement: efficient, strong, projective",
+      "Single-shot outcomes as a Bernoulli distribution",
+      "Projection noise and sampling error over a finite number of shots",
+      "Counting outcome sequences (e.g. 2^3 for three samples)"
+    ],
+    "level": "beginner",
+    "summary_confidence": "medium"
   },
   "intro-to-quantum-noise-state-preparation-noise-qiskit-global-summer-school-2021-minev": {
     "title": "State Preparation Noise",
-    "series": "Intro to Quantum Noise (QGSS 2021)"
+    "series": "Intro to Quantum Noise (QGSS 2021)",
+    "description": "A single bonus page on state-preparation errors and how their effect grows with the number of qubits.",
+    "summary": "A one-page hand-written bonus note on state-preparation noise from the Introduction to Quantum Noise lectures.",
+    "key_points": [
+      "Errors in preparing the initial qubit state",
+      "How state-preparation error scales with qubit number",
+      "Bonus material for the intro-to-noise lectures"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "low"
   },
   "intro-to-real-quantum-computers-and-noise-minev-summer-lecture-vanderbuilt-2022": {
     "title": "Intro to Real Quantum Computers and Noise",
     "venue": "Vanderbilt Summer Lecture",
-    "series": "Quantum Noise"
+    "series": "Quantum Noise",
+    "description": "A lecture on real noisy quantum computers, why error mitigation matters, and how probabilistic error cancellation learns and cancels noise.",
+    "summary": "Opens with a one-qubit 'Hello World' that shows how projection, incoherent and coherent noise corrupt results, then contrasts error mitigation with error correction and surveys ZNE and PEC. The deep dive on PEC explains why a noise channel can't be inverted physically but can be on average, and the lecture ends with utility-scale experiments, including a 124-qubit study of many-body dynamics and local integrals of motion.",
+    "key_points": [
+      "Even/odd qubit-flipper circuit: ideal vs. real device results",
+      "Error mitigation vs. error correction: costs, benefits, scaling",
+      "PEC: layered circuits, CPTP noise channels, inverting noise on average",
+      "Utility-scale experiments and integrals of motion in a 124-qubit Floquet system"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "quantum-error-mitigation-minev-bss23-lecture-1-boulder-summer-school-2023-minev": {
     "title": "Quantum Error Mitigation, Lecture 1",
-    "series": "Quantum Error Mitigation (Boulder Summer School 2023)"
+    "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
+    "description": "Opening lecture on error mitigation for non-equilibrium quantum dynamics, from noisy hardware to probabilistic error cancellation.",
+    "summary": "Given at a summer school on non-equilibrium quantum dynamics, this lecture motivates quantum simulation on superconducting processors, shows how noise corrupts a simple qubit-flip experiment, and distinguishes error mitigation from error correction. It then develops probabilistic error cancellation from a one-qubit bit-flip model through quasi-probability sampling, setting up later lectures on noise learning, twirling and T-REX.",
+    "key_points": [
+      "Status of superconducting quantum computers and the out-of-equilibrium spin-lattice simulation task",
+      "Coherent, incoherent and projection noise in a depth-d X-gate experiment",
+      "Overview of mitigation methods (ZNE, PEC) and their trade-offs against error correction",
+      "PEC derivation: non-physical inverse noise maps, quasi-probabilities and sampling overhead"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "quantum-error-mitigation-minev-bss23-lecture-2-boulder-summer-school-2023-minev": {
     "title": "Quantum Error Mitigation, Lecture 2",
-    "series": "Quantum Error Mitigation (Boulder Summer School 2023)"
+    "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
+    "description": "Lecture 2 on error mitigation for quantum dynamics: probabilistic error cancellation, its statistics, and learning noise with sparse Pauli-Lindblad models.",
+    "summary": "Explains why the inverse of a noise map is unphysical and how probabilistic error cancellation (PEC) implements it on average by sampling quantum trajectories with quasi-probabilities, using a random-walk analogy for intuition. It then covers measurement statistics and error bars, and how to learn device noise layer by layer: Pauli twirling, noise amplification, the no-go theorem for learning entangling-gate noise, and sparse Pauli-Lindblad noise tomograms up to 127 qubits.",
+    "key_points": [
+      "Canceling noise with noise: PEC on one qubit and the sampling overhead γ",
+      "Bernoulli shot statistics and the empirical mean as an unbiased estimator",
+      "Learning noise by amplification, and the degeneracy that limits learning entangling-gate noise",
+      "Sparse Pauli-Lindblad model and noise tomograms for 20-qubit and 127-qubit Trotter layers"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "quantum-error-mitigation-minev-bss23-lecture-3-boulder-summer-school-2023-minev": {
     "title": "Quantum Error Mitigation, Lecture 3",
-    "series": "Quantum Error Mitigation (Boulder Summer School 2023)"
+    "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
+    "description": "PEC applied to transverse-field Ising dynamics, then a 124-qubit experiment that uncovers local integrals of motion.",
+    "summary": "The third lecture puts error mitigation to work: map Ising time evolution to Trotter circuits, decompose into native-gate layers, learn the noise per layer, and cancel it with PEC, comparing results with and without mitigation on up to 50-qubit observables. It then looks at runtime scaling with scale, quality and speed, and closes with a many-body experiment on 124 qubits that reconstructs local integrals of motion (LIOMs) in a 2D Floquet system.",
+    "key_points": [
+      "Trotterized transverse-field Ising circuits: RZZ/RX decomposition and 2Q gate layers",
+      "PEC workflow: layer noise learning, Pauli twirling, sampled inverse; with vs. without PEC",
+      "PEC runtime exponential in qubits and depth; scale, quality, speed",
+      "LIOMs, spin imbalance, and prethermal vs. thermalizing regimes on 124Q, depth-60 circuits"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "quantum-error-mitigation-minev-bss23-pec-derivation-1q-simple-c65b-boulder-summer-school-2023-minev": {
     "tags": [
       "derivation"
     ],
     "title": "PEC Derivation: Single Qubit, Simple (C65B)",
-    "series": "Quantum Error Mitigation (Boulder Summer School 2023)"
+    "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
+    "description": "Hand-written derivation of probabilistic error cancellation (PEC) for a single noisy qubit gate, using an ansatz and trajectory picture.",
+    "summary": "Short notebook pages working through PEC for one qubit. The noisy gate is decomposed as a superoperator channel and as an unraveling into trajectories, and the inverse is chosen so that error-free trajectories add up and erroneous ones cancel; an equivalent algebraic condition is also noted.",
+    "key_points": [
+      "Decomposing a noisy single-qubit gate into channel and trajectory representations",
+      "An ansatz for the inverse (quasi-probability) correction",
+      "Interfering trajectories so error terms cancel and the ideal term sums to one",
+      "The equivalent algebraic condition for the correction coefficient"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "medium"
   },
   "quantum-error-mitigation-minev-bss23-pec-derivation-full-derivation-c65c-boulder-summer-school-2023-minev": {
     "tags": [
       "derivation"
     ],
     "title": "PEC Derivation: Full Derivation (C65C)",
-    "series": "Quantum Error Mitigation (Boulder Summer School 2023)"
+    "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
+    "description": "Handwritten notes (C65C) deriving probabilistic error cancellation and its error-mitigated expectation value.",
+    "summary": "Lecture notes walking through the PEC derivation from a single step. The conclusion is that the mitigated expectation value is a sign- and weight-adjusted sum over expectation values of Pauli-modified circuits, each run directly on hardware, with the reweighting done in classical post-processing.",
+    "key_points": [
+      "PEC estimator as a quasi-probability sum over Pauli-modified circuits",
+      "Sampling weights and signs of the circuit instances",
+      "Rescaling and reweighting done in classical post-processing"
+    ],
+    "level": "advanced",
+    "summary_confidence": "medium"
   },
   "quantum-error-mitigation-minev-bonus-cheat-sheet-digital-quantum-circuits-t11-7-boulder-summer-school-2023-min": {
     "tags": [
@@ -225,7 +625,17 @@
       "reference"
     ],
     "title": "Cheat Sheet: Digital Quantum Circuits, T11.7 (bonus)",
-    "series": "Quantum Error Mitigation (Boulder Summer School 2023)"
+    "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
+    "description": "A two-page cheat sheet of quantum circuit notation and gate identities: Pauli basis changes, CNOT/CZ propagation rules, and multi-CNOT tricks.",
+    "summary": "A compact reference section from a longer set of notes on digital quantum circuits, prepared as a bonus for a summer-school course on error mitigation. It lists the standard pictorial circuit elements and the identities that come up constantly when pushing Paulis through Clifford gates.",
+    "key_points": [
+      "Pictorial elements: wires, bundles, controlled gates (on |0> and |1>), swap, measurement in a basis",
+      "Pauli decomposition with phases and basis changes under H and S (e.g. HXH = Z)",
+      "Propagation rules: X travels forward from control to target through a CNOT, Z travels backward",
+      "Relations among CNOT, CZ and controlled-Y, and chains of multiple CNOTs"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "quantum-error-mitigation-minev-bonus-cheat-sheet-tail-bounds-t11-9-boulder-summer-school-2023-minev": {
     "tags": [
@@ -233,86 +643,317 @@
       "reference"
     ],
     "title": "Cheat Sheet: Tail Bounds, T11.9 (bonus)",
-    "series": "Quantum Error Mitigation (Boulder Summer School 2023)"
+    "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
+    "description": "A two-page cheat sheet of concentration inequalities and tail bounds, from Markov and Chebyshev to Hoeffding, Bernstein and McDiarmid.",
+    "summary": "A compact reference table of probability tail bounds used to reason about sampling error, such as how many shots are needed for a confidence interval on a mean. Each inequality is listed with its conditions, common form, alternate forms and sources, with brief notes on when to use which.",
+    "key_points": [
+      "Single-variable bounds: Markov, reverse Markov, Chebyshev, Cantelli, Chernoff, Jensen",
+      "Sums of independent variables: Hoeffding's lemma, Chernoff-Hoeffding, Azuma, laws of large numbers",
+      "Advanced bounds: Bennett, Bernstein, Efron-Stein and McDiarmid",
+      "Practical note on the number of samples needed for a 1-α confidence interval"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "intro-to-pauli-twirling-minev-part-i-tutorial": {
     "title": "Intro to Pauli Twirling, Part I",
     "series": "Intro to Pauli Twirling (tutorial)",
-    "venue": null
+    "venue": null,
+    "description": "A primer on Pauli twirling: how random Pauli gates turn general noise, including coherent errors, into stochastic Pauli noise.",
+    "summary": "Begins operationally by sandwiching a noise channel between random Paulis and showing, with an amplified coherent over-rotation, how twirling scrambles coherent errors. It then sets up notation for easy and hard gate cycles in a noisy circuit and shows how twirls are inserted, conjugated through hard gates and compiled into neighbouring single-qubit gates, ending with a summary of why twirling is used in practice.",
+    "key_points": [
+      "Twirling a CPTP noise channel over the Pauli group",
+      "Coherent over-rotation example and how twirled errors stop adding coherently",
+      "Noisy-circuit cycles of easy and hard gates, and conjugating twirls through Clifford layers",
+      "Practical uses: randomized compiling, PEC, and efficient Clifford simulation of Pauli noise"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "medium"
   },
   "intro-to-pauli-twirling-minev-part-ii-tutorial": {
     "title": "Intro to Pauli Twirling, Part II",
     "series": "Intro to Pauli Twirling (tutorial)",
-    "venue": null
+    "venue": null,
+    "description": "Why Pauli twirling works: worked examples on bit-flip and coherent-rotation channels using Pauli transfer matrices.",
+    "summary": "The theory half of a Pauli-twirling primer. It works through twirling a single-qubit channel by averaging over Pauli conjugations, showing that a bit-flip channel is left unchanged while a coherent rotation is turned into a stochastic Pauli channel with a diagonal Pauli transfer matrix. A coherent over-rotation example shows the error going from quadratic to linear in its accumulation.",
+    "key_points": [
+      "Twirling as an average over Pauli-conjugated instances of a channel",
+      "Bit-flip channel example: invariant under the Pauli twirl",
+      "Coherent rotation channel: chi matrix, Pauli transfer matrix, and its diagonalization by twirling",
+      "Twirling a general single-qubit channel, with a refresher on Paulis and mixed states"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "medium"
   },
   "intro-to-pauli-twirling-minev-part-iii-tutorial": {
     "title": "Intro to Pauli Twirling, Part III",
     "series": "Intro to Pauli Twirling (tutorial)",
-    "venue": null
+    "venue": null,
+    "description": "The theory behind Pauli twirling: Pauli transfer matrices, superoperators, and why twirling masks a channel down to a Pauli channel.",
+    "summary": "This part covers why twirling works. It starts with how a Pauli gate acts on a mixed state, links that action to the Walsh-Hadamard transform and the symplectic product, and moves to the superoperator picture with vectorization and the Pauli transfer matrix. Twirling then appears as an element-wise mask on the channel's PTM, with a closing pointer to designs.",
+    "key_points": [
+      "Pauli decomposition of qubit mixed states and conjugation by Pauli gates",
+      "Walsh-Hadamard structure and the symplectic product in Z2 notation",
+      "Vectorization identity, superoperators, and the Pauli transfer matrix",
+      "Twirling as averaging masks applied element-wise to the PTM"
+    ],
+    "level": "advanced",
+    "summary_confidence": "medium"
   },
   "intro-to-pauli-twirling-minev-part-iv-tutorial": {
     "title": "Intro to Pauli Twirling, Part IV",
     "series": "Intro to Pauli Twirling (tutorial)",
-    "venue": null
+    "venue": null,
+    "description": "Later sections of a Pauli twirling primer: unitary t-designs, Pauli and chi-matrix noise models, the PTM, and twirling amplitude damping.",
+    "summary": "Part of a primer on Pauli twirling covering its optional advanced material and a noise-modeling refresher. Classical spherical designs motivate unitary t-designs and where they appear (average fidelity, RB, random twirling); noise is then written as a Pauli channel, a process (chi) matrix and a Pauli transfer matrix, with amplitude damping shown raw and twirled.",
+    "key_points": [
+      "Overview of the twirling primer: operational twirling, why it works, why the Pauli group",
+      "Classical spherical designs as intuition for unitary t-designs and their uses",
+      "Noise models: Pauli channels, chi-matrix representation and Pauli transfer matrix elements",
+      "Amplitude damping applied repeatedly, with and without twirling"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "2024-fibonacci-anyons-realizing-string-net-condensation-fibonacci-anyon-braiding-for-universal-gates-and-sampl": {
-    "title": "Fibonacci Anyons and String-Net Condensation; Entanglement-Enhanced Learning of Quantum Processes at Scale"
+    "title": "Fibonacci Anyons and String-Net Condensation; Entanglement-Enhanced Learning of Quantum Processes at Scale",
+    "description": "Preparing a Fibonacci string-net condensate on superconducting hardware to sample chromatic polynomials and braid Fibonacci anyons.",
+    "summary": "A research talk linking graph coloring, topological matter and quantum computing. The chromatic polynomial (#P-hard to compute) appears in the amplitudes of the Fibonacci string-net condensate, which is prepared on an IBM device with a dynamic string-net preparation circuit; the deck shows sampled string-net configurations, creation and charge measurement of Fibonacci anyon pairs, and a braiding experiment realizing a non-Clifford logical gate. Opening and closing slides also introduce a second project on entanglement-enhanced learning of quantum processes.",
+    "key_points": [
+      "Chromatic polynomials and their classical hardness (#P-hard; additive approximation is BQP-complete)",
+      "From the toric code to Levin-Wen string nets; the Fibonacci string-net vacuum amplitudes encode the chromatic polynomial at the golden ratio plus 2",
+      "Dynamic string-net preparation of a four-plaquette Fib-SNC on 11 qubits, with sampled data vs. ideal",
+      "Creating and braiding Fibonacci anyons for a non-Clifford gate, measured with error mitigation"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "2024-uncovering-local-integrability-in-quantum-many-body-dynamics-minev-aps-mm-invited": {
-    "venue": "APS March Meeting (invited)"
+    "venue": "APS March Meeting (invited)",
+    "description": "Extracting local integrals of motion from error-mitigated many-body dynamics on a 124-qubit superconducting processor.",
+    "summary": "Places the experiment among early utility-scale demonstrations, then introduces integrals of motion, local integrals of motion (LIOMs) and their link to integrability and many-body localization. It shows how LIOMs were reconstructed from 124-qubit Floquet dynamics in 1D and 2D, decomposed by Pauli weight and compared with theory, with care about what 'integrable' means on finite observation times.",
+    "key_points": [
+      "Map of utility-scale experiments by qubit count and two-qubit gate depth",
+      "Integrals of motion, LIOMs, quantum integrability and many-body localization",
+      "Measured LIOMs on a 1D chain and all 124 prethermal LIOMs in 2D",
+      "Operator-weight decomposition of LIOMs, experiment vs. theory, and possible applications"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "2013-superconducting-whispering-gallery-mode-resonators-minev-aps-mm": {
-    "venue": "APS March Meeting"
+    "venue": "APS March Meeting",
+    "description": "Superconducting thin-film ring resonators in a modular sample holder, aimed at a wafer-scalable '2.5D' cQED architecture and materials tests.",
+    "summary": "A short conference talk on whispering-gallery-mode resonators formed by stacked thin-film aluminum rings on sapphire. It identifies differential and common modes, reports high internal quality factors and long energy relaxation at single-photon powers, and uses temperature-dependent frequency shifts with field participation ratios to bound film and dielectric losses.",
+    "key_points": [
+      "Motivation: combining wafer scalability with 3D-cavity quality, and testing materials at single-photon level",
+      "Differential vs. common modes, with most field energy in vacuum for the differential mode",
+      "Measured internal Q of about 3.4×10^6 and T1 of about 180 µs for one mode",
+      "Bounds on aluminum surface resistance and sapphire loss tangent; plans for qubit integration"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "2011-josephson-parametric-amplifier-optimizing-minev-aps-march-meeting-poster-2011": {
     "title": "Optimizing Josephson Parametric Amplifiers for Fast, High-Fidelity Qubit Readout",
-    "venue": "APS March Meeting (poster)"
+    "venue": "APS March Meeting (poster)",
+    "description": "A poster on numerically simulating Josephson parametric amplifiers to trade off gain, bandwidth, dynamic range and noise for qubit readout.",
+    "summary": "Describes a solver for the driven, damped, nonlinear Josephson oscillator, built with fourth-order Runge-Kutta and Gaussian noise, used to map gain against pump and signal amplitude. Noise-free runs agree with analytical theory, while runs with noise show gain suppression and an asymmetric SNR degradation around maximum gain. Planned work covers bandwidth versus Q, stray parameters and multi-junction amplifiers.",
+    "key_points": [
+      "JPA as a pumped nonlinear resonator for high-fidelity qubit readout",
+      "Runge-Kutta solver with thermal noise; C++ core run in parallel from LabVIEW",
+      "Gain curves, 1 dB compression, and band tuning with critical current",
+      "SNR degradation and the quantum limit at finite temperature"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "2022-overview-of-quantum-hardware-design-qiskit-metal-energy-circuits-metal-minev-chicago-quantum-exchange-nan": {
-    "title": "Overview of Quantum Hardware Design: Qiskit Metal, Energy, Circuits, Metal"
+    "title": "Overview of Quantum Hardware Design: Energy, Circuits, and Metal (Qiskit Metal)",
+    "description": "An overview of superconducting quantum chip design with Qiskit Metal: layout, EM simulation, quantization methods, and community use.",
+    "summary": "Asks how to design a quantum processor by analogy with classical abstraction layers, then shows how Qiskit Metal handles each layer: a component library with parametrized layout, GDS export, rendering to EM solvers such as Ansys HFSS, and a library of quantization methods (impedance, eigenmode/EPR, capacitive/LOM). It closes with measured vs. predicted cross-Kerr comparisons and examples of research groups using the tool.",
+    "key_points": [
+      "Layers of quantum device design from layout to gate analysis",
+      "Qiskit Metal components, parametric tuning, GDS export, and HFSS rendering",
+      "Quantization methods library: impedance, eigenmode/EPR, capacitive LOM",
+      "EPR Hamiltonian parameters and LOM/EPR predictions compared with measurement"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "2022-overview-of-quantum-hardware-design-qiskit-metal-from-fab-it-to-qubit-minev-nqi": {
-    "title": "Overview of Quantum Hardware Design: Qiskit Metal, from Fab-It to Qubit"
+    "title": "Overview of Quantum Hardware Design: Qiskit Metal, from Fab-It to Qubit",
+    "description": "The layers of superconducting chip design, from layout and EM simulation to Hamiltonians and gates, and how Qiskit Metal ties them together.",
+    "summary": "An overview of quantum hardware design as a stack of abstractions: fabrication, layout, electromagnetic simulation, quantization, Hamiltonian and gate-level analysis. It walks through Qiskit Metal's component library, GDS and HFSS rendering, the landscape of quantization methods, and the lumped-oscillator model (LOM) workflow from layout to time-evolution simulation, then compares predicted and measured cross-Kerr and shows community adoption.",
+    "key_points": [
+      "Design layers and a designer's wish list: full stack, speed, modularity",
+      "Qiskit Metal component library, parameterized layout, GDS export and HFSS rendering",
+      "Quantization methods (lumped, quasi-lumped, impedance, energy-participation) and the LOM cell-based workflow",
+      "Measured vs. predicted cross-Kerr, EPR validation, and devices and users from the community"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "2021-qiskit-metal-overview-of-quantum-hardware-design-energy-circuits-metal-minev-ieee-quantum-week": {
-    "title": "Qiskit Metal: Overview of Quantum Hardware Design (Energy, Circuits, Metal)"
+    "title": "Qiskit Metal: Overview of Quantum Hardware Design (Energy, Circuits, Metal)",
+    "description": "Superconducting chip design as a stack, from layout to gates, and a comparison of quantization methods within Qiskit Metal.",
+    "summary": "A conference talk framing quantum device design as layers from fabrication to gate simulation, and arguing for open, automated design software. It sets out the three-step modeling recipe (EM simulation, quantization, Hamiltonian), shows the EPR approach and its theory-experiment agreement, and compares lumped, impedance and eigenmode methods on measured cross-Kerr in terms of accuracy, speed and generality.",
+    "key_points": [
+      "Design layers: layout, EM simulation, quantization, Hamiltonian, gates and time evolution",
+      "Quantization landscape and the EPR example, including constraints among quantum parameters",
+      "Measured vs. predicted qubit-readout cross-Kerr for LOM, impedance and EPR methods",
+      "Qiskit Metal, open quantum hardware, and pointers to lectures and reviews"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "2021-quantum-hardware-design-energy-circuits-metal-qiskit-metal-epr-minev-qiskit-seminar": {
-    "title": "Quantum Hardware Design: Energy, Circuits, Metal (Qiskit Metal, EPR)"
+    "title": "Quantum Hardware Design: Energy, Circuits, Metal (Qiskit Metal, EPR)",
+    "description": "Superconducting chip design with Qiskit Metal, plus the energy-participation ratio (EPR) and quasi-lumped (LOM) quantization methods.",
+    "summary": "Covers the path from physical layout to quantum Hamiltonian. It introduces Qiskit Metal, an open-source tool for building, tuning and analysing superconducting chips with renderers to Ansys HFSS and Q3D, and shows devices made with it. It then explains EPR, which asks where the energy of each mode sits, and modular quasi-lumped oscillator models, comparing both against measured qubit-readout cross-Kerr values.",
+    "key_points": [
+      "Landscape of quantization methods, from lumped to full-wave",
+      "Qiskit Metal: component library, parameter tuning, auto-routing, rendering to HFSS/Q3D",
+      "EPR method: participation of modes in junctions and lossy materials, with theory vs. experiment",
+      "LOM: reducing a capacitance network to dressed subsystem Hamiltonians"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "2022-qiskit-metal-quantum-hardware-design-for-qedc-minev": {
     "title": "Qiskit Metal: Quantum Hardware Design",
-    "venue": "QED-C"
+    "venue": "QED-C",
+    "description": "Qiskit Metal as an open-source quantum EDA tool: its architecture, analysis methods, renderers, and adoption.",
+    "summary": "Sets out what has to be designed on a superconducting chip and the iterative design flow from concept to fabrication. It then explains Qiskit Metal's architecture (QDesign, QComponents as 'super p-cells' with pins, QGeometry, renderers, analyses), the LOM, EPR and LOM 2.0 quantum analyses, and renderers for GDS and other tools, and shows uses in research, education and a commercial foundry.",
+    "key_points": [
+      "Design targets: frequencies, couplings, Purcell limit, spurious modes",
+      "Metal architecture: QDesign, QComponents, pins, QGeometry, renderers",
+      "Quantum analysis via LOM, EPR, and LOM 2.0",
+      "Renderers and integrations (GDS, Gmsh/Elmer, others) and community adoption"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high",
+    "speaker": "Minev, Thomas G. McConkey"
   },
   "2022-probabilistic-error-cancelation-pec-minev-ibm-quantum-qiskit-seminar": {
-    "title": "Probabilistic Error Cancellation (PEC)"
+    "title": "Probabilistic Error Cancellation (PEC)",
+    "description": "Learning sparse Pauli-Lindblad noise models and using them for probabilistic error cancellation on a noisy quantum processor.",
+    "summary": "Explains PEC from a one-qubit toy model, then the reasons it had been limited to one or two qubits: the full noise had to be known nearly exactly. The talk shows how Pauli twirling plus a sparse Pauli-Lindblad model makes noise learning scalable, how per-layer 'Lindblad tomograms' expose dominant errors such as those removed by dynamical decoupling, and how PEC then recovers expectation values for Trotterized Ising dynamics, along with the sampling-overhead cost.",
+    "key_points": [
+      "PEC basics: quasi-probability inverse of noise, sign-weighted sampling, overhead γ",
+      "Why scaling PEC is hard, and how twirling diagonalizes noise into a Pauli channel",
+      "Sparse Pauli-Lindblad model and learning it by amplifying noise over repeated layers",
+      "Mitigated Ising-model simulations, high-weight observables, error budget and runtime scaling"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "2022-probabilistic-error-cancelation-pec-minev-kitp": {
-    "title": "Probabilistic Error Cancellation (PEC)"
+    "title": "Probabilistic Error Cancellation (PEC)",
+    "description": "Learning and canceling noise on quantum processors: probabilistic error cancellation with sparse Pauli-Lindblad models.",
+    "summary": "A research talk on making probabilistic error cancellation (PEC) work at scale. It explains canceling noise with noise via quasi-probability sampling, why PEC had been limited to one or two qubits, and a three-step approach: twirl the noise to a Pauli channel, learn it per layer with a sparse Pauli-Lindblad model, and mitigate readout errors. It closes with an outlook on the runtime cost of noise-free estimators.",
+    "key_points": [
+      "PEC toy model: unraveling bit-flip noise into quantum trajectories and the sampling overhead",
+      "Why learning full-device noise is hard: exponential parameter counts, crosstalk, correlated errors",
+      "Pauli twirling, layer-wise noise amplification, and the no-go limit on learning entangling-gate noise",
+      "Sparse Pauli-Lindblad model, twirled readout-error mitigation, and a runtime scaling estimate"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "2025-quantum-hardware-design-epr-lom-metal-minev-flagship-quantum-device-workshop-advanced": {
     "title": "Quantum Hardware Design: EPR, LOM, Metal",
-    "venue": "Flagship Quantum Device Workshop (Advanced)"
+    "venue": "Flagship Quantum Device Workshop (Advanced)",
+    "description": "How to design superconducting quantum chips: layout in Qiskit Metal, the LOM and EPR quantization methods, and automated analysis.",
+    "summary": "Uses the layers of quantum device design (layout, electromagnetic simulation, quantization, Hamiltonian, gates) to walk through a design flow, with community chips built in Qiskit Metal as examples. It then covers two quantization approaches in depth: the quasi-lumped oscillator model (LOM), which partitions a chip into cells, and the energy-participation ratio (EPR) method, including its sum rules, loss participation, and measured vs. predicted cross-Kerr. It closes with Metal's analysis library and Ansys HFSS rendering.",
+    "key_points": [
+      "Design abstraction layers and Qiskit Metal's component library and parametrized layout",
+      "Landscape of quantization methods: lumped, quasi-lumped, impedance, energy",
+      "LOM: subsystem partitions, Maxwell capacitance matrix, dressed Hamiltonians",
+      "EPR: junction participation, Hamiltonian, sum rules, loss EPRs, theory vs. experiment"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "2026-otoc-nmr-experiment-error-mitigation-modeling-and-results-minev-aps-march-meeting": {
-    "title": "OTOC-NMR Experiment: Error Mitigation, Modeling and Results"
+    "title": "OTOC-NMR Experiment: Error Mitigation, Modeling and Results",
+    "description": "Error mitigation for an OTOC experiment on a Willow processor benchmarked against NMR data, using a Pauli-path-based ZNE.",
+    "summary": "Reports the mitigation side of an experiment that computes out-of-time-order correlators for NMR of real molecules (toluene, DMBP) and compares them with spectrometer data. Echo rescaling and standard exponential ZNE left too much bias, and PEC was too costly in samples, so the team developed Pauli Path ZNE, which uses the structure of a Pauli-path unraveling of noisy evolution. On hardware it met the target accuracy and recovered molecular structure parameters close to independent NMR measurements.",
+    "key_points": [
+      "Accuracy target for <OTOC> and the base stack: calibration, dynamical decoupling, light-cone filtering, T-REX readout mitigation, twirling",
+      "Why echo rescaling, exponential ZNE and PEC fell short here",
+      "Pauli Path ZNE and a two-parameter model of circuit noise response",
+      "Recovered H-H distances and dihedral angles compared with NMR benchmarks"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "2020-pyepr-meeting-energy-participation-ratio-epr-for-superconducting-qubit-design-minev": {
-    "title": "Energy-Participation Ratio (EPR) for Superconducting Qubit Design",
-    "venue": "pyEPR Meeting"
+    "title": "pyEPR Community Meeting: EPR Overview and Roadmap",
+    "venue": "pyEPR Meeting",
+    "description": "Kickoff of the pyEPR working group: an overview of the energy-participation-ratio method, plus roadmap and community discussion.",
+    "summary": "Slides from the first pyEPR working-group meeting. They recap why EPR asks \"where is the energy?\", how junction participations come from a finite-element eigenmode analysis of a linearized circuit, and how this yields the nonlinear Hamiltonian, followed by agenda items on community wishes, funding opportunities and ways to contribute.",
+    "key_points": [
+      "Energy-participation ratio: fraction of each mode's energy stored in a nonlinear or lossy element",
+      "Transmon-cavity example with eigenmode fields and junction participation",
+      "Decomposition of a general circuit Hamiltonian and zero-point phase fluctuations per mode",
+      "Roadmap discussion: docs, tests, validation, theory integration, other EM solvers"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "2019-quantum-sensing-keynote-padua-italy-minev": {
     "title": "Advancing Quantum Sensing via Quantum Control (keynote)",
-    "venue": "Padua, Italy"
+    "venue": "Padua, Italy",
+    "description": "Superconducting circuits as a platform for quantum sensing, with catching and reversing a quantum jump as a case study.",
+    "summary": "Frames quantum sensing around measurement and real-time control, giving a primer on continuous quantum measurement, back-action and accuracy versus precision. Introduces superconducting circuits, qubit types, hardware architectures and dispersive readout, surveys sensing with circuits (SQUIDs, noise spectroscopy, charge sensing), and presents the quantum-jump experiment as a case study, with EPR design material in the backup.",
+    "key_points": [
+      "Primer on quantum measurement: demolition vs. non-demolition, continuous monitoring, back-action",
+      "Superconducting qubits and architectures (2D, 2.5D, 3D) and cQED dispersive readout trade-offs",
+      "Survey of sensing with circuits: SQUID magnetometry, flux and charge noise sensing, qubit spectrometry",
+      "Case study: catching and reversing a quantum jump with high-efficiency detection and feedback"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "2014-2-5d-circuit-quantum-electrodynamics-cqed-whispering-gallery-modes": {
-    "title": "2.5D Circuit Quantum Electrodynamics (cQED): Whispering Gallery Modes"
+    "title": "2.5D Circuit Quantum Electrodynamics (cQED): Whispering Gallery Modes",
+    "description": "A 2.5D cQED architecture using superconducting whispering-gallery ring resonators coupled to an embedded transmon qubit.",
+    "summary": "Motivated by combining wafer-scale fabrication with the coherence of 3D cavities, the talk shows how thin-film rings form high-Q whispering-gallery modes that keep energy in vacuum, and reviews their measured coherence and material-loss bounds. It then couples a transmon to the ring, uses an energy-participation reformulation of black-box quantization ('Energy BBQ') to compute the Hamiltonian, and presents early results on tuning cross-Kerr by qubit angle.",
+    "key_points": [
+      "Ring resonators as physical periodic boundary conditions, with conformal-map intuition",
+      "Mode identification and bounds on thin-film Al resistance and sapphire loss tangent",
+      "Energy participation ratios as a route from one simulation to Hamiltonian, couplings and loss",
+      "Qubit placement around the ring for selective coupling and cross-Kerr tuning, with first device results"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "2015-2-5d-cqed-coherence-exploring-drawbridge-transmon-coherence-minev": {
-    "title": "2.5D cQED Coherence: Exploring Drawbridge Transmon Coherence"
+    "title": "2.5D cQED Coherence: Exploring Drawbridge Transmon Coherence",
+    "description": "Coherence studies of a drawbridge transmon in a wafer-based 2.5D cQED architecture: dynamical decoupling and quasiparticle dynamics.",
+    "summary": "A group-meeting style research talk on a multilayer (2.5D) architecture that combines qubits and whispering-gallery-mode resonators using only wafers. It reports proof-of-concept device parameters, improves dephasing with dynamical decoupling and reconstructs a noise spectrum, and studies quasiparticle injection with tracked qubit jumps, proposing diffusion and vortex trapping to explain the relaxation rates.",
+    "key_points": [
+      "Goals of the 2.5D multilayer architecture and the wafer-assembled whispering-gallery resonator",
+      "System parameters and the photon-number-splitting regime; storage T1 from parity measurements",
+      "Dynamical decoupling as a noise filter to extend T2 and reconstruct the noise spectrum",
+      "Quasiparticle injection experiments with quantum-jump readout, compared across qubit types"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "2011-josephson-junction-arrays-parasitic-capacitances-minev": {
-    "title": "Josephson Junction Arrays: Parasitic Capacitances"
+    "title": "Josephson Junction Arrays: Parasitic Capacitances",
+    "description": "Simulation study of parasitic capacitance to ground in the Josephson junction arrays used as fluxonium superinductors.",
+    "summary": "Explains why capacitance to ground limits the number of junctions in a fluxonium array, then compares simulated junction capacitances with parallel-plate theory and measured data. It studies how Dolan-bridge geometry affects parasitic capacitance, introduces a bridge-free alternative, and sketches ongoing work on array Q and faster numerical diagonalization of fluxonium.",
+    "key_points": [
+      "Role of series junction arrays in fluxonium and the limit set by capacitance to ground",
+      "Simulated vs. empirical junction capacitance per area",
+      "Dolan-bridge geometry study and design guidelines for minimizing parasitic capacitance",
+      "Bridge-free junction technique, array loss, and algebraic diagonalization of fluxonium"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "t23-pec-probaiblity-error-cancelation-notation-and-notes-minev": {
     "tags": [
@@ -321,20 +962,144 @@
       "reference"
     ],
     "title": "Probabilistic Error Cancellation: Paper Notes",
-    "note_id": "T23"
+    "note_id": "T23",
+    "description": "A notation guide and practical notes for probabilistic error cancellation with sparse Pauli-Lindblad noise models.",
+    "summary": "Tabulates the symbols used in PEC with sparse Pauli-Lindblad models: layers, model coefficients, Pauli fidelities, the fitting matrix built from symplectic products, the noise channel and its inverse, and the sampling overhead gamma. It then answers a common question, how many random circuit instances are needed for a given error bound and confidence, with a plot of shots against overhead.",
+    "key_points": [
+      "Pauli-Lindblad generator, noise channel, and its quasi-probability inverse",
+      "Sampling overhead gamma per layer and across layers",
+      "Fitting model coefficients from Pauli fidelities via the symplectic-product matrix",
+      "Number of circuit instances N vs. error bound, confidence, and gamma"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "t25-random-sampling-and-twirling-of-states-vs-true-mixed-states-minev": {
     "title": "Are Mixed States and Random Sampling of States Equivalent?",
-    "note_id": "T25"
+    "note_id": "T25",
+    "description": "Do randomly sampled states and true mixed states give the same measurement statistics? A derivation, motivated by Pauli twirling.",
+    "summary": "A tech note comparing a mixed-state ensemble with trajectory sampling, where each run picks one ensemble member at random, as in Pauli twirling. A single-qubit RX noise example shows how variances differ between twirled-effective and trajectory pictures; the general derivation then shows that mean outcomes and the shot-noise variance of estimated probabilities, p(1-p)/N, are the same in both constructions.",
+    "key_points": [
+      "Worked example: RX noise twirled over {I, Y}, with variances for raw, noisy, twirled and trajectory cases",
+      "Mixed-state ensemble vs. random-trajectory state, using Iverson brackets and expectations over the choice",
+      "Sample statistics: empirical probability, sample mean and variance, entropy estimators",
+      "The shot-noise result and the bias in summed squared probabilities"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   },
   "t26-many-body-physics-exploring-spin-models-for-quantum-computing-scientists-minev": {
     "title": "Introduction to Many-Body Physics: Exploring Spin Models for Quantum Computing Scientists",
     "note_id": "T26",
-    "year": 2023
+    "year": 2023,
+    "description": "A pedagogical tech note on spin models: the 1D Anderson model as hard-core bosons, spectra, one-particle density matrices and conserved quantities.",
+    "summary": "A \"Hello World\" note introducing many-body physics to quantum information readers through a one-dimensional spin chain. It maps the Anderson hopping model onto qubit Pauli operators, works out the hopping-free case analytically, and plots spectra, spin vectors and one-particle density matrix (OPDM) occupations as hopping is turned on, ending with a toy example of local integrals of motion.",
+    "key_points": [
+      "Anderson model with nearest-neighbor hopping and on-site energy, open and periodic boundaries",
+      "Hard-core bosons as qubits: number-conserving XX+YY hopping and Hamming-weight blocks",
+      "Spin-vector visualization, global magnetization, and OPDM spectra vs. eigenstate",
+      "Integrals of motion in a ZZ toy model, with pointers toward disorder and MBL"
+    ],
+    "level": "intermediate",
+    "summary_confidence": "high"
   },
   "t27-simple-noise-models-and-gate-fidelity-minev": {
     "title": "Simple Noise Models and Gate Fidelity",
     "note_id": "T27",
-    "year": 2023
+    "year": 2023,
+    "description": "Pedagogical note on depolarizing and bit-flip channels, average gate and entanglement fidelity, and their Pauli-Lindblad form.",
+    "summary": "Works through the single- and n-qubit depolarizing channel in several equivalent representations (Kraus-like, Pauli transfer matrix, Lindblad generator, product of single-Pauli channels) and links them to the sparse Pauli-Lindblad model used in PEC and T-REX. It derives average gate and entanglement fidelity, conversions between fidelity and error probability, CPTP bounds on the depolarizing parameter, and a worked fidelity calculation between a CNOT and a random Pauli process.",
+    "key_points": [
+      "Depolarizing channel in χ, PTM, generator and product-channel forms, with parameter conversions",
+      "CPTP condition from the Choi matrix and the PEC sampling overhead",
+      "Average gate fidelity and entanglement fidelity, including converting two-qubit gate fidelity to a depolarizing rate",
+      "Example: fidelity of a CNOT against a random (Z,X) Pauli process, with PTM and χ matrices"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
+  },
+  "2012-wafer-assembled-whispering-gallery-mode-resonator-minev": {
+    "description": "Early design and measurement of a wafer-assembled whispering-gallery-mode resonator for studying film losses and scalable cQED.",
+    "summary": "A research update on a superconducting ring resonator formed between patterned aluminum films on stacked wafers, aimed at measuring thin-film quality factors and at a wafer-scalable cQED architecture. It explains the mode structure, simulation results on tolerance and vacuum participation, room-temperature checks against simulation, and measured quality factors before and after design changes.",
+    "key_points": [
+      "Motivation: keep fields in vacuum, away from lossy dielectrics and walls",
+      "Transmission-line ring picture, degenerate modes and lifting the degeneracy",
+      "Simulated tolerance to misalignment and high vacuum participation",
+      "Measured common and differential modes, design changes and next steps toward junctions and qubits"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
+  },
+  "2012-whispering-gallery-modes-minev": {
+    "description": "Superconducting whispering-gallery ring resonators as a wafer-scalable cQED platform and a probe of single-photon material loss.",
+    "summary": "Introduces a modular two-ring resonator in which a photon circulates on a ring, giving degenerate modes whose fields can be confined in vacuum or in a substrate. The talk covers mode identification, power-independent internal quality factors, energy-relaxation and phase-coherence measurements, and how surface impedance and participation ratios set loss bounds for thin-film aluminum and sapphire at the single-photon level.",
+    "key_points": [
+      "Photon-on-a-ring concept, degenerate modes, and common vs. differential modes",
+      "Modular sample holder for testing metals or dielectrics",
+      "Quality factor vs. power, T1 from ring-down, and phase coherence analysis",
+      "Dissipation budget: surface impedance, aluminum film loss, sapphire loss tangent"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
+  },
+  "2025-machine-learning-for-practical-quantum-error-mitigation-ml-qem-minev-aspen-ai-plus-quantum": {
+    "description": "Using machine learning to cut the runtime cost of quantum error mitigation, with tests up to utility-scale circuits.",
+    "summary": "Sets the scene with utility-scale experiments enabled by error mitigation and the sampling-overhead bottleneck of physics-based methods such as ZNE and PEC. It then presents ML-QEM, which learns the map from noisy to ideal expectation values using circuit features, comparing models, adapting to noise drift, and reasoning about why it works. Code and docs are open source.",
+    "key_points": [
+      "Landscape of utility-scale experiments on superconducting processors and the role of error mitigation",
+      "Limits of ZNE and PEC: sampling overhead and the complexity of quantum noise",
+      "ML-QEM models (linear regression, random forest, MLP, GNN); random forest performs best",
+      "Fine-tuning to time-varying noise, and why learning classical output relationships can succeed"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
+  },
+  "2021-to-catch-and-reverse-a-quantum-jump-mid-flight-minev": {
+    "description": "How a superconducting circuit experiment caught a quantum jump in progress, gave advance warning of it, and reversed it.",
+    "summary": "Recounts the history of quantum jumps from Bohr to single-ion experiments and the quantum-trajectory prediction that a jump, once begun, follows a coherent and predictable path. It then describes a circuit QED realization of a three-level V-system with near-unit-efficiency monitoring, the catch protocol, mid-flight tomography, and feedback that reverses the jump. Backup slides cover quantum trajectory theory, dispersive readout issues and the EPR design method.",
+    "key_points": [
+      "Quantum jumps in atoms and ions, and the no-click trajectory that reveals jump coherence",
+      "cQED V-system with bright and dark transmon transitions read out through a cavity",
+      "Catching jumps mid-flight and reversing them with real-time feedback",
+      "Backup: stochastic master equation picture, dispersive readout trade-offs, energy-participation ratio (EPR) design"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
+  },
+  "2021-to-design-quantum-hardware-qiskit-metal-and-energy-participation-ratio-epr-for-superconducting-qubit-desi": {
+    "description": "Energy-participation ratio (EPR) quantization and Qiskit Metal for designing superconducting qubit chips.",
+    "summary": "Frames chip design around one question, where the energy is, and builds the EPR method from finite-element eigenmode simulation of the linearized circuit to the full nonlinear Hamiltonian. It covers EPR sum rules, dissipation budgets from lossy participation ratios, comparisons of theory and experiment, and how Qiskit Metal automates layout, simulation and analysis, with the lumped oscillator model as a complementary approach.",
+    "key_points": [
+      "What must be designed: frequencies, couplings, loss budget, spurious modes",
+      "EPR derivation: eigenmodes, junction participation, zero-point fluctuations, Hamiltonian",
+      "Dissipation budget from capacitive, inductive, seam and radiative EPRs",
+      "Qiskit Metal workflow and the lumped-oscillator model (LOM) via quasi-static simulation"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
+  },
+  "2019-energy-participation-ratio-epr-for-superconducting-qubit-design-minev": {
+    "description": "The energy-participation approach to Josephson circuit quantization, from eigenmode simulation to Hamiltonians, loss budgets and CR gates.",
+    "summary": "Presents EPR as a unified way to get both the Hamiltonian and the dissipation budget of a Josephson circuit from a single eigenmode simulation, by asking what fraction of each mode's energy sits in the junction or lossy element. It covers the derivation, sum rules, bright/dark mode intuition, and agreement with experiment across 3D, flip-chip (2.5D) and waveguide devices. Backup slides apply the method to the cross-resonance gate with a direct coupler.",
+    "key_points": [
+      "EPR definition and quantization in the basis of linearized eigenmodes",
+      "Hamiltonian parameters (anharmonicity, cross-Kerr, Lamb shift) and loss EPRs",
+      "Measured vs. predicted results over five orders of magnitude for several architectures",
+      "Cross-resonance gate analysis: ZX rate and spurious terms in the EPR basis"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
+  },
+  "2012-superconducting-whispering-gallery-modes-minev": {
+    "description": "Simulations of a whispering-gallery mode in a parallel-plate ring resonator, aimed at a wafer-scale cQED architecture.",
+    "summary": "Proposes confining microwave fields in vacuum between patterned aluminum rings on two wafers inside a cylindrical cavity, keeping fields away from lossy dielectric and copper walls. It works through the geometry and mounting, then simulates how mode frequency and Q depend on ring radius, thickness, inner-circle offset and misalignment, separating good whispering-gallery modes from parasitic ones.",
+    "key_points": [
+      "Goals: wafer-scalable cQED, flux bias, measuring thin-film Q",
+      "Ring transmission-line picture with two degenerate whispering-gallery modes",
+      "Practical issues: wafer spacing, springs and indium seal, thermalization, vortices",
+      "Simulated frequency and Q vs. radius, thickness, offset, and alignment"
+    ],
+    "level": "advanced",
+    "summary_confidence": "high"
   }
 }
