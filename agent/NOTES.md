@@ -260,6 +260,11 @@ Summaries are public, under the author's name. Accuracy first.
   `%N_DECKS%`, `%N_SLIDES%`, `%N_HOURS%`, `%THEME_BOOT%`, `%COUNT_<shelf>%`,
   `%STATIC_LIST%`) filled by
   `fill_index()` in `tools/build_site.py`.
+- Logo (chosen 2026-10, option C "caught mid-flight"): two energy levels and
+  the copper arc of a jump in progress. Inline SVG `.mark` in the top bar of
+  every page (themed via CSS tokens; the arc redraws on hover). Favicon is
+  the bolder `site/favicon.svg` (no dotted guides, fixed dark tile) plus
+  `favicon-32.png` and `apple-touch-icon.png` rendered from it.
 - Social image: `site/og.png` (1200×630, a screenshot of the hero); regenerate
   if the hero changes.
 - Tone: lighthearted, not self-serious, still professional: ket-notation shelf

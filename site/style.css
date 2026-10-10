@@ -25,7 +25,7 @@
   --bar: #8794a3;
   --edu: #1d6b74;
   --talk: #2f5d9e;
-  --thumb-filter: none; --mark-bg: var(--ink); --mark-ink: var(--bg);
+  --thumb-filter: none;
   --note: #5b4b9a;
   --out: #3f7a3a;
   --shadow: 0 1px 2px rgb(17 28 41 / .06), 0 8px 24px rgb(17 28 41 / .07);
@@ -39,7 +39,7 @@
   :root:not([data-theme="light"]) {
     --bg: #0c131c; --surface: #141e2a; --ink: #e4eaf1; --muted: #93a1b2; --line: #263343;
     --accent: #e08a52; --accent-ink: #1a0f07; --accent-soft: #3a2517; --chip: #1d2937; --bar: #5f7189; --metal: #6f8196;
-    --edu: #5cc0c8; --talk: #84aef0; --note: #a99af0; --out: #86c77e; --thumb-filter: brightness(.9) contrast(.96); --mark-bg: var(--accent); --mark-ink: var(--accent-ink);
+    --edu: #5cc0c8; --talk: #84aef0; --note: #a99af0; --out: #86c77e; --thumb-filter: brightness(.9) contrast(.96);
     --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 8px 24px rgb(0 0 0 / .3);
     color-scheme: dark;
   }
@@ -47,7 +47,7 @@
 :root[data-theme="dark"] {
   --bg: #0c131c; --surface: #141e2a; --ink: #e4eaf1; --muted: #93a1b2; --line: #263343;
   --accent: #e08a52; --accent-ink: #1a0f07; --accent-soft: #3a2517; --chip: #1d2937; --bar: #5f7189; --metal: #6f8196;
-  --edu: #5cc0c8; --talk: #84aef0; --note: #a99af0; --out: #86c77e; --thumb-filter: brightness(.9) contrast(.96); --mark-bg: var(--accent); --mark-ink: var(--accent-ink);
+  --edu: #5cc0c8; --talk: #84aef0; --note: #a99af0; --out: #86c77e; --thumb-filter: brightness(.9) contrast(.96);
   --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 8px 24px rgb(0 0 0 / .3);
   color-scheme: dark;
 }
@@ -69,7 +69,16 @@ button, input, select { font: inherit; color: inherit; }
 .topbar { border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
 .topbar-inner { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-block: 12px; }
 .me { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; min-width: 0; }
-.mono-mark { display: inline-grid; place-items: center; min-width: 30px; height: 30px; padding: 0 6px; border-radius: 8px; background: var(--mark-bg); color: var(--mark-ink); font: 500 12px/1 var(--f-mono); letter-spacing: .02em; flex: none; }
+/* the mark: two levels and the copper arc of a jump caught mid-flight */
+.mark { width: 32px; height: 32px; flex: none; }
+.mark .mk-t { fill: var(--chip); }
+.mark path { fill: none; stroke-linecap: round; }
+.mark .mk-l { stroke: var(--ink); stroke-width: 4; }
+.mark .mk-a { stroke: var(--accent); stroke-width: 5; }
+.mark .mk-d { stroke: var(--bar); stroke-width: 2; stroke-dasharray: 1 4.5; }
+.me:hover .mk-a { stroke-dashoffset: 0; animation: mk-fly .9s cubic-bezier(.4, 0, .2, 1); stroke-dasharray: 40; }
+@keyframes mk-fly { from { stroke-dashoffset: 40; } }
+@media (prefers-reduced-motion: reduce) { .me:hover .mk-a { animation: none; } }
 .toplinks { display: flex; align-items: center; gap: 22px; font-size: 14px; }
 .toplinks a { color: var(--muted); text-decoration: none; }
 .toplinks a:hover { color: var(--ink); }
