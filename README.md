@@ -54,6 +54,8 @@ PDFs are compressed to a balanced, web-friendly quality (no Git LFS). To add new
 talks and republish, follow the checklist in [`agent/NOTES.md`](agent/NOTES.md). In short:
 
 ```bash
+python3 tools/add_deck.py NEW.pdf --shelf research --title "…" --year 2027 --venue "…"
+                                  # adds one deck end to end; or, step by step:
 python3 tools/process_pdfs.py     # compress new/updated PDFs (~150 dpi)
 python3 tools/build_catalog.py    # regenerate catalog.json (+ tags)
 python3 tools/make_thumbnails.py  # page-1 thumbnails for the website

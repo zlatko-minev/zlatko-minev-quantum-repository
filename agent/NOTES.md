@@ -34,8 +34,15 @@ Content license: CC BY-NC-ND 4.0 (see `LICENSE.md`).
 
 ## Add a new talk, lecture or note (checklist)
 
-1. **Convert.** `.pptx` → PDF: `python3 tools/convert_pptx_to_pdf.py <file>`
-   (LibreOffice headless).
+**Fast path:** `python3 tools/add_deck.py NEW.pdf --shelf … --title … --year …`
+does steps 1–8 below in one go (convert, file, compress, override with slug and
+`added`, catalog, text, thumbnails, site build with frozen key, size guard).
+The agent workflow around it (checking the title slide, summary, links,
+shipping, DOI) is `.claude/skills/add-deck/SKILL.md`. The manual steps:
+
+1. **Convert.** `.pptx` → PDF: `soffice --headless --convert-to pdf FILE.pptx`
+   (LibreOffice); `tools/convert_pptx_to_pdf.py` instead drives PowerPoint on
+   macOS for a whole folder.
 2. **Place and name.** Drop the PDF into the right content folder using that
    folder's naming pattern (above). The file name sets the item's internal
    `key`; its public id is the `slug` you add in step 5.

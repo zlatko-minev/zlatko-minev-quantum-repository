@@ -93,9 +93,10 @@ than personal websites, so the plan has three tracks:
   talks."
 - **Style match** (needs web): "Look at zlatko-minev.com and align the site's
   palette, type and tone with it, keeping the token system in site/style.css."
-- **Add new talks**: "Add these PDFs to the archive following the checklist in
-  agent/NOTES.md, including slug, summary, thumbnail, `added` date and frozen
-  BibTeX key."
+- **Add new talks**: "Add this deck to the notebook" plus the file. The agent
+  follows `.claude/skills/add-deck/SKILL.md`, which runs `tools/add_deck.py`
+  (one command: file, compress, slug, thumbnails, frozen BibTeX key, build)
+  and then writes the summary, verifies links and opens a PR.
 - **Red-team again** after big changes: "Run a multi-persona review (design,
   physics, student, citations, a11y/SEO, skeptic, QA) of the built site and fix
   what's real."
@@ -129,6 +130,8 @@ than personal websites, so the plan has three tracks:
 - ✅ Size guard `tools/check_sizes.py`, run in CI and `publish.sh`. Lossless PDF
   optimization was measured at 0.8 MB of 297 MB, so further savings would have
   to be lossy or come from moving PDFs out of git.
+- ✅ One-command intake for new decks: `tools/add_deck.py` plus the agent skill
+  `.claude/skills/add-deck/SKILL.md`.
 - ✅ CI (`.github/workflows/site.yml`) checks size, catalog freshness,
   thumbnails and frozen BibTeX keys, then builds and deploys to Pages from
   `main`.
