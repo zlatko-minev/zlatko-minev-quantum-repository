@@ -257,7 +257,8 @@ DRAFT_NOTE = ("Summary and key points drafted by a language model from the slide
 THEME_BOOT = ('document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");'
               'if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}')
 
-_FONTS = f'<script>{THEME_BOOT}</script>\n<link rel="preload" href="../../fonts/literata-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>'
+_ICONS = ('<link rel="icon" href="../../favicon.svg" type="image/svg+xml">\n<link rel="icon" href="../../favicon-32.png" sizes="32x32" type="image/png">\n<link rel="apple-touch-icon" href="../../apple-touch-icon.png">')
+_FONTS = f'<script>{THEME_BOOT}</script>\n{_ICONS}\n<link rel="preload" href="../../fonts/literata-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>'
 
 _COPY_JS = """<script>
 document.getElementById("copy-bib").onclick = async (e) => {
@@ -306,10 +307,10 @@ def _page(title: str, desc: str, url: str, thumb: str, meta: list, back: str, bo
 <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="item-page">
-<nav class="topbar wrap topbar-inner" aria-label="Site">
-  <a class="me" href="../../"><span class="mono-mark" aria-hidden="true">|ψ⟩</span>{SITE_NAME}</a>
+<nav class="topbar" aria-label="Site"><div class="wrap topbar-inner">
+  <a class="me" href="../../"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect class="mk-t" width="64" height="64" rx="15"/><path class="mk-d" d="M30 44h24M10 20h14"/><path class="mk-l" d="M10 44h14M40 20h14"/><path class="mk-a" d="M24 44C34 44 30 20 40 20"/></svg>{SITE_NAME}</a>
   <div class="toplinks"><a href="{_e(back)}">Browse everything</a><button class="theme-btn" type="button" data-theme-toggle aria-label="Switch colour theme"></button></div>
-</nav>
+</div></nav>
 <main class="wrap ip">
 {body}
 </main>
