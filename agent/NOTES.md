@@ -92,12 +92,14 @@ items; career talks are a series inside Lectures, findable with the Career tag.
 
 ## Citations
 
-- **Series.** A series held at one event (all decks share one year and one
-  venue, e.g. `Quantum Error Mitigation (Boulder Summer School 2023)`) has one
-  BibTeX entry shared by its decks. A series spanning events (e.g.
-  `Superconducting Qubits 101`, 2020–2026, five venues) and the
-  `Career & Outreach` grouping are cited deck by deck. Rule: `citable` in
-  `series_info()`, `tools/site_pages.py` (decided with the author 2026-10).
+- **Series.** Every series with 2+ decks is cited as ONE work, even when the
+  lecture was given at several venues over the years (e.g.
+  `Superconducting Qubits 101`, 2020–2026): the versions are near-identical,
+  and one record gathers citations (better for impact metrics, and it maps to
+  a Zenodo record with versions under one concept DOI). The entry's note lists
+  the decks, years and venues. Only `Career & Outreach` (a grouping, not a
+  series) is cited deck by deck. Rule: `citable` in `series_info()`,
+  `tools/site_pages.py` (decided with the author 2026-10).
 - **Copies.** `version_of` items share the original's BibTeX and point their
   canonical URL at it; they carry no Scholar tags.
 - **Keys are frozen** in `tools/bibkeys.json` (owner id → key; series owners are

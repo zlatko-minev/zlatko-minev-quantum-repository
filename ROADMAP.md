@@ -25,7 +25,8 @@
    Allowed domains): `zlatko-minev.com`, `youtube.com`, `www.youtube.com`,
    `arxiv.org`, `doi.org`. This unblocks video links, DOI checks and matching
    the site's style to the homepage.
-7. 💡 **Zenodo DOI.** Log in to zenodo.org with GitHub, switch on this
+7. 💡 **Zenodo DOI.** (For lecture series, one Zenodo record per series with each
+   year as a version gives one concept DOI that gathers all citations.) Log in to zenodo.org with GitHub, switch on this
    repository, then publish a GitHub Release. Zenodo mints a DOI using
    `.zenodo.json`. Add the DOI to `CITATION.cff` (`identifiers`) and the README.
    Optionally deposit individual tech notes for per-note DOIs, and add their
@@ -105,9 +106,9 @@
 
 **Citations**
 - ✅ Per-item pages (`items/<id>/`) and per-series pages (`series/<slug>/`).
-- ✅ BibTeX: tech notes are `@techreport`. A series held at one event (single
-  year and venue) shares one entry; a series spanning several events is cited
-  deck by deck.
+- ✅ BibTeX: tech notes are `@techreport`. Each lecture series is cited as one
+  work (its note lists years and venues), so citations consolidate; only
+  Career & Outreach decks are cited individually.
 - ✅ Summer-school copies of tech notes cite the note (`version_of`).
 - ✅ Keys are frozen in `tools/bibkeys.json`.
 - ✅ Google Scholar tags follow its rules: the PDF tag appears only when the

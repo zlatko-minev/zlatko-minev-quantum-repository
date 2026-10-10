@@ -97,11 +97,12 @@ def series_info(name: str, its: list[dict], site_url: str) -> dict:
         "authors": names,
         "venue": _common(its, "venue"),
         "url": f"{site_url}series/{slug(name)}/",
-        # One BibTeX entry for the whole series only when it is one event: a
-        # single year and venue (e.g. a summer school's lectures). Series that
-        # recur across years or venues are cited deck by deck.
-        "citable": (len(years) <= 1 and _common(its, "venue") is not None
-                    and name not in NOT_CITED_AS_SERIES),
+        # Every real series is cited as ONE work, including a lecture given at
+        # several venues over the years: the versions are near-identical, and
+        # one record gathers citations (and suits a Zenodo concept DOI). Only
+        # groupings that are not a series are cited deck by deck.
+        "citable": name not in NOT_CITED_AS_SERIES,
+        "venues": sorted({i["venue"] for i in its if i.get("venue")}),
     }
 
 
@@ -115,7 +116,8 @@ def series_bibtex(s: dict, key: str) -> str:
         ("howpublished", how),
         ("year", str(s["years"][-1]) if s["years"] else None),
         ("url", s["url"]),
-        ("note", f"Slides, {len(s['items'])} decks" + (f", {span}" if span and "--" in span else "")),
+        ("note", f"Slides, {len(s['items'])} decks" + (f", {span}" if span and "--" in span else "")
+                 + (f"; given at {'; '.join(s['venues'])}" if len(s["venues"]) > 1 else "")),
     ])
 
 
