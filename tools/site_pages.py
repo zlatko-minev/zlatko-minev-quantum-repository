@@ -13,9 +13,13 @@ from __future__ import annotations
 import html
 import json
 import re
+from pathlib import Path
 from urllib.parse import quote
 
 SITE_NAME = "The Quantum Notebook"
+# Per-series metadata that has no single deck to live on, e.g. the Zenodo DOI
+# of a whole lecture series: {"<series name>": {"doi": "10.5281/zenodo.N"}}.
+SERIES_META_PATH = Path(__file__).resolve().parent / "series.json"
 AUTHOR = "Zlatko K. Minev"
 SHELF_NAME = {"lectures": "Lectures & Tutorials", "research": "Research Talks",
               "notes": "Tech Notes"}
@@ -60,7 +64,7 @@ def _bib_escape(s: str) -> str:
 
 
 def _entry(key: str, fields: list[tuple[str, str | None]], kind: str = "misc") -> str:
-    body = ",\n".join(f"  {k} = {{{v if k == 'url' else _bib_escape(v)}}}" for k, v in fields if v)
+    body = ",\n".join(f"  {k} = {{{v if k in ('url', 'doi') else _bib_escape(v)}}}" for k, v in fields if v)
     return f"@{kind}{{{key},\n{body}\n}}"
 
 
@@ -77,6 +81,10 @@ def series_groups(items: list[dict]) -> dict[str, list[dict]]:
         if it.get("series"):
             groups.setdefault(it["series"], []).append(it)
     return {s: its for s, its in groups.items() if len(its) > 1}
+
+
+def _series_meta() -> dict:
+    return json.loads(SERIES_META_PATH.read_text()) if SERIES_META_PATH.exists() else {}
 
 
 def _common(its: list[dict], field: str) -> str | None:
@@ -102,6 +110,7 @@ def series_info(name: str, its: list[dict], site_url: str) -> dict:
         # one record gathers citations (and suits a Zenodo concept DOI). Only
         # groupings that are not a series are cited deck by deck.
         "citable": name not in NOT_CITED_AS_SERIES,
+        "doi": _series_meta().get(name, {}).get("doi"),
         "venues": sorted({i["venue"] for i in its if i.get("venue")}),
     }
 
@@ -115,6 +124,7 @@ def series_bibtex(s: dict, key: str) -> str:
         ("title", "{" + s["name"] + "}"),
         ("howpublished", how),
         ("year", str(s["years"][-1]) if s["years"] else None),
+        ("doi", s.get("doi")),
         ("url", s["url"]),
         ("note", f"Slides, {len(s['items'])} decks" + (f", {span}" if span and "--" in span else "")
                  + (f"; given at {'; '.join(s['venues'])}" if len(s["venues"]) > 1 else "")),
@@ -140,6 +150,7 @@ def item_bibtex(item: dict, site_url: str, key: str) -> str:
             ("number", item.get("note_id")),
             ("institution", SITE_NAME),
             ("year", str(item["year"]) if item.get("year") else None),
+            ("doi", item.get("doi")),
             ("url", url),
         ], "techreport")
     how = {"Research talk": "Talk", "Career talk": "Talk"}.get(kind(item), kind(item))
@@ -150,6 +161,7 @@ def item_bibtex(item: dict, site_url: str, key: str) -> str:
         ("title", "{" + item["title"] + "}"),
         ("howpublished", how),
         ("year", str(item["year"]) if item.get("year") else None),
+        ("doi", item.get("doi")),
         ("url", url),
         ("note", "Slides"),
     ])
@@ -204,6 +216,8 @@ def assign_citations(items: list[dict], site_url: str,
             for it in s["items"]:
                 it["bibtex"] = s["bibtex"]
                 it["cited_as_series"] = True
+                if s.get("doi"):
+                    it["series_doi"] = s["doi"]
     for it in items:
         if it["id"] in keys:
             it["bibtex"] = item_bibtex(it, site_url, keys[it["id"]])
@@ -257,7 +271,8 @@ def _wh(item: dict) -> str:
 
 
 def _links_html(item: dict) -> str:
-    return "".join(f'<a class="btn" href="{_e(l["url"])}">{_e(l["label"])}</a>'
+    doi = item.get("doi")
+    return (f'<a class="btn" href="https://doi.org/{_e(doi)}">DOI {_e(doi)}</a>' if doi else "") + "".join(f'<a class="btn" href="{_e(l["url"])}">{_e(l["label"])}</a>'
                    for l in item.get("links") or [])
 
 
@@ -322,6 +337,7 @@ def item_page(item: dict, site_url: str, pdf_base_abs: str) -> str:
         ("citation_abstract_html_url", url),
         ("citation_technical_report_number", item.get("note_id")),
         ("citation_technical_report_institution", SITE_NAME if item.get("note_id") else None),
+        ("citation_doi", item.get("doi")),
         ("citation_language", "en"),
     ]
     jsonld = {
@@ -333,6 +349,7 @@ def item_page(item: dict, site_url: str, pdf_base_abs: str) -> str:
         "inLanguage": "en", "license": LICENSE_URL,
         "encoding": {"@type": "MediaObject", "contentUrl": pdf, "encodingFormat": "application/pdf"},
         "isPartOf": {"@type": "WebSite", "name": SITE_NAME, "url": site_url},
+        "identifier": f"https://doi.org/{item['doi']}" if item.get("doi") else None,
     }
     jsonld = {k: v for k, v in jsonld.items() if v}
     facts = " · ".join(_e(x) for x in [item.get("note_id") or kind(item), item.get("year") or "undated",

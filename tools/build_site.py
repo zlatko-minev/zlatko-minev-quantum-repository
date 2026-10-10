@@ -106,6 +106,7 @@ def build_library(pdf_base: str) -> dict:
             "file": it["file"],
             "links": it.get("links") or [],   # [{label, url}]: paper, video, ...
             "version_of": it.get("version_of"),
+            "doi": it.get("doi"),
             "added": it.get("added"),
             "thumb": f"thumbs/{it['id']}.jpg" if thumb.exists() else None,
             "thumb_wh": jpeg_size(thumb) if thumb.exists() else None,

@@ -369,6 +369,7 @@ function openItem(id, push = true) {
   const next = ms[ms.indexOf(it) + 1];
   $("#d-actions").innerHTML = `<a class="btn primary" href="${esc(url)}" target="_blank" rel="noopener">Open PDF</a>` +
     (LIB.pdf_base === "" ? `<a class="btn" href="${esc(url)}" download>Download</a>` : "") +
+    ((it.doi || it.series_doi) ? `<a class="btn" href="https://doi.org/${esc(it.doi || it.series_doi)}" target="_blank" rel="noopener">DOI</a>` : "") +
     (it.links || []).map((l) => `<a class="btn" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("") +
     (next ? `<button class="btn" type="button" id="next" data-id="${esc(next.id)}">Next in series →</button>` : "") +
     `<button class="btn" type="button" id="cite" aria-expanded="false" aria-controls="d-cite">Cite</button>` +
