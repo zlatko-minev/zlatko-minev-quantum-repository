@@ -143,6 +143,20 @@ cited). As of 2026-10, paper links come from arXiv IDs printed on
 the title slides; no video links yet (the QGSS lectures have recordings on
 YouTube that still need to be matched to decks).
 
+## DOIs and Zenodo
+
+- `doi` on an item (override) or `tools/series.json` (`{"<series>": {"doi": ...}}`)
+  flows into BibTeX (`doi`), Scholar (`citation_doi`), JSON-LD and a DOI button.
+  Use the Zenodo *concept* DOI (stable across versions).
+- `tools/zenodo_deposit.py plan|create|publish|status` (see its docstring):
+  units are tech notes, lecture series (one record, all decks) and standalone
+  decks; copies (`version_of`) and Career & Outreach grouping are handled like
+  the citations. `create` makes drafts only; `publish` is explicit and writes
+  DOIs back. State in `tools/zenodo.json` (commit it). Rehearse with
+  `--sandbox`. Needs network access to zenodo.org.
+- A new deck in an already-published series: "New version" on the Zenodo
+  record (UI), add the PDF, publish; the concept DOI is unchanged.
+
 ## License and reuse
 
 Content is CC BY-NC-ND 4.0 (`LICENSE.md`), not MIT. Agreed wording (2026-10):

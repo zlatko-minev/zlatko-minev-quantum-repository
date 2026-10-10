@@ -25,13 +25,63 @@
    Allowed domains): `zlatko-minev.com`, `youtube.com`, `www.youtube.com`,
    `arxiv.org`, `doi.org`. This unblocks video links, DOI checks and matching
    the site's style to the homepage.
-7. 💡 **Zenodo DOI.** (For lecture series, one Zenodo record per series with each
-   year as a version gives one concept DOI that gathers all citations.) Log in to zenodo.org with GitHub, switch on this
+7. ⏳ **DOIs and Scholar**: see "Getting indexed by Google Scholar" below. Log in to zenodo.org with GitHub, switch on this
    repository, then publish a GitHub Release. Zenodo mints a DOI using
    `.zenodo.json`. Add the DOI to `CITATION.cff` (`identifiers`) and the README.
    Optionally deposit individual tech notes for per-note DOIs, and add their
    `doi` links to the overrides.
 8. 💡 Add your ORCID to `CITATION.cff` and `.zenodo.json`.
+
+### Getting indexed by Google Scholar (citations that count)
+Scholar indexes scholarly records with stable identifiers much more reliably
+than personal websites, so the plan has three tracks:
+
+1. ⏳ **Tech notes on arXiv.** This is the strongest route: Scholar indexes
+   arXiv fully and counts citations to it.
+   - Category: `quant-ph`, or `physics.ed-ph` for pedagogical notes, with a
+     comment such as "Technical note T27, The Quantum Notebook".
+   - arXiv wants the LaTeX source, not just the PDF. Upload T21–T27 from their
+     source files.
+   - Then add the arXiv link to each note's `links`. Add the `doi` too if you
+     also deposit the note on Zenodo.
+2. ⏳ **Slides on Zenodo.** Every record gets a DOI from DataCite, and Scholar
+   indexes Zenodo. `tools/zenodo_deposit.py` plans 47 records from the catalog:
+   - one "lesson" record per lecture series, holding all its decks (later
+     years become new versions under the same concept DOI, so citations
+     consolidate);
+   - a "presentation" record for each standalone talk, and a "poster" for the
+     2011 APS poster;
+   - a "technical note" record for each tech note.
+
+   Steps:
+   1. Create a token: zenodo.org → Applications → Personal access token, with
+      scopes `deposit:write` and `deposit:actions`.
+   2. Open network access to `zenodo.org` and `sandbox.zenodo.org` for agent
+      sessions, or run the script on your own machine.
+   3. Rehearse on the sandbox: `ZENODO_SANDBOX_TOKEN=... python3
+      tools/zenodo_deposit.py create --sandbox --only t27`, then check the
+      draft on sandbox.zenodo.org.
+   4. Production: run `create`, review the drafts on zenodo.org, then run
+      `publish`. Publishing writes the concept DOIs into the overrides and
+      `tools/series.json`. Rebuild and commit, and the site's BibTeX, Scholar
+      tags and DOI buttons pick them up.
+   5. Give years to T11.7, T11.9, T23 and T25 first. Zenodo needs a
+      publication date, so the script skips these until they have one.
+   6. Optional: create a Zenodo community "The Quantum Notebook" and add the
+      records to it.
+3. ⏳ **Your Google Scholar profile.**
+   - After indexing (weeks to months), check that each record is attributed
+     to you.
+   - Add missing ones with "Add article manually", using the DOI's metadata.
+   - Merge duplicates, e.g. the same series indexed twice.
+   - Turn on automatic profile updates for new articles.
+4. ✅ **Already on the site:**
+   - Scholar `citation_*` tags, with `citation_pdf_url` only when the PDF is on
+     the same site and `citation_doi` once a DOI exists.
+   - JSON-LD, a sitemap and BibTeX with `doi`.
+
+   Scholar may index the site's tech-note pages directly, but don't count on
+   it for slides.
 
 ### Agent tasks (next session; prompts you can paste)
 - **Video links** (needs web): "Find the YouTube recordings for the QGSS 2020–2023
