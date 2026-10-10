@@ -33,7 +33,7 @@ import re
 import shutil
 from pathlib import Path
 
-from site_pages import assign_citations, atom_feed, item_page, robots, series_page, sitemap
+from site_pages import THEME_BOOT, assign_citations, atom_feed, item_page, robots, series_page, sitemap
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SRC = REPO_ROOT / "site"
@@ -128,15 +128,14 @@ def fill_index(path: Path, lib: dict, site_url: str) -> None:
     items = lib["items"]
     years = [i["year"] for i in items if i.get("year")]
     slides = sum(i.get("pages") or 0 for i in items)
-    stats = (f"<b>{len(items)}</b> decks · <b>{slides:,}</b> slides · about "
-             f"<b>{round(slides / 60)}</b> hours of talking, at a minute a slide (optimistic)")
     rows = "\n".join(
         f'      <li><a href="items/{html.escape(i["id"])}/">{html.escape(i["title"])}</a>'
         f'{" (" + str(i["year"]) + ")" if i.get("year") else ""}</li>'
         for i in sorted(items, key=lambda i: (-(i.get("year") or 0), i["title"])))
     page = path.read_text()
     subs = {"%SITE_URL%": site_url, "%YEARS%": f"{min(years)} → {max(years)}",
-            "%FUN_STATS%": stats, "%STATIC_LIST%": f'    <ul class="static-list">\n{rows}\n    </ul>'}
+            "%N_DECKS%": str(len(items)), "%N_SLIDES%": f"{slides:,}",
+            "%N_HOURS%": f"~{round(slides / 60)}", "%THEME_BOOT%": THEME_BOOT, "%STATIC_LIST%": f'    <ul class="static-list">\n{rows}\n    </ul>'}
     for shelf in ("lectures", "research", "notes"):
         subs[f"%COUNT_{shelf}%"] = str(sum(1 for i in items if i.get("shelf") == shelf))
     for k, v in subs.items():

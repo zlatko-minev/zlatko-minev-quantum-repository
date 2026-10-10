@@ -1,9 +1,9 @@
 ---
 name: add-deck
-description: Add a new slide deck, lecture or tech note to The Quantum Notebook archive and website — file it, compress it, give it a permanent id, metadata from its title slide, a summary, links, thumbnail and citation, and ship it. Use when the owner hands over a new PDF/PPTX ("add this talk", "new lecture", "here's my latest deck", "new tech note T28").
+description: Add a new slide deck, lecture or tech note to Zlatko's Quantum Notebook archive and website — file it, compress it, give it a permanent id, metadata from its title slide, a summary, links, thumbnail and citation, and ship it. Use when the owner hands over a new PDF/PPTX ("add this talk", "new lecture", "here's my latest deck", "new tech note T28").
 ---
 
-# Add a deck to The Quantum Notebook
+# Add a deck to Zlatko's Quantum Notebook
 
 Read `agent/NOTES.md` first if you haven't this session; it holds the rules this
 skill applies. Everything committed is public: keep commits factual.

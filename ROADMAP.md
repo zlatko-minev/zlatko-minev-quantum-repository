@@ -1,4 +1,4 @@
-# Roadmap — The Quantum Notebook
+# Roadmap — Zlatko's Quantum Notebook
 
 > Living plan for the archive and its website. Status: ✅ done · ⏳ next · 💡 idea.
 > How-to and conventions: `agent/NOTES.md`. Last updated 2026-10-10.
@@ -39,7 +39,7 @@ than personal websites, so the plan has three tracks:
 1. ⏳ **Tech notes on arXiv.** This is the strongest route: Scholar indexes
    arXiv fully and counts citations to it.
    - Category: `quant-ph`, or `physics.ed-ph` for pedagogical notes, with a
-     comment such as "Technical note T27, The Quantum Notebook".
+     comment such as "Technical note T27, Zlatko's Quantum Notebook".
    - arXiv wants the LaTeX source, not just the PDF. Upload T21–T27 from their
      source files.
    - Then add the arXiv link to each note's `links`. Add the `doi` too if you
@@ -67,7 +67,7 @@ than personal websites, so the plan has three tracks:
       tags and DOI buttons pick them up.
    5. Give years to T11.7, T11.9, T23 and T25 first. Zenodo needs a
       publication date, so the script skips these until they have one.
-   6. Optional: create a Zenodo community "The Quantum Notebook" and add the
+   6. Optional: create a Zenodo community "Zlatko's Quantum Notebook" and add the
       records to it.
 3. ⏳ **Your Google Scholar profile.**
    - After indexing (weeks to months), check that each record is attributed
@@ -136,7 +136,7 @@ than personal websites, so the plan has three tracks:
   thumbnails and frozen BibTeX keys, then builds and deploys to Pages from
   `main`.
 
-**Website ("The Quantum Notebook")**
+**Website ("Zlatko's Quantum Notebook")**
 - ✅ Three shelves: Lectures & Tutorials, Research Talks, Tech Notes.
 - ✅ Each series collapses to a cover card with "+N more"; the chosen sort order
   is kept.
