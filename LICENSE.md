@@ -1,6 +1,8 @@
 # Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
 
-This work is licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](http://creativecommons.org/licenses/by-nc-nd/4.0/).
+Copyright © 2011–2026 Zlatko K. Minev, unless a slide or deck states otherwise.
+
+This work is licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/).
 
 ## You are free to:
 - Share — copy and redistribute the material in any medium or format
@@ -13,7 +15,7 @@ This work is licensed under a [Creative Commons Attribution-NonCommercial-NoDeri
 ## Additional restrictions:
 - The graphics, images, and visual elements in this repository may not be used in publications without explicit permission from the author.
 
-A full copy of this license is available at: http://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+A full copy of this license is available at: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
 
 ## Permissions
 

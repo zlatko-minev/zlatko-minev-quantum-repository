@@ -199,9 +199,9 @@ def main() -> int:
 
     todo = []
     for it in items:
-        if args.ids and it["id"] not in args.ids:
+        if args.ids and it.get("key", it["id"]) not in args.ids:
             continue
-        if it["id"] in done and not args.force:
+        if it.get("key", it["id"]) in done and not args.force:
             continue
         todo.append(it)
     if args.limit:
@@ -214,22 +214,22 @@ def main() -> int:
     ok = fail = 0
     for i, it in enumerate(todo, 1):
         pdf = REPO_ROOT / it["file"]
-        print(f"[{i}/{len(todo)}] {it['id'][:60]} ...", flush=True)
+        print(f"[{i}/{len(todo)}] {it.get('key', it['id'])[:60]} ...", flush=True)
         try:
             with tempfile.TemporaryDirectory() as td:
                 if args.vision:
-                    imgs = cached_images(it["id"], args.pages) \
+                    imgs = cached_images(it.get("key", it["id"]), args.pages) \
                         or render_pages(pdf, args.pages, Path(td))
-                    text = cached_text(it["id"]) or extract_text(pdf, min(args.pages, 4))
+                    text = cached_text(it.get("key", it["id"])) or extract_text(pdf, min(args.pages, 4))
                 else:  # text mode: full extracted text, no images (fast, stable)
                     imgs = []
-                    text = (cached_full_text(it["id"], 9000)
+                    text = (cached_full_text(it.get("key", it["id"]), 9000)
                             or extract_text(pdf, 8))
                 prompt = PROMPT.format(tags=", ".join(CONTROLLED_TAGS), text=text)
                 data = call_ollama(model, prompt, imgs, args.timeout)
             data["_mode"] = mode
             data["_source_pages"] = len(imgs)
-            done[it["id"]] = data
+            done[it.get("key", it["id"])] = data
             ai["items"] = done
             AI_OUT.write_text(json.dumps(ai, indent=2, ensure_ascii=False) + "\n")
             ok += 1

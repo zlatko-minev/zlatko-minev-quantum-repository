@@ -4,16 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Quantum Notebook · Zlatko Minev's talks, lectures and notes</title>
-<meta name="description" content="A living record of fifteen years of slides by Zlatko K. Minev on superconducting qubits, quantum noise, error mitigation and many-body physics: research talks, summer-school lectures, tutorials and technical notes. Search, filter and download.">
+<meta name="description" content="A living record of Zlatko K. Minev's slides since 2011: research talks, summer-school lectures, tutorials and technical notes on superconducting qubits, quantum noise, error mitigation and many-body physics. Search, filter, cite and download.">
+<link rel="canonical" href="%SITE_URL%">
 <meta property="og:title" content="The Quantum Notebook · Zlatko Minev's talks, lectures and notes">
-<meta property="og:description" content="Research talks, summer-school lectures, tutorials and technical notes on quantum hardware, noise and error mitigation.">
+<meta property="og:description" content="Zlatko Minev's research talks, summer-school lectures, tutorials and technical notes on quantum hardware, noise and error mitigation.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="%SITE_URL%">
+<meta property="og:site_name" content="The Quantum Notebook">
+<meta property="og:image" content="%SITE_URL%og.png">
+<meta property="og:image:alt" content="The Quantum Notebook: an isometric transmon qubit next to the site title">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,650;1,7..72,500&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip" href="#results">Skip to the decks</a>
 <nav class="topbar wrap" aria-label="Site">
   <a class="me" href="./"><span class="mono-mark" aria-hidden="true">|ψ⟩</span>The Quantum Notebook</a>
   <div class="toplinks">
@@ -25,41 +32,64 @@
 <header class="hero wrap">
   <div class="hero-grid">
     <div class="hero-text">
-      <p class="eyebrow">Zlatko Minev · talks, lectures &amp; notes · <span id="span-years">2011 → today</span></p>
+      <p class="eyebrow">Zlatko Minev’s talks, lectures &amp; notes · %YEARS%</p>
       <h1>The Quantum <em>Notebook</em></h1>
-      <p class="lede">A living record of what I've taught, presented and worked out on superconducting qubits, quantum noise, error mitigation and many-body physics. New pages get added as they happen. Read, share and cite freely.</p>
-      <p class="fun-stats" id="fun-stats"></p>
+      <p class="lede">A living record of what I've taught, presented and worked out on superconducting qubits, quantum noise, error mitigation and many-body physics. New decks get added as they happen. Read them, cite them, share them with credit.</p>
+      <p class="whoami">I'm a physicist working on superconducting quantum computers, now at Google Quantum AI, before that IBM Quantum and Yale. More at <a href="https://zlatko-minev.com">zlatko-minev.com</a>.</p>
+      <p class="fun-stats" id="fun-stats">%FUN_STATS%</p>
     </div>
-    <figure class="transmon" aria-label="Animated drawing of a transmon qubit: two metal pads joined by a Josephson junction, with electric field lines between them">
-      <svg id="transmon" viewBox="0 0 360 250" role="img" aria-hidden="true"></svg>
-      <figcaption>A transmon: two pads, one junction, charge sloshing back and forth. Scroll to drive it.</figcaption>
+    <figure class="transmon">
+      <svg id="transmon" viewBox="0 0 360 250" role="img" aria-label="Animated drawing of a transmon qubit: two metal pads joined by a Josephson junction, with charge and electric field lines sloshing between the pads"></svg>
+      <figcaption><span class="cap">A transmon: two pads and one Josephson junction, charge sloshing between them. Scroll to advance the phase.</span> <button class="tm-pause" id="tm-pause" type="button" aria-pressed="false">Pause</button></figcaption>
     </figure>
   </div>
-  <figure class="trace" id="trace" title="Click to measure again">
-    <svg viewBox="0 0 1200 96" preserveAspectRatio="none" role="img" aria-label="A qubit's measured state jumping between ground and excited levels over time">
+  <figure class="trace" id="trace" tabindex="0" role="button" aria-label="Quantum-jump record; press to measure again">
+    <svg viewBox="0 0 1200 96" preserveAspectRatio="none" aria-hidden="true">
       <line class="lvl" x1="0" x2="1200" y1="78" y2="78"/><line class="lvl" x1="0" x2="1200" y1="18" y2="18"/>
       <path id="trace-path" d=""/>
       <g id="trace-mark"></g>
     </svg>
-    <span class="trace-label" id="trace-label" hidden>caught mid-flight</span>
-    <figcaption><span class="mono">|G⟩ ↔ |D⟩</span> A qubit, jumping. Click to measure again; no two runs agree.</figcaption>
+    <span class="trace-label" id="trace-label" hidden>G→D, caught mid-flight</span>
+    <figcaption><span class="mono">bright |G⟩ ↔ dark |D⟩</span> A three-level artificial atom jumping, as inferred from its bright-state clicks (simulated). In 2019 we caught one of these jumps mid-flight and reversed it: <a href="#2021-to-catch-and-reverse-a-quantum-jump-mid-flight">the talk</a>. Click the trace to measure again; no two runs agree.</figcaption>
   </figure>
 </header>
 
 <section class="wrap shelves" aria-label="Collections">
-  <div class="shelf-grid" id="shelves"></div>
+  <div class="shelf-grid" id="shelves">
+    <button class="shelf s-lectures" type="button" data-k="lectures" aria-pressed="false">
+      <span class="s-top"><span class="s-kicker">|learn⟩</span><span class="s-count">%COUNT_lectures%</span></span>
+      <span class="s-name">Lectures &amp; Tutorials</span>
+      <span class="s-blurb">Summer schools, courses, tutorials and career talks. Start here if you're new; curiosity is the only prerequisite.</span>
+    </button>
+    <button class="shelf s-research" type="button" data-k="research" aria-pressed="false">
+      <span class="s-top"><span class="s-kicker">|discover⟩</span><span class="s-count">%COUNT_research%</span></span>
+      <span class="s-name">Research Talks</span>
+      <span class="s-blurb">Seminars, keynotes and conference talks, from Josephson parametric amplifiers in 2011 to Fibonacci anyons and OTOCs.</span>
+    </button>
+    <button class="shelf s-notes" type="button" data-k="notes" aria-pressed="false">
+      <span class="s-top"><span class="s-kicker">|derive⟩</span><span class="s-count">%COUNT_notes%</span></span>
+      <span class="s-name">Tech Notes</span>
+      <span class="s-blurb">Derivations and cheat sheets, numbered like a lab notebook. Pencil recommended.</span>
+    </button>
+  </div>
+</section>
+
+<section class="wrap paths-box" id="paths-box" aria-labelledby="paths-h">
+  <h2 id="paths-h">Start here</h2>
+  <ol class="paths" id="paths"></ol>
 </section>
 
 <div class="toolbar" role="search">
   <div class="wrap toolbar-inner">
     <label class="search">
-      <span class="visually-hidden">Search the archive</span>
+      <span class="visually-hidden">Search the notebook</span>
       <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4.5 4.5"/></svg>
-      <input id="q" type="search" placeholder="Search… try “twirling”, “transmon” or “T27”   ( / )" autocomplete="off">
+      <input id="q" type="search" placeholder="Search… try “twirling” or “T27”" autocomplete="off" aria-keyshortcuts="/">
     </label>
     <label class="sort">
       <span>Sort</span>
       <select id="sort">
+        <option value="best">Best match</option>
         <option value="new">Newest first</option>
         <option value="old">Oldest first</option>
         <option value="title">Title A–Z</option>
@@ -67,7 +97,7 @@
       </select>
     </label>
     <label class="toggle"><input id="group" type="checkbox"> <span>Group by series</span></label>
-    <button class="btn ghost" type="button" id="random" title="Open a random deck">Collapse to a random deck</button>
+    <button class="btn ghost" type="button" id="random" title="Collapse to a random deck">Random deck</button>
   </div>
 </div>
 
@@ -78,6 +108,8 @@
       <section>
         <h2>Year</h2>
         <div class="years" id="years"></div>
+        <div class="years-axis" id="years-axis"></div>
+        <div class="chips years-undated" id="years-undated"></div>
       </section>
       <section>
         <h2>Topic</h2>
@@ -95,10 +127,13 @@
     </aside>
   </details>
 
-  <section class="results" aria-live="polite">
-    <p class="count" id="count">Preparing the state…</p>
-    <div id="grid"></div>
-    <p class="empty" id="empty" hidden>No states in this subspace. Loosen a filter, or <button type="button" id="reset2">clear them all</button>.</p>
+  <section class="results" id="results" aria-labelledby="results-h">
+    <h2 class="visually-hidden" id="results-h">Decks</h2>
+    <p class="count" id="count" role="status" aria-live="polite" tabindex="-1">Preparing the state…</p>
+    <div id="grid">
+%STATIC_LIST%
+    </div>
+    <p class="empty" id="empty" hidden>Nothing matches <span id="empty-q">these filters</span>. These are slides and notes (no recordings yet), so try a topic word like <i>noise</i>, <i>transmon</i> or <i>measurement</i>, or <button type="button" id="reset2" class="linkish">clear the filters</button>.</p>
   </section>
 </main>
 
@@ -106,14 +141,14 @@
   <div class="wrap foot-inner">
     <section class="reuse" id="reuse" aria-labelledby="reuse-h">
       <h2 id="reuse-h">Cite &amp; reuse</h2>
-      <p>Everything here is © Zlatko K. Minev and shared under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>: read it, download it, pass it along with credit. Want a slide or figure for your own talk, course or paper? Please ask. The answer is usually yes, and it's nice to hear where the material ends up.</p>
-      <p>Some slides include figures and images by other people, credited where they appear. Those belong to their owners, so please ask the original source for them. If you spot something that's missing a credit or shouldn't be here, say so and it will be fixed.</p>
+      <p>Unless a deck says otherwise, the slides and notes here are © Zlatko K. Minev and shared under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>: you're welcome to read, download and share them, unchanged and non-commercially, with credit and a link back. Want a slide or figure for your own talk, course or paper? Please ask; the answer is usually yes, and I like hearing where the material ends up.</p>
+      <p>Some slides include figures, photos, logos or excerpts from other people and institutions, credited where they appear. Those aren't mine to license: they stay with their owners, so please ask the original source. Spotted a missing credit or something that shouldn't be here? <a href="https://zlatko-minev.com">Tell me</a> and I'll fix it.</p>
       <p>Each deck has a citation page with BibTeX (open a deck, then <b>Cite</b>), or grab <a href="citations.bib">all citations as one .bib file</a>.</p>
     </section>
     <div class="foot-small">
-      <p>Get in touch through <a href="https://zlatko-minev.com">zlatko-minev.com</a>. Catalog and source on <a href="https://github.com/zlatko-minev/zlatko-minev-quantum-repository">GitHub</a>.</p>
-      <p>Summaries marked “draft” were machine-written from the slides and await the author's review.</p>
-      <p>No qubits were harmed in the making of this archive. Some decohered.</p>
+      <p>More about me, my papers and blog at <a href="https://zlatko-minev.com">zlatko-minev.com</a>. Catalog and source on <a href="https://github.com/zlatko-minev/zlatko-minev-quantum-repository">GitHub</a>.</p>
+      <p>Summaries, key points and one-line descriptions were drafted by a language model from the slides; ones marked as drafts I haven't reviewed yet. The slides themselves are the source.</p>
+      <p>No qubits were harmed in the making of this notebook. Some decohered.</p>
     </div>
   </div>
 </footer>
@@ -124,16 +159,17 @@
     <div class="d-media"><img id="d-img" alt=""></div>
     <div class="d-body">
       <p class="d-meta" id="d-meta"></p>
-      <h2 id="d-title"></h2>
+      <h2 id="d-title" tabindex="-1"></h2>
       <p class="d-series" id="d-series"></p>
       <div class="d-actions" id="d-actions"></div>
-      <p class="d-summary" id="d-summary"></p>
-      <ul class="d-points" id="d-points"></ul>
       <div class="d-cite" id="d-cite" hidden>
         <p class="d-cite-note" id="d-cite-note"></p>
         <pre class="bib" id="d-bib"></pre>
         <div class="d-actions"><button class="btn" type="button" id="copy-bib">Copy BibTeX</button><a class="btn" id="d-citepage" href="#">Citation page</a></div>
       </div>
+      <p class="d-summary" id="d-summary"></p>
+      <ul class="d-points" id="d-points"></ul>
+      <p class="draft-note" id="d-draft" hidden>Summary and key points drafted by a language model from the slides, not yet reviewed by me. The slides are the source.</p>
       <div class="chips static" id="d-tags"></div>
       <div class="d-related" id="d-related"></div>
     </div>

@@ -185,20 +185,21 @@ def infer_tags(haystack: str) -> list[str]:
 
 
 def page_count(path: Path) -> int | None:
-    """Page count via Ghostscript, falling back to poppler's ``pdfinfo``."""
+    """Page count via poppler's ``pdfinfo`` (what CI has), else Ghostscript."""
+    try:
+        out = subprocess.run(["pdfinfo", str(path)],
+                             capture_output=True, text=True, timeout=60)
+        m = re.search(r"^Pages:\s+(\d+)", out.stdout, re.MULTILINE)
+        if m:
+            return int(m.group(1))
+    except Exception:
+        pass
     try:
         out = subprocess.run(
             ["gs", "-q", "-dNODISPLAY", "-dNOSAFER", "-c",
              f"({path}) (r) file runpdfbegin pdfpagecount = quit"],
             capture_output=True, text=True, timeout=60)
         return int(out.stdout.strip())
-    except Exception:
-        pass
-    try:
-        out = subprocess.run(["pdfinfo", str(path)],
-                             capture_output=True, text=True, timeout=60)
-        m = re.search(r"^Pages:\s+(\d+)", out.stdout, re.MULTILINE)
-        return int(m.group(1)) if m else None
     except Exception:
         return None
 
@@ -240,8 +241,13 @@ def main() -> int:
                 item_id = f"{item_id}-{n}"
             seen_ids.add(item_id)
             haystack = str(rel)
+            ov = overrides.get(item_id, {})
             rec = {
-                "id": item_id,
+                # "id" is the public, permanent id (URLs, citations). It is the
+                # frozen "slug" from the overrides when set; "key" is the
+                # file-name-derived id that overrides and caches are keyed by.
+                "id": ov.get("slug", item_id),
+                "key": item_id,
                 "title": clean_title(name),
                 "file": str(rel),
                 "category": category,
@@ -255,11 +261,12 @@ def main() -> int:
                 "size_bytes": pdf.stat().st_size,
                 "pages": None if args.no_pages else page_count(pdf),
             }
-            ov = overrides.get(item_id, {})
             if "tags" in ov:  # union auto + manual
                 rec["tags"] = sorted(set(rec["tags"]) | set(ov["tags"]))
+            if "tags_remove" in ov:  # drop folder-inherited tags that don't fit
+                rec["tags"] = [t for t in rec["tags"] if t not in ov["tags_remove"]]
             for k, v in ov.items():
-                if k != "tags":
+                if k not in ("tags", "tags_remove", "slug"):
                     rec[k] = v
             items.append(rec)
 

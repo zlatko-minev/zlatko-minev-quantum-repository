@@ -53,7 +53,11 @@ Content license: CC BY-NC-ND 4.0 (see `LICENSE.md`).
      Reuse an existing series name exactly when the deck belongs to one.
    - `shelf` only when the default is wrong (see "Shelves").
    - `note_id` for tech notes (`T27`).
-   - `speaker` when someone other than Minev presented, or co-presented.
+   - `slug`: the permanent public id (see "Item ids and renaming").
+   - `speaker` when someone other than Minev presented, or co-presented
+     (comma-separated, in title-slide order); `authors` for a co-authored
+     poster or abstract whose citation needs the full author list.
+   - `tags_remove` to drop a tag inherited from the folder that doesn't fit.
 6. **Text + summary.** `python3 tools/extract_cache.py` to refresh
    `catalog_text.json`, then write `description`, `summary`, `key_points`,
    `level`, `summary_confidence` into the overrides (rules below).
@@ -110,8 +114,11 @@ and on its citation page:
 ]
 ```
 
-Only add a link you have verified (the paper on the deck's title slide, a video
-the author confirms). As of 2026-10, paper links come from arXiv IDs printed on
+Only add a link you have verified: the talk's *own* paper (in the title or
+author block of slide 1, not one it cites; check the arXiv record's title and
+authors), or a video the author confirms. A wrong paper link under the author's
+name is worse than none (2026-10: an NQI deck briefly linked a paper it only
+cited). As of 2026-10, paper links come from arXiv IDs printed on
 the title slides; no video links yet (the QGSS lectures have recordings on
 YouTube that still need to be matched to decks).
 
@@ -138,13 +145,19 @@ Summaries are public, under the author's name. Accuracy first.
 - The site labels every summary "draft" until the author approves it: set
   `"summary_reviewed": true` on that item in the overrides.
 
-## Renaming files: don't, by default
+## Item ids and renaming
 
-Display titles come from the overrides, so a file never needs renaming to look
-right on the site. Renaming breaks two kinds of links: GitHub file URLs that
-other pages (e.g. zlatko-minev.com/blog, which the slides point to) may use, and
-the site permalink `#<id>`, which is derived from the file name. If a rename is
-unavoidable, move the item's override entry to the new id in the same commit.
+- Each item has a public, permanent `id` (its URL `items/<id>/`, the `#<id>`
+  permalink, thumbnail name and BibTeX URL). It is the frozen `slug` in the
+  item's override, e.g. `t27-simple-noise-models-and-gate-fidelity`. Give
+  every new item a short slug (`YYYY-short-title`, or `tNN-short-title` for
+  notes) when you add it, and never change it afterwards: people cite these.
+- The override itself is keyed by `key`, the slug of the file name (also the
+  key of `catalog_ai.json` / `catalog_text.json`). Renaming a PDF changes its
+  `key`, so move its override entry to the new key in the same commit; the
+  public `id` is unaffected.
+- Display titles come from the overrides, so a file rarely needs renaming.
+  Renames also break GitHub file links that other pages may use.
 
 ## Repository size
 
@@ -159,6 +172,12 @@ unavoidable, move the item's override entry to the new id in the same commit.
   cheaper for additions; squash after replacing or deleting files.
 
 ## Website
+
+- "Start here" reading paths: `PATHS` at the top of `site/app.js` (item ids).
+  Keep them short (4–5 decks) and beginner-first.
+- Machine-written summaries show a one-line disclosure until
+  `summary_reviewed: true`; review notes from the 2026-10 red team are in
+  ROADMAP.md.
 
 - Source: `site/index.html`, `site/style.css`, `site/app.js`. No build step
   beyond `tools/build_site.py`, which writes `_site/library.json` (catalog +

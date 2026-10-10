@@ -4,16 +4,35 @@
 // hash (#<id>), so every view is a shareable link.
 "use strict";
 
-// The three collections, in display order. Keys match "shelf" in catalog.json.
+// The three collections, in display order. Keys match "shelf" in catalog.json;
+// the tiles themselves are static markup in index.html.
 const SHELVES = [
-  { key: "lectures", kicker: "|learn⟩", name: "Lectures & Tutorials",
-    blurb: "Summer schools, courses, tutorials and career talks. Start here if you're new; curiosity is the only prerequisite." },
-  { key: "research", kicker: "|discover⟩", name: "Research Talks",
-    blurb: "Seminars, keynotes and conference talks, from whispering-gallery modes in 2011 to Fibonacci anyons." },
-  { key: "notes", kicker: "|derive⟩", name: "Tech Notes",
-    blurb: "Derivations and cheat sheets, numbered like a lab notebook. Pencil recommended." },
+  { key: "lectures", name: "Lectures & Tutorials" },
+  { key: "research", name: "Research Talks" },
+  { key: "notes", name: "Tech Notes" },
 ];
 const SHELF = Object.fromEntries(SHELVES.map((s) => [s.key, s]));
+
+// "Start here": short ordered reading paths (ids from catalog.json).
+const PATHS = [
+  { name: "Superconducting qubits, from scratch", ket: "|0⟩ → transmon", ids: [
+    "2025-your-first-superconducting-qubit-intro-to-cqed-part-i",
+    "2025-your-first-superconducting-qubit-intro-to-cqed-part-ii",
+    "2023-intro-to-quantum-measurements-part-i-ideal-measurements",
+    "2020-to-catch-and-reverse-a-quantum-jump-mid-flight",
+    "2025-overview-of-quantum-hardware-design-energy-circuits"] },
+  { name: "Noise, and what to do about it", ket: "noise → mitigation", ids: [
+    "2023-intro-to-quantum-noise-main-lecture",
+    "t27-simple-noise-models-and-gate-fidelity",
+    "2022-primer-on-pauli-twirling-part-i",
+    "2024-introduction-to-noise-and-quantum-error-mitigation-lecture-1",
+    "2023-quantum-error-mitigation-lecture-2"] },
+  { name: "The pencil-and-paper toolbox", ket: "∑ → ⟨O⟩", ids: [
+    "t11-7-pictorial-digital-quantum-circuits",
+    "t11-9-concentration-inequalities-and-tail-bounds",
+    "t21-estimating-observables-from-sampled-bit-strings",
+    "t22-bounding-a-sum-of-operators-a-la-watrous"] },
+];
 
 // Subject tags shown as topic filters, in display order; format tags separately.
 const TOPICS = {
@@ -21,34 +40,45 @@ const TOPICS = {
   "qiskit-metal": "Qiskit Metal & EPR", noise: "Quantum noise", "error-mitigation": "Error mitigation",
   pec: "PEC", twirling: "Pauli twirling", measurement: "Measurement", "many-body": "Many-body physics",
   topological: "Topological / anyons", "machine-learning": "Machine learning", sensing: "Sensing",
-  math: "Math", estimation: "Estimation", circuits: "Circuits", career: "Career", outreach: "Outreach",
-  overview: "Overview",
+  math: "Math", estimation: "Estimation", circuits: "Circuits", qiskit: "Qiskit", career: "Career",
+  outreach: "Outreach", overview: "Overview",
 };
 const FORMATS = {
   "summer-school": "Summer school", lecture: "Lecture", tutorial: "Tutorial", keynote: "Keynote",
   reference: "Reference", "cheat-sheet": "Cheat sheet", derivation: "Derivation",
 };
 const LEVELS = { beginner: "Beginner", intermediate: "Intermediate", advanced: "Advanced" };
+// Search synonyms: a query word also matches any of these.
+const SYN = {
+  decoherence: ["noise", "t1", "dephasing"], dephasing: ["noise"], t1: ["noise", "relaxation"],
+  t2: ["noise", "dephasing"], qec: ["error correction", "error-mitigation"], cqed: ["circuit qed", "transmon"],
+  qubit: ["transmon"], mitigation: ["pec", "zne", "twirling"], video: ["lecture"], beginner: ["intro"],
+};
 
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const reEsc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-let LIB = null;
+let LIB = null, BY_ID = new Map();
 // group: null = default (on: each series collapses to one cover card)
-const state = { q: "", shelf: "", tags: new Set(), years: new Set(), levels: new Set(), sort: "new", group: null, expanded: new Set() };
+const state = { q: "", shelf: "", tags: new Set(), years: new Set(), levels: new Set(), sort: "new",
+  sortChosen: false, group: null, expanded: new Set() };
 const grouped = () => (state.group ?? true);
 
 // ---------- URL state ----------
 function readURL() {
   let p;
   try { p = new URLSearchParams(location.search); } catch { return; }
+  const pick = (v, ok) => new Set((v || "").split(",").filter(ok));
   state.q = p.get("q") || "";
   state.shelf = SHELF[p.get("shelf")] ? p.get("shelf") : "";
-  state.tags = new Set((p.get("tag") || "").split(",").filter(Boolean));
-  state.years = new Set((p.get("year") || "").split(",").filter(Boolean));
-  state.levels = new Set((p.get("level") || "").split(",").filter(Boolean));
-  state.sort = p.get("sort") || "new";
-  state.group = p.has("group") ? p.get("group") === "1" : null;
+  state.tags = pick(p.get("tag"), (k) => TOPICS[k] || FORMATS[k]);
+  state.years = pick(p.get("year"), (k) => k === "undated" || LIB.items.some((i) => String(i.year) === k));
+  state.levels = pick(p.get("level"), (k) => LEVELS[k]);
+  state.sortChosen = Boolean(SORTS[p.get("sort")]);
+  state.sort = state.sortChosen ? p.get("sort") : "new";
+  const g = p.get("group");
+  state.group = g === "1" ? true : g === "0" ? false : null;
 }
 function writeURL() {
   const p = new URLSearchParams();
@@ -57,48 +87,15 @@ function writeURL() {
   if (state.tags.size) p.set("tag", [...state.tags].join(","));
   if (state.years.size) p.set("year", [...state.years].join(","));
   if (state.levels.size) p.set("level", [...state.levels].join(","));
-  if (state.sort !== "new") p.set("sort", state.sort);
+  if (state.sortChosen) p.set("sort", state.sort);
   if (state.group !== null) p.set("group", state.group ? "1" : "0");
   const qs = p.toString();
   try { history.replaceState(null, "", (qs ? "?" + qs : location.pathname) + location.hash); } catch { /* sandboxed */ }
 }
 
-// ---------- filtering ----------
-function haystack(it) {
-  return [it.title, it.venue, it.series, it.note_id, it.year, it.description, it.summary, SHELF[it.shelf]?.name,
-    ...(it.tags || []), ...(it.key_points || [])].join(" ").toLowerCase();
-}
-const yearKey = (it) => (it.year ? String(it.year) : "undated");
-
-function matches(it, skip) {
-  if (skip !== "shelf" && state.shelf && it.shelf !== state.shelf) return false;
-  if (skip !== "tags") for (const t of state.tags) if (!it.tags.includes(t)) return false;
-  if (skip !== "years" && state.years.size && !state.years.has(yearKey(it))) return false;
-  if (skip !== "levels" && state.levels.size && !state.levels.has(it.level)) return false;
-  if (state.q) {
-    for (const w of state.q.toLowerCase().split(/\s+/).filter(Boolean)) if (!it._h.includes(w)) return false;
-  }
-  return true;
-}
-
-const SORTS = {
-  new: (a, b) => (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title, undefined, { numeric: true }),
-  old: (a, b) => (a.year || 9999) - (b.year || 9999) || a.title.localeCompare(b.title, undefined, { numeric: true }),
-  title: (a, b) => a.title.localeCompare(b.title, undefined, { numeric: true }),
-  pages: (a, b) => (b.pages || 0) - (a.pages || 0),
-};
-
-// ---------- rendering ----------
-function highlight(text) {
-  const s = esc(text);
-  const words = state.q.trim().split(/\s+/).filter((w) => w.length > 1);
-  if (!words.length) return s;
-  const re = new RegExp("(" + words.map((w) => esc(w).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") + ")", "gi");
-  return s.replace(re, "<mark>$1</mark>");
-}
-
-const pathURL = (file) => file.split("/").map(encodeURIComponent).join("/");
-const pdfURL = (it) => LIB.pdf_base + pathURL(it.file);
+// ---------- search ----------
+const isExtra = (it) => it.tags.some((t) => t === "reference" || t === "cheat-sheet" || t === "derivation")
+  || /\((bonus|note)\)/.test(it.title);
 
 function kindLabel(it) {
   if (it.note_id) return it.note_id;
@@ -109,30 +106,94 @@ function kindLabel(it) {
   return "Lecture";
 }
 
-function card(it) {
-  const meta = [it.year || "undated", it.pages ? it.pages + " pp" : null].filter(Boolean).join(" · ");
-  return `<button class="card" type="button" data-id="${esc(it.id)}">
-    <div class="thumb">${it.thumb ? `<img src="${esc(it.thumb)}" alt="" loading="lazy" decoding="async">` : ""}</div>
+function index(it) {
+  const tagLabels = it.tags.map((t) => TOPICS[t] || FORMATS[t] || t);
+  it._title = it.title.toLowerCase();
+  it._meta = [it.series, it.venue, it.note_id, ...tagLabels, LEVELS[it.level], kindLabel(it)].join(" ").toLowerCase();
+  it._desc = (it.description || "").toLowerCase();
+  it._rest = [it.year, it.summary, ...(it.key_points || []), SHELF[it.shelf]?.name].join(" ").toLowerCase();
+}
+const words = () => state.q.toLowerCase().split(/\s+/).filter(Boolean);
+const forms = (w) => [w, ...(SYN[w] || [])];
+const hit = (s, w) => forms(w).some((f) => s.includes(f));
+
+function score(it) {
+  let n = 0;
+  for (const w of words()) {
+    if (hit(it._title, w)) n += 4;
+    if (hit(it._meta, w)) n += 3;
+    if (hit(it._desc, w)) n += 2;
+    if (hit(it._rest, w)) n += 1;
+  }
+  return n;
+}
+
+const yearKey = (it) => (it.year ? String(it.year) : "undated");
+
+function matches(it, skip) {
+  if (skip !== "shelf" && state.shelf && it.shelf !== state.shelf) return false;
+  if (skip !== "tags") for (const t of state.tags) if (!it.tags.includes(t)) return false;
+  if (skip !== "years" && state.years.size && !state.years.has(yearKey(it))) return false;
+  if (skip !== "levels" && state.levels.size && !state.levels.has(it.level)) return false;
+  for (const w of words()) {
+    const all = it._title + " " + it._meta + " " + it._desc + " " + it._rest;
+    if (!hit(all, w)) return false;
+  }
+  return true;
+}
+
+const byTitle = (a, b) => a.title.localeCompare(b.title, undefined, { numeric: true });
+const SORTS = {
+  best: (a, b) => b._score - a._score || (b.year || 0) - (a.year || 0) || byTitle(a, b),
+  new: (a, b) => (b.year || 0) - (a.year || 0) || byTitle(a, b),
+  old: (a, b) => (a.year || 9999) - (b.year || 9999) || byTitle(a, b),
+  title: byTitle,
+  pages: (a, b) => (b.pages || 0) - (a.pages || 0),
+};
+// With a query and no explicit sort choice, rank by relevance.
+const activeSort = () => (state.q && !state.sortChosen ? "best" : state.sort);
+
+// ---------- rendering ----------
+function highlight(text) {
+  const s = String(text ?? "");
+  const ws = words().filter((w) => w.length > 1);
+  if (!ws.length) return esc(s);
+  const re = new RegExp("(" + ws.map(reEsc).join("|") + ")", "gi");
+  return s.split(re).map((part, i) => (i % 2 ? `<mark>${esc(part)}</mark>` : esc(part))).join("");
+}
+
+const pathURL = (file) => file.split("/").map(encodeURIComponent).join("/");
+const pdfURL = (it) => LIB.pdf_base + pathURL(it.file);
+const plural = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
+
+function card(it, badge = "") {
+  const meta = [it.year || "undated", it.pages ? it.pages + " pp" : null, LEVELS[it.level]].filter(Boolean).join(" · ");
+  const wh = it.thumb_wh ? ` width="${it.thumb_wh[0]}" height="${it.thumb_wh[1]}"` : "";
+  return `<article class="card" data-id="${esc(it.id)}">
+    <div class="thumb">${it.thumb ? `<img src="${esc(it.thumb)}" alt=""${wh} loading="lazy" decoding="async">` : ""}</div>
     <div class="card-body">
-      <div class="kind"><span class="type k-${esc(it.shelf)}"><span class="dot"></span>${esc(kindLabel(it))}</span><span>${esc(meta)}</span></div>
-      <h3>${highlight(it.title)}</h3>
+      <div class="kind">${badge}<span class="type k-${esc(it.shelf)}"><span class="dot"></span>${esc(kindLabel(it))}</span><span>${esc(meta)}</span></div>
+      <h3><a class="card-link" href="${esc(it.page)}">${highlight(it.title)}</a></h3>
       ${it.venue ? `<p class="venue">${highlight(it.venue)}</p>` : ""}
       ${it.description ? `<p class="desc">${esc(it.description)}</p>` : ""}
     </div>
-  </button>`;
+  </article>`;
 }
 
 function renderShelves() {
   const counts = {};
   for (const it of LIB.items) if (matches(it, "shelf")) counts[it.shelf] = (counts[it.shelf] || 0) + 1;
-  $("#shelves").innerHTML = SHELVES.map((s) => `<button class="shelf s-${s.key}" type="button" data-k="${s.key}" aria-pressed="${state.shelf === s.key}">
-      <span class="s-top"><span class="s-kicker">${s.kicker}</span><span class="s-count">${counts[s.key] || 0}</span></span>
-      <h2>${s.name}</h2><p>${s.blurb}</p></button>`).join("");
+  for (const b of document.querySelectorAll("#shelves .shelf")) {
+    b.setAttribute("aria-pressed", String(state.shelf === b.dataset.k));
+    b.querySelector(".s-count").textContent = counts[b.dataset.k] || 0;
+  }
 }
 
-function chipRow(el, dict, selected, facet, field) {
+function chipRow(el, dict, selected, field) {
+  // Tags combine with AND, so their counts come from the current result.
+  // Levels combine with OR, so their counts skip the level filter itself.
   const counts = {};
-  for (const it of LIB.items) if (matches(it, facet)) {
+  for (const it of LIB.items) if (matches(it, field === "level" ? "levels" : undefined)) {
     for (const v of field === "level" ? [it.level] : it.tags) counts[v] = (counts[v] || 0) + 1;
   }
   el.innerHTML = Object.entries(dict)
@@ -153,16 +214,21 @@ function renderYears() {
   el.style.setProperty("--n", keys.length);
   el.innerHTML = keys.map((y) => {
     const n = counts[y] || 0;
-    return `<button type="button" data-k="${y}" aria-pressed="${state.years.has(y)}" style="height:${Math.max(4, (n / max) * 100)}%" title="${y}: ${n}" aria-label="${y}, ${n} items"></button>`;
+    const on = state.years.has(y);
+    return `<button type="button" data-k="${y}" aria-pressed="${on}" ${n || on ? "" : "disabled"} style="--h:${Math.max(4, (n / max) * 100)}%" title="${y}: ${plural(n, "deck")}" aria-label="${y}, ${plural(n, "deck")}"></button>`;
   }).join("");
-  let axis = $("#years-axis");
-  if (!axis) { axis = document.createElement("div"); axis.id = "years-axis"; axis.className = "years-axis"; el.after(axis); }
-  axis.innerHTML = `<span>${lo}</span><button class="chip" type="button" data-k="undated" aria-pressed="${state.years.has("undated")}">Undated<small>${counts.undated || 0}</small></button><span>${hi}</span>`;
+  $("#years-axis").innerHTML = `<span>${lo}</span><span>${hi}</span>`;
+  const u = counts.undated || 0;
+  $("#years-undated").innerHTML = u || state.years.has("undated")
+    ? `<button class="chip" type="button" data-k="undated" aria-pressed="${state.years.has("undated")}">Undated<small>${u}</small></button>` : "";
 }
 
-// Bonus material (cheat sheets, derivations, short notes) is never a series' cover deck.
-const isExtra = (it) => it.tags.some((t) => t === "reference" || t === "cheat-sheet" || t === "derivation")
-  || /\((bonus|note)\)/.test(it.title);
+function yearSpan(its) {
+  const ys = its.map((i) => i.year).filter(Boolean);
+  if (!ys.length) return "";
+  const lo = Math.min(...ys), hi = Math.max(...ys);
+  return lo === hi ? String(lo) : `${lo}–${hi}`;
+}
 
 // Collapse each series (2+ matching decks) to one cover card, placed where the
 // series' best-ranked deck falls in the current sort, so series and standalone
@@ -179,20 +245,22 @@ function collapse(list) {
     if (!ms || ms.length < 2) { out.push({ it }); continue; }
     if (done.has(it.series)) continue;
     done.add(it.series);
-    const cover = ms.find((m) => !isExtra(m)) || ms[0];
+    const ordered = [...ms.filter((m) => !isExtra(m)), ...ms.filter(isExtra)];   // bonus material last
+    const cover = ordered.find((m) => m.tags.includes("lecture")) || ordered[0];
+    const rest = ordered.filter((m) => m !== cover);
     const open = state.expanded.has(it.series);
     out.push({ it: cover, stack: { series: it.series, n: ms.length, open, years: yearSpan(ms) } });
-    if (open) for (const m of ms) if (m !== cover) out.push({ it: m, member: true });
+    if (open) rest.forEach((m, i) => out.push({ it: m, member: `${i + 2}/${ms.length}` }));
   }
   return out;
 }
 
 function cell({ it, stack, member }) {
-  if (member) return `<div class="cell member">${card(it)}</div>`;
+  if (member) return `<div class="cell member">${card(it, `<span class="member-n">${member}</span>`)}</div>`;
   if (!stack) return `<div class="cell">${card(it)}</div>`;
   const label = stack.open ? "Show fewer" : `+${stack.n - 1} more in this series`;
   return `<div class="cell stack${stack.open ? " open" : ""}">
-    <div class="stack-cards">${card(it)}</div>
+    <div class="stack-cards">${card(it, stack.open ? `<span class="member-n">1/${stack.n}</span>` : "")}</div>
     <button class="stack-more" type="button" data-series="${esc(stack.series)}" aria-expanded="${stack.open}">
       <span class="stack-name">${esc(stack.series)}</span>
       <span class="stack-count">${stack.years ? esc(stack.years) + " · " : ""}${label}</span>
@@ -200,116 +268,171 @@ function cell({ it, stack, member }) {
   </div>`;
 }
 
-function yearSpan(its) {
-  const ys = its.map((i) => i.year).filter(Boolean);
-  if (!ys.length) return "";
-  const lo = Math.min(...ys), hi = Math.max(...ys);
-  return lo === hi ? String(lo) : `${lo}–${hi}`;
+function renderPaths() {
+  $("#paths").innerHTML = PATHS.map((p) => {
+    const its = p.ids.map((id) => BY_ID.get(id)).filter(Boolean);
+    return `<li class="path"><p class="path-ket">${esc(p.ket)}</p><h3>${esc(p.name)}</h3><ol>${its.map((it) =>
+      `<li><a href="${esc(it.page)}" data-id="${esc(it.id)}">${esc(it.title)}</a><span>${esc([kindLabel(it), it.year].filter(Boolean).join(" · "))}</span></li>`).join("")}</ol></li>`;
+  }).join("");
+}
+
+// Re-render replaces the controls, so put keyboard focus back where it was.
+function focusKey() {
+  const a = document.activeElement;
+  if (!a || a === document.body) return null;
+  const box = a.closest("#shelves, #tags, #formats, #levels, #years, #years-undated, #grid");
+  if (!box) return null;
+  for (const attr of ["data-k", "data-series", "data-id"]) {
+    const el = attr === "data-id" ? a.closest("[data-id]") : a;
+    if (el?.hasAttribute(attr)) return { box: box.id, attr, val: el.getAttribute(attr), link: a.classList.contains("card-link") };
+  }
+  return null;
+}
+function restoreFocus(f) {
+  if (!f) return;
+  let el = document.querySelector(`#${f.box} [${f.attr}="${CSS.escape(f.val)}"]`);
+  if (el && f.link) el = el.querySelector(".card-link");
+  (el || $("#count")).focus({ preventScroll: true });
 }
 
 function render() {
-  const list = LIB.items.filter((it) => matches(it)).sort(SORTS[state.sort] || SORTS.new);
+  const f = focusKey();
+  for (const it of LIB.items) it._score = state.q ? score(it) : 0;
+  const sort = activeSort();
+  const list = LIB.items.filter((it) => matches(it)).sort(SORTS[sort]);
 
   renderShelves();
-  chipRow($("#tags"), TOPICS, state.tags, "tags", "tags");
-  chipRow($("#formats"), FORMATS, state.tags, "tags", "tags");
-  chipRow($("#levels"), LEVELS, state.levels, "levels", "level");
+  chipRow($("#tags"), TOPICS, state.tags, "tags");
+  chipRow($("#formats"), FORMATS, state.tags, "tags");
+  chipRow($("#levels"), LEVELS, state.levels, "level");
   renderYears();
   $("#group").checked = grouped();
+  $("#sort").value = sort;
+  $("#random").disabled = list.length === 0;
 
   const filtered = state.q || state.shelf || state.tags.size || state.years.size || state.levels.size;
   $("#reset").hidden = !filtered;
+  $("#paths-box").hidden = Boolean(filtered);
   const where = state.shelf ? ` in <b>${esc(SHELF[state.shelf].name)}</b>` : "";
-  $("#count").innerHTML = `<b>${list.length}</b> of ${LIB.items.length} decks${where}` +
+  $("#count").innerHTML = `<b>${list.length}</b> of ${plural(LIB.items.length, "deck")}${where}` +
+    (state.q && sort === "best" ? " · best matches first" : "") +
     (state.shelf ? ` · <button class="linkish" type="button" id="all-shelves">show everything</button>` : "");
   $("#empty").hidden = list.length > 0;
+  if (!list.length) $("#empty-q").textContent = state.q ? `“${state.q}”` : "these filters";
 
   const cells = grouped() ? collapse(list) : list.map((it) => ({ it }));
   $("#grid").innerHTML = `<div class="grid">${cells.map(cell).join("")}</div>`;
   writeURL();
+  restoreFocus(f);
 }
 
 // ---------- detail ----------
-function related(it) {
-  const score = (o) => (o.series && o.series === it.series ? 3 : 0) + o.tags.filter((t) => it.tags.includes(t) && TOPICS[t]).length;
-  return LIB.items.filter((o) => o.id !== it.id).map((o) => [score(o), o]).filter(([s]) => s > 1)
-    .sort((a, b) => b[0] - a[0] || (b[1].year || 0) - (a[1].year || 0)).slice(0, 5).map(([, o]) => o);
+function seriesOf(it) {
+  if (!it.series) return [];
+  const ms = LIB.items.filter((o) => o.series === it.series).sort(SORTS.old);
+  return [...ms.filter((m) => !isExtra(m)), ...ms.filter(isExtra)];
+}
+function related(it, exclude) {
+  const score = (o) => o.tags.filter((t) => it.tags.includes(t) && TOPICS[t]).length + (o.shelf === it.shelf ? 0.5 : 0);
+  return LIB.items.filter((o) => o.id !== it.id && !exclude.has(o.id)).map((o) => [score(o), o]).filter(([s]) => s > 1)
+    .sort((a, b) => b[0] - a[0] || (b[1].year || 0) - (a[1].year || 0)).slice(0, 4).map(([, o]) => o);
+}
+const relLink = (o, cur) => `<li${o === cur ? ' aria-current="true"' : ""}>${o === cur ? `<b>${esc(o.title)}</b>`
+  : `<button type="button" data-id="${esc(o.id)}">${esc(o.title)}</button>`}${o.year ? ` <span>(${o.year})</span>` : ""}</li>`;
+
+let copyTimer;
+function flash(btn, text, reset) {
+  btn.textContent = text;
+  clearTimeout(copyTimer);
+  copyTimer = setTimeout(() => { btn.textContent = reset; }, 2500);
 }
 
 function openItem(id, push = true) {
-  const it = LIB.items.find((i) => i.id === id);
+  const it = BY_ID.get(id);
   if (!it) return;
   $("#d-img").src = it.thumb || "";
+  if (it.thumb_wh) { $("#d-img").width = it.thumb_wh[0]; $("#d-img").height = it.thumb_wh[1]; }
   $("#d-img").alt = it.thumb ? `First page of “${it.title}”` : "";
   $("#d-meta").textContent = [kindLabel(it), it.year || "undated", it.pages && `${it.pages} pages`,
-    it.size && `${(it.size / 1e6).toFixed(1)} MB`, it.level && LEVELS[it.level]].filter(Boolean).join(" · ");
+    it.size && `${(it.size / 1e6).toFixed(1)} MB`, LEVELS[it.level]].filter(Boolean).join(" · ");
   $("#d-title").textContent = it.title;
-  $("#d-series").textContent = [it.venue, it.series && it.series !== it.venue ? `Series: ${it.series}` : null,
-    it.speaker && it.speaker !== "Minev" ? `Speaker: ${it.speaker}` : null].filter(Boolean).join(" · ");
+  const who = it.authors || (it.speaker && it.speaker !== "Minev" ? it.speaker : "");
+  $("#d-series").innerHTML = [esc(it.venue), it.series ? `Series: <a href="${esc(it.series_page || it.page)}">${esc(it.series)}</a>` : "",
+    who ? `With: ${esc(who.replace(/\bMinev\b/, "Zlatko K. Minev"))}` : ""].filter(Boolean).join(" · ");
   const url = pdfURL(it);
   const gh = `${LIB.repo_url}/blob/main/${pathURL(it.file)}`;
+  const ms = seriesOf(it);
+  const next = ms[ms.indexOf(it) + 1];
   $("#d-actions").innerHTML = `<a class="btn primary" href="${esc(url)}" target="_blank" rel="noopener">Open PDF</a>` +
     (LIB.pdf_base === "" ? `<a class="btn" href="${esc(url)}" download>Download</a>` : "") +
     (it.links || []).map((l) => `<a class="btn" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("") +
-    (url !== gh ? `<a class="btn" href="${esc(gh)}" target="_blank" rel="noopener">View on GitHub</a>` : "") +
-    `<button class="btn" type="button" id="cite" aria-expanded="false">Cite</button>` +
-    `<button class="btn" type="button" id="copy">Copy link</button>`;
+    (next ? `<button class="btn" type="button" id="next" data-id="${esc(next.id)}">Next in series →</button>` : "") +
+    `<button class="btn" type="button" id="cite" aria-expanded="false" aria-controls="d-cite">Cite</button>` +
+    `<button class="btn" type="button" id="copy">Copy link</button>` +
+    (url !== gh ? `<a class="btn quiet" href="${esc(gh)}" target="_blank" rel="noopener">View on GitHub</a>` : "");
   $("#d-cite").hidden = true;
   $("#d-bib").textContent = it.bibtex || "";
   $("#d-citepage").href = it.series_page || it.page || "#";
   $("#d-citepage").textContent = it.series_page ? "Series page" : "Citation page";
   $("#d-cite-note").textContent = it.series_page ? `Part of “${it.series}”, cited as one series:` : "";
-  const text = it.summary || it.description;
-  $("#d-summary").innerHTML = text ? esc(text) + (it.draft ? `<span class="draft" title="Machine-written from the slides; not yet reviewed by the author">draft</span>` : "") : "";
+  $("#d-summary").textContent = it.summary || it.description || "";
   $("#d-points").innerHTML = (it.key_points || []).map((p) => `<li>${esc(p)}</li>`).join("");
+  $("#d-draft").hidden = !it.draft;
   $("#d-tags").innerHTML = it.tags.filter((t) => TOPICS[t] || FORMATS[t]).map((t) => `<span class="chip">${esc(TOPICS[t] || FORMATS[t])}</span>`).join("");
-  const rel = related(it);
-  $("#d-related").innerHTML = rel.length ? `<h3>Related</h3><ul>${rel.map((o) => `<li><button type="button" data-id="${esc(o.id)}">${esc(o.title)}${o.year ? ` (${o.year})` : ""}</button></li>`).join("")}</ul>` : "";
+  const inSeries = new Set(ms.map((m) => m.id));
+  const rel = related(it, inSeries);
+  $("#d-related").innerHTML =
+    (ms.length > 1 ? `<h3>In this series (${ms.indexOf(it) + 1} of ${ms.length})</h3><ol>${ms.map((o) => relLink(o, it)).join("")}</ol>` : "") +
+    (rel.length ? `<h3>Related</h3><ul>${rel.map((o) => relLink(o, null)).join("")}</ul>` : "");
   $("#cite").onclick = (e) => {
     const box = $("#d-cite");
     box.hidden = !box.hidden;
-    e.target.setAttribute("aria-expanded", String(!box.hidden));
+    e.currentTarget.setAttribute("aria-expanded", String(!box.hidden));
   };
   $("#copy").onclick = async (e) => {
-    const link = location.href.split("#")[0] + "#" + it.id;
-    try { await navigator.clipboard.writeText(link); e.target.textContent = "Link copied"; }
-    catch { e.target.textContent = link; }
+    const btn = e.currentTarget, link = location.href.split("#")[0] + "#" + it.id;
+    try { await navigator.clipboard.writeText(link); flash(btn, "Link copied", "Copy link"); }
+    catch { flash(btn, "Copy it from the address bar", "Copy link"); }
   };
   const dlg = $("#detail");
   if (!dlg.open) dlg.showModal();
   dlg.querySelector(".detail").scrollTop = 0;
+  $("#d-title").focus({ preventScroll: true });
   if (push) try { history.replaceState(null, "", location.pathname + location.search + "#" + it.id); } catch { /* sandboxed */ }
 }
 
 async function copyBib(e) {
-  try { await navigator.clipboard.writeText($("#d-bib").textContent); e.target.textContent = "Copied"; }
+  const btn = e.currentTarget;
+  try { await navigator.clipboard.writeText($("#d-bib").textContent); flash(btn, "Copied", "Copy BibTeX"); }
   catch {
     const r = document.createRange(); r.selectNodeContents($("#d-bib"));
     getSelection().removeAllRanges(); getSelection().addRange(r);
-    e.target.textContent = "Selected, press Ctrl/⌘-C";
+    flash(btn, "Selected, press Ctrl/⌘-C", "Copy BibTeX");
   }
-  setTimeout(() => { e.target.textContent = "Copy BibTeX"; }, 2000);
 }
 
-// ---------- the hero trace: a telegraph signal of quantum jumps ----------
+// ---------- the hero trace: a quantum-jump record ----------
+// Bright |G⟩ and dark |D⟩ levels of a three-level atom, as inferred from its
+// bright-state clicks. Waiting times are exponential, with long dark-free
+// stretches in G and shorter stays in D (roughly the 2019 experiment's 7:1).
 // Seeded so the page looks the same on every load until someone clicks.
 function mulberry32(a) {
   return () => { a |= 0; a = (a + 0x6d2b79f5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 }
 function drawTrace(seed) {
   const rnd = mulberry32(seed), W = 1200, N = 600, lo = 78, hi = 18;
+  const expo = (m) => -m * Math.log(1 - rnd());
   let level = 0, x = 0;
   const pts = [], jumps = [];
   while (x < W) {
-    const dwell = 25 + rnd() * (level ? 70 : 160);   // ground dwells longer than excited
-    const end = Math.min(W, x + dwell);
+    const end = Math.min(W, x + 8 + expo(level ? 28 : 150));
     for (; x < end; x += W / N) pts.push([x, (level ? hi : lo) + (rnd() - .5) * 7]);
     if (x < W) { jumps.push([x, level]); level = 1 - level; }
   }
-  const d = pts.map(([px, py], i) => (i ? "L" : "M") + px.toFixed(1) + " " + py.toFixed(1)).join("");
-  $("#trace-path").setAttribute("d", d);
-  // Mark one upward jump past the middle as "caught mid-flight".
-  const up = jumps.filter(([jx, from]) => from === 0 && jx > 420 && jx < 900)[0];
+  $("#trace-path").setAttribute("d", pts.map(([px, py], i) => (i ? "L" : "M") + px.toFixed(1) + " " + py.toFixed(1)).join(""));
+  // Mark the G→D jump nearest the middle as the one caught mid-flight.
+  const ups = jumps.filter(([, from]) => from === 0);
+  const up = ups.sort((a, b) => Math.abs(a[0] - 600) - Math.abs(b[0] - 600))[0];
   const g = $("#trace-mark"), label = $("#trace-label");
   label.hidden = !up;
   if (!up) { g.innerHTML = ""; return; }
@@ -319,10 +442,11 @@ function drawTrace(seed) {
 }
 
 // ---------- the hero transmon: isometric chip with live fields ----------
-// Two capacitor pads joined by a Josephson junction on a substrate. Charge q
-// sloshes between the pads (q = cos φ); field lines and pad tint follow q,
-// and a Cooper pair hops across the junction. φ advances slowly with time and
-// faster with scrolling.
+// Two capacitor pads shunting a Josephson junction. A cartoon of the plasma
+// oscillation: charge q = cos θ sloshes between the pads, field lines and pad
+// tint follow q, and a Cooper pair crosses the junction as the current flows
+// (its position follows q). θ advances slowly with time and with scrolling.
+let transmonPaused = false;
 function initTransmon() {
   const svg = $("#transmon");
   if (!svg) return;
@@ -344,8 +468,8 @@ function initTransmon() {
   };
   svg.innerHTML = "";
   box(0, 10, 0, 6, -0.7, 0, "sub");
-  // readout resonator meander leaving the right pad
-  el("polyline", { class: "meander", points: pts([[8.5, 3.0, 0.02], [9.3, 3.0, 0.02], [9.3, 3.7, 0.02], [8.9, 3.7, 0.02], [8.9, 4.3, 0.02], [9.3, 4.3, 0.02], [9.3, 4.9, 0.02], [8.9, 4.9, 0.02], [8.9, 5.5, 0.02], [9.3, 5.5, 0.02], [9.3, 6, 0.02]]) });
+  // readout resonator meander, capacitively coupled across a small gap
+  el("polyline", { class: "meander", points: pts([[8.85, 3.0, 0.02], [9.3, 3.0, 0.02], [9.3, 3.7, 0.02], [8.9, 3.7, 0.02], [8.9, 4.3, 0.02], [9.3, 4.3, 0.02], [9.3, 4.9, 0.02], [8.9, 4.9, 0.02], [8.9, 5.5, 0.02], [9.3, 5.5, 0.02], [9.3, 6, 0.02]]) });
   const padA = box(1.4, 4.3, 1.6, 4.4, 0, 0.3, "pad");
   const padB = box(5.7, 8.6, 1.6, 4.4, 0, 0.3, "pad");
   const tintA = el("polygon", { class: "tint", points: padA.getAttribute("points") });
@@ -364,10 +488,10 @@ function initTransmon() {
   const labB = el("text", { class: "chg", x: P(7.15, 3, 1.2)[0], y: P(7.15, 3, 1.2)[1] });
 
   const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let visible = true, t0 = performance.now();
-  const frame = (now) => {
-    const phi = (still ? 0.6 : (now - t0) / 1400) + window.scrollY / 90;
-    const q = Math.cos(phi);
+  let visible = true, running = false, last = 0, clock = 0, prev = performance.now();
+  const draw = () => {
+    const theta = clock / 1400 + window.scrollY / 90;
+    const q = Math.cos(theta);            // + on pad A, − on pad B when q > 0
     tintA.style.fill = q >= 0 ? "var(--accent)" : "var(--edu)";
     tintB.style.fill = q >= 0 ? "var(--edu)" : "var(--accent)";
     tintA.style.opacity = tintB.style.opacity = (0.15 + 0.5 * Math.abs(q)).toFixed(2);
@@ -375,26 +499,43 @@ function initTransmon() {
     labB.textContent = q >= 0 ? "−" : "+";
     for (const [i, l] of lines.entries()) {
       l.style.opacity = (0.15 + 0.75 * Math.abs(q) * (1 - i * 0.06)).toFixed(2);
-      l.style.strokeDashoffset = (phi * 18 * Math.sign(q || 1)).toFixed(1);
+      l.style.strokeDashoffset = (-theta * 18 * Math.sign(q || 1)).toFixed(1);   // dashes flow + → −, along E
     }
-    const s = Math.sin(phi);  // current ∝ dq/dt: the pair crosses as q changes sign
+    // The pair (charge −2e) sits toward the negative pad: pad B when q > 0.
     for (const [i, c] of pair.entries()) {
-      const [x, y] = P(5 + 0.9 * s + (i ? 0.25 : -0.25) * 0.4, 3 + (i ? 0.12 : -0.12), 0.45);
+      const [x, y] = P(5 + 0.9 * q + (i ? 0.1 : -0.1), 3 + (i ? 0.12 : -0.12), 0.45);
       c.setAttribute("cx", x.toFixed(1)); c.setAttribute("cy", y.toFixed(1));
     }
-    if (visible && !still) requestAnimationFrame(frame);
   };
-  if (!still && "IntersectionObserver" in window) {
-    new IntersectionObserver(([e]) => { const was = visible; visible = e.isIntersecting; if (visible && !was) requestAnimationFrame(frame); }).observe(svg);
-  }
-  if (still) window.addEventListener("scroll", () => frame(0), { passive: true });
-  requestAnimationFrame(frame);
+  const shouldRun = () => visible && !still && !transmonPaused && !document.hidden && !$("#detail").open;
+  const frame = (now) => {
+    if (!shouldRun()) { running = false; return; }
+    clock += Math.min(100, now - prev); prev = now;
+    if (now - last > 33) { last = now; draw(); }    // ~30 fps is plenty
+    requestAnimationFrame(frame);
+  };
+  const kick = () => { if (!running && shouldRun()) { running = true; prev = performance.now(); requestAnimationFrame(frame); } };
+  if ("IntersectionObserver" in window) new IntersectionObserver(([e]) => { visible = e.isIntersecting; kick(); }).observe(svg);
+  document.addEventListener("visibilitychange", kick);
+  $("#detail").addEventListener("close", kick);
+  window.addEventListener("scroll", () => { if (!running && visible) draw(); }, { passive: true });
+  const btn = $("#tm-pause");
+  if (still) btn.hidden = true;
+  btn.addEventListener("click", () => {
+    transmonPaused = !transmonPaused;
+    btn.setAttribute("aria-pressed", String(transmonPaused));
+    btn.textContent = transmonPaused ? "Play" : "Pause";
+    kick();
+  });
+  clock = 840;  // a frame with visible charge for the still / first paint
+  draw();
+  kick();
 }
 
 // ---------- wiring ----------
 function toggle(set, k) { set.has(k) ? set.delete(k) : set.add(k); }
 function resetAll() {
-  Object.assign(state, { q: "", shelf: "", tags: new Set(), years: new Set(), levels: new Set(), group: null });
+  Object.assign(state, { q: "", shelf: "", tags: new Set(), years: new Set(), levels: new Set(), expanded: new Set() });
   $("#q").value = "";
   render();
 }
@@ -403,29 +544,39 @@ const onButton = (sel, fn) => $(sel).addEventListener("click", (e) => { const b 
 function wire() {
   let t;
   $("#q").addEventListener("input", (e) => { clearTimeout(t); t = setTimeout(() => { state.q = e.target.value.trim(); render(); }, 120); });
-  onButton("#shelves", (k) => { state.shelf = state.shelf === k ? "" : k; state.group = null; });
+  onButton("#shelves", (k) => { state.shelf = state.shelf === k ? "" : k; });
   onButton("#tags", (k) => toggle(state.tags, k));
   onButton("#formats", (k) => toggle(state.tags, k));
   onButton("#levels", (k) => toggle(state.levels, k));
-  $("#years").parentElement.addEventListener("click", (e) => { const b = e.target.closest("button[data-k]"); if (b) { toggle(state.years, b.dataset.k); render(); } });
-  $("#sort").addEventListener("change", (e) => { state.sort = e.target.value; render(); });
+  onButton("#years", (k) => toggle(state.years, k));
+  onButton("#years-undated", (k) => toggle(state.years, k));
+  $("#sort").addEventListener("change", (e) => { state.sort = e.target.value; state.sortChosen = e.target.value !== "best"; render(); });
   $("#group").addEventListener("change", (e) => { state.group = e.target.checked; render(); });
   $("#reset").addEventListener("click", resetAll);
   $("#reset2").addEventListener("click", resetAll);
-  $("#count").addEventListener("click", (e) => { if (e.target.id === "all-shelves") { state.shelf = ""; state.group = null; render(); } });
+  $("#count").addEventListener("click", (e) => { if (e.target.id === "all-shelves") { state.shelf = ""; render(); } });
   $("#random").addEventListener("click", () => {
     const pool = LIB.items.filter((it) => matches(it));
-    const pick = (pool.length ? pool : LIB.items)[Math.floor(Math.random() * (pool.length || LIB.items.length))];
-    openItem(pick.id);
+    if (pool.length) openItem(pool[Math.floor(Math.random() * pool.length)].id);
   });
-  $("#trace").addEventListener("click", () => drawTrace((Math.random() * 1e9) | 0));
+  const remeasure = () => drawTrace((Math.random() * 1e9) | 0);
+  $("#trace").addEventListener("click", remeasure);
+  $("#trace").addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); remeasure(); } });
+  // Cards are links to their citation pages (for crawlers, new tabs and
+  // no-JS); a plain click opens the in-page dialog instead.
+  const plain = (e) => !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button === 1);
   $("#grid").addEventListener("click", (e) => {
     const more = e.target.closest(".stack-more");
     if (more) { toggle(state.expanded, more.dataset.series); render(); return; }
     const c = e.target.closest(".card");
-    if (c) openItem(c.dataset.id);
+    if (c && plain(e)) { e.preventDefault(); openItem(c.dataset.id); }
+  });
+  $("#paths").addEventListener("click", (e) => {
+    const a = e.target.closest("a[data-id]");
+    if (a && plain(e)) { e.preventDefault(); openItem(a.dataset.id); }
   });
   $("#d-related").addEventListener("click", (e) => { const b = e.target.closest("button[data-id]"); if (b) openItem(b.dataset.id); });
+  $("#d-actions").addEventListener("click", (e) => { if (e.target.id === "next") openItem(e.target.dataset.id); });
   const dlg = $("#detail");
   $("#close").addEventListener("click", () => dlg.close());
   $("#copy-bib").addEventListener("click", copyBib);
@@ -434,7 +585,11 @@ function wire() {
   document.addEventListener("keydown", (e) => {
     if (e.key === "/" && document.activeElement !== $("#q") && !dlg.open) { e.preventDefault(); $("#q").focus(); }
   });
-  window.addEventListener("hashchange", () => { const id = location.hash.slice(1); if (id) openItem(id, false); });
+  window.addEventListener("hashchange", () => {
+    const id = location.hash.slice(1);
+    if (BY_ID.has(id)) openItem(id, false);
+    else if (!id && dlg.open) dlg.close();
+  });
 }
 
 // Filters start open on wide screens, collapsed on phones.
@@ -443,27 +598,23 @@ function syncFilterBox() {
 }
 
 async function boot() {
-  drawTrace(20190603);   // Nature, 3 June 2019
+  drawTrace(20190603);   // Nature 570, 200, published 3 June 2019
   try { initTransmon(); } catch (e) { console.error(e); }
   const res = await fetch("library.json");
+  if (!res.ok) throw new Error(`library.json: HTTP ${res.status}`);
   LIB = await res.json();
-  for (const it of LIB.items) it._h = haystack(it);
-  const ys = LIB.items.map((i) => i.year).filter(Boolean);
-  $("#span-years").textContent = `${Math.min(...ys)} → ${Math.max(...ys)}`;
-  const slides = LIB.items.reduce((n, i) => n + (i.pages || 0), 0);
-  $("#fun-stats").innerHTML = `<b>${LIB.items.length}</b> decks · <b>${slides.toLocaleString("en-US")}</b> slides · ` +
-    `about <b>${Math.round(slides / 60)}</b> hours of talking, at a minute a slide (optimistic)`;
+  for (const it of LIB.items) { index(it); BY_ID.set(it.id, it); }
   readURL();
   $("#q").value = state.q;
-  $("#sort").value = state.sort;
   syncFilterBox();
+  renderPaths();
   wire();
   render();
   const id = location.hash.slice(1);
-  if (id) openItem(id, false);
+  if (BY_ID.has(id)) openItem(id, false);
 }
 
 boot().catch((err) => {
-  $("#count").textContent = "Couldn't load the catalog (library.json). If you opened this file directly, run: python3 tools/build_site.py --serve";
+  $("#count").innerHTML = 'The catalog didn\'t load, so search and filters are off. Every deck is still listed below and in the <a href="sitemap.xml">sitemap</a>.';
   console.error(err);
 });

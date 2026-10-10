@@ -2,7 +2,8 @@
   "count": 76,
   "items": [
     {
-      "id": "superconducting-qubits-101-cqed-quantum-hardware-minev-quantum-device-workshop-beginner-2026",
+      "id": "2026-superconducting-qubits-101-cqed-quantum-hardware",
+      "key": "superconducting-qubits-101-cqed-quantum-hardware-minev-quantum-device-workshop-beginner-2026",
       "title": "Superconducting Qubits 101: cQED Quantum Hardware",
       "file": "content - educational/Superconducting Qubits & Hardware/Superconducting Qubits 101 - cQED Quantum Hardware (Minev, Quantum Device Workshop, Beginner, 2026).pdf",
       "category": "educational",
@@ -30,7 +31,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "a-prelude-to-practical-quantum-computing-minev-global-hackathon-ai-for-good-2025",
+      "id": "2025-a-prelude-to-practical-quantum-computing",
+      "key": "a-prelude-to-practical-quantum-computing-minev-global-hackathon-ai-for-good-2025",
       "title": "A Prelude to Practical Quantum Computing",
       "file": "content - educational/Career & Outreach/A Prelude To Practical Quantum Computing (Minev, Global Hackathon AI For Good, 2025).pdf",
       "category": "educational",
@@ -50,7 +52,7 @@
       "summary": "Starts from Feynman's motivation and the progress from one or two working qubits around 2010 to 100+ qubit cloud machines, then surveys utility-scale experiments and the goal of quantum advantage. It explains the qubit from energy levels to a cQED chip in a dilution fridge, runs a simple 'hello world' qubit-flip circuit, and uses the gap between ideal and measured data to introduce noise, error correction and error mitigation (ZNE, PEC).",
       "key_points": [
         "History and status of superconducting quantum computing, with a map of utility-scale experiments by qubit count and depth",
-        "Many-body dynamics example: local integrals of motion extracted on a 124-qubit processor",
+        "Many-body dynamics example: local integrals of motion extracted from 124-qubit circuits",
         "What a qubit is physically: energy levels, cQED hardware, 15 mK operation",
         "A qubit-flipper circuit on real hardware, and how error mitigation differs from error correction"
       ],
@@ -58,8 +60,9 @@
       "summary_confidence": "high"
     },
     {
-      "id": "career-talk-2025-qubit-x-qubit-capstone-short-minev",
-      "title": "Career Talk (short)",
+      "id": "2025-life-and-lessons-as-a-scientist-in-real-life",
+      "key": "career-talk-2025-qubit-x-qubit-capstone-short-minev",
+      "title": "Life & Lessons as a Scientist in “Real Life” (career talk)",
       "file": "content - educational/Career & Outreach/Career Talk - 2025 Qubit x Qubit Capstone Short (Minev).pdf",
       "category": "educational",
       "shelf": "lectures",
@@ -85,8 +88,9 @@
       "summary_confidence": "high"
     },
     {
-      "id": "superconducting-qubits-101-part-i-minev-flagship-quantum-device-workshop-beginner-2025",
-      "title": "Superconducting Qubits 101, Part I",
+      "id": "2025-your-first-superconducting-qubit-intro-to-cqed-part-i",
+      "key": "superconducting-qubits-101-part-i-minev-flagship-quantum-device-workshop-beginner-2025",
+      "title": "Your First Superconducting Qubit: Intro to cQED, Part I",
       "file": "content - educational/Superconducting Qubits & Hardware/Superconducting Qubits 101 - Part I (Minev, Flagship Quantum Device Workshop, Beginner, 2025).pdf",
       "category": "educational",
       "shelf": "lectures",
@@ -113,8 +117,9 @@
       "summary_confidence": "high"
     },
     {
-      "id": "superconducting-qubits-101-part-ii-minev-flagship-quantum-device-workshop-beginner-2025",
-      "title": "Superconducting Qubits 101, Part II",
+      "id": "2025-your-first-superconducting-qubit-intro-to-cqed-part-ii",
+      "key": "superconducting-qubits-101-part-ii-minev-flagship-quantum-device-workshop-beginner-2025",
+      "title": "Your First Superconducting Qubit: Intro to cQED, Part II",
       "file": "content - educational/Superconducting Qubits & Hardware/Superconducting Qubits 101 - Part II (Minev, Flagship Quantum Device Workshop, Beginner, 2025).pdf",
       "category": "educational",
       "shelf": "lectures",
@@ -133,7 +138,7 @@
       "summary": "Second half of a beginner cQED lecture titled \"Your First Superconducting Qubit\". It goes from Dirac's canonical quantization and ladder operators to the transmon treated as a weakly nonlinear (Kerr) oscillator, then shows how real devices are modeled: classical EM simulation, quantization (with energy-participation ratios as the worked example), and the effective Hamiltonian with dispersive shifts. Backup slides hold hand-written notes on energy, flux fluctuations and the compactness of the junction phase.",
       "key_points": [
         "Canonical quantization: Poisson brackets to commutators, ladder operators, Husimi Q phase-space pictures",
-        "Transmon as a Kerr oscillator: first-order perturbation theory gives anharmonicity and a Lamb shift while eigenstates are unchanged",
+        "Transmon as a Kerr oscillator: to first order (in the RWA) the nonlinearity shifts energies, giving anharmonicity and a Lamb shift, while the Fock eigenstates are unchanged",
         "Three-step device modeling: EM eigenmodes, quantization via EPR, and the effective qubit-cavity Hamiltonian with cross-Kerr chi",
         "Backup notes on flux fluctuations, harmonic approximation and a tight-binding picture of the junction phase"
       ],
@@ -141,15 +146,16 @@
       "summary_confidence": "high"
     },
     {
-      "id": "intro-to-noise-mitigation-near-term-algorithms-lecture-1-minev-summer-school-2024",
-      "title": "Intro to Noise Mitigation for Near-Term Algorithms, Lecture 1",
+      "id": "2024-introduction-to-noise-and-quantum-error-mitigation-lecture-1",
+      "key": "intro-to-noise-mitigation-near-term-algorithms-lecture-1-minev-summer-school-2024",
+      "title": "Introduction to Noise and Quantum Error Mitigation, Lecture 1",
       "file": "content - educational/Error Mitigation/Intro to Noise Mitigation - Near-Term Algorithms, Lecture 1 (Minev, Summer School 2024).pdf",
       "category": "educational",
       "shelf": "lectures",
       "subcategory": "Error Mitigation",
       "series": "Intro to Noise Mitigation (Summer School 2024)",
       "year": 2024,
-      "venue": "Summer School",
+      "venue": "Near-Term Quantum Algorithms Summer School",
       "speaker": "Minev",
       "tags": [
         "error-mitigation",
@@ -171,15 +177,16 @@
       "summary_confidence": "high"
     },
     {
-      "id": "intro-to-noise-mitigation-near-term-algorithms-lecture-2-minev-summer-school-2024",
-      "title": "Intro to Noise Mitigation for Near-Term Algorithms, Lecture 2",
+      "id": "2024-introduction-to-noise-and-quantum-error-mitigation-lecture-2",
+      "key": "intro-to-noise-mitigation-near-term-algorithms-lecture-2-minev-summer-school-2024",
+      "title": "Introduction to Noise and Quantum Error Mitigation, Lecture 2",
       "file": "content - educational/Error Mitigation/Intro to Noise Mitigation - Near-Term Algorithms, Lecture 2 (Minev, Summer School 2024).pdf",
       "category": "educational",
       "shelf": "lectures",
       "subcategory": "Error Mitigation",
       "series": "Intro to Noise Mitigation (Summer School 2024)",
       "year": 2024,
-      "venue": "Summer School",
+      "venue": "Near-Term Quantum Algorithms Summer School",
       "speaker": "Minev",
       "tags": [
         "error-mitigation",
@@ -201,8 +208,163 @@
       "summary_confidence": "high"
     },
     {
-      "id": "career-talk-2023-for-sophia-economou-class-minev",
-      "title": "Career Talk",
+      "id": "2023-cheat-sheet-digital-quantum-circuits-t11-7",
+      "key": "quantum-error-mitigation-minev-bonus-cheat-sheet-digital-quantum-circuits-t11-7-boulder-summer-school-2023-min",
+      "title": "Cheat Sheet: Digital Quantum Circuits, T11.7 (bonus)",
+      "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - Bonus - Cheat Sheet Digital Quantum Circuits - T11_7 (Boulder Summer School 2023) (Minev).pdf",
+      "category": "educational",
+      "shelf": "lectures",
+      "subcategory": "Error Mitigation",
+      "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
+      "year": 2023,
+      "venue": "Boulder Summer School",
+      "speaker": "Minev",
+      "tags": [
+        "cheat-sheet",
+        "circuits",
+        "reference",
+        "summer-school"
+      ],
+      "size_bytes": 39515,
+      "pages": 2,
+      "description": "A two-page cheat sheet of quantum circuit notation and gate identities: Pauli basis changes, CNOT/CZ propagation rules, and multi-CNOT tricks.",
+      "summary": "A compact reference section from a longer set of notes on digital quantum circuits, prepared as a bonus for a summer-school course on error mitigation. It lists the standard pictorial circuit elements and the identities that come up constantly when pushing Paulis through Clifford gates.",
+      "key_points": [
+        "Pictorial elements: wires, bundles, controlled gates (on |0> and |1>), swap, measurement in a basis",
+        "Pauli decomposition with phases and basis changes under H and S (e.g. HXH = Z)",
+        "Propagation rules: X travels forward from control to target through a CNOT, Z travels backward",
+        "Relations among CNOT, CZ and controlled-Y, and chains of multiple CNOTs"
+      ],
+      "level": "intermediate",
+      "summary_confidence": "high"
+    },
+    {
+      "id": "2023-cheat-sheet-pictorial-digital-quantum-circuits-t11-7",
+      "key": "intro-to-quantum-noise-bonus-cheat-sheet-t11-7-pictorial-digital-quanutm-circuits-qiskit-global-summer-school",
+      "title": "Cheat Sheet: Pictorial Digital Quantum Circuits, T11.7 (bonus)",
+      "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - Cheat Sheet T11_7 - Pictorial Digital Quanutm Circuits (Qiskit Global Summer School 2023, Minev).pdf",
+      "category": "educational",
+      "shelf": "lectures",
+      "subcategory": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2023)",
+      "year": 2023,
+      "venue": "Qiskit Global Summer School",
+      "speaker": "Minev",
+      "tags": [
+        "cheat-sheet",
+        "circuits",
+        "qiskit",
+        "reference",
+        "summer-school"
+      ],
+      "size_bytes": 39515,
+      "pages": 2,
+      "description": "Two-page cheat sheet of quantum circuit symbols and the circuit identities used most often when manipulating Paulis and controlled gates.",
+      "summary": "A pictorial reference for digital quantum circuits: the standard notation for wires, gates, controls, swaps and measurements, followed by a set of identities with short explanations. Useful as a quick lookup when pushing Paulis through Hadamard, S and CNOT gates, as is done in twirling and noise analysis.",
+      "key_points": [
+        "Notation for quantum and classical wires, Bell pairs, controlled gates, swaps and measurements",
+        "Pauli basis changes under H and S, and the Pauli decomposition with its phase",
+        "CNOT propagation rules: X travels forward from control to target, Z travels backward",
+        "Relations between cX, cY and cZ and products of multiple CNOTs"
+      ],
+      "level": "intermediate",
+      "summary_confidence": "high"
+    },
+    {
+      "id": "2023-cheat-sheet-tail-bounds-t11-9",
+      "key": "quantum-error-mitigation-minev-bonus-cheat-sheet-tail-bounds-t11-9-boulder-summer-school-2023-minev",
+      "title": "Cheat Sheet: Tail Bounds, T11.9 (bonus)",
+      "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - Bonus - Cheat Sheet Tail Bounds T11_9 (Boulder Summer School 2023) (Minev).pdf",
+      "category": "educational",
+      "shelf": "lectures",
+      "subcategory": "Error Mitigation",
+      "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
+      "year": 2023,
+      "venue": "Boulder Summer School",
+      "speaker": "Minev",
+      "tags": [
+        "cheat-sheet",
+        "math",
+        "reference",
+        "summer-school"
+      ],
+      "size_bytes": 75832,
+      "pages": 2,
+      "description": "A two-page cheat sheet of concentration inequalities and tail bounds, from Markov and Chebyshev to Hoeffding, Bernstein and McDiarmid.",
+      "summary": "A compact reference table of probability tail bounds used to reason about sampling error, such as how many shots are needed for a confidence interval on a mean. Each inequality is listed with its conditions, common form, alternate forms and sources, with brief notes on when to use which.",
+      "key_points": [
+        "Single-variable bounds: Markov, reverse Markov, Chebyshev, Cantelli, Chernoff, Jensen",
+        "Sums of independent variables: Hoeffding's lemma, Chernoff-Hoeffding, Azuma, laws of large numbers",
+        "Advanced bounds: Bennett, Bernstein, Efron-Stein and McDiarmid",
+        "Practical note on the number of samples needed for a 1-α confidence interval"
+      ],
+      "level": "intermediate",
+      "summary_confidence": "high"
+    },
+    {
+      "id": "2023-coherent-zz-error",
+      "key": "intro-to-quantum-noise-bonus-coherent-zz-error-qiskit-global-summer-school-2023-minev",
+      "title": "Coherent ZZ Error (bonus)",
+      "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - Coherent ZZ Error (Qiskit Global Summer School 2023, Minev).pdf",
+      "category": "educational",
+      "shelf": "lectures",
+      "subcategory": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2023)",
+      "year": 2023,
+      "venue": "Qiskit Global Summer School",
+      "speaker": "Minev",
+      "tags": [
+        "noise",
+        "qiskit",
+        "summer-school"
+      ],
+      "size_bytes": 412317,
+      "pages": 1,
+      "description": "A one-page bonus note on coherent ZZ errors from an introduction to quantum noise.",
+      "summary": "A single handwritten page on coherent ZZ error, a bonus item in an introduction to quantum noise lecture; the page is the 2021 bonus note, reused.",
+      "key_points": [
+        "Coherent (unitary) errors as a class of quantum noise",
+        "The two-qubit ZZ interaction as an error source",
+        "Bonus material to an introductory quantum-noise lecture"
+      ],
+      "level": "intermediate",
+      "summary_confidence": "low"
+    },
+    {
+      "id": "2023-estimating-observables-from-bitstrings-t21",
+      "key": "intro-to-quantum-noise-bonus-estimating-bitstrings-t21-qiskit-global-summer-school-2023-minev",
+      "title": "Estimating Observables from Bitstrings, T21 (bonus)",
+      "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - Estimating Bitstrings T21 (Qiskit Global Summer School 2023, Minev).pdf",
+      "category": "educational",
+      "shelf": "lectures",
+      "subcategory": "Quantum Noise",
+      "series": "Intro to Quantum Noise (QGSS 2023)",
+      "year": 2023,
+      "venue": "Qiskit Global Summer School",
+      "speaker": "Minev",
+      "tags": [
+        "estimation",
+        "qiskit",
+        "reference",
+        "summer-school"
+      ],
+      "size_bytes": 122433,
+      "pages": 2,
+      "description": "Tech note on how shot noise in sampled bitstrings propagates into estimates of Pauli-Z observables, via the Walsh-Hadamard transform.",
+      "summary": "A short technical note asking how close an observable estimated from M measured bitstrings is to its true value, and how many shots an experiment needs. It sets up computational-basis measurement formally, shows that Pauli-Z expectation values and bitstring probabilities are related by the Walsh-Hadamard transform, and begins the statistics of multinomial counts.",
+      "key_points": [
+        "Measurement setup: probabilities as diagonal entries of the state, observables diagonal in the computational basis",
+        "Pauli-Z strings and computational-basis projectors as informationally equivalent sets of 2^n operators",
+        "Walsh-Hadamard transform linking ideal Pauli-Z expectations to bitstring probabilities",
+        "Counts as a multinomial random vector, with its mean and covariance"
+      ],
+      "level": "intermediate",
+      "summary_confidence": "high"
+    },
+    {
+      "id": "2023-hello-quantum-world",
+      "key": "career-talk-2023-for-sophia-economou-class-minev",
+      "title": "Hello Quantum World! (career talk)",
       "file": "content - educational/Career & Outreach/Career Talk - 2023 For Sophia Economou Class (Minev).pdf",
       "category": "educational",
       "shelf": "lectures",
@@ -228,156 +390,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "quantum-error-mitigation-minev-bonus-cheat-sheet-digital-quantum-circuits-t11-7-boulder-summer-school-2023-min",
-      "title": "Cheat Sheet: Digital Quantum Circuits, T11.7 (bonus)",
-      "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - Bonus - Cheat Sheet Digital Quantum Circuits - T11_7 (Boulder Summer School 2023) (Minev).pdf",
-      "category": "educational",
-      "shelf": "lectures",
-      "subcategory": "Error Mitigation",
-      "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
-      "year": 2023,
-      "venue": "Boulder Summer School",
-      "speaker": "Minev",
-      "tags": [
-        "cheat-sheet",
-        "error-mitigation",
-        "reference",
-        "summer-school"
-      ],
-      "size_bytes": 39515,
-      "pages": 2,
-      "description": "A two-page cheat sheet of quantum circuit notation and gate identities: Pauli basis changes, CNOT/CZ propagation rules, and multi-CNOT tricks.",
-      "summary": "A compact reference section from a longer set of notes on digital quantum circuits, prepared as a bonus for a summer-school course on error mitigation. It lists the standard pictorial circuit elements and the identities that come up constantly when pushing Paulis through Clifford gates.",
-      "key_points": [
-        "Pictorial elements: wires, bundles, controlled gates (on |0> and |1>), swap, measurement in a basis",
-        "Pauli decomposition with phases and basis changes under H and S (e.g. HXH = Z)",
-        "Propagation rules: X travels forward from control to target through a CNOT, Z travels backward",
-        "Relations among CNOT, CZ and controlled-Y, and chains of multiple CNOTs"
-      ],
-      "level": "intermediate",
-      "summary_confidence": "high"
-    },
-    {
-      "id": "intro-to-quantum-noise-bonus-cheat-sheet-t11-7-pictorial-digital-quanutm-circuits-qiskit-global-summer-school",
-      "title": "Cheat Sheet: Pictorial Digital Quantum Circuits, T11.7 (bonus)",
-      "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - Cheat Sheet T11_7 - Pictorial Digital Quanutm Circuits (Qiskit Global Summer School 2023, Minev).pdf",
-      "category": "educational",
-      "shelf": "lectures",
-      "subcategory": "Quantum Noise",
-      "series": "Intro to Quantum Noise (QGSS 2023)",
-      "year": 2023,
-      "venue": "Qiskit Global Summer School",
-      "speaker": "Minev",
-      "tags": [
-        "cheat-sheet",
-        "noise",
-        "qiskit",
-        "reference",
-        "summer-school"
-      ],
-      "size_bytes": 39515,
-      "pages": 2,
-      "description": "Two-page cheat sheet of quantum circuit symbols and the circuit identities used most often when manipulating Paulis and controlled gates.",
-      "summary": "A pictorial reference for digital quantum circuits: the standard notation for wires, gates, controls, swaps and measurements, followed by a set of identities with short explanations. Useful as a quick lookup when pushing Paulis through Hadamard, S and CNOT gates, as is done in twirling and noise analysis.",
-      "key_points": [
-        "Notation for quantum and classical wires, Bell pairs, controlled gates, swaps and measurements",
-        "Pauli basis changes under H and S, and the Pauli decomposition with its phase",
-        "CNOT propagation rules: X travels forward from control to target, Z travels backward",
-        "Relations between cX, cY and cZ and products of multiple CNOTs"
-      ],
-      "level": "intermediate",
-      "summary_confidence": "high"
-    },
-    {
-      "id": "quantum-error-mitigation-minev-bonus-cheat-sheet-tail-bounds-t11-9-boulder-summer-school-2023-minev",
-      "title": "Cheat Sheet: Tail Bounds, T11.9 (bonus)",
-      "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - Bonus - Cheat Sheet Tail Bounds T11_9 (Boulder Summer School 2023) (Minev).pdf",
-      "category": "educational",
-      "shelf": "lectures",
-      "subcategory": "Error Mitigation",
-      "series": "Quantum Error Mitigation (Boulder Summer School 2023)",
-      "year": 2023,
-      "venue": "Boulder Summer School",
-      "speaker": "Minev",
-      "tags": [
-        "cheat-sheet",
-        "error-mitigation",
-        "reference",
-        "summer-school"
-      ],
-      "size_bytes": 75832,
-      "pages": 2,
-      "description": "A two-page cheat sheet of concentration inequalities and tail bounds, from Markov and Chebyshev to Hoeffding, Bernstein and McDiarmid.",
-      "summary": "A compact reference table of probability tail bounds used to reason about sampling error, such as how many shots are needed for a confidence interval on a mean. Each inequality is listed with its conditions, common form, alternate forms and sources, with brief notes on when to use which.",
-      "key_points": [
-        "Single-variable bounds: Markov, reverse Markov, Chebyshev, Cantelli, Chernoff, Jensen",
-        "Sums of independent variables: Hoeffding's lemma, Chernoff-Hoeffding, Azuma, laws of large numbers",
-        "Advanced bounds: Bennett, Bernstein, Efron-Stein and McDiarmid",
-        "Practical note on the number of samples needed for a 1-α confidence interval"
-      ],
-      "level": "intermediate",
-      "summary_confidence": "high"
-    },
-    {
-      "id": "intro-to-quantum-noise-bonus-coherent-zz-error-qiskit-global-summer-school-2023-minev",
-      "title": "Coherent ZZ Error (bonus)",
-      "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - Coherent ZZ Error (Qiskit Global Summer School 2023, Minev).pdf",
-      "category": "educational",
-      "shelf": "lectures",
-      "subcategory": "Quantum Noise",
-      "series": "Intro to Quantum Noise (QGSS 2023)",
-      "year": 2023,
-      "venue": "Qiskit Global Summer School",
-      "speaker": "Minev",
-      "tags": [
-        "noise",
-        "qiskit",
-        "summer-school"
-      ],
-      "size_bytes": 412317,
-      "pages": 1,
-      "description": "A one-page bonus note on coherent ZZ errors from an introduction to quantum noise.",
-      "summary": "A single handwritten-style page on coherent ZZ error, a bonus item in an introduction to quantum noise lecture.",
-      "key_points": [
-        "Coherent (unitary) errors as a class of quantum noise",
-        "The two-qubit ZZ interaction as an error source",
-        "Bonus material to an introductory quantum-noise lecture"
-      ],
-      "level": "intermediate",
-      "summary_confidence": "low"
-    },
-    {
-      "id": "intro-to-quantum-noise-bonus-estimating-bitstrings-t21-qiskit-global-summer-school-2023-minev",
-      "title": "Estimating Observables from Bitstrings, T21 (bonus)",
-      "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - Estimating Bitstrings T21 (Qiskit Global Summer School 2023, Minev).pdf",
-      "category": "educational",
-      "shelf": "lectures",
-      "subcategory": "Quantum Noise",
-      "series": "Intro to Quantum Noise (QGSS 2023)",
-      "year": 2023,
-      "venue": "Qiskit Global Summer School",
-      "speaker": "Minev",
-      "tags": [
-        "noise",
-        "qiskit",
-        "reference",
-        "summer-school"
-      ],
-      "size_bytes": 122433,
-      "pages": 2,
-      "description": "Tech note on how shot noise in sampled bitstrings propagates into estimates of Pauli-Z observables, via the Walsh-Hadamard transform.",
-      "summary": "A short technical note asking how close an observable estimated from M measured bitstrings is to its true value, and how many shots an experiment needs. It sets up computational-basis measurement formally, shows that Pauli-Z expectation values and bitstring probabilities are related by the Walsh-Hadamard transform, and begins the statistics of multinomial counts.",
-      "key_points": [
-        "Measurement setup: probabilities as diagonal entries of the state, observables diagonal in the computational basis",
-        "Pauli-Z strings and computational-basis projectors as informationally equivalent sets of 2^n operators",
-        "Walsh-Hadamard transform linking ideal Pauli-Z expectations to bitstring probabilities",
-        "Counts as a multinomial random vector, with its mean and covariance"
-      ],
-      "level": "intermediate",
-      "summary_confidence": "high"
-    },
-    {
-      "id": "intro-to-quantum-measurements-part-i-ideal-measurements-minev-2023",
+      "id": "2023-intro-to-quantum-measurements-part-i-ideal-measurements",
+      "key": "intro-to-quantum-measurements-part-i-ideal-measurements-minev-2023",
       "title": "Intro to Quantum Measurements, Part I: Ideal Measurements",
       "file": "content - educational/Quantum Measurements/Intro to Quantum Measurements - Part I - Ideal Measurements (Minev, 2023).pdf",
       "category": "educational",
@@ -404,7 +418,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "intro-to-quantum-noise-main-lecture-intro-to-quantum-noise-qiskit-global-summer-school-2023-minev",
+      "id": "2023-intro-to-quantum-noise-main-lecture",
+      "key": "intro-to-quantum-noise-main-lecture-intro-to-quantum-noise-qiskit-global-summer-school-2023-minev",
       "title": "Intro to Quantum Noise (main lecture)",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Main Lecture - Intro to Quantum Noise (Qiskit Global Summer School 2023, Minev).pdf",
       "category": "educational",
@@ -434,7 +449,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "quantum-error-mitigation-minev-bss23-pec-derivation-full-derivation-c65c-boulder-summer-school-2023-minev",
+      "id": "2023-pec-derivation-full-derivation-c65c",
+      "key": "quantum-error-mitigation-minev-bss23-pec-derivation-full-derivation-c65c-boulder-summer-school-2023-minev",
       "title": "PEC Derivation: Full Derivation (C65C)",
       "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - BSS23 - PEC Derivation full derivation (C65C) (Boulder Summer School 2023) (Minev).pdf",
       "category": "educational",
@@ -463,7 +479,8 @@
       "summary_confidence": "medium"
     },
     {
-      "id": "quantum-error-mitigation-minev-bss23-pec-derivation-1q-simple-c65b-boulder-summer-school-2023-minev",
+      "id": "2023-pec-derivation-single-qubit-simple-c65b",
+      "key": "quantum-error-mitigation-minev-bss23-pec-derivation-1q-simple-c65b-boulder-summer-school-2023-minev",
       "title": "PEC Derivation: Single Qubit, Simple (C65B)",
       "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - BSS23 - PEC Derivation 1Q simple (C65B) (Boulder Summer School 2023) (Minev).pdf",
       "category": "educational",
@@ -493,7 +510,8 @@
       "summary_confidence": "medium"
     },
     {
-      "id": "quantum-error-mitigation-minev-bss23-lecture-1-boulder-summer-school-2023-minev",
+      "id": "2023-quantum-error-mitigation-lecture-1",
+      "key": "quantum-error-mitigation-minev-bss23-lecture-1-boulder-summer-school-2023-minev",
       "title": "Quantum Error Mitigation, Lecture 1",
       "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - BSS23 Lecture 1 (Boulder Summer School 2023) (Minev).pdf",
       "category": "educational",
@@ -522,7 +540,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "quantum-error-mitigation-minev-bss23-lecture-2-boulder-summer-school-2023-minev",
+      "id": "2023-quantum-error-mitigation-lecture-2",
+      "key": "quantum-error-mitigation-minev-bss23-lecture-2-boulder-summer-school-2023-minev",
       "title": "Quantum Error Mitigation, Lecture 2",
       "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - BSS23 Lecture 2 (Boulder Summer School 2023) (Minev).pdf",
       "category": "educational",
@@ -540,7 +559,7 @@
       "size_bytes": 8609042,
       "pages": 82,
       "description": "Lecture 2 on error mitigation for quantum dynamics: probabilistic error cancellation, its statistics, and learning noise with sparse Pauli-Lindblad models.",
-      "summary": "Explains why the inverse of a noise map is unphysical and how probabilistic error cancellation (PEC) implements it on average by sampling quantum trajectories with quasi-probabilities, using a random-walk analogy for intuition. It then covers measurement statistics and error bars, and how to learn device noise layer by layer: Pauli twirling, noise amplification, the no-go theorem for learning entangling-gate noise, and sparse Pauli-Lindblad noise tomograms up to 127 qubits.",
+      "summary": "Explains why the inverse of a noise map is unphysical and how probabilistic error cancellation (PEC) implements it on average by sampling quantum trajectories with quasi-probabilities, using a random-walk analogy for intuition. It then covers measurement statistics and error bars, and how to learn device noise layer by layer: Pauli twirling, noise amplification, the degeneracy that keeps some Pauli fidelities of an entangling layer from being learned individually, and sparse Pauli-Lindblad noise tomograms up to 127 qubits.",
       "key_points": [
         "Canceling noise with noise: PEC on one qubit and the sampling overhead γ",
         "Bernoulli shot statistics and the empirical mean as an unbiased estimator",
@@ -551,7 +570,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "quantum-error-mitigation-minev-bss23-lecture-3-boulder-summer-school-2023-minev",
+      "id": "2023-quantum-error-mitigation-lecture-3",
+      "key": "quantum-error-mitigation-minev-bss23-lecture-3-boulder-summer-school-2023-minev",
       "title": "Quantum Error Mitigation, Lecture 3",
       "file": "content - educational/Error Mitigation/Quantum Error Mitigation, Minev - BSS23 Lecture 3 (Boulder Summer School 2023) (Minev).pdf",
       "category": "educational",
@@ -580,7 +600,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "intro-to-quantum-noise-bonus-coherent-zz-error-qiskit-global-summer-school-2022-minev",
+      "id": "2022-coherent-zz-error",
+      "key": "intro-to-quantum-noise-bonus-coherent-zz-error-qiskit-global-summer-school-2022-minev",
       "title": "Coherent ZZ Error (bonus)",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - Coherent ZZ Error (Qiskit Global Summer School 2022) (Minev).pdf",
       "category": "educational",
@@ -598,7 +619,7 @@
       "size_bytes": 412316,
       "pages": 1,
       "description": "A single bonus page on coherent ZZ errors between qubits, from an introductory lecture on quantum noise.",
-      "summary": "A one-page hand-written bonus note on coherent ZZ error, part of the Introduction to Quantum Noise lectures.",
+      "summary": "A one-page hand-written bonus note on coherent ZZ error, part of the Introduction to Quantum Noise lectures; the page is the 2021 bonus note, reused.",
       "key_points": [
         "Coherent (unitary) errors as distinct from incoherent noise",
         "ZZ coupling between qubits as a coherent error source",
@@ -608,7 +629,8 @@
       "summary_confidence": "low"
     },
     {
-      "id": "intro-to-quantum-noise-note-incoherent-noise-qiskit-global-summer-school-2022-minev",
+      "id": "2022-incoherent-noise",
+      "key": "intro-to-quantum-noise-note-incoherent-noise-qiskit-global-summer-school-2022-minev",
       "title": "Incoherent Noise (note)",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Note - Incoherent Noise (Qiskit Global Summer School 2022) (Minev).pdf",
       "category": "educational",
@@ -636,7 +658,8 @@
       "summary_confidence": "low"
     },
     {
-      "id": "intro-to-quantum-noise-main-lecture-intro-to-quantum-noise-qiskit-global-summer-school-2022-minev",
+      "id": "2022-intro-to-quantum-noise-main-lecture",
+      "key": "intro-to-quantum-noise-main-lecture-intro-to-quantum-noise-qiskit-global-summer-school-2022-minev",
       "title": "Intro to Quantum Noise (main lecture)",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Main Lecture - Intro to Quantum Noise (Qiskit Global Summer School 2022) (Minev).pdf",
       "category": "educational",
@@ -666,7 +689,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "intro-to-real-quantum-computers-and-noise-minev-summer-lecture-vanderbuilt-2022",
+      "id": "2022-intro-to-real-quantum-computers-and-noise",
+      "key": "intro-to-real-quantum-computers-and-noise-minev-summer-lecture-vanderbuilt-2022",
       "title": "Intro to Real Quantum Computers and Noise",
       "file": "content - educational/Quantum Noise/Intro to Real Quantum Computers and Noise (Minev, Summer Lecture Vanderbuilt 2022).pdf",
       "category": "educational",
@@ -694,7 +718,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "intro-to-quantum-noise-note-measurement-qiskit-global-summer-school-2022-minev",
+      "id": "2022-measurement",
+      "key": "intro-to-quantum-noise-note-measurement-qiskit-global-summer-school-2022-minev",
       "title": "Measurement (note)",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Note - Measurement (Qiskit Global Summer School 2022) (Minev).pdf",
       "category": "educational",
@@ -712,7 +737,7 @@
       ],
       "size_bytes": 1096947,
       "pages": 3,
-      "description": "Lecture notes on measurement and projection noise: why a finite number of shots gives Bernoulli-distributed sampling error.",
+      "description": "Lecture notes on measurement and projection noise: each shot is a Bernoulli trial, so a finite number of shots gives binomial sampling error.",
       "summary": "Hand-written notes on measurement theory for the Introduction to Quantum Noise lectures at the Qiskit Global Summer School on Quantum Simulations. Each shot is treated as a coin toss whose bias is set by the quantum algorithm, which leads to the variance of the outcome and to sampling error over N repeated shots.",
       "key_points": [
         "Measuring different observables of a qubit",
@@ -724,7 +749,8 @@
       "summary_confidence": "medium"
     },
     {
-      "id": "intro-to-quantum-noise-note-measurement-noise-qiskit-global-summer-school-2022-minev",
+      "id": "2022-measurement-noise",
+      "key": "intro-to-quantum-noise-note-measurement-noise-qiskit-global-summer-school-2022-minev",
       "title": "Measurement Noise (note)",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Note - Measurement Noise (Qiskit Global Summer School 2022) (Minev).pdf",
       "category": "educational",
@@ -753,7 +779,128 @@
       "summary_confidence": "low"
     },
     {
-      "id": "intro-to-quantum-noise-bonus-state-preparation-noise-qiskit-global-summer-school-2022-minev",
+      "id": "2022-primer-on-pauli-twirling-part-i",
+      "key": "intro-to-pauli-twirling-minev-part-i-tutorial",
+      "title": "Primer on Pauli Twirling, Part I",
+      "file": "content - educational/Tutorials (Pauli Twirling)/Intro to Pauli Twirling, Minev - Part I (Tutorial).pdf",
+      "category": "educational",
+      "shelf": "lectures",
+      "subcategory": "Tutorials (Pauli Twirling)",
+      "series": "Primer on Pauli Twirling (tutorial)",
+      "year": 2022,
+      "venue": null,
+      "speaker": "Minev",
+      "tags": [
+        "error-mitigation",
+        "tutorial",
+        "twirling"
+      ],
+      "size_bytes": 2047739,
+      "pages": 24,
+      "description": "A primer on Pauli twirling: how random Pauli gates turn general noise, including coherent errors, into stochastic Pauli noise.",
+      "summary": "Begins operationally by sandwiching a noise channel between random Paulis and showing, with an amplified coherent over-rotation, how twirling scrambles coherent errors. It then sets up notation for easy and hard gate cycles in a noisy circuit and shows how twirls are inserted, conjugated through hard gates and compiled into neighbouring single-qubit gates, ending with a summary of why twirling is used in practice.",
+      "key_points": [
+        "Twirling a CPTP noise channel over the Pauli group",
+        "Coherent over-rotation example and how twirled errors stop adding coherently",
+        "Noisy-circuit cycles of easy and hard gates, and conjugating twirls through Clifford layers",
+        "Practical uses: randomized compiling, PEC, and efficient Clifford simulation of Pauli noise"
+      ],
+      "level": "intermediate",
+      "summary_confidence": "medium"
+    },
+    {
+      "id": "2022-primer-on-pauli-twirling-part-ii",
+      "key": "intro-to-pauli-twirling-minev-part-ii-tutorial",
+      "title": "Primer on Pauli Twirling, Part II",
+      "file": "content - educational/Tutorials (Pauli Twirling)/Intro to Pauli Twirling, Minev - Part II (Tutorial).pdf",
+      "category": "educational",
+      "shelf": "lectures",
+      "subcategory": "Tutorials (Pauli Twirling)",
+      "series": "Primer on Pauli Twirling (tutorial)",
+      "year": 2022,
+      "venue": null,
+      "speaker": "Minev",
+      "tags": [
+        "error-mitigation",
+        "tutorial",
+        "twirling"
+      ],
+      "size_bytes": 1922187,
+      "pages": 19,
+      "description": "Why Pauli twirling works: worked examples on bit-flip and coherent-rotation channels using Pauli transfer matrices.",
+      "summary": "The theory half of a Pauli-twirling primer. It works through twirling a single-qubit channel by averaging over Pauli conjugations, showing that a bit-flip channel is left unchanged while a coherent rotation is turned into a stochastic Pauli channel with a diagonal Pauli transfer matrix. A coherent over-rotation example shows the error accumulating linearly, rather than quadratically, with the number of repetitions once it is twirled.",
+      "key_points": [
+        "Twirling as an average over Pauli-conjugated instances of a channel",
+        "Bit-flip channel example: invariant under the Pauli twirl",
+        "Coherent rotation channel: chi matrix, Pauli transfer matrix, and its diagonalization by twirling",
+        "Twirling a general single-qubit channel, with a refresher on Paulis and mixed states"
+      ],
+      "level": "intermediate",
+      "summary_confidence": "medium"
+    },
+    {
+      "id": "2022-primer-on-pauli-twirling-part-iii",
+      "key": "intro-to-pauli-twirling-minev-part-iii-tutorial",
+      "title": "Primer on Pauli Twirling, Part III",
+      "file": "content - educational/Tutorials (Pauli Twirling)/Intro to Pauli Twirling, Minev - Part III (Tutorial).pdf",
+      "category": "educational",
+      "shelf": "lectures",
+      "subcategory": "Tutorials (Pauli Twirling)",
+      "series": "Primer on Pauli Twirling (tutorial)",
+      "year": 2022,
+      "venue": null,
+      "speaker": "Minev",
+      "tags": [
+        "error-mitigation",
+        "tutorial",
+        "twirling"
+      ],
+      "size_bytes": 1456803,
+      "pages": 16,
+      "description": "The theory behind Pauli twirling: Pauli transfer matrices, superoperators, and why twirling masks a channel down to a Pauli channel.",
+      "summary": "This part covers why twirling works. It starts with how a Pauli gate acts on a mixed state, links that action to the Walsh-Hadamard transform and the symplectic product, and moves to the superoperator picture with vectorization and the Pauli transfer matrix. Twirling then appears as an element-wise mask on the channel's PTM, with a closing pointer to designs.",
+      "key_points": [
+        "Pauli decomposition of qubit mixed states and conjugation by Pauli gates",
+        "Walsh-Hadamard structure and the symplectic product in Z2 notation",
+        "Vectorization identity, superoperators, and the Pauli transfer matrix",
+        "Twirling as averaging masks applied element-wise to the PTM"
+      ],
+      "level": "advanced",
+      "summary_confidence": "medium"
+    },
+    {
+      "id": "2022-primer-on-pauli-twirling-part-iv",
+      "key": "intro-to-pauli-twirling-minev-part-iv-tutorial",
+      "title": "Primer on Pauli Twirling, Part IV",
+      "file": "content - educational/Tutorials (Pauli Twirling)/Intro to Pauli Twirling, Minev - Part IV (Tutorial).pdf",
+      "category": "educational",
+      "shelf": "lectures",
+      "subcategory": "Tutorials (Pauli Twirling)",
+      "series": "Primer on Pauli Twirling (tutorial)",
+      "year": 2022,
+      "venue": null,
+      "speaker": "Minev",
+      "tags": [
+        "error-mitigation",
+        "tutorial",
+        "twirling"
+      ],
+      "size_bytes": 1890089,
+      "pages": 16,
+      "description": "Later sections of a Pauli twirling primer: unitary t-designs, Pauli and chi-matrix noise models, the PTM, and twirling amplitude damping.",
+      "summary": "Part of a primer on Pauli twirling covering its optional advanced material and a noise-modeling refresher. Classical spherical designs motivate unitary t-designs and where they appear (average fidelity, RB, random twirling); noise is then written as a Pauli channel, a process (chi) matrix and a Pauli transfer matrix, with amplitude damping shown raw and twirled.",
+      "key_points": [
+        "Overview of the twirling primer: operational twirling, why it works, why the Pauli group",
+        "Classical spherical designs as intuition for unitary t-designs and their uses",
+        "Noise models: Pauli channels, chi-matrix representation and Pauli transfer matrix elements",
+        "Amplitude damping applied repeatedly, with and without twirling"
+      ],
+      "level": "intermediate",
+      "summary_confidence": "high"
+    },
+    {
+      "id": "2022-state-preparation-noise",
+      "key": "intro-to-quantum-noise-bonus-state-preparation-noise-qiskit-global-summer-school-2022-minev",
       "title": "State Preparation Noise (bonus)",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise - Bonus - State Preparation Noise (Qiskit Global Summer School 2022) (Minev).pdf",
       "category": "educational",
@@ -771,7 +918,7 @@
       "size_bytes": 588852,
       "pages": 1,
       "description": "Bonus handwritten note on state-preparation noise, from an introduction to quantum noise lecture.",
-      "summary": "A single page of bonus notes on noise in qubit state preparation, part of an introductory quantum-noise lecture series.",
+      "summary": "A single page of bonus notes on noise in qubit state preparation, part of an introductory quantum-noise lecture series; the page is the 2021 bonus note, reused.",
       "key_points": [
         "State-preparation errors as a source of noise",
         "Context within SPAM (state preparation and measurement) errors",
@@ -781,7 +928,8 @@
       "summary_confidence": "low"
     },
     {
-      "id": "intro-to-quantum-noise-coherent-zz-error-qiskit-global-summer-school-2021-minev",
+      "id": "2021-coherent-zz-error",
+      "key": "intro-to-quantum-noise-coherent-zz-error-qiskit-global-summer-school-2021-minev",
       "title": "Coherent ZZ Error",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise, Coherent ZZ Error (Qiskit Global Summer School 2021) (Minev).pdf",
       "category": "educational",
@@ -809,7 +957,8 @@
       "summary_confidence": "low"
     },
     {
-      "id": "intro-to-quantum-noise-incoherent-noise-qiskit-global-summer-school-2021-minev",
+      "id": "2021-incoherent-noise",
+      "key": "intro-to-quantum-noise-incoherent-noise-qiskit-global-summer-school-2021-minev",
       "title": "Incoherent Noise",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise, Incoherent Noise (Qiskit Global Summer School 2021) (Minev).pdf",
       "category": "educational",
@@ -837,7 +986,8 @@
       "summary_confidence": "medium"
     },
     {
-      "id": "intro-to-quantum-noise-intro-to-quantum-noise-qiskit-global-summer-school-2021-minev",
+      "id": "2021-intro-to-quantum-noise",
+      "key": "intro-to-quantum-noise-intro-to-quantum-noise-qiskit-global-summer-school-2021-minev",
       "title": "Intro to Quantum Noise",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise, Intro to Quantum Noise (Qiskit Global Summer School 2021) (Minev).pdf",
       "category": "educational",
@@ -867,7 +1017,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "intro-to-quantum-noise-measurement-noise-qiskit-global-summer-school-2021-minev",
+      "id": "2021-measurement-noise",
+      "key": "intro-to-quantum-noise-measurement-noise-qiskit-global-summer-school-2021-minev",
       "title": "Measurement Noise",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise, Measurement Noise (Qiskit Global Summer School 2021) (Minev).pdf",
       "category": "educational",
@@ -896,7 +1047,8 @@
       "summary_confidence": "low"
     },
     {
-      "id": "intro-to-quantum-noise-projection-noise-v2-qiskit-global-summer-school-2021-minev",
+      "id": "2021-projection-noise",
+      "key": "intro-to-quantum-noise-projection-noise-v2-qiskit-global-summer-school-2021-minev",
       "title": "Projection Noise",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise, Projection Noise v2 (Qiskit Global Summer School 2021) (Minev).pdf",
       "category": "educational",
@@ -925,7 +1077,8 @@
       "summary_confidence": "medium"
     },
     {
-      "id": "intro-to-quantum-noise-state-preparation-noise-qiskit-global-summer-school-2021-minev",
+      "id": "2021-state-preparation-noise",
+      "key": "intro-to-quantum-noise-state-preparation-noise-qiskit-global-summer-school-2021-minev",
       "title": "State Preparation Noise",
       "file": "content - educational/Quantum Noise/Intro to Quantum Noise, State Preparation Noise (Qiskit Global Summer School 2021) (Minev).pdf",
       "category": "educational",
@@ -953,7 +1106,8 @@
       "summary_confidence": "low"
     },
     {
-      "id": "superconducting-qubits-101-cqed-quantum-hardware-minev-cec-icmc-2021",
+      "id": "2021-superconducting-qubits-101-cec-icmc",
+      "key": "superconducting-qubits-101-cqed-quantum-hardware-minev-cec-icmc-2021",
       "title": "Superconducting Qubits 101: cQED Quantum Hardware",
       "file": "content - educational/Superconducting Qubits & Hardware/Superconducting Qubits 101 - cQED Quantum Hardware (Minev, CEC ICMC, 2021).pdf",
       "category": "educational",
@@ -981,7 +1135,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "superconducting-qubits-101-cqed-quantum-hardware-minev-qiqt-summer-school-2021",
+      "id": "2021-superconducting-qubits-101-qiqt-summer-school",
+      "key": "superconducting-qubits-101-cqed-quantum-hardware-minev-qiqt-summer-school-2021",
       "title": "Superconducting Qubits 101: cQED Quantum Hardware",
       "file": "content - educational/Superconducting Qubits & Hardware/Superconducting Qubits 101 - cQED Quantum Hardware (Minev, QIQT Summer School, 2021).pdf",
       "category": "educational",
@@ -1010,7 +1165,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "superconducting-qubits-101-quantum-hardware-cqed-day-1-qiskit-global-summer-school-2020-minev",
+      "id": "2020-superconducting-qubits-101-quantum-hardware-and-cqed-day-1",
+      "key": "superconducting-qubits-101-quantum-hardware-cqed-day-1-qiskit-global-summer-school-2020-minev",
       "title": "Superconducting Qubits 101: Quantum Hardware & cQED, Day 1",
       "file": "content - educational/Superconducting Qubits & Hardware/Superconducting Qubits 101 - Quantum Hardware cQED - Day 1 (Qiskit Global Summer School 2020, Minev).pdf",
       "category": "educational",
@@ -1040,7 +1196,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "superconducting-qubits-101-quantum-hardware-cqed-day-2-qiskit-global-summer-school-2020-minev",
+      "id": "2020-superconducting-qubits-101-quantum-hardware-and-cqed-day-2",
+      "key": "superconducting-qubits-101-quantum-hardware-cqed-day-2-qiskit-global-summer-school-2020-minev",
       "title": "Superconducting Qubits 101: Quantum Hardware & cQED, Day 2",
       "file": "content - educational/Superconducting Qubits & Hardware/Superconducting Qubits 101 - Quantum Hardware cQED - Day 2 (Qiskit Global Summer School 2020, Minev).pdf",
       "category": "educational",
@@ -1070,123 +1227,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "intro-to-pauli-twirling-minev-part-i-tutorial",
-      "title": "Intro to Pauli Twirling, Part I",
-      "file": "content - educational/Tutorials (Pauli Twirling)/Intro to Pauli Twirling, Minev - Part I (Tutorial).pdf",
-      "category": "educational",
-      "shelf": "lectures",
-      "subcategory": "Tutorials (Pauli Twirling)",
-      "series": "Intro to Pauli Twirling (tutorial)",
-      "year": null,
-      "venue": null,
-      "speaker": "Minev",
-      "tags": [
-        "error-mitigation",
-        "tutorial",
-        "twirling"
-      ],
-      "size_bytes": 2047739,
-      "pages": 24,
-      "description": "A primer on Pauli twirling: how random Pauli gates turn general noise, including coherent errors, into stochastic Pauli noise.",
-      "summary": "Begins operationally by sandwiching a noise channel between random Paulis and showing, with an amplified coherent over-rotation, how twirling scrambles coherent errors. It then sets up notation for easy and hard gate cycles in a noisy circuit and shows how twirls are inserted, conjugated through hard gates and compiled into neighbouring single-qubit gates, ending with a summary of why twirling is used in practice.",
-      "key_points": [
-        "Twirling a CPTP noise channel over the Pauli group",
-        "Coherent over-rotation example and how twirled errors stop adding coherently",
-        "Noisy-circuit cycles of easy and hard gates, and conjugating twirls through Clifford layers",
-        "Practical uses: randomized compiling, PEC, and efficient Clifford simulation of Pauli noise"
-      ],
-      "level": "intermediate",
-      "summary_confidence": "medium"
-    },
-    {
-      "id": "intro-to-pauli-twirling-minev-part-ii-tutorial",
-      "title": "Intro to Pauli Twirling, Part II",
-      "file": "content - educational/Tutorials (Pauli Twirling)/Intro to Pauli Twirling, Minev - Part II (Tutorial).pdf",
-      "category": "educational",
-      "shelf": "lectures",
-      "subcategory": "Tutorials (Pauli Twirling)",
-      "series": "Intro to Pauli Twirling (tutorial)",
-      "year": null,
-      "venue": null,
-      "speaker": "Minev",
-      "tags": [
-        "error-mitigation",
-        "tutorial",
-        "twirling"
-      ],
-      "size_bytes": 1922187,
-      "pages": 19,
-      "description": "Why Pauli twirling works: worked examples on bit-flip and coherent-rotation channels using Pauli transfer matrices.",
-      "summary": "The theory half of a Pauli-twirling primer. It works through twirling a single-qubit channel by averaging over Pauli conjugations, showing that a bit-flip channel is left unchanged while a coherent rotation is turned into a stochastic Pauli channel with a diagonal Pauli transfer matrix. A coherent over-rotation example shows the error going from quadratic to linear in its accumulation.",
-      "key_points": [
-        "Twirling as an average over Pauli-conjugated instances of a channel",
-        "Bit-flip channel example: invariant under the Pauli twirl",
-        "Coherent rotation channel: chi matrix, Pauli transfer matrix, and its diagonalization by twirling",
-        "Twirling a general single-qubit channel, with a refresher on Paulis and mixed states"
-      ],
-      "level": "intermediate",
-      "summary_confidence": "medium"
-    },
-    {
-      "id": "intro-to-pauli-twirling-minev-part-iii-tutorial",
-      "title": "Intro to Pauli Twirling, Part III",
-      "file": "content - educational/Tutorials (Pauli Twirling)/Intro to Pauli Twirling, Minev - Part III (Tutorial).pdf",
-      "category": "educational",
-      "shelf": "lectures",
-      "subcategory": "Tutorials (Pauli Twirling)",
-      "series": "Intro to Pauli Twirling (tutorial)",
-      "year": null,
-      "venue": null,
-      "speaker": "Minev",
-      "tags": [
-        "error-mitigation",
-        "tutorial",
-        "twirling"
-      ],
-      "size_bytes": 1456803,
-      "pages": 16,
-      "description": "The theory behind Pauli twirling: Pauli transfer matrices, superoperators, and why twirling masks a channel down to a Pauli channel.",
-      "summary": "This part covers why twirling works. It starts with how a Pauli gate acts on a mixed state, links that action to the Walsh-Hadamard transform and the symplectic product, and moves to the superoperator picture with vectorization and the Pauli transfer matrix. Twirling then appears as an element-wise mask on the channel's PTM, with a closing pointer to designs.",
-      "key_points": [
-        "Pauli decomposition of qubit mixed states and conjugation by Pauli gates",
-        "Walsh-Hadamard structure and the symplectic product in Z2 notation",
-        "Vectorization identity, superoperators, and the Pauli transfer matrix",
-        "Twirling as averaging masks applied element-wise to the PTM"
-      ],
-      "level": "advanced",
-      "summary_confidence": "medium"
-    },
-    {
-      "id": "intro-to-pauli-twirling-minev-part-iv-tutorial",
-      "title": "Intro to Pauli Twirling, Part IV",
-      "file": "content - educational/Tutorials (Pauli Twirling)/Intro to Pauli Twirling, Minev - Part IV (Tutorial).pdf",
-      "category": "educational",
-      "shelf": "lectures",
-      "subcategory": "Tutorials (Pauli Twirling)",
-      "series": "Intro to Pauli Twirling (tutorial)",
-      "year": null,
-      "venue": null,
-      "speaker": "Minev",
-      "tags": [
-        "error-mitigation",
-        "tutorial",
-        "twirling"
-      ],
-      "size_bytes": 1890089,
-      "pages": 16,
-      "description": "Later sections of a Pauli twirling primer: unitary t-designs, Pauli and chi-matrix noise models, the PTM, and twirling amplitude damping.",
-      "summary": "Part of a primer on Pauli twirling covering its optional advanced material and a noise-modeling refresher. Classical spherical designs motivate unitary t-designs and where they appear (average fidelity, RB, random twirling); noise is then written as a Pauli channel, a process (chi) matrix and a Pauli transfer matrix, with amplitude damping shown raw and twirled.",
-      "key_points": [
-        "Overview of the twirling primer: operational twirling, why it works, why the Pauli group",
-        "Classical spherical designs as intuition for unitary t-designs and their uses",
-        "Noise models: Pauli channels, chi-matrix representation and Pauli transfer matrix elements",
-        "Amplitude damping applied repeatedly, with and without twirling"
-      ],
-      "level": "intermediate",
-      "summary_confidence": "high"
-    },
-    {
-      "id": "2026-otoc-nmr-experiment-error-mitigation-modeling-and-results-minev-aps-march-meeting",
+      "id": "2026-otoc-nmr-experiment-error-mitigation-modeling-and",
+      "key": "2026-otoc-nmr-experiment-error-mitigation-modeling-and-results-minev-aps-march-meeting",
       "title": "OTOC-NMR Experiment: Error Mitigation, Modeling and Results",
       "file": "content - research talks/2026 OTOC-NMR Experiment - Error Mitigation, Modeling and Results (Minev, APS March Meeting).pdf",
       "category": "research-talk",
@@ -1219,7 +1261,8 @@
       ]
     },
     {
-      "id": "2025-machine-learning-for-practical-quantum-error-mitigation-ml-qem-minev-aspen-ai-plus-quantum",
+      "id": "2025-machine-learning-for-practical-quantum-error",
+      "key": "2025-machine-learning-for-practical-quantum-error-mitigation-ml-qem-minev-aspen-ai-plus-quantum",
       "title": "Machine Learning for Practical Quantum Error Mitigation (ML-QEM)",
       "file": "content - research talks/2025 Machine Learning for Practical Quantum Error Mitigation (ML-QEM) (Minev, Aspen AI plus Quantum).pdf",
       "category": "research-talk",
@@ -1253,8 +1296,9 @@
       ]
     },
     {
-      "id": "2025-quantum-hardware-design-epr-lom-metal-minev-flagship-quantum-device-workshop-advanced",
-      "title": "Quantum Hardware Design: EPR, LOM, Metal",
+      "id": "2025-overview-of-quantum-hardware-design-energy-circuits",
+      "key": "2025-quantum-hardware-design-epr-lom-metal-minev-flagship-quantum-device-workshop-advanced",
+      "title": "Overview of Quantum Hardware Design: Energy, Circuits, and Metal",
       "file": "content - research talks/2025 Quantum Hardware Design - EPR, LOM, Metal (Minev, Flagship Quantum Device Workshop Advanced).pdf",
       "category": "research-talk",
       "shelf": "research",
@@ -1281,7 +1325,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "2024-fibonacci-anyons-realizing-string-net-condensation-fibonacci-anyon-braiding-for-universal-gates-and-sampl",
+      "id": "2024-fibonacci-anyons-and-string-net-condensation",
+      "key": "2024-fibonacci-anyons-realizing-string-net-condensation-fibonacci-anyon-braiding-for-universal-gates-and-sampl",
       "title": "Fibonacci Anyons and String-Net Condensation; Entanglement-Enhanced Learning of Quantum Processes at Scale",
       "file": "content - research talks/2024 Fibonacci Anyons - Realizing string-net condensation - Fibonacci anyon braiding for universal gates and sampling chromatic polynomials (Minev, CIFAR).pdf",
       "category": "research-talk",
@@ -1309,7 +1354,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "2024-uncovering-local-integrability-in-quantum-many-body-dynamics-minev-aps-mm-invited",
+      "id": "2024-uncovering-local-integrability-in-quantum-many-body",
+      "key": "2024-uncovering-local-integrability-in-quantum-many-body-dynamics-minev-aps-mm-invited",
       "title": "Uncovering Local Integrability in Quantum Many-Body Dynamics",
       "file": "content - research talks/2024 Uncovering Local Integrability in Quantum Many-Body Dynamics (Minev, APS MM Invited).pdf",
       "category": "research-talk",
@@ -1324,8 +1370,8 @@
       ],
       "size_bytes": 10311612,
       "pages": 63,
-      "description": "Extracting local integrals of motion from error-mitigated many-body dynamics on a 124-qubit superconducting processor.",
-      "summary": "Places the experiment among early utility-scale demonstrations, then introduces integrals of motion, local integrals of motion (LIOMs) and their link to integrability and many-body localization. It shows how LIOMs were reconstructed from 124-qubit Floquet dynamics in 1D and 2D, decomposed by Pauli weight and compared with theory, with care about what 'integrable' means on finite observation times.",
+      "description": "Extracting local integrals of motion from error-mitigated many-body dynamics on up to 124 qubits of a superconducting processor.",
+      "summary": "Places the experiment among early utility-scale demonstrations, then introduces integrals of motion, local integrals of motion (LIOMs) and their link to integrability and many-body localization. It shows how LIOMs were reconstructed from error-mitigated Floquet dynamics on a 104-qubit chain (1D) and a 124-qubit lattice (2D), decomposed by Pauli weight and compared with theory, with care about what 'integrable' means on finite observation times.",
       "key_points": [
         "Map of utility-scale experiments by qubit count and two-qubit gate depth",
         "Integrals of motion, LIOMs, quantum integrability and many-body localization",
@@ -1342,7 +1388,8 @@
       ]
     },
     {
-      "id": "2023-machine-learning-for-practical-quantum-error-mitigation-ml-qem-haoran-liao-qiskit-seminar",
+      "id": "2023-machine-learning-for-practical-quantum-error",
+      "key": "2023-machine-learning-for-practical-quantum-error-mitigation-ml-qem-haoran-liao-qiskit-seminar",
       "title": "Machine Learning for Practical Quantum Error Mitigation (ML-QEM)",
       "file": "content - research talks/2023 Machine Learning for Practical Quantum Error Mitigation (ML-QEM) (Haoran Liao, Qiskit Seminar).pdf",
       "category": "research-talk",
@@ -1360,7 +1407,7 @@
       "size_bytes": 1184825,
       "pages": 19,
       "description": "A seminar on ML-QEM: training regression models and neural networks to mitigate noisy expectation values at low runtime cost.",
-      "summary": "Introduces the trade-offs among error mitigation methods (PEC is unbiased but costly, ZNE is cheaper but biased) and proposes front-loading the cost into training a model that mitigates expectation values at runtime without extra circuits. Compares linear regression, random forest, multi-layer perceptron and graph neural network models on random and Trotterized Ising circuits in noisy simulation.",
+      "summary": "Introduces the trade-offs among error mitigation methods (PEC is unbiased but costly, ZNE is cheaper but biased) and proposes front-loading the cost into training a model that mitigates expectation values at runtime without extra circuits. Compares linear regression, random forest, multi-layer perceptron and graph neural network models on random and Trotterized Ising circuits in noisy simulation and on hardware, including mimicking ZNE on a 100-qubit experiment.",
       "key_points": [
         "Three-step ML-QEM workflow: generate training data, train, mitigate at runtime",
         "Comparison with Clifford data regression and why linear models are not enough in general",
@@ -1377,7 +1424,8 @@
       ]
     },
     {
-      "id": "2022-overview-of-quantum-hardware-design-qiskit-metal-energy-circuits-metal-minev-chicago-quantum-exchange-nan",
+      "id": "2022-overview-of-quantum-hardware-design-energy-circuits",
+      "key": "2022-overview-of-quantum-hardware-design-qiskit-metal-energy-circuits-metal-minev-chicago-quantum-exchange-nan",
       "title": "Overview of Quantum Hardware Design: Energy, Circuits, and Metal (Qiskit Metal)",
       "file": "content - research talks/2022 Overview Of Quantum Hardware Design - Qiskit Metal - Energy, Circuits, Metal (Minev, Chicago Quantum Exchange, NanoKorea).pdf",
       "category": "research-talk",
@@ -1406,7 +1454,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "2022-overview-of-quantum-hardware-design-qiskit-metal-from-fab-it-to-qubit-minev-nqi",
+      "id": "2022-overview-of-quantum-hardware-design-qiskit-metal-from",
+      "key": "2022-overview-of-quantum-hardware-design-qiskit-metal-from-fab-it-to-qubit-minev-nqi",
       "title": "Overview of Quantum Hardware Design: Qiskit Metal, from Fab-It to Qubit",
       "file": "content - research talks/2022 Overview of Quantum Hardware Design - Qiskit Metal - From Fab-it to Qubit (Minev, NQI).pdf",
       "category": "research-talk",
@@ -1433,16 +1482,41 @@
       ],
       "level": "intermediate",
       "summary_confidence": "high",
-      "links": [
-        {
-          "label": "Paper (arXiv)",
-          "url": "https://arxiv.org/abs/2109.06848"
-        }
-      ]
+      "links": []
     },
     {
-      "id": "2022-probabilistic-error-cancelation-pec-minev-ibm-quantum-qiskit-seminar",
-      "title": "Probabilistic Error Cancellation (PEC)",
+      "id": "2022-qiskit-metal-quantum-device-design-and-analysis-q-eda",
+      "key": "2022-qiskit-metal-quantum-hardware-design-for-qedc-minev",
+      "title": "Qiskit Metal: Quantum Device Design and Analysis (Q-EDA)",
+      "file": "content - research talks/2022 Qiskit Metal - Quantum Hardware Design - for QEDC (Minev).pdf",
+      "category": "research-talk",
+      "shelf": "research",
+      "subcategory": null,
+      "series": null,
+      "year": 2022,
+      "venue": "QED-C",
+      "speaker": "Thomas G. McConkey, Minev",
+      "tags": [
+        "hardware",
+        "qiskit-metal"
+      ],
+      "size_bytes": 2150662,
+      "pages": 30,
+      "description": "Qiskit Metal as an open-source quantum EDA tool: its architecture, analysis methods, renderers, and adoption.",
+      "summary": "Sets out what has to be designed on a superconducting chip and the iterative design flow from concept to fabrication. It then explains Qiskit Metal's architecture (QDesign, QComponents as 'super p-cells' with pins, QGeometry, renderers, analyses), the LOM, EPR and LOM 2.0 quantum analyses, and renderers for GDS and other tools, and shows uses in research, education and a commercial foundry.",
+      "key_points": [
+        "Design targets: frequencies, couplings, Purcell limit, spurious modes",
+        "Metal architecture: QDesign, QComponents, pins, QGeometry, renderers",
+        "Quantum analysis via LOM, EPR, and LOM 2.0",
+        "Renderers and integrations (GDS, Gmsh/Elmer, others) and community adoption"
+      ],
+      "level": "intermediate",
+      "summary_confidence": "high"
+    },
+    {
+      "id": "2022-learn-and-cancel-quantum-noise-pec-qiskit-seminar",
+      "key": "2022-probabilistic-error-cancelation-pec-minev-ibm-quantum-qiskit-seminar",
+      "title": "To Learn and Cancel Quantum Noise: PEC with Sparse Pauli-Lindblad Models",
       "file": "content - research talks/2022 Probabilistic Error Cancelation (PEC) (Minev, IBM Quantum Qiskit Seminar).pdf",
       "category": "research-talk",
       "shelf": "research",
@@ -1475,8 +1549,9 @@
       ]
     },
     {
-      "id": "2022-probabilistic-error-cancelation-pec-minev-kitp",
-      "title": "Probabilistic Error Cancellation (PEC)",
+      "id": "2022-learn-and-cancel-quantum-noise-pec-kitp",
+      "key": "2022-probabilistic-error-cancelation-pec-minev-kitp",
+      "title": "To Learn and Cancel Quantum Noise: PEC with Sparse Pauli-Lindblad Models",
       "file": "content - research talks/2022 Probabilistic Error Cancelation (PEC) (Minev, KITP).pdf",
       "category": "research-talk",
       "shelf": "research",
@@ -1496,7 +1571,7 @@
       "key_points": [
         "PEC toy model: unraveling bit-flip noise into quantum trajectories and the sampling overhead",
         "Why learning full-device noise is hard: exponential parameter counts, crosstalk, correlated errors",
-        "Pauli twirling, layer-wise noise amplification, and the no-go limit on learning entangling-gate noise",
+        "Pauli twirling, layer-wise noise amplification, and the degeneracy (no-go result) that keeps some Pauli fidelities of an entangling layer from being learned individually",
         "Sparse Pauli-Lindblad model, twirled readout-error mitigation, and a runtime scaling estimate"
       ],
       "level": "advanced",
@@ -1509,35 +1584,8 @@
       ]
     },
     {
-      "id": "2022-qiskit-metal-quantum-hardware-design-for-qedc-minev",
-      "title": "Qiskit Metal: Quantum Hardware Design",
-      "file": "content - research talks/2022 Qiskit Metal - Quantum Hardware Design - for QEDC (Minev).pdf",
-      "category": "research-talk",
-      "shelf": "research",
-      "subcategory": null,
-      "series": null,
-      "year": 2022,
-      "venue": "QED-C",
-      "speaker": "Minev, Thomas G. McConkey",
-      "tags": [
-        "hardware",
-        "qiskit-metal"
-      ],
-      "size_bytes": 2150662,
-      "pages": 30,
-      "description": "Qiskit Metal as an open-source quantum EDA tool: its architecture, analysis methods, renderers, and adoption.",
-      "summary": "Sets out what has to be designed on a superconducting chip and the iterative design flow from concept to fabrication. It then explains Qiskit Metal's architecture (QDesign, QComponents as 'super p-cells' with pins, QGeometry, renderers, analyses), the LOM, EPR and LOM 2.0 quantum analyses, and renderers for GDS and other tools, and shows uses in research, education and a commercial foundry.",
-      "key_points": [
-        "Design targets: frequencies, couplings, Purcell limit, spurious modes",
-        "Metal architecture: QDesign, QComponents, pins, QGeometry, renderers",
-        "Quantum analysis via LOM, EPR, and LOM 2.0",
-        "Renderers and integrations (GDS, Gmsh/Elmer, others) and community adoption"
-      ],
-      "level": "intermediate",
-      "summary_confidence": "high"
-    },
-    {
-      "id": "2021-qiskit-metal-overview-of-quantum-hardware-design-energy-circuits-metal-minev-ieee-quantum-week",
+      "id": "2021-qiskit-metal-overview-of-quantum-hardware-design",
+      "key": "2021-qiskit-metal-overview-of-quantum-hardware-design-energy-circuits-metal-minev-ieee-quantum-week",
       "title": "Qiskit Metal: Overview of Quantum Hardware Design (Energy, Circuits, Metal)",
       "file": "content - research talks/2021 Qiskit Metal - Overview of Quantum Hardware Design - Energy, Circuits, Metal (Minev, IEEE Quantum Week).pdf",
       "category": "research-talk",
@@ -1566,7 +1614,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "2021-quantum-hardware-design-energy-circuits-metal-qiskit-metal-epr-minev-qiskit-seminar",
+      "id": "2021-quantum-hardware-design-energy-circuits-metal-qiskit",
+      "key": "2021-quantum-hardware-design-energy-circuits-metal-qiskit-metal-epr-minev-qiskit-seminar",
       "title": "Quantum Hardware Design: Energy, Circuits, Metal (Qiskit Metal, EPR)",
       "file": "content - research talks/2021 Quantum Hardware Design - Energy, Circuits, Metal (Qiskit Metal, EPR) (Minev, Qiskit Seminar).pdf",
       "category": "research-talk",
@@ -1594,7 +1643,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "2021-to-catch-and-reverse-a-quantum-jump-mid-flight-minev",
+      "id": "2021-to-catch-and-reverse-a-quantum-jump-mid-flight",
+      "key": "2021-to-catch-and-reverse-a-quantum-jump-mid-flight-minev",
       "title": "To Catch and Reverse a Quantum Jump Mid-Flight",
       "file": "content - research talks/2021 To Catch and Reverse a Quantum Jump Mid-Flight (Minev).pdf",
       "category": "research-talk",
@@ -1610,7 +1660,7 @@
       "size_bytes": 6353176,
       "pages": 113,
       "description": "How a superconducting circuit experiment caught a quantum jump in progress, gave advance warning of it, and reversed it.",
-      "summary": "Recounts the history of quantum jumps from Bohr to single-ion experiments and the quantum-trajectory prediction that a jump, once begun, follows a coherent and predictable path. It then describes a circuit QED realization of a three-level V-system with near-unit-efficiency monitoring, the catch protocol, mid-flight tomography, and feedback that reverses the jump. Backup slides cover quantum trajectory theory, dispersive readout issues and the EPR design method.",
+      "summary": "Recounts the history of quantum jumps from Bohr to single-ion experiments and the quantum-trajectory prediction that a jump, once begun, follows a coherent and predictable path. It then describes a circuit QED realization of a three-level V-system whose bright level is monitored with about 90% efficiency, the catch protocol, mid-flight tomography, and feedback that reverses the jump. Backup slides cover quantum trajectory theory, dispersive readout issues and the EPR design method.",
       "key_points": [
         "Quantum jumps in atoms and ions, and the no-click trajectory that reveals jump coherence",
         "cQED V-system with bright and dark transmon transitions read out through a cavity",
@@ -1621,13 +1671,18 @@
       "summary_confidence": "high",
       "links": [
         {
+          "label": "Paper (arXiv)",
+          "url": "https://arxiv.org/abs/1803.00545"
+        },
+        {
           "label": "Thesis (arXiv)",
           "url": "https://arxiv.org/abs/1902.10355"
         }
       ]
     },
     {
-      "id": "2021-to-design-quantum-hardware-qiskit-metal-and-energy-participation-ratio-epr-for-superconducting-qubit-desi",
+      "id": "2021-to-design-quantum-hardware-qiskit-metal-and-energy",
+      "key": "2021-to-design-quantum-hardware-qiskit-metal-and-energy-participation-ratio-epr-for-superconducting-qubit-desi",
       "title": "To Design Quantum Hardware - Qiskit Metal and Energy Participation Ratio (EPR) for Superconducting Qubit Design",
       "file": "content - research talks/2021 To Design Quantum Hardware - Qiskit Metal and Energy Participation Ratio (EPR) for Superconducting Qubit Design (Minev).pdf",
       "category": "research-talk",
@@ -1656,7 +1711,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "2020-mit-tech-review-emerging-technology-emtech-minev-broad-talk",
+      "id": "2020-to-catch-and-reverse-a-quantum-jump-mid-flight",
+      "key": "2020-mit-tech-review-emerging-technology-emtech-minev-broad-talk",
       "title": "To Catch and Reverse a Quantum Jump Mid-Flight (broad talk)",
       "file": "content - research talks/2020 MIT Tech Review Emerging Technology EmTech (Minev, Broad Talk).pdf",
       "category": "research-talk",
@@ -1681,11 +1737,18 @@
         "Relevance to quantum error correction and sensing"
       ],
       "level": "beginner",
-      "summary_confidence": "medium"
+      "summary_confidence": "medium",
+      "links": [
+        {
+          "label": "Paper (arXiv)",
+          "url": "https://arxiv.org/abs/1803.00545"
+        }
+      ]
     },
     {
-      "id": "2020-pyepr-meeting-energy-participation-ratio-epr-for-superconducting-qubit-design-minev",
-      "title": "pyEPR Community Meeting: EPR Overview and Roadmap",
+      "id": "2020-pyepr-working-group-meeting-1",
+      "key": "2020-pyepr-meeting-energy-participation-ratio-epr-for-superconducting-qubit-design-minev",
+      "title": "pyEPR Working Group Meeting #1",
       "file": "content - research talks/2020 pyEPR Meeting - Energy Participation Ratio (EPR) for Superconducting Qubit Design (Minev).pdf",
       "category": "research-talk",
       "shelf": "research",
@@ -1713,7 +1776,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "2019-quantum-sensing-keynote-padua-italy-minev",
+      "id": "2019-advancing-quantum-sensing-via-quantum-control",
+      "key": "2019-quantum-sensing-keynote-padua-italy-minev",
       "title": "Advancing Quantum Sensing via Quantum Control (keynote)",
       "file": "content - research talks/2019 Quantum Sensing Keynote (Padua, Italy, Minev).pdf",
       "category": "research-talk",
@@ -1741,7 +1805,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "2019-energy-participation-ratio-epr-for-superconducting-qubit-design-minev",
+      "id": "2019-energy-participation-ratio-epr-for-superconducting",
+      "key": "2019-energy-participation-ratio-epr-for-superconducting-qubit-design-minev",
       "title": "Energy Participation Ratio (EPR) for Superconducting Qubit Design",
       "file": "content - research talks/2019 Energy Participation Ratio (EPR) for Superconducting Qubit Design (Minev).pdf",
       "category": "research-talk",
@@ -1770,13 +1835,18 @@
       "summary_confidence": "high",
       "links": [
         {
+          "label": "Paper (arXiv)",
+          "url": "https://arxiv.org/abs/2010.00620"
+        },
+        {
           "label": "Thesis (arXiv)",
           "url": "https://arxiv.org/abs/1902.10355"
         }
       ]
     },
     {
-      "id": "2015-2-5d-cqed-coherence-exploring-drawbridge-transmon-coherence-minev",
+      "id": "2015-2-5d-cqed-coherence-exploring-drawbridge-transmon",
+      "key": "2015-2-5d-cqed-coherence-exploring-drawbridge-transmon-coherence-minev",
       "title": "2.5D cQED Coherence: Exploring Drawbridge Transmon Coherence",
       "file": "content - research talks/2015 2.5D cQED coherence - Exploring Drawbridge Transmon Coherence (Minev).pdf",
       "category": "research-talk",
@@ -1793,7 +1863,7 @@
       "size_bytes": 2198503,
       "pages": 26,
       "description": "Coherence studies of a drawbridge transmon in a wafer-based 2.5D cQED architecture: dynamical decoupling and quasiparticle dynamics.",
-      "summary": "A group-meeting style research talk on a multilayer (2.5D) architecture that combines qubits and whispering-gallery-mode resonators using only wafers. It reports proof-of-concept device parameters, improves dephasing with dynamical decoupling and reconstructs a noise spectrum, and studies quasiparticle injection with tracked qubit jumps, proposing diffusion and vortex trapping to explain the relaxation rates.",
+      "summary": "A group-meeting style research talk on a multilayer (2.5D) architecture that combines qubits and whispering-gallery-mode resonators using only wafers. It reports proof-of-concept device parameters, improves dephasing with dynamical decoupling and reconstructs a noise spectrum, and studies quasiparticle injection with tracked qubit jumps, suggesting quasiparticle diffusion and trapping by vortices as a plausible explanation of the fast equilibration.",
       "key_points": [
         "Goals of the 2.5D multilayer architecture and the wafer-assembled whispering-gallery resonator",
         "System parameters and the photon-number-splitting regime; storage T1 from parity measurements",
@@ -1804,7 +1874,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "2014-2-5d-circuit-quantum-electrodynamics-cqed-whispering-gallery-modes",
+      "id": "2014-2-5d-circuit-quantum-electrodynamics-cqed-whispering",
+      "key": "2014-2-5d-circuit-quantum-electrodynamics-cqed-whispering-gallery-modes",
       "title": "2.5D Circuit Quantum Electrodynamics (cQED): Whispering Gallery Modes",
       "file": "content - research talks/2014 2.5D Circuit Quantum Electrodynamics (cQED) - Whispering Gallery Modes.pdf",
       "category": "research-talk",
@@ -1832,7 +1903,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "2013-superconducting-whispering-gallery-mode-resonators-minev-aps-mm",
+      "id": "2013-superconducting-whispering-gallery-mode-resonators",
+      "key": "2013-superconducting-whispering-gallery-mode-resonators-minev-aps-mm",
       "title": "Superconducting Whispering Gallery Mode Resonators",
       "file": "content - research talks/2013 Superconducting Whispering Gallery Mode Resonators (Minev, APS MM).pdf",
       "category": "research-talk",
@@ -1859,7 +1931,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "2012-superconducting-whispering-gallery-modes-minev",
+      "id": "2012-superconducting-whispering-gallery-modes",
+      "key": "2012-superconducting-whispering-gallery-modes-minev",
       "title": "Superconducting Whispering Gallery Modes",
       "file": "content - research talks/2012 Superconducting Whispering Gallery Modes (Minev).pdf",
       "category": "research-talk",
@@ -1886,7 +1959,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "2012-wafer-assembled-whispering-gallery-mode-resonator-minev",
+      "id": "2012-wafer-assembled-whispering-gallery-mode-resonator",
+      "key": "2012-wafer-assembled-whispering-gallery-mode-resonator-minev",
       "title": "Wafer Assembled Whispering Gallery Mode Resonator",
       "file": "content - research talks/2012 Wafer Assembled Whispering Gallery Mode Resonator (Minev).pdf",
       "category": "research-talk",
@@ -1913,7 +1987,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "2012-whispering-gallery-modes-minev",
+      "id": "2012-whispering-gallery-modes",
+      "key": "2012-whispering-gallery-modes-minev",
       "title": "Whispering Gallery Modes",
       "file": "content - research talks/2012 Whispering Gallery Modes (Minev).pdf",
       "category": "research-talk",
@@ -1940,7 +2015,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "2011-josephson-junction-arrays-parasitic-capacitances-minev",
+      "id": "2011-josephson-junction-arrays-parasitic-capacitances",
+      "key": "2011-josephson-junction-arrays-parasitic-capacitances-minev",
       "title": "Josephson Junction Arrays: Parasitic Capacitances",
       "file": "content - research talks/2011 Josephson Junction Arrays - Parasitic Capacitances (Minev).pdf",
       "category": "research-talk",
@@ -1956,7 +2032,7 @@
       "size_bytes": 1590555,
       "pages": 37,
       "description": "Simulation study of parasitic capacitance to ground in the Josephson junction arrays used as fluxonium superinductors.",
-      "summary": "Explains why capacitance to ground limits the number of junctions in a fluxonium array, then compares simulated junction capacitances with parallel-plate theory and measured data. It studies how Dolan-bridge geometry affects parasitic capacitance, introduces a bridge-free alternative, and sketches ongoing work on array Q and faster numerical diagonalization of fluxonium.",
+      "summary": "Explains why capacitance to ground limits the number of junctions in a fluxonium array, then compares simulated junction capacitances with parallel-plate theory and measured data. It studies how Dolan-bridge geometry affects parasitic capacitance, discusses a bridge-free fabrication alternative, and sketches ongoing work on array Q and faster numerical diagonalization of fluxonium.",
       "key_points": [
         "Role of series junction arrays in fluxonium and the limit set by capacitance to ground",
         "Simulated vs. empirical junction capacitance per area",
@@ -1967,7 +2043,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "2011-josephson-parametric-amplifier-optimizing-minev-aps-march-meeting-poster-2011",
+      "id": "2011-optimizing-josephson-parametric-amplifiers-for-fast",
+      "key": "2011-josephson-parametric-amplifier-optimizing-minev-aps-march-meeting-poster-2011",
       "title": "Optimizing Josephson Parametric Amplifiers for Fast, High-Fidelity Qubit Readout",
       "file": "content - research talks/2011 Josephson Parametric Amplifier - Optimizing (Minev, APS March Meeting Poster 2011).pdf",
       "category": "research-talk",
@@ -1988,13 +2065,15 @@
         "JPA as a pumped nonlinear resonator for high-fidelity qubit readout",
         "Runge-Kutta solver with thermal noise; C++ core run in parallel from LabVIEW",
         "Gain curves, 1 dB compression, and band tuning with critical current",
-        "SNR degradation and the quantum limit at finite temperature"
+        "SNR degradation by the ideal factor of 2, and reaching the quantum limit when k_B T << ħω"
       ],
       "level": "intermediate",
-      "summary_confidence": "high"
+      "summary_confidence": "high",
+      "authors": "Minev, Rajamani Vijay, Irfan Siddiqi"
     },
     {
-      "id": "t26-many-body-physics-exploring-spin-models-for-quantum-computing-scientists-minev",
+      "id": "t26-introduction-to-many-body-physics-exploring-spin-models",
+      "key": "t26-many-body-physics-exploring-spin-models-for-quantum-computing-scientists-minev",
       "title": "Introduction to Many-Body Physics: Exploring Spin Models for Quantum Computing Scientists",
       "file": "content - tech notes/T26 Many-Body Physics - Exploring Spin Models for Quantum Computing Scientists (Minev).pdf",
       "category": "tech-note",
@@ -2022,7 +2101,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "t27-simple-noise-models-and-gate-fidelity-minev",
+      "id": "t27-simple-noise-models-and-gate-fidelity",
+      "key": "t27-simple-noise-models-and-gate-fidelity-minev",
       "title": "Simple Noise Models and Gate Fidelity",
       "file": "content - tech notes/T27 Simple noise models and gate fidelity (Minev).pdf",
       "category": "tech-note",
@@ -2050,7 +2130,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "t22-bound-sum-of-operators-ala-watrous-minev",
+      "id": "t22-bounding-a-sum-of-operators-a-la-watrous",
+      "key": "t22-bound-sum-of-operators-ala-watrous-minev",
       "title": "Bounding a Sum of Operators (à la Watrous)",
       "file": "content - tech notes/T22 Bound sum of operators ala Watrous (Minev).pdf",
       "category": "tech-note",
@@ -2079,7 +2160,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "t21-estimating-observables-from-sampled-bit-strings-minev",
+      "id": "t21-estimating-observables-from-sampled-bit-strings",
+      "key": "t21-estimating-observables-from-sampled-bit-strings-minev",
       "title": "Estimating Observables from Sampled Bit Strings",
       "file": "content - tech notes/T21 Estimating observables from sampled bit strings (Minev).pdf",
       "category": "tech-note",
@@ -2108,7 +2190,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "t25-random-sampling-and-twirling-of-states-vs-true-mixed-states-minev",
+      "id": "t25-are-mixed-states-and-random-sampling-of-states",
+      "key": "t25-random-sampling-and-twirling-of-states-vs-true-mixed-states-minev",
       "title": "Are Mixed States and Random Sampling of States Equivalent?",
       "file": "content - tech notes/T25 Random sampling and twirling of states vs true mixed states (Minev).pdf",
       "category": "tech-note",
@@ -2137,7 +2220,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "t11-9-concentration-inequalities-and-tail-bounds-minev",
+      "id": "t11-9-concentration-inequalities-and-tail-bounds",
+      "key": "t11-9-concentration-inequalities-and-tail-bounds-minev",
       "title": "Concentration Inequalities and Tail Bounds",
       "file": "content - tech notes/T11.9 Concentration inequalities and tail bounds (Minev).pdf",
       "category": "tech-note",
@@ -2167,7 +2251,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "t11-7-pictorial-digital-quantum-circuits-minev",
+      "id": "t11-7-pictorial-digital-quantum-circuits",
+      "key": "t11-7-pictorial-digital-quantum-circuits-minev",
       "title": "Pictorial Digital Quantum Circuits",
       "file": "content - tech notes/T11.7 Pictorial - Digital quantum circuits (Minev).pdf",
       "category": "tech-note",
@@ -2197,7 +2282,8 @@
       "summary_confidence": "high"
     },
     {
-      "id": "t23-pec-probaiblity-error-cancelation-notation-and-notes-minev",
+      "id": "t23-probabilistic-error-cancellation-paper-notes",
+      "key": "t23-pec-probaiblity-error-cancelation-notation-and-notes-minev",
       "title": "Probabilistic Error Cancellation: Paper Notes",
       "file": "content - tech notes/T23 PEC (Probaiblity error cancelation) notation and notes (Minev).pdf",
       "category": "tech-note",

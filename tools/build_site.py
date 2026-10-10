@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import argparse
 import functools
+import html
 import http.server
 import json
 import re
@@ -60,6 +61,21 @@ def tidy(text: str | None) -> str | None:
     return text[:1].upper() + text[1:]
 
 
+def jpeg_size(path: Path) -> list[int] | None:
+    """(width, height) from a JPEG's SOF marker, so pages can reserve image space."""
+    data = path.read_bytes()
+    i = 2
+    while i < len(data) - 9:
+        if data[i] != 0xFF:
+            i += 1
+            continue
+        marker, seglen = data[i + 1], int.from_bytes(data[i + 2:i + 4], "big")
+        if marker in (0xC0, 0xC1, 0xC2):
+            return [int.from_bytes(data[i + 7:i + 9], "big"), int.from_bytes(data[i + 5:i + 7], "big")]
+        i += 2 + seglen
+    return None
+
+
 def build_library(pdf_base: str) -> dict:
     catalog = json.loads((REPO_ROOT / "catalog.json").read_text())["items"]
     ai_path = REPO_ROOT / "catalog_ai.json"
@@ -67,7 +83,7 @@ def build_library(pdf_base: str) -> dict:
 
     items = []
     for it in catalog:
-        a = ai.get(it["id"], {})
+        a = ai.get(it.get("key", it["id"]), {})
         thumb = SRC / "thumbs" / f"{it['id']}.jpg"
         # Curated text (catalog_overrides.json → catalog.json) wins over the
         # older local-model enrichment in catalog_ai.json.
@@ -81,6 +97,7 @@ def build_library(pdf_base: str) -> dict:
             "year": it.get("year"),
             "venue": it.get("venue"),
             "speaker": it.get("speaker"),
+            "authors": it.get("authors"),
             "note_id": it.get("note_id"),
             "tags": [t for t in it.get("tags", []) if t != "featured"],
             "featured": "featured" in it.get("tags", []) or bool(it.get("featured")),
@@ -89,6 +106,7 @@ def build_library(pdf_base: str) -> dict:
             "file": it["file"],
             "links": it.get("links") or [],   # [{label, url}]: paper, video, ...
             "thumb": f"thumbs/{it['id']}.jpg" if thumb.exists() else None,
+            "thumb_wh": jpeg_size(thumb) if thumb.exists() else None,
             "description": it.get("description") or tidy(a.get("short_description")),
             "summary": it.get("summary") or tidy(a.get("summary")),
             "key_points": it.get("key_points") or a.get("key_points") or [],
@@ -97,6 +115,29 @@ def build_library(pdf_base: str) -> dict:
             "draft": not it.get("summary_reviewed", False) and (curated or bool(a)),
         })
     return {"pdf_base": pdf_base, "repo_url": REPO_URL, "items": items}
+
+
+def fill_index(path: Path, lib: dict, site_url: str) -> None:
+    """Fill the build-time placeholders in index.html: canonical URL, year span,
+    stats, shelf counts, and a static list of every deck (a crawl path and the
+    no-JS view; app.js replaces it with the interactive grid)."""
+    items = lib["items"]
+    years = [i["year"] for i in items if i.get("year")]
+    slides = sum(i.get("pages") or 0 for i in items)
+    stats = (f"<b>{len(items)}</b> decks · <b>{slides:,}</b> slides · about "
+             f"<b>{round(slides / 60)}</b> hours of talking, at a minute a slide (optimistic)")
+    rows = "\n".join(
+        f'      <li><a href="items/{html.escape(i["id"])}/">{html.escape(i["title"])}</a>'
+        f'{" (" + str(i["year"]) + ")" if i.get("year") else ""}</li>'
+        for i in sorted(items, key=lambda i: (-(i.get("year") or 0), i["title"])))
+    page = path.read_text()
+    subs = {"%SITE_URL%": site_url, "%YEARS%": f"{min(years)} → {max(years)}",
+            "%FUN_STATS%": stats, "%STATIC_LIST%": f'    <ul class="static-list">\n{rows}\n    </ul>'}
+    for shelf in ("lectures", "research", "notes"):
+        subs[f"%COUNT_{shelf}%"] = str(sum(1 for i in items if i.get("shelf") == shelf))
+    for k, v in subs.items():
+        page = page.replace(k, v)
+    path.write_text(page)
 
 
 def main() -> int:
@@ -133,6 +174,7 @@ def main() -> int:
         page = OUT / "series" / srs["slug"] / "index.html"
         page.parent.mkdir(parents=True, exist_ok=True)
         page.write_text(series_page(srs, site_url))
+    fill_index(OUT / "index.html", lib, site_url)
     (OUT / "citations.bib").write_text("\n\n".join(bib_all) + "\n")
     (OUT / "sitemap.xml").write_text(sitemap(lib["items"], series, site_url))
     (OUT / "robots.txt").write_text(robots(site_url))

@@ -11,6 +11,7 @@ site_pages.py — Citation support for the website, used by build_site.py.
 from __future__ import annotations
 
 import html
+import json
 import re
 from urllib.parse import quote
 
@@ -22,8 +23,10 @@ STOP = {"a", "an", "the", "to", "of", "and", "for", "in", "on", "intro"}
 
 
 def authors(item: dict) -> list[str]:
-    """Speaker field ("Minev", "Haoran Liao", "Minev, Thomas G. McConkey") → full names."""
-    names = [s.strip() for s in (item.get("speaker") or "Minev").split(",") if s.strip()]
+    """Author list: the ``authors`` override (e.g. a co-authored poster), else the
+    speaker field ("Minev", "Haoran Liao", "Thomas G. McConkey, Minev")."""
+    raw = item.get("authors") or item.get("speaker") or "Minev"
+    names = [s.strip() for s in raw.split(",") if s.strip()]
     return [AUTHOR if n == "Minev" else n for n in names] or [AUTHOR]
 
 
@@ -32,12 +35,15 @@ def pdf_href(item: dict, pdf_base: str) -> str:
 
 
 def kind(item: dict) -> str:
+    """Display label; matches kindLabel() in site/app.js."""
     if item["category"] == "tech-note":
-        return "Technical note"
+        return "Tech note"
     if item["category"] == "research-talk":
-        return "Talk"
+        return "Research talk"
     if "tutorial" in item.get("tags", []):
         return "Tutorial"
+    if "career" in item.get("tags", []):
+        return "Career talk"
     return "Lecture"
 
 
@@ -53,12 +59,16 @@ def _bib_escape(s: str) -> str:
     return re.sub(r"([&%$#_])", r"\\\1", s)
 
 
-def _entry(key: str, fields: list[tuple[str, str | None]]) -> str:
+def _entry(key: str, fields: list[tuple[str, str | None]], kind: str = "misc") -> str:
     body = ",\n".join(f"  {k} = {{{v if k == 'url' else _bib_escape(v)}}}" for k, v in fields if v)
-    return f"@misc{{{key},\n{body}\n}}"
+    return f"@{kind}{{{key},\n{body}\n}}"
 
 
 # ---------- series ----------
+
+# Groupings that are not one lecture series; their decks are cited individually.
+NOT_CITED_AS_SERIES = {"Career & Outreach"}
+
 
 def series_groups(items: list[dict]) -> dict[str, list[dict]]:
     """Series name → its items, for series with at least two items."""
@@ -66,7 +76,7 @@ def series_groups(items: list[dict]) -> dict[str, list[dict]]:
     for it in items:
         if it.get("series"):
             groups.setdefault(it["series"], []).append(it)
-    return {s: its for s, its in groups.items() if len(its) > 1}
+    return {s: its for s, its in groups.items() if len(its) > 1 and s not in NOT_CITED_AS_SERIES}
 
 
 def _common(its: list[dict], field: str) -> str | None:
@@ -113,7 +123,19 @@ def item_key_base(item: dict) -> str:
 
 
 def item_bibtex(item: dict, site_url: str, key: str) -> str:
-    how = f"Technical note {item['note_id']}" if item.get("note_id") else kind(item)
+    url = f"{site_url}items/{item['id']}/"
+    if item["category"] == "tech-note":
+        # Renders as "Technical Note T21 (The Quantum Notebook, 2022)" in APS/IEEE styles.
+        return _entry(key, [
+            ("author", " and ".join(authors(item))),
+            ("title", "{" + item["title"] + "}"),
+            ("type", "Technical Note"),
+            ("number", item.get("note_id")),
+            ("institution", SITE_NAME),
+            ("year", str(item["year"]) if item.get("year") else None),
+            ("url", url),
+        ], "techreport")
+    how = {"Research talk": "Talk", "Career talk": "Talk"}.get(kind(item), kind(item))
     if item.get("venue"):
         how += f", {item['venue']}"
     return _entry(key, [
@@ -121,8 +143,8 @@ def item_bibtex(item: dict, site_url: str, key: str) -> str:
         ("title", "{" + item["title"] + "}"),
         ("howpublished", how),
         ("year", str(item["year"]) if item.get("year") else None),
-        ("url", f"{site_url}items/{item['id']}/"),
-        ("note", "Slides" if item["category"] != "tech-note" else None),
+        ("url", url),
+        ("note", "Slides"),
     ])
 
 
@@ -169,13 +191,19 @@ def _e(s) -> str:
     return html.escape(str(s or ""), quote=True)
 
 
+LICENSE_URL = "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+# Keep in sync with the "Cite & reuse" section of site/index.html and README.md.
 PERMISSIONS_HTML = (
-    "<p>These slides and notes are © Zlatko K. Minev and shared under "
-    "<a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/\">CC BY-NC-ND 4.0</a>: "
-    "read them, download them, share them with credit. Want to reuse a slide or figure "
-    "in your own talk, course or paper? Just ask. The answer is usually yes. "
-    "Some slides include figures by other people, credited where they appear; those "
-    "stay with their owners, so please ask the original source.</p>")
+    "<p>Unless a deck says otherwise, the slides and notes here are © Zlatko K. Minev and "
+    f"shared under <a href=\"{LICENSE_URL}\">CC BY-NC-ND 4.0</a>: you're welcome to read, "
+    "download and share them, unchanged and non-commercially, with credit and a link back. "
+    "Want a slide or figure for your own talk, course or paper? Please ask; the answer is "
+    "usually yes.</p><p>Some slides include figures, photos, logos or excerpts from other "
+    "people and institutions, credited where they appear. Those aren't mine to license, so "
+    "please ask the original source. Spotted a missing credit? "
+    "<a href=\"https://zlatko-minev.com\">Tell me</a> and I'll fix it.</p>")
+DRAFT_NOTE = ("Summary and key points drafted by a language model from the slides, not yet "
+              "reviewed by me. The slides are the source.")
 
 _FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
@@ -185,9 +213,15 @@ _COPY_JS = """<script>
 document.getElementById("copy-bib").onclick = async (e) => {
   const t = document.getElementById("bib").textContent;
   try { await navigator.clipboard.writeText(t); e.target.textContent = "Copied"; }
-  catch { const r = document.createRange(); r.selectNodeContents(document.getElementById("bib")); getSelection().removeAllRanges(); getSelection().addRange(r); }
+  catch { const r = document.createRange(); r.selectNodeContents(document.getElementById("bib")); getSelection().removeAllRanges(); getSelection().addRange(r); e.target.textContent = "Selected, press Ctrl/⌘-C"; }
+  setTimeout(() => { e.target.textContent = "Copy BibTeX"; }, 2500);
 };
 </script>"""
+
+
+def _wh(item: dict) -> str:
+    wh = item.get("thumb_wh")
+    return f' width="{wh[0]}" height="{wh[1]}"' if wh else ""
 
 
 def _links_html(item: dict) -> str:
@@ -195,8 +229,12 @@ def _links_html(item: dict) -> str:
                    for l in item.get("links") or [])
 
 
-def _page(title: str, desc: str, url: str, thumb: str, meta: list, back: str, body: str) -> str:
+def _page(title: str, desc: str, url: str, thumb: str, meta: list, back: str, body: str,
+          jsonld: dict | None = None) -> str:
     meta_html = "\n".join(f'<meta name="{k}" content="{_e(v)}">' for k, v in meta if v)
+    if jsonld:
+        meta_html += ('\n<script type="application/ld+json">'
+                      + json.dumps(jsonld, ensure_ascii=False).replace("</", "<\\/") + "</script>")
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -209,6 +247,8 @@ def _page(title: str, desc: str, url: str, thumb: str, meta: list, back: str, bo
 <meta property="og:description" content="{_e(desc)}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{_e(url)}">
+<meta property="og:site_name" content="{SITE_NAME}">
+<meta name="twitter:card" content="{'summary_large_image' if thumb else 'summary'}">
 {f'<meta property="og:image" content="{_e(thumb)}">' if thumb else ''}
 {meta_html}
 {_FONTS}
@@ -243,25 +283,36 @@ def item_page(item: dict, site_url: str, pdf_base_abs: str) -> str:
         ("citation_title", item["title"]),
         *[("citation_author", a) for a in authors(item)],
         ("citation_publication_date", item.get("year")),
-        ("citation_pdf_url", pdf),
+        # Scholar only accepts a PDF on the same site as the page.
+        ("citation_pdf_url", pdf if pdf.startswith(site_url) else None),
         ("citation_abstract_html_url", url),
         ("citation_technical_report_number", item.get("note_id")),
-        ("citation_conference_title", item.get("venue") if item["category"] != "tech-note" else None),
+        ("citation_technical_report_institution", SITE_NAME if item.get("note_id") else None),
         ("citation_language", "en"),
     ]
+    jsonld = {
+        "@context": "https://schema.org",
+        "@type": "Report" if item["category"] == "tech-note" else "PresentationDigitalDocument",
+        "name": item["title"], "url": url, "description": desc,
+        "author": [{"@type": "Person", "name": a} for a in authors(item)],
+        "datePublished": str(item["year"]) if item.get("year") else None,
+        "inLanguage": "en", "license": LICENSE_URL,
+        "encoding": {"@type": "MediaObject", "contentUrl": pdf, "encodingFormat": "application/pdf"},
+        "isPartOf": {"@type": "WebSite", "name": SITE_NAME, "url": site_url},
+    }
+    jsonld = {k: v for k, v in jsonld.items() if v}
     facts = " · ".join(_e(x) for x in [item.get("note_id") or kind(item), item.get("year") or "undated",
                                         item.get("venue"), item.get("pages") and f"{item['pages']} pages"] if x)
     points = "".join(f"<li>{_e(p)}</li>" for p in item.get("key_points") or [])
-    draft = (' <span class="draft" title="Machine-written from the slides; not yet reviewed by the author">draft</span>'
-             if item.get("draft") else "")
+    draft = f'<p class="draft-note">{DRAFT_NOTE}</p>' if item.get("draft") else ""
     series_note = ""
     if item.get("series_page"):
-        series_note = (f'<p class="ip-note">Part of <a href="../../{_e(item["series_page"])}">{_e(item["series"])}</a>; '
-                       "cite the series as a whole.</p>")
+        series_note = (f'<p class="ip-note">Part of the series <a href="../../{_e(item["series_page"])}">'
+                       f'{_e(item["series"])}</a>, cited as one entry below.</p>')
     elif item.get("series"):
         series_note = f'<p class="ip-note">Series: {_e(item["series"])}</p>'
     thumb_html = (f'<a class="ip-thumb" href="{_e(pdf)}"><img src="../../{_e(item["thumb"])}" '
-                  f'alt="First page of {_e(item["title"])}"></a>' if item.get("thumb") else "")
+                  f'alt="First page of {_e(item["title"])}"{_wh(item)}></a>' if item.get("thumb") else "")
     body = f"""  <p class="eyebrow">{_e(SHELF_NAME.get(item.get('shelf'), ''))}</p>
   <h1 class="ip-title">{_e(item['title'])}</h1>
   <p class="ip-authors">{_e(', '.join(authors(item)))}</p>
@@ -270,14 +321,15 @@ def item_page(item: dict, site_url: str, pdf_base_abs: str) -> str:
     <div class="ip-body">
       <div class="d-actions"><a class="btn primary" href="{_e(pdf)}">Open PDF</a>{_links_html(item)}</div>
       {series_note}
-      <p class="d-summary">{_e(item.get('summary') or desc)}{draft}</p>
+      <p class="d-summary">{_e(item.get('summary') or desc)}</p>
       {f'<ul class="d-points">{points}</ul>' if points else ''}
+      {draft}
       {_cite_block(item['bibtex'])}
     </div>
     {thumb_html}
   </div>"""
     return _page(f"{item['title']} · {', '.join(authors(item))}", desc, url, thumb, meta,
-                 f"../../#{item['id']}", body)
+                 f"../../#{item['id']}", body, jsonld)
 
 
 def series_page(s: dict, site_url: str) -> str:
@@ -287,21 +339,21 @@ def series_page(s: dict, site_url: str) -> str:
     span = (f"{s['years'][0]}–{s['years'][-1]}" if len(s["years"]) > 1
             else (str(s["years"][0]) if s["years"] else "undated"))
     desc = f"{s['name']}: {len(its)} decks ({span}) by {', '.join(s['authors'])}."
-    meta = [("citation_title", s["name"]), *[("citation_author", a) for a in s["authors"]],
-            ("citation_publication_date", s["years"][-1] if s["years"] else None),
-            ("citation_abstract_html_url", s["url"]), ("citation_language", "en")]
+    meta = []   # no citation_* tags: a series page has no PDF of its own
     rows = ""
     for i in its:
         facts = " · ".join(str(x) for x in [i.get("year") or "undated", i.get("venue"),
                                             i.get("pages") and f"{i['pages']} pp"] if x)
-        rows += (f'<li><a href="../../items/{_e(i["id"])}/">{_e(i["title"])}</a>'
+        thumb_i = (f'<a class="ip-row-thumb" href="../../items/{_e(i["id"])}/" tabindex="-1" aria-hidden="true">'
+                   f'<img src="../../{_e(i["thumb"])}" alt="" loading="lazy"{_wh(i)}></a>') if i.get("thumb") else ""
+        rows += (f'<li>{thumb_i}<a href="../../items/{_e(i["id"])}/">{_e(i["title"])}</a>'
                  f'<span class="ip-row-meta">{_e(facts)}</span>'
                  + (f'<span>{_e(i["description"])}</span>' if i.get("description") else "") + "</li>")
     thumb = next((f"{site_url}{i['thumb']}" for i in its if i.get("thumb")), "")
     body = f"""  <p class="eyebrow">Series · {len(its)} decks · {_e(span)}</p>
   <h1 class="ip-title">{_e(s['name'])}</h1>
   <p class="ip-authors">{_e(', '.join(s['authors']))}</p>
-  <div class="ip-grid">
+  <div class="ip-grid ip-grid-single">
     <div class="ip-body">
       <ol class="ip-list">{rows}</ol>
       {_cite_block(s['bibtex'])}

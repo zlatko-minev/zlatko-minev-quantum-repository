@@ -1,4 +1,6 @@
-# Zlatko Minev Quantum Repository
+# The Quantum Notebook
+
+*Zlatko Minev's talks, lectures and notes: the source for the website of the same name.*
 
 
 > "Creating knowledge is only half the story — sharing it is the other half." 
@@ -6,7 +8,7 @@
 ![Quantum Banner](assets/images/landing_page.png)
 
 
-A curated archive of public research talks, educational lectures, tutorials, and technical notes by Dr. Zlatko K. Minev, Ph.D., spanning 2011 to the present. This repository aims to serve researchers, students, and enthusiasts in quantum computing, quantum physics, hardware design, and related fields.
+A curated archive of public research talks, educational lectures, tutorials, and technical notes by Zlatko K. Minev, spanning 2011 to the present. This repository aims to serve researchers, students, and enthusiasts in quantum computing, quantum physics, hardware design, and related fields.
 
 For more, visit [zlatko-minev.com](https://zlatko-minev.com).
 
@@ -71,20 +73,21 @@ item appears on the site.
 
 ## 🤝 Contributing
 
-Spotted a typo or want to help improve organization? Feel free to:
-
-* Open an issue
-* Submit a pull request with edits or suggestions
+Spotted a typo, a wrong date or a missing credit? Please open an issue. The
+repository is republished as a single commit, so pull requests can't be merged
+directly.
 
 ---
 
 ## 📝 License
 
-The slides and notes are © Zlatko K. Minev and shared under
-[CC BY-NC-ND 4.0](LICENSE.md): read, download and share them with credit. To reuse
-a slide or figure in your own talk, course or publication, please ask; the
-answer is usually yes. Some slides include third-party figures, credited where
-they appear; those remain with their owners.
+Unless a deck says otherwise, the slides and notes are © Zlatko K. Minev and
+shared under [CC BY-NC-ND 4.0](LICENSE.md): you're welcome to read, download and
+share them, unchanged and non-commercially, with credit and a link back. To reuse
+a slide or figure in your own talk, course or paper, please ask; the answer is
+usually yes. Some slides include figures, photos, logos or excerpts from other
+people and institutions, credited where they appear; those stay with their
+owners and aren't covered by the CC license.
 
 To cite a talk, lecture or note, use the BibTeX on its page on the website, or
 `citations.bib` there for everything at once.

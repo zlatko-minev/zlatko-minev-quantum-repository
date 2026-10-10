@@ -5,7 +5,6 @@ name: site
 
 on:
   push:
-    branches: [main]
   pull_request:
   workflow_dispatch:
 
@@ -34,7 +33,7 @@ jobs:
             echo "::error::catalog.json is stale — run python3 tools/build_catalog.py and commit"; exit 1; }
       - name: Every item has a thumbnail
         run: |
-          python3 tools/make_thumbnails.py
+          python3 tools/make_thumbnails.py --prune
           test -z "$(git status --porcelain site/thumbs)" || {
             git status --porcelain site/thumbs
             echo "::error::missing thumbnails — run python3 tools/make_thumbnails.py and commit"; exit 1; }
@@ -57,6 +56,9 @@ jobs:
     permissions:
       pages: write
       id-token: write
+    concurrency:            # never cancel a deploy half-way
+      group: pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

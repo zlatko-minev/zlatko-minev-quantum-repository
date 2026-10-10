@@ -5,7 +5,9 @@ type: dataset
 authors:
   - family-names: Minev
     given-names: Zlatko K.
+url: "https://zlatko-minev.github.io/zlatko-minev-quantum-repository/"
 repository-code: "https://github.com/zlatko-minev/zlatko-minev-quantum-repository"
+abstract: "Slides and technical notes by Zlatko K. Minev, 2011 to present: research talks, summer-school lectures, tutorials and derivations on superconducting qubits, quantum noise, error mitigation and many-body physics."
 license: CC-BY-NC-ND-4.0
 keywords:
   - superconducting qubits
