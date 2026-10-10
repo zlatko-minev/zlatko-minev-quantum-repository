@@ -27,7 +27,7 @@ jobs:
         run: python3 tools/check_sizes.py --top 10
       - name: Catalog is up to date
         run: |
-          sudo apt-get install -y -qq poppler-utils >/dev/null
+          sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils >/dev/null
           python3 tools/build_catalog.py
           git diff --exit-code catalog.json || {
             echo "::error::catalog.json is stale — run python3 tools/build_catalog.py and commit"; exit 1; }
