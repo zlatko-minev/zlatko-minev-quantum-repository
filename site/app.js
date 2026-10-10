@@ -4,19 +4,16 @@
 // hash (#<id>), so every view is a shareable link.
 "use strict";
 
-// The four collections, in display order. Keys match "shelf" in catalog.json.
+// The three collections, in display order. Keys match "shelf" in catalog.json.
 const SHELVES = [
-  { key: "lectures", kicker: "Learn", name: "Lectures & Summer Schools",
-    blurb: "Courses from the Qiskit Global Summer School, Boulder and device workshops. Start here if you're new." },
-  { key: "research", kicker: "Discover", name: "Research Talks",
-    blurb: "Seminars, keynotes and conference talks, from whispering-gallery modes to Fibonacci anyons." },
-  { key: "notes", kicker: "Derive", name: "Tutorials & Tech Notes",
-    blurb: "Step-by-step tutorials, derivations and cheat sheets. Pencil recommended." },
-  { key: "outreach", kicker: "Explore", name: "Career & Outreach",
-    blurb: "Career advice and big-picture talks for students and the quantum-curious." },
+  { key: "lectures", kicker: "|learn⟩", name: "Lectures & Tutorials",
+    blurb: "Summer schools, courses, tutorials and career talks. Start here if you're new; curiosity is the only prerequisite." },
+  { key: "research", kicker: "|discover⟩", name: "Research Talks",
+    blurb: "Seminars, keynotes and conference talks, from whispering-gallery modes in 2011 to Fibonacci anyons." },
+  { key: "notes", kicker: "|derive⟩", name: "Tech Notes",
+    blurb: "Derivations and cheat sheets, numbered like a lab notebook. Pencil recommended." },
 ];
 const SHELF = Object.fromEntries(SHELVES.map((s) => [s.key, s]));
-const KIND = { lectures: "Lecture", research: "Research talk", notes: "Tutorial", outreach: "Outreach" };
 
 // Subject tags shown as topic filters, in display order; format tags separately.
 const TOPICS = {
@@ -37,9 +34,9 @@ const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 let LIB = null;
-// group: null = automatic (on for lectures and notes, where series matter)
+// group: null = automatic (on for lectures, where series matter)
 const state = { q: "", shelf: "", tags: new Set(), years: new Set(), levels: new Set(), sort: "new", group: null };
-const grouped = () => (state.group ?? (state.shelf === "lectures" || state.shelf === "notes"));
+const grouped = () => (state.group ?? state.shelf === "lectures");
 
 // ---------- URL state ----------
 function readURL() {
@@ -106,7 +103,10 @@ const pdfURL = (it) => LIB.pdf_base + pathURL(it.file);
 function kindLabel(it) {
   if (it.note_id) return it.note_id;
   if (it.category === "tech-note") return "Tech note";
-  return KIND[it.shelf] || "Deck";
+  if (it.category === "research-talk") return "Research talk";
+  if (it.tags.includes("tutorial")) return "Tutorial";
+  if (it.tags.includes("career")) return "Career talk";
+  return "Lecture";
 }
 
 function card(it) {
@@ -235,13 +235,22 @@ function openItem(id, push = true) {
   $("#d-actions").innerHTML = `<a class="btn primary" href="${esc(url)}" target="_blank" rel="noopener">Open PDF</a>` +
     (LIB.pdf_base === "" ? `<a class="btn" href="${esc(url)}" download>Download</a>` : "") +
     (url !== gh ? `<a class="btn" href="${esc(gh)}" target="_blank" rel="noopener">View on GitHub</a>` : "") +
+    `<button class="btn" type="button" id="cite" aria-expanded="false">Cite</button>` +
     `<button class="btn" type="button" id="copy">Copy link</button>`;
+  $("#d-cite").hidden = true;
+  $("#d-bib").textContent = it.bibtex || "";
+  $("#d-citepage").href = it.page || "#";
   const text = it.summary || it.description;
   $("#d-summary").innerHTML = text ? esc(text) + (it.draft ? `<span class="draft" title="Machine-written from the slides; not yet reviewed by the author">draft</span>` : "") : "";
   $("#d-points").innerHTML = (it.key_points || []).map((p) => `<li>${esc(p)}</li>`).join("");
   $("#d-tags").innerHTML = it.tags.filter((t) => TOPICS[t] || FORMATS[t]).map((t) => `<span class="chip">${esc(TOPICS[t] || FORMATS[t])}</span>`).join("");
   const rel = related(it);
   $("#d-related").innerHTML = rel.length ? `<h3>Related</h3><ul>${rel.map((o) => `<li><button type="button" data-id="${esc(o.id)}">${esc(o.title)}${o.year ? ` (${o.year})` : ""}</button></li>`).join("")}</ul>` : "";
+  $("#cite").onclick = (e) => {
+    const box = $("#d-cite");
+    box.hidden = !box.hidden;
+    e.target.setAttribute("aria-expanded", String(!box.hidden));
+  };
   $("#copy").onclick = async (e) => {
     const link = location.href.split("#")[0] + "#" + it.id;
     try { await navigator.clipboard.writeText(link); e.target.textContent = "Link copied"; }
@@ -251,6 +260,16 @@ function openItem(id, push = true) {
   if (!dlg.open) dlg.showModal();
   dlg.querySelector(".detail").scrollTop = 0;
   if (push) try { history.replaceState(null, "", location.pathname + location.search + "#" + it.id); } catch { /* sandboxed */ }
+}
+
+async function copyBib(e) {
+  try { await navigator.clipboard.writeText($("#d-bib").textContent); e.target.textContent = "Copied"; }
+  catch {
+    const r = document.createRange(); r.selectNodeContents($("#d-bib"));
+    getSelection().removeAllRanges(); getSelection().addRange(r);
+    e.target.textContent = "Selected, press Ctrl/⌘-C";
+  }
+  setTimeout(() => { e.target.textContent = "Copy BibTeX"; }, 2000);
 }
 
 // ---------- the hero trace: a telegraph signal of quantum jumps ----------
@@ -312,6 +331,7 @@ function wire() {
   $("#d-related").addEventListener("click", (e) => { const b = e.target.closest("button[data-id]"); if (b) openItem(b.dataset.id); });
   const dlg = $("#detail");
   $("#close").addEventListener("click", () => dlg.close());
+  $("#copy-bib").addEventListener("click", copyBib);
   dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
   dlg.addEventListener("close", () => { try { history.replaceState(null, "", location.pathname + location.search); } catch { /* sandboxed */ } });
   document.addEventListener("keydown", (e) => {
@@ -332,6 +352,9 @@ async function boot() {
   for (const it of LIB.items) it._h = haystack(it);
   const ys = LIB.items.map((i) => i.year).filter(Boolean);
   $("#span-years").textContent = `${Math.min(...ys)} → ${Math.max(...ys)}`;
+  const slides = LIB.items.reduce((n, i) => n + (i.pages || 0), 0);
+  $("#fun-stats").innerHTML = `<b>${LIB.items.length}</b> decks · <b>${slides.toLocaleString("en-US")}</b> slides · ` +
+    `about <b>${Math.round(slides / 60)}</b> hours of talking, at a minute a slide (optimistic)`;
   readURL();
   $("#q").value = state.q;
   $("#sort").value = state.sort;

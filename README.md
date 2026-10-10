@@ -80,5 +80,12 @@ Spotted a typo or want to help improve organization? Feel free to:
 
 ## 📝 License
 
-This repository is licensed under the [MIT License](LICENSE.md).
+The slides and notes are © Zlatko K. Minev and shared under
+[CC BY-NC-ND 4.0](LICENSE.md): read, download and share them with credit. To reuse
+a slide or figure in your own talk, course or publication, please ask; the
+answer is usually yes. Some slides include third-party figures, credited where
+they appear; those remain with their owners.
+
+To cite a talk, lecture or note, use the BibTeX on its page on the website, or
+`citations.bib` there for everything at once.
 

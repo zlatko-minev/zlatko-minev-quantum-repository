@@ -14,3 +14,16 @@ This work is licensed under a [Creative Commons Attribution-NonCommercial-NoDeri
 - The graphics, images, and visual elements in this repository may not be used in publications without explicit permission from the author.
 
 A full copy of this license is available at: http://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+
+## Permissions
+
+Requests to reuse material beyond these terms (for example a slide or figure in
+your own talk, course or publication) are welcome; please get in touch through
+https://zlatko-minev.com.
+
+## Third-party material
+
+Some slides include figures, images or excerpts by other authors and
+publishers, credited where they appear. That material is not covered by this
+license and remains with its owners; please seek permission from the original
+source. To report a missing credit or a rights concern, get in touch as above.

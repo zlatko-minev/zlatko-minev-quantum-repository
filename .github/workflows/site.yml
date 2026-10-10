@@ -1,5 +1,6 @@
 # Size guard on every push / PR; build and deploy the website to GitHub Pages
-# from main. One-time setup: Settings → Pages → Source: "GitHub Actions".
+# from main. One-time setup: Settings → Pages → Source: "GitHub Actions";
+# with a custom domain, also set the repository variable SITE_URL.
 name: site
 
 on:
@@ -38,7 +39,11 @@ jobs:
             git status --porcelain site/thumbs
             echo "::error::missing thumbnails — run python3 tools/make_thumbnails.py and commit"; exit 1; }
       - name: Build site
-        run: python3 tools/build_site.py --with-pdfs
+        # Set the repository variable SITE_URL (e.g. https://talks.zlatko-minev.com/)
+        # when a custom domain is configured; citations and the sitemap use it.
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: python3 tools/build_site.py --with-pdfs ${SITE_URL:+--site-url "$SITE_URL"}
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3

@@ -86,21 +86,15 @@ TAG_RULES = {
     "overview": ["overview"],
 }
 
-# Website "shelves": the four top-level collections people browse by.
-# Default by category / educational subfolder; override per item with "shelf".
-SHELVES = ("lectures", "research", "notes", "outreach")
-SHELF_BY_SUBCATEGORY = {
-    "Career & Outreach": "outreach",
-    "Tutorials (Pauli Twirling)": "notes",
-}
+# Website "shelves": the three top-level collections people browse by. They
+# follow the content folders one-to-one; override per item with "shelf".
+SHELVES = ("lectures", "research", "notes")
+SHELF_BY_CATEGORY = {"educational": "lectures", "research-talk": "research",
+                     "tech-note": "notes"}
 
 
-def default_shelf(category: str, subcategory: str | None) -> str:
-    if category == "research-talk":
-        return "research"
-    if category == "tech-note":
-        return "notes"
-    return SHELF_BY_SUBCATEGORY.get(subcategory or "", "lectures")
+def default_shelf(category: str) -> str:
+    return SHELF_BY_CATEGORY[category]
 
 
 YEAR_RE = re.compile(r"(19|20)\d{2}")
@@ -251,7 +245,7 @@ def main() -> int:
                 "title": clean_title(name),
                 "file": str(rel),
                 "category": category,
-                "shelf": default_shelf(category, subcat),
+                "shelf": default_shelf(category),
                 "subcategory": subcat,
                 "series": series,
                 "year": parse_year(name, parts),

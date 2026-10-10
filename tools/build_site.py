@@ -13,6 +13,11 @@ Usage
     python3 tools/build_site.py                 # site + data only (PDFs link to GitHub)
     python3 tools/build_site.py --with-pdfs     # also copy PDFs (what CI deploys)
     python3 tools/build_site.py --serve         # build, then serve on :8000
+    python3 tools/build_site.py --site-url https://talks.example.com/   # canonical URL
+
+Besides the browser page it writes one citation page per item
+(``items/<id>/``, with Google Scholar meta tags and BibTeX),
+``citations.bib`` with every entry, ``sitemap.xml`` and ``robots.txt``.
 
 With ``--with-pdfs`` the PDFs sit next to the page and open in the browser's
 viewer. Without it, PDF links point at ``--pdf-base`` (GitHub by default).
@@ -27,11 +32,16 @@ import re
 import shutil
 from pathlib import Path
 
+from site_pages import bibtex, item_page, robots, sitemap, unique_keys
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SRC = REPO_ROOT / "site"
 OUT = REPO_ROOT / "_site"
 REPO_URL = "https://github.com/zlatko-minev/zlatko-minev-quantum-repository"
 GITHUB_PDF_BASE = f"{REPO_URL}/blob/main/"
+# Canonical address of the deployed site (used in citations and the sitemap).
+# CI passes the real Pages URL; change the default when a custom domain is set.
+SITE_URL = "https://zlatko-minev.github.io/zlatko-minev-quantum-repository/"
 
 # AI summaries often open with the speaker's name; the page already says whose
 # archive this is, so drop the preamble.
@@ -95,6 +105,8 @@ def main() -> int:
     ap.add_argument("--pdf-base", default=None,
                     help="URL prefix for PDF links (default: GitHub, or '' "
                          "with --with-pdfs)")
+    ap.add_argument("--site-url", default=SITE_URL,
+                    help=f"canonical site URL, with trailing slash (default {SITE_URL})")
     ap.add_argument("--serve", action="store_true",
                     help="serve _site/ on http://localhost:8000 after building")
     args = ap.parse_args()
@@ -106,7 +118,22 @@ def main() -> int:
     if OUT.exists():
         shutil.rmtree(OUT)
     shutil.copytree(SRC, OUT)
+    site_url = args.site_url.rstrip("/") + "/"
     lib = build_library(pdf_base)
+    lib["site_url"] = site_url
+    pdf_abs = site_url if args.with_pdfs else (pdf_base or GITHUB_PDF_BASE)
+    bib_all = []
+    keys = unique_keys(lib["items"])
+    for it in lib["items"]:
+        it["bibtex"] = bibtex(it, site_url, keys[it["id"]])
+        it["page"] = f"items/{it['id']}/"
+        bib_all.append(it["bibtex"])
+        page = OUT / "items" / it["id"] / "index.html"
+        page.parent.mkdir(parents=True, exist_ok=True)
+        page.write_text(item_page(it, site_url, pdf_abs, keys[it["id"]]))
+    (OUT / "citations.bib").write_text("\n\n".join(bib_all) + "\n")
+    (OUT / "sitemap.xml").write_text(sitemap(lib["items"], site_url))
+    (OUT / "robots.txt").write_text(robots(site_url))
     (OUT / "library.json").write_text(
         json.dumps(lib, ensure_ascii=False, separators=(",", ":")))
     (OUT / ".nojekyll").write_text("")

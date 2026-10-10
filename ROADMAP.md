@@ -62,9 +62,12 @@ Static site in `site/` (plain HTML/CSS/JS, no framework or npm), built by
   (~40 KB each, committed; CI fails if one is missing).
 - ✅ Curated display titles / series / venues / tech-note dates in
   `tools/catalog_overrides.json` (from the PDFs' own title pages).
-- ✅ Named **Quantum Jumps**; four shelves (Lectures & Summer Schools,
-  Research Talks, Tutorials & Tech Notes, Career & Outreach) with series
-  grouping; links to zlatko-minev.com in the top bar and footer.
+- ✅ Named **Quantum Jumps**; three shelves (Lectures & Tutorials, Research
+  Talks, Tech Notes) with series grouping; low-key links to zlatko-minev.com.
+- ✅ Citations: per-item pages with Google Scholar meta tags and BibTeX,
+  `citations.bib`, sitemap, `CITATION.cff`; "Cite & reuse" notice.
+- 💡 Zenodo DOIs for the tech notes (needs the owner's Zenodo account); add
+  `doi` to BibTeX once they exist.
 - ✅ Summaries rewritten from each deck's text (2026-10), shown as "draft" until
   the author sets `summary_reviewed: true`.
 - ⏳ **Enable Pages**: Settings → Pages → Source: GitHub Actions (one-time, owner).

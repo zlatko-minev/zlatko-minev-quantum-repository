@@ -15,17 +15,18 @@
 </head>
 <body>
 <nav class="topbar wrap" aria-label="Site">
-  <a class="me" href="https://zlatko-minev.com"><span class="mono-mark" aria-hidden="true">ZM</span>Zlatko Minev</a>
+  <a class="me" href="./"><span class="mono-mark" aria-hidden="true">|ψ⟩</span>Quantum Jumps</a>
   <div class="toplinks">
-    <a href="https://zlatko-minev.com">Homepage ↗</a>
-    <a href="https://github.com/zlatko-minev/zlatko-minev-quantum-repository">GitHub</a>
+    <a href="#reuse">Cite &amp; reuse</a>
+    <a href="https://zlatko-minev.com">Zlatko Minev</a>
   </div>
 </nav>
 
 <header class="hero wrap">
   <p class="eyebrow">Talks · lectures · notes · <span id="span-years">2011 → today</span></p>
   <h1>Quantum <em>Jumps</em></h1>
-  <p class="lede">Fifteen years of slides on superconducting qubits, quantum noise, error mitigation and many-body physics. Research talks, summer-school lectures, tutorials and the occasional late-night derivation, all free to read, teach from and share.</p>
+  <p class="lede">Fifteen years of Zlatko Minev's slides on superconducting qubits, quantum noise, error mitigation and many-body physics, plus the occasional late-night derivation. Free to read, borrow ideas from and share.</p>
+  <p class="fun-stats" id="fun-stats"></p>
   <figure class="trace" id="trace" title="Click to measure again">
     <svg viewBox="0 0 1200 96" preserveAspectRatio="none" role="img" aria-label="A qubit's measured state jumping between ground and excited levels over time">
       <line class="lvl" x1="0" x2="1200" y1="78" y2="78"/><line class="lvl" x1="0" x2="1200" y1="18" y2="18"/>
@@ -33,7 +34,7 @@
       <g id="trace-mark"></g>
     </svg>
     <span class="trace-label" id="trace-label" hidden>caught mid-flight</span>
-    <figcaption><span class="mono">|G⟩ ↔ |D⟩</span> Every jump gets caught mid-flight eventually. Click the trace to measure again.</figcaption>
+    <figcaption><span class="mono">|G⟩ ↔ |D⟩</span> A qubit, jumping. Click to measure again; no two runs agree.</figcaption>
   </figure>
 </header>
 
@@ -46,7 +47,7 @@
     <label class="search">
       <span class="visually-hidden">Search the archive</span>
       <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4.5 4.5"/></svg>
-      <input id="q" type="search" placeholder="Search titles, venues, topics…  ( / )" autocomplete="off">
+      <input id="q" type="search" placeholder="Search… try “twirling”, “transmon” or “T27”   ( / )" autocomplete="off">
     </label>
     <label class="sort">
       <span>Sort</span>
@@ -87,7 +88,7 @@
   </details>
 
   <section class="results" aria-live="polite">
-    <p class="count" id="count">Loading the archive…</p>
+    <p class="count" id="count">Preparing the state…</p>
     <div id="grid"></div>
     <p class="empty" id="empty" hidden>No states in this subspace. Loosen a filter, or <button type="button" id="reset2">clear them all</button>.</p>
   </section>
@@ -95,13 +96,16 @@
 
 <footer class="foot">
   <div class="wrap foot-inner">
-    <div>
-      <p class="foot-name"><a href="https://zlatko-minev.com">zlatko-minev.com</a></p>
-      <p>More about the work, papers, blog and contact.</p>
-    </div>
+    <section class="reuse" id="reuse" aria-labelledby="reuse-h">
+      <h2 id="reuse-h">Cite &amp; reuse</h2>
+      <p>Everything here is © Zlatko K. Minev and shared under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>: read it, download it, pass it along with credit. Want a slide or figure for your own talk, course or paper? Please ask. The answer is usually yes, and it's nice to hear where the material ends up.</p>
+      <p>Some slides include figures and images by other people, credited where they appear. Those belong to their owners, so please ask the original source for them. If you spot something that's missing a credit or shouldn't be here, say so and it will be fixed.</p>
+      <p>Each deck has a citation page with BibTeX (open a deck, then <b>Cite</b>), or grab <a href="citations.bib">all citations as one .bib file</a>.</p>
+    </section>
     <div class="foot-small">
-      <p>Slides © Zlatko K. Minev, shared under the <a href="https://github.com/zlatko-minev/zlatko-minev-quantum-repository/blob/main/LICENSE.md">MIT License</a>. Summaries marked “draft” were machine-written from the slides and are awaiting the author's review.</p>
-      <p>Catalog and source on <a href="https://github.com/zlatko-minev/zlatko-minev-quantum-repository">GitHub</a>. No qubits were harmed in the making of this archive (some decohered).</p>
+      <p>Get in touch through <a href="https://zlatko-minev.com">zlatko-minev.com</a>. Catalog and source on <a href="https://github.com/zlatko-minev/zlatko-minev-quantum-repository">GitHub</a>.</p>
+      <p>Summaries marked “draft” were machine-written from the slides and await the author's review.</p>
+      <p>No qubits were harmed in the making of this archive. Some decohered.</p>
     </div>
   </div>
 </footer>
@@ -117,6 +121,10 @@
       <div class="d-actions" id="d-actions"></div>
       <p class="d-summary" id="d-summary"></p>
       <ul class="d-points" id="d-points"></ul>
+      <div class="d-cite" id="d-cite" hidden>
+        <pre class="bib" id="d-bib"></pre>
+        <div class="d-actions"><button class="btn" type="button" id="copy-bib">Copy BibTeX</button><a class="btn" id="d-citepage" href="#">Citation page</a></div>
+      </div>
       <div class="chips static" id="d-tags"></div>
       <div class="d-related" id="d-related"></div>
     </div>
