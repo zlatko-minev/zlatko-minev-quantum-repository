@@ -1,121 +1,239 @@
 # Agent Notes — Zlatko Minev Quantum Repository
 
-> Orientation + working notes for any future agent (or human) picking this up.
-> Last meaningful update: 2026-06-14.
-
-## ✅ AI enrichment — COMPLETE (2026-06-15)
-
-All 76 talks enriched (`qwen2.5:7b`, text mode over cleaned `catalog_text.json`)
-→ `catalog_ai.json` (committed). Per talk: short_description, summary, topics,
-suggested_tags, audience_level, key_points. Additive & non-destructive; re-run
-`python3 tools/ai_enrich.py` to fill only new talks.
-
-- The vision model (`qwen2.5vl`) was abandoned for bulk use — it HUNG on
-  image-dense multi-page decks. Kept available via `--vision` for one-off decks.
-- The 9 sparse cheat-sheet decks (`catalog_text.json` chars < 400) were enriched
-  fine from their title text; OCR (`extract_cache.py` w/o `--no-ocr`) is available
-  if deeper text is ever needed.
-- Next quality step (see ROADMAP): manual proofing of AI text + promoting
-  `suggested_tags` into the controlled tag vocabulary (some are noisy, e.g.
-  `qiskit-metal` mis-applied to a few noise notes).
+> Orientation and maintenance guide for any agent (or human) working on this
+> repo. Last updated: 2026-10-10.
 
 ## What this repo is
 
-A curated public archive of Zlatko Minev's quantum talks, lectures, tutorials,
-and technical notes (2011–present), published to GitHub and intended to feed a
-future browsable website. Content lives in three top-level folders:
+A public archive of Zlatko Minev's talks, lectures, tutorials and technical
+notes (2011 → today), plus the static website **The Quantum Notebook** that browses it.
+Content license: CC BY-NC-ND 4.0 (see `LICENSE.md`).
 
-- `content - research talks/` — keynotes, seminars, colloquia (flat, `YYYY Title (Minev, Venue).pdf`)
-- `content - educational/` — lectures, summer schools, tutorials, career talks (nested by series/course)
-- `content - tech notes/` — short derivations/notes (`T<n> Title (Minev).pdf`)
+- `content - research talks/` — flat, `YYYY Title (Minev, Venue).pdf`
+- `content - educational/` — topic folders (Superconducting Qubits & Hardware,
+  Quantum Noise, Error Mitigation, Quantum Measurements, Tutorials (Pauli
+  Twirling), Career & Outreach)
+- `content - tech notes/` — `T<n> Title (Minev).pdf`
+- `catalog.json` — the metadata database (generated; never hand-edit)
+- `tools/catalog_overrides.json` — hand-curated metadata merged into the catalog
+- `catalog_text.json` — extracted slide text per item (generated)
+- `catalog_ai.json` — 2026-06 local-model enrichment; superseded by curated
+  summaries in the overrides, kept as a fallback
+- `site/` — the website source (plain HTML/CSS/JS); `site/thumbs/` thumbnails
+- `tools/` — the pipeline scripts below
 
-74 PDFs as of this writing. No `.pptx` currently checked in (source decks live elsewhere).
+## The owner's intent
 
-## The intent (what the owner wants)
+1. Keep the GitHub repo small: no Git LFS, history squashed to one commit on
+   publish (`tools/publish.sh`).
+2. PDFs readable but compressed (~150 dpi).
+3. One metadata database that drives the website.
+4. The website is the main way people find things: clean, a bit playful,
+   professional. Links to the homepage, https://zlatko-minev.com.
+5. Adding a talk must be a repeatable, checklist-driven process.
 
-1. **Keep the GitHub repo small and clean.** The Hub copy should never carry
-   history — always one squashed commit, force-pushed. History was the main
-   source of bloat and is not wanted.
-2. **PDFs small but readable.** High-enough quality to project/zoom, small
-   enough to host and download without LFS quotas.
-3. **A metadata database** (`catalog.json`) so files can be tagged
-   (hardware / summer-school / lecture / tutorial / career / research / ...) and
-   later power a website. Website is NOT being built yet — just the data.
-4. **Consistent, descriptive naming** for files/talks.
-5. More talks will be added over time — the pipeline must be repeatable.
+## Add a new talk, lecture or note (checklist)
 
-## Decisions made (2026-06-14)
+1. **Convert.** `.pptx` → PDF: `python3 tools/convert_pptx_to_pdf.py <file>`
+   (LibreOffice headless).
+2. **Place and name.** Drop the PDF into the right content folder using that
+   folder's naming pattern (above). The file name sets the item's internal
+   `key`; its public id is the `slug` you add in step 5.
+3. **Compress.** `python3 tools/process_pdfs.py` (Ghostscript; never enlarges a
+   file; safe to re-run on the whole library).
+4. **Catalog.** `python3 tools/build_catalog.py` — parses title/year/venue from
+   the file name, infers tags, assigns a `shelf`, validates, writes
+   `catalog.json`. Read its output for warnings.
+5. **Curate in `tools/catalog_overrides.json`** (keyed by `key`; anything here
+   overrides the parsed value, `tags` are unioned):
+   - `title`, `venue`, `year`, `series` — take them from the PDF's own title
+     slide (`pdftotext -l 1 file.pdf -`), not from the file name.
+   - `series` groups decks on the site (e.g. `Intro to Quantum Noise (QGSS 2023)`).
+     Reuse an existing series name exactly when the deck belongs to one.
+   - `shelf` only when the default is wrong (see "Shelves").
+   - `note_id` for tech notes (`T27`).
+   - `slug`: the permanent public id (see "Item ids and renaming").
+   - `speaker` when someone other than Minev presented, or co-presented
+     (comma-separated, in title-slide order); `authors` for a co-authored
+     poster or abstract whose citation needs the full author list.
+   - `tags_remove` to drop a tag inherited from the folder that doesn't fit.
+   - `added`: today's date (`"YYYY-MM-DD"`). Drives the Atom feed and the
+     "New" badge (120 days).
+   - `links`: the deck's own paper / video (see "Links").
+   - `version_of`: public id of the original when this is a copy of another
+     item (e.g. a tech note handed out as a summer-school bonus).
+6. **Text + summary.** `python3 tools/extract_cache.py` to refresh
+   `catalog_text.json`, then write `description`, `summary`, `key_points`,
+   `level`, `summary_confidence` into the overrides (rules below).
+7. **Thumbnail.** `python3 tools/make_thumbnails.py` (renders only missing ones,
+   plus the 360 px copy in `site/thumbs/sm/`; needs Pillow).
+8. **Check.** `python3 tools/build_catalog.py` again, then
+   `python3 tools/check_sizes.py`, then preview with
+   `python3 tools/build_site.py --serve` (http://localhost:8000). The build
+   freezes a BibTeX key for the new item in `tools/bibkeys.json`: commit it
+   (CI fails otherwise).
+9. **Log** the source in `../imported_talks.json` (outside the repo).
+10. **Publish.** Commit, or `bash tools/publish.sh --push` to squash and
+    force-push. CI (`.github/workflows/site.yml`) re-checks sizes, catalog
+    freshness, thumbnails and BibTeX keys, then deploys the site from `main`.
 
-- **Dropped Git LFS.** LFS ran out of free storage/bandwidth and was clunky.
-  Compressed PDFs are small enough to commit as normal git blobs. `.gitattributes`
-  LFS filters removed.
-- **Single-commit history.** Repo is reset to one orphan commit and force-pushed.
-  No history is retained on the remote by design.
-- **Compression: balanced ~150 dpi** via Ghostscript (`tools/process_pdfs.py`).
-  Net ~34% smaller (415 MB → 274 MB of PDFs) with crisp text. Quality-heavy
-  hardware decks shrank most (e.g. Superconducting Qubits 101: 14.9M → 4.3M).
-- **Originals preserved locally**, OUTSIDE the repo, at
-  `../_BACKUP_quantum_repo_2026-06-14/` (full pre-compression copy incl. old
-  `.git`). This is the source-of-truth for pristine quality. Not committed.
-- **Old `_web/` Jekyll site is deprecated.** It was a half-built "UNDER
-  CONSTRUCTION" Jekyll prototype; the owner wants to rethink the site from
-  scratch later. `catalog.json` is the durable interface a new site will consume.
+## Shelves (the site's three collections)
 
-## How far we got
+| shelf | name on site | default rule |
+|---|---|---|
+| `lectures` | Lectures & Tutorials | `content - educational/` (incl. tutorials and career talks) |
+| `research` | Research Talks | `content - research talks/` |
+| `notes` | Tech Notes | `content - tech notes/` (written, T-numbered) |
 
-- [x] Full safety backup of repo (incl. history) → `../_BACKUP_quantum_repo_2026-06-14/`
-- [x] `tools/process_pdfs.py` — Ghostscript compressor (idempotent, keeps original if no win)
-- [x] Compressed all 74 PDFs in place; validated 0 corrupt; report in `tools/compression_report.csv`
-- [x] `tools/build_catalog.py` + `catalog.json` — metadata DB with auto tags
-- [x] `tools/catalog_overrides.json` — hand-curated tags merged on regen
-- [ ] Drop LFS + squash to single commit + force-push  ← final git step
-- [ ] (Future) rethink/rebuild the website that consumes `catalog.json`
-- [ ] (Future) optional filename normalization pass
+Shelves follow the content folders one-to-one (`default_shelf()` in
+`tools/build_catalog.py`); names and blurbs are in `SHELVES` in `site/app.js`.
+Decided 2026-10 to keep three: a separate Career & Outreach shelf had only 3
+items; career talks are a series inside Lectures, findable with the Career tag.
 
-## Repeatable workflow — adding new talks
+## Citations
 
-1. **Source/convert.** If the source is a `.pptx`, convert it to PDF first:
-   `soffice --headless --convert-to pdf --outdir <out> "<file.pptx>"`
-   (LibreOffice; faithful to PowerPoint — verified). Drop the PDF into the right
-   `content - ...` topic folder, following `YYYY Title (Minev, Venue).pdf`.
-2. **Compress:** `python3 tools/process_pdfs.py` (only shrinks what it can; safe
-   to re-run on the whole library).
-3. **Rebuild metadata:** `python3 tools/build_catalog.py` (self-validates; aborts
-   on dupes/missing files). Tag stragglers via `tools/catalog_overrides.json`.
-4. **AI-enrich (optional):** `python3 tools/ai_enrich.py` → `catalog_ai.json`
-   (local ollama vision model; additive, never overwrites; resumable).
-5. **Log the source** in `../imported_talks.json` (outside the repo).
-6. **Publish:** `bash tools/publish.sh --push` (single clean commit, force-push,
-   destructive on the remote by design; refuses to push if LFS pointers slip in).
+- **Series.** Every series with 2+ decks is cited as ONE work, even when the
+  lecture was given at several venues over the years (e.g.
+  `Superconducting Qubits 101`, 2020–2026): the versions are near-identical,
+  and one record gathers citations (better for impact metrics, and it maps to
+  a Zenodo record with versions under one concept DOI). The entry's note lists
+  the decks, years and venues. Only `Career & Outreach` (a grouping, not a
+  series) is cited deck by deck. Rule: `citable` in `series_info()`,
+  `tools/site_pages.py` (decided with the author 2026-10).
+- **Copies.** `version_of` items share the original's BibTeX and point their
+  canonical URL at it; they carry no Scholar tags.
+- **Keys are frozen** in `tools/bibkeys.json` (owner id → key; series owners are
+  `s:<slug>`). Existing keys never change, even if a title or year changes; new
+  owners get new keys (collisions get a/b/c). Don't hand-edit keys that may
+  already be cited.
+- Tech notes are `@techreport` (type "Technical Note", number `Txx`,
+  institution "The Quantum Notebook"); decks are `@misc` with
+  `howpublished = {Talk|Lecture|Tutorial, <venue>}` and `note = {Slides}`.
+- Pages: `items/<id>/` per item and `series/<slug>/` per series, with Google
+  Scholar `citation_*` tags (PDF tag only when the PDF is on the site), JSON-LD
+  and OG tags; plus `citations.bib`, `sitemap.xml`, `robots.txt`, `feed.xml`.
+- The `series` string is the grouping key for the site and for citations, so
+  spell it identically across decks.
+- Authors come from `authors`, else `speaker` ("Minev" → "Zlatko K. Minev";
+  others comma-separated in title-slide order).
+- Citation URLs use the site address: default `SITE_URL` in
+  `tools/build_site.py`; CI uses the repository variable `SITE_URL` when set.
+  Changing the address changes every citation URL, so set it once.
+- Scholar indexing of slides is not guaranteed; tech notes have the best
+  chance. DOIs: `.zenodo.json` is ready for the GitHub–Zenodo integration (see
+  ROADMAP › Continue here).
 
-## Layout (as of 2026-06-14)
+## Links: papers, videos, code
 
-- `content - educational/` — flattened to 6 **topic** folders (max 2 deep):
-  Superconducting Qubits & Hardware · Quantum Noise · Error Mitigation ·
-  Quantum Measurements · Tutorials (Pauli Twirling) · Career & Outreach.
-  Reorg is reproducible via `tools/reorg_educational.py`.
-- `content - research talks/` (flat), `content - tech notes/` (flat).
-- `catalog.json` — metadata DB (generated). `catalog_ai.json` — AI enrichment
-  (generated, additive). `ROADMAP.md` — site/quality plan.
-- `tools/` — `process_pdfs.py`, `build_catalog.py` + `catalog_overrides.json`,
-  `ai_enrich.py`, `reorg_educational.py`, `convert_pptx_to_pdf.py`, `publish.sh`.
-- Outside the repo: `../imported_talks.json` (import tracking),
-  `../_BACKUP_quantum_repo_2026-06-14/` (pristine originals + old history).
+Add `links` to an item's override; each renders as a button in the detail view
+and on its citation page:
 
-> Tag note: tag inference keys off filename + folder path. After the topic reorg,
-> files no longer inherit tags from the old umbrella folder name, so
-> error-mitigation/noise counts dropped — this is intentional (more accurate).
-> AI `suggested_tags` in `catalog_ai.json` augment these.
+```json
+"links": [
+  {"label": "Paper (arXiv)", "url": "https://arxiv.org/abs/2307.07552"},
+  {"label": "Video", "url": "https://www.youtube.com/watch?v=..."}
+]
+```
 
-## Gotchas / notes for the next agent
+Only add a link you have verified: the talk's *own* paper (in the title or
+author block of slide 1, not one it cites; check the arXiv record's title and
+authors), or a video the author confirms. A wrong paper link under the author's
+name is worse than none (2026-10: an NQI deck briefly linked a paper it only
+cited). As of 2026-10, paper links come from arXiv IDs printed on
+the title slides; no video links yet (the QGSS lectures have recordings on
+YouTube that still need to be matched to decks).
 
-- Ghostscript `-dSAFER` blocks reading files by absolute path in `-c` snippets;
-  `build_catalog.py` uses `-dNOSAFER` only for local page counting.
-- `process_pdfs.py` never enlarges a file — if recompression isn't ≥5% smaller it
-  keeps the original. So re-running across the library is cheap and lossless to
-  already-optimized files.
-- Tags are inferred from folder + filename keywords (`TAG_RULES` in
-  `build_catalog.py`). Add rules there for systematic tags; use
-  `catalog_overrides.json` for one-offs and curation (`featured`, `description`).
-- The remote intentionally has NO history. Never rely on `git log` for the
-  archive's provenance — the backup folder is the only deep record.
+## License and reuse
+
+Content is CC BY-NC-ND 4.0 (`LICENSE.md`), not MIT. Agreed wording (2026-10):
+read, download and share unchanged and non-commercially with credit and a link
+back; commercial use or reworked slides/figures need permission ("please ask,
+the answer is usually yes"); a non-binding request to send a note when the
+material is used in teaching or a publication; third-party figures, photos and
+logos stay with their owners. Keep the texts in sync: `site/index.html`
+(footer), `PERMISSIONS_HTML` in `tools/site_pages.py`, README, LICENSE.md.
+Code and site source are covered by the same file today; the fonts in
+`site/fonts/` are SIL OFL (licenses alongside).
+
+## Writing summaries
+
+Summaries are public, under the author's name. Accuracy first.
+
+- Read the deck's text (`catalog_text.json`, or `pdftotext`). State only what the
+  slides support: no invented results, numbers, collaborators or affiliations.
+- `description`: one sentence, ≤ 150 characters, for the card.
+  `summary`: 2–3 sentences. `key_points`: 3–4 concrete bullets.
+  `level`: `beginner` / `intermediate` / `advanced`.
+- Subject-first; never open with "Dr. Minev…" or "This talk by…". No hype words.
+  Don't describe the extraction process ("the extracted text…").
+- `summary_confidence`: `high` / `medium` / `low` (low = mostly handwritten or
+  image-only pages; keep it generic).
+- The site labels every summary "draft" until the author approves it: set
+  `"summary_reviewed": true` on that item in the overrides.
+
+## Item ids and renaming
+
+- Each item has a public, permanent `id` (its URL `items/<id>/`, the `#<id>`
+  permalink, thumbnail name and BibTeX URL). It is the frozen `slug` in the
+  item's override, e.g. `t27-simple-noise-models-and-gate-fidelity`. Give
+  every new item a short slug (`YYYY-short-title`, or `tNN-short-title` for
+  notes) when you add it, and never change it afterwards: people cite these.
+- The override itself is keyed by `key`, the slug of the file name (also the
+  key of `catalog_ai.json` / `catalog_text.json`). Renaming a PDF changes its
+  `key`, so move its override entry to the new key in the same commit; the
+  public `id` is unaffected.
+- Display titles come from the overrides, so a file rarely needs renaming.
+  Renames also break GitHub file links that other pages may use.
+
+## Repository size
+
+- `python3 tools/check_sizes.py` enforces budgets: per PDF 15 MB warn / 40 MB
+  fail; all content 600 MB warn / 900 MB fail (Pages caps a site at 1 GB);
+  other files > 2 MB fail.
+- Lossless re-optimization of these PDFs gains nothing (measured 0.8 MB of
+  297 MB, 2026-10); they are mostly JPEG slide images. Real savings are lossy
+  (`process_pdfs.py` with a lower dpi) or moving PDFs to Release assets (the
+  plan once content passes 600 MB; `build_site.py --pdf-base` repoints links).
+- Every `publish.sh` squash re-uploads the whole library. Plain commits are
+  cheaper for additions; squash after replacing or deleting files.
+
+## Website
+
+- "Start here" reading paths: `PATHS` at the top of `site/app.js` (item ids).
+  Keep them short (4–5 decks) and beginner-first.
+- Machine-written summaries show a one-line disclosure until
+  `summary_reviewed: true`; review notes from the 2026-10 red team are in
+  ROADMAP.md.
+
+- Source: `site/index.html`, `site/style.css`, `site/app.js`. No build step
+  beyond `tools/build_site.py`, which writes `_site/library.json` (catalog +
+  fallback AI fields) and copies the site.
+- State lives in the URL (`?shelf=&q=&tag=&year=&level=&sort=&group=`, item as
+  `#<id>`). By default each series collapses to one cover card (its first
+  non-bonus deck in the current sort) with "+N more in this series"; series
+  and standalone decks stay interleaved in sort order.
+- Hero: the isometric transmon (`initTransmon()` in `site/app.js`, scroll- and
+  time-driven, paused off-screen, static under reduced motion) and the
+  quantum-jump trace.
+- Deploy: GitHub Pages via Actions on push to `main`.
+- Fonts are self-hosted (`site/fonts/`, latin + greek subsets from Fontsource);
+  no third-party requests. Cards load `thumbs/sm/` (360 px) with `srcset`.
+- `index.html` has build-time placeholders (`%SITE_URL%`, `%YEARS%`,
+  `%FUN_STATS%`, `%COUNT_<shelf>%`, `%STATIC_LIST%`) filled by
+  `fill_index()` in `tools/build_site.py`.
+- Social image: `site/og.png` (1200×630, a screenshot of the hero); regenerate
+  if the hero changes.
+- Tone: lighthearted, not self-serious, still professional: ket-notation shelf
+  labels, the transmon and quantum-jump trace in the hero, the random-deck button, the
+  slide-count joke, the empty state and footer. Keep jokes short, and never in
+  summaries or citations. The homepage link stays low-key (top bar + footer).
+
+## Gotchas
+
+- Ghostscript `-dSAFER` blocks reading files by absolute path; page counting uses
+  `-dNOSAFER` locally and falls back to `pdfinfo`.
+- `process_pdfs.py` keeps the original unless recompression is ≥ 5 % smaller.
+- Tag inference keys off folder and file name (`TAG_RULES` in
+  `build_catalog.py`); use overrides for one-offs.
+- The remote has no history by design; pristine originals and the old history
+  are in a local backup outside the repo.

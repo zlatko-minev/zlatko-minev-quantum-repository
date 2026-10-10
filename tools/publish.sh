@@ -16,6 +16,9 @@ MODE="${1:-prompt}"
 MSG="Update quantum repository archive ($(date +%F))"
 REMOTE_BRANCH="main"
 
+echo "==> Size guard"
+python3 tools/check_sizes.py || { echo "Size guard failed — fix the errors above before publishing." >&2; exit 1; }
+
 echo "==> Disabling Git LFS for this repo"
 git lfs uninstall --local 2>/dev/null || true
 rm -rf .git/lfs   # drop the local LFS object cache (originals are backed up)

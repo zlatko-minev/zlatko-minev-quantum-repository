@@ -33,6 +33,7 @@ import argparse
 import json
 import re
 import subprocess
+from datetime import date
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -84,6 +85,17 @@ TAG_RULES = {
     "prelude to practical": ["overview"],
     "overview": ["overview"],
 }
+
+# Website "shelves": the three top-level collections people browse by. They
+# follow the content folders one-to-one; override per item with "shelf".
+SHELVES = ("lectures", "research", "notes")
+SHELF_BY_CATEGORY = {"educational": "lectures", "research-talk": "research",
+                     "tech-note": "notes"}
+
+
+def default_shelf(category: str) -> str:
+    return SHELF_BY_CATEGORY[category]
+
 
 YEAR_RE = re.compile(r"(19|20)\d{2}")
 PAREN_RE = re.compile(r"\(([^)]*)\)")
@@ -173,6 +185,15 @@ def infer_tags(haystack: str) -> list[str]:
 
 
 def page_count(path: Path) -> int | None:
+    """Page count via poppler's ``pdfinfo`` (what CI has), else Ghostscript."""
+    try:
+        out = subprocess.run(["pdfinfo", str(path)],
+                             capture_output=True, text=True, timeout=60)
+        m = re.search(r"^Pages:\s+(\d+)", out.stdout, re.MULTILINE)
+        if m:
+            return int(m.group(1))
+    except Exception:
+        pass
     try:
         out = subprocess.run(
             ["gs", "-q", "-dNODISPLAY", "-dNOSAFER", "-c",
@@ -220,11 +241,17 @@ def main() -> int:
                 item_id = f"{item_id}-{n}"
             seen_ids.add(item_id)
             haystack = str(rel)
+            ov = overrides.get(item_id, {})
             rec = {
-                "id": item_id,
+                # "id" is the public, permanent id (URLs, citations). It is the
+                # frozen "slug" from the overrides when set; "key" is the
+                # file-name-derived id that overrides and caches are keyed by.
+                "id": ov.get("slug", item_id),
+                "key": item_id,
                 "title": clean_title(name),
                 "file": str(rel),
                 "category": category,
+                "shelf": default_shelf(category),
                 "subcategory": subcat,
                 "series": series,
                 "year": parse_year(name, parts),
@@ -234,11 +261,12 @@ def main() -> int:
                 "size_bytes": pdf.stat().st_size,
                 "pages": None if args.no_pages else page_count(pdf),
             }
-            ov = overrides.get(item_id, {})
             if "tags" in ov:  # union auto + manual
                 rec["tags"] = sorted(set(rec["tags"]) | set(ov["tags"]))
+            if "tags_remove" in ov:  # drop folder-inherited tags that don't fit
+                rec["tags"] = [t for t in rec["tags"] if t not in ov["tags_remove"]]
             for k, v in ov.items():
-                if k != "tags":
+                if k not in ("tags", "tags_remove", "slug"):
                     rec[k] = v
             items.append(rec)
 
@@ -268,9 +296,11 @@ def main() -> int:
     for i in items:
         if not (REPO_ROOT / i["file"]).exists():
             errors.append(f"file missing on disk: {i['file']}")
+        if i["shelf"] not in SHELVES:
+            errors.append(f"unknown shelf {i['shelf']!r}: {i['id']}")
         if not i["title"]:
             errors.append(f"empty title: {i['id']}")
-        if i["year"] is not None and not (2008 <= i["year"] <= 2026):
+        if i["year"] is not None and not (2008 <= i["year"] <= date.today().year + 1):
             errors.append(f"year out of range ({i['year']}): {i['id']}")
         if not args.no_pages and not i.get("pages"):
             warnings.append(f"no page count: {i['id']}")

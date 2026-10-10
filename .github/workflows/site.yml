@@ -1,0 +1,71 @@
+# Size guard on every push / PR; build and deploy the website to GitHub Pages
+# from main. One-time setup: Settings → Pages → Source: "GitHub Actions";
+# with a custom domain, also set the repository variable SITE_URL.
+name: site
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Size guard
+        run: python3 tools/check_sizes.py --top 10
+      - name: Catalog is up to date
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils >/dev/null
+          python3 tools/build_catalog.py
+          git diff --exit-code catalog.json || {
+            echo "::error::catalog.json is stale — run python3 tools/build_catalog.py and commit"; exit 1; }
+      - name: Every item has a thumbnail
+        run: |
+          python3 -m pip install -q pillow
+          python3 tools/make_thumbnails.py --prune
+          test -z "$(git status --porcelain site/thumbs)" || {
+            git status --porcelain site/thumbs
+            echo "::error::missing thumbnails — run python3 tools/make_thumbnails.py and commit"; exit 1; }
+      - name: Build site
+        # Set the repository variable SITE_URL (e.g. https://talks.zlatko-minev.com/)
+        # when a custom domain is configured; citations and the sitemap use it.
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: |
+          python3 tools/build_site.py --with-pdfs ${SITE_URL:+--site-url "$SITE_URL"}
+          git diff --exit-code tools/bibkeys.json || {
+            echo "::error::new citation keys — run python3 tools/build_site.py and commit tools/bibkeys.json"; exit 1; }
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: check
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:            # never cancel a deploy half-way
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

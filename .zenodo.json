@@ -1,0 +1,15 @@
+{
+  "title": "The Quantum Notebook: talks, lectures and technical notes by Zlatko K. Minev",
+  "upload_type": "presentation",
+  "description": "Slides and technical notes by Zlatko K. Minev, 2011 to present: research talks, summer-school lectures, tutorials and derivations on superconducting qubits and circuit QED, quantum noise, error mitigation and many-body physics. Browse and cite individual decks at https://zlatko-minev.github.io/zlatko-minev-quantum-repository/.",
+  "creators": [
+    {"name": "Minev, Zlatko K."}
+  ],
+  "license": "cc-by-nc-nd-4.0",
+  "access_right": "open",
+  "keywords": ["superconducting qubits", "circuit QED", "quantum noise", "quantum error mitigation", "many-body physics", "lecture notes", "slides"],
+  "language": "eng",
+  "related_identifiers": [
+    {"identifier": "https://zlatko-minev.github.io/zlatko-minev-quantum-repository/", "relation": "isDocumentedBy", "resource_type": "other"}
+  ]
+}

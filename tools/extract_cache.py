@@ -118,7 +118,7 @@ def main() -> int:
 
     done = ocr_used = 0
     for i, it in enumerate(items, 1):
-        iid, pdf = it["id"], REPO / it["file"]
+        iid, pdf = it.get("key", it["id"]), REPO / it["file"]
         cache_file = TEXT_DIR / f"{iid}.json"
         if cache_file.exists() and not args.force and iid in consolidated:
             if args.images:  # may still need images
